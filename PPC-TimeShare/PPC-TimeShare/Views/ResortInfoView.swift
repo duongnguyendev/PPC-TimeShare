@@ -31,13 +31,13 @@ class ResortInfoView: UIScrollView {
     }()
     
     let iconAddress : UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "account"))
+        let imageView = UIImageView(image: UIImage(named: "adress_icon"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
         
     }()
     let iconPrice : UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "account"))
+        let imageView = UIImageView(image: UIImage(named: "price_icon"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

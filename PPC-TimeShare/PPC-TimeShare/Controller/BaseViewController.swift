@@ -25,11 +25,10 @@ class BaseViewController: UIViewController {
     func setupNavBar(){
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSForegroundColorAttributeName: UIColor.white,
-             NSFontAttributeName: UIFont(name: "Roboto-Medium", size: 20)!]
+             NSFontAttributeName: UIFont(name: "Roboto-Medium", size: 17)!]
 
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor.red
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         setupNavBackButton()
     }
     func goHome(){
@@ -60,21 +59,28 @@ class BaseViewController: UIViewController {
     
     }
     func setupNavBackButton(){
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
-        self.navigationItem.leftBarButtonItem = backButton
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        let backButton = barButton(iconName: "back_icon")
+        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = barButtonItem
+        
         if !presented! {
             setupGoHomeButton()
         }
     }
     func setupFilterButton(){
-        let backButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(handleFilter))
-        self.navigationItem.rightBarButtonItem = backButton
-        
+        let filterButton = barButton(iconName: "filter_icon")
+        filterButton.addTarget(self, action: #selector(handleFilter), for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: filterButton)
+        self.navigationItem.rightBarButtonItem = barButtonItem
+
     }
     func setupGoHomeButton(){
-        let backButton = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(goHome))
-        self.navigationItem.rightBarButtonItem = backButton
+        let homeButton = barButton(iconName: "home_icon")
+        homeButton.addTarget(self, action: #selector(goHome), for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: homeButton)
+        self.navigationItem.rightBarButtonItem = barButtonItem
     }
     
     func setupView() {
@@ -92,6 +98,16 @@ class BaseViewController: UIViewController {
     func hideKeyboarTouchupOutSide(){
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    func barButton(iconName : String) -> UIButton{
+        
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        
+        let iconImage : UIImage = (UIImage(named: iconName)?.withRenderingMode(.alwaysOriginal))!
+        
+        button.setBackgroundImage(iconImage, for: .normal)
+        return button
     }
     
 

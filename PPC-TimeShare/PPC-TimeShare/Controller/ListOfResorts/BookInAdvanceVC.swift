@@ -30,15 +30,13 @@ class BookInAdvanceVC: BaseViewController {
     }()
     
     let addressIcon : UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: ""))
+        let imageView = UIImageView(image: UIImage(named: "adress_icon"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = UIColor.red
         return imageView
     }()
     
     let priceIcon : UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: ""))
-        imageView.backgroundColor = UIColor.red
+        let imageView = UIImageView(image: UIImage(named: "price_icon"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -63,16 +61,19 @@ class BookInAdvanceVC: BaseViewController {
         let v = BookInfoButton()
         v.addTarget(self, action: #selector(handleCheckInButton), for: .touchUpInside)
         v.title = "Check in"
+        v.iconName = "check_in_icon"
         return v
     }()
     let checkOutView : BookInfoButton = {
         let v = BookInfoButton()
         v.addTarget(self, action: #selector(handleCheckOutButton), for: .touchUpInside)
         v.title = "Check out"
+        v.iconName = "check_out_icon"
         return v
     }()
     let roomView : BookInfoButton = {
         let v = BookInfoButton()
+        v.iconName = "room_icon"
         v.title = "Room"
         v.addTarget(self, action: #selector(handleRoomButton), for: .touchUpInside)
         return v
@@ -81,6 +82,7 @@ class BookInAdvanceVC: BaseViewController {
         let v = BookInfoButton()
         v.addTarget(self, action: #selector(handleTravelersButton), for: .touchUpInside)
         v.title = "Travelers"
+        v.iconName = "travelers_icon"
         return v
     }()
     

@@ -180,5 +180,8 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         pushVC(viewController: resortDetailVC)
     }
     
+    override func hideKeyboarTouchupOutSide() {
+        
+    }
     
 }

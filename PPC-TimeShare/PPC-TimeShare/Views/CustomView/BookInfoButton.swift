@@ -31,11 +31,10 @@ class BookInfoButton: BaseButton {
 
     let iconImage : UIImageView = {
         let imv = UIImageView(image: UIImage(named: ""))
-        imv.backgroundColor = UIColor.red
         return imv
     }()
     let arrowImage : UIImageView = {
-        let imv = UIImageView(image: UIImage(named: ""))
+        let imv = UIImageView(image: UIImage(named: "setting_icon"))
         imv.backgroundColor = UIColor.red
         return imv
     }()

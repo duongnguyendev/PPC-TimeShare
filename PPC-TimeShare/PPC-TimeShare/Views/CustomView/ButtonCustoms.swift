@@ -139,13 +139,16 @@ class HomeButtonCustom : BaseButton {
         
         iconView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         iconView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        addConstraint(NSLayoutConstraint(item: iconView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: (1 / 3) , constant: 0))
+        
+        addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: (1 / 2) , constant: 0))
+        
         
         titleTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         titleTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         
-        addConstraintWithFormat(format: "V:|[v0][v1]|", views: iconView, titleTextView)
-        
-        addConstraint(NSLayoutConstraint(item: iconView, attribute: .height, relatedBy: .equal, toItem: titleTextView, attribute: .height, multiplier: 1 , constant: 0))
+        addConstraint(NSLayoutConstraint(item: titleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: (1 / 2) , constant: 0))
+        titleTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         titleLabelView.isHidden = true
         
     }
@@ -183,14 +186,14 @@ class HomeButtonCustom : BaseButton {
         
         titleTextView.isHidden = true
         
-        iconView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        iconView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        iconView.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        iconView.widthAnchor.constraint(equalToConstant: 45).isActive = true
         iconView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         
         titleLabelView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         titleLabelView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         
-        addConstraintWithFormat(format: "H:|-40-[v0][v1]|", views: iconView, titleLabelView)
+        addConstraintWithFormat(format: "H:|-40-[v0]-5-[v1]|", views: iconView, titleLabelView)
         titleLabelView.textAlignment = .left
         
     }
@@ -198,7 +201,7 @@ class HomeButtonCustom : BaseButton {
         
         iconView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         iconView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        iconView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        iconView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         iconView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         
         titleLabelView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true

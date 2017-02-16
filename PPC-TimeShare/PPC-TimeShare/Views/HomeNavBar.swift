@@ -27,7 +27,7 @@ class HomeNavBar: UIView {
     }()
     let buttonSetting : UIButton = {
         let button = UIButton(type: UIButtonType.custom)
-        button.setImage(UIImage(named: "settings"), for: .normal)
+        button.setImage(UIImage(named: "setting_icon"), for: .normal)
         button.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
         return button
     }()

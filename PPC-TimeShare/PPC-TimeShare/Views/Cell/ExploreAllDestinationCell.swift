@@ -68,5 +68,6 @@ class ExploreAllDestinationCell: InfoCell {
         textViewIntro.bottomAnchor.constraint(equalTo: contentV.bottomAnchor, constant: 0).isActive = true
         
     }
+    
 }
 

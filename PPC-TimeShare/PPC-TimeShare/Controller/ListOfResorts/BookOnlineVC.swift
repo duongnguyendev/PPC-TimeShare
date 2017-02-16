@@ -18,6 +18,7 @@ class BookOnlineVC: BookInAdvanceVC {
 
     let inputNameView : InputView = {
         let input = InputView()
+        input.iconName = "name_icon"
         input.hint = "Name"
         
         return input
@@ -25,16 +26,19 @@ class BookOnlineVC: BookInAdvanceVC {
     let inputEmailView : InputView = {
         let input = InputView()
         input.hint = "Email"
+        input.iconName = "your_email_icon"
         return input
     }()
     let inputMobileView : InputView = {
         let input = InputView()
         input.hint = "Mobile number"
+        input.iconName = "mobile_number_icon"
         return input
     }()
     let inputAddressView : InputView = {
         let input = InputView()
         input.hint = "Address"
+        input.iconName = "adress_icon_1"
         return input
     }()
     override func setupInfoRequestView() {

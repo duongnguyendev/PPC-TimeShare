@@ -83,8 +83,11 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC : RecruitmentDetailVC = RecruitmentDetailVC()
+        let detailVC : SpecialOffersDetailVC = SpecialOffersDetailVC()
         
         pushVC(viewController: detailVC)
+    }
+    override func hideKeyboarTouchupOutSide() {
+        
     }
 }

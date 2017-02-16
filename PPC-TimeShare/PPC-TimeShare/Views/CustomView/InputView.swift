@@ -39,7 +39,7 @@ class InputView: UIView {
     }
     var iconName : String?{
         didSet{
-        
+            imageIcon.image = UIImage(named: iconName!)
         }
     }
     let imageIcon : UIImageView = {
@@ -54,7 +54,7 @@ class InputView: UIView {
     }()
     
     func setupView(){
-        backgroundColor = UIColor.red
+        backgroundColor = UIColor.white
         
         addSubview(imageIcon)
         addSubview(textField)

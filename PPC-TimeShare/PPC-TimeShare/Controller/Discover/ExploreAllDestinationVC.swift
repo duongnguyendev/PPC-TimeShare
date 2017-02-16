@@ -83,9 +83,13 @@ class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC : RecruitmentDetailVC = RecruitmentDetailVC()
+        let detailVC : ResortDetailVC = ResortDetailVC()
         
         pushVC(viewController: detailVC)
+    }
+    
+    override func hideKeyboarTouchupOutSide() {
+        
     }
 }
 

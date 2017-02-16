@@ -53,8 +53,8 @@ class HomeVC: UIViewController {
         self.view.addSubview(background_1)
         self.view.addSubview(background_2)
         
-        let background2Height = view.frame.height - (minumumItemSize! * 2) - 20
-        background_1.heightAnchor.constraint(equalToConstant: background2Height).isActive = true
+        let background1Height = view.frame.height - (minumumItemSize! * 2)
+        background_1.heightAnchor.constraint(equalToConstant: background1Height).isActive = true
         
         view.addConstraintWithFormat(format: "H:|[v0]|", views: background_1)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: background_2)
@@ -69,7 +69,7 @@ class HomeVC: UIViewController {
         button.backgroundColor = UIColor(white: 1, alpha: 0.9)
         button.addTarget(self, action: #selector(handleSendRequestButton), for: .touchUpInside)
         button.title = "Send request"
-        button.iconName = "settings"
+        button.iconName = "sent_request_icon"
         return button
     }()
     
@@ -78,7 +78,7 @@ class HomeVC: UIViewController {
         button.type = HomeButtonType.recruitment
         button.addTarget(self, action: #selector(handleRecruitmentButton), for: .touchUpInside)
         button.title = "Recruitment"
-        button.iconName = "settings"
+        button.iconName = "recruitment_icon"
         
         return button
     }()
@@ -97,7 +97,7 @@ class HomeVC: UIViewController {
         button.type = HomeButtonType.normal
         button.addTarget(self, action: #selector(handlePlacesNearbyButton), for: .touchUpInside)
         button.backGroundImage = "button_3"
-        button.iconName = "settings"
+        button.iconName = "place_nearby_icon"
         button.title = "Places Nearby"
 
         return button
@@ -108,7 +108,7 @@ class HomeVC: UIViewController {
         button.addTarget(self, action: #selector(handleExploreAllDestinationButton), for: .touchUpInside)
         button.backGroundImage = "button_2"
 
-        button.iconName = "settings"
+        button.iconName = "explore_icon"
         button.title = "Explore All Destination"
 
         return button
@@ -118,7 +118,7 @@ class HomeVC: UIViewController {
         button.type = HomeButtonType.normal
         button.addTarget(self, action: #selector(handleSpecialOffersButton), for: .touchUpInside)
         button.backGroundImage = "button_1"
-        button.iconName = "settings"
+        button.iconName = "Special_offers_icon"
         button.title = "Special Offers"
 
         return button
@@ -143,19 +143,19 @@ class HomeVC: UIViewController {
         //sendRequestButton contraint
         
 //        view.addConstraintWithFormat(format: "V:|-20-|", views: <#T##UIView...##UIView#>)
-        sendRequestButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 20).isActive = true
+        sendRequestButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 30).isActive = true
         sendRequestButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true;
         sendRequestButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true;
         sendRequestButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         
         //recruitmentButton contraint
-        recruitmentButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 20).isActive = true
+        recruitmentButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 30).isActive = true
         recruitmentButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true;
         recruitmentButton.bottomAnchor.constraint(equalTo: sendRequestButton.topAnchor, constant: 0).isActive = true
         recruitmentButton.widthAnchor.constraint(equalToConstant: minumumItemSize! * 2).isActive = true
         
         //introduceButton contraint
-        introduceButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 20).isActive = true
+        introduceButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 30).isActive = true
         introduceButton.widthAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
         introduceButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
         introduceButton.bottomAnchor.constraint(equalTo: sendRequestButton.topAnchor, constant: 0).isActive = true
