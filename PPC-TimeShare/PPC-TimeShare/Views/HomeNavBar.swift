@@ -12,7 +12,8 @@ class HomeNavBar: UIView {
     var homeVC : HomeVC?
     let titleView : UIView = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
+//        label.font = UIFont.boldSystemFont(ofSize: 32)
+        label.font = UIFont(name: "Roboto-Medium", size: 20)
         label.textColor = UIColor.white
         label.text = "Home"
         label.textAlignment = .center
@@ -47,12 +48,13 @@ class HomeNavBar: UIView {
         addSubview(buttonSetting)
         
         addConstraintWithFormat(format: "H:|-10-[v0(30)]-0-[v1]-0-[v2(30)]-10-|", views: buttonUser, titleView, buttonSetting)
-        addConstraintWithFormat(format: "V:|-10-[v0(30)]-10-|", views: buttonUser)
+        
         addConstraintWithFormat(format: "V:|[v0]|", views: titleView)
-        addConstraintWithFormat(format: "V:|-10-[v0(30)]-10-|", views: buttonSetting)
         
-        
-
+        buttonUser.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        buttonUser.centerYAnchor.constraint(equalTo: titleView.centerYAnchor, constant: 0).isActive = true
+        buttonSetting.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        buttonSetting.centerYAnchor.constraint(equalTo: titleView.centerYAnchor, constant: 0).isActive = true
         
     }
     

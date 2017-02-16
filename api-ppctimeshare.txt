@@ -1,0 +1,153 @@
+BASE URL: http://ppctimeshare.hbbsolution.com/api/
+1. recruitment
+url: /recruitment
+method: GET
+{  
+   "error":1,
+   "data":[  
+      {  
+         "id":1,
+         "image":"img\/connect_h1.jpg",
+         "date":"2017-01-01",
+         "title":"SALE JOB",
+         "content":"- Finding customers\r\n- Consulting and convince customers to use the service \"Post news online recruitment website mywork.com.vn\"\r\n- Negotiating and signing contract\r\n- Customer support during customer use of services\r\n- Work at 927\/1 Cach Mang Thang 8, Ward 7, Tan Binh District, HCMC\r\n- The work will be discussed in the interview\r\n"
+      },
+      {  
+         "id":2,
+         "image":"img\/connect_h2.jpg",
+         "date":"2017-01-02",
+         "title":"SALE JOB",
+         "content":"- Finding customers\r\n- Consulting and convince customers to use the service \"Post news online recruitment website mywork.com.vn\"\r\n- Negotiating and signing contract\r\n- Customer support during customer use of services\r\n- Work at 927\/1 Cach Mang Thang 8, Ward 7, Tan Binh District, HCMC\r\n- The work will be discussed in the interview\r\n"
+      },
+      ....
+   ]
+}
+
+2. benefit
+url: /benefit
+method: GET
+{  
+   "error":1,
+   "data":[  
+      {  
+         "id":1,
+         "title":"BENEFITS OF OWNING A TIMESHARE",
+         "content":"Extra Vacations\r\nIf you want to get away but want to use your week for exchange, Extra Vacations offers weekly accommodation at amazing prices. \r\nThere is no limit to how many getaways you can book so share your membership benefits with your friends and family.\r\n-Exchange: The most significant benefit of PPC membership is the ability to exchange into one of the over affiliated resorts worldwide. Deposit the vacation time you own with PPC and then exchange for a vacation at another available resort.\r\n- Without anxiety for booking at hotels and resorts for holidays, just enjoy your PPC Timeshare Week ",
+         "language":"en"
+      }
+   ]
+}
+
+3. faq
+url: /faq
+method: GET
+{  
+   "error":1,
+   "data":[  
+      {  
+         "id":1,
+         "cauhoi":"<p><strong>How can I maximize the Deposit Trading Power of my week?<\/strong><\/p>\r\n",
+         "cautraloi":"<p>The only component of trading power that you can control is the timing of when you deposit with PPC. You should deposit your week as soon as you decide not to return to your home resort. By depositing 9 months or more in advance of the start date of your week you will receive 100% of the available Deposit Trading Power, thereby helping you to increase the chances of obtaining your desired vacation.<\/p>\r\n"
+      },
+      {  
+         "id":2,
+         "cauhoi":"<p><strong>How is Exchange Trading Power calculated?<\/strong><\/p>\r\n",
+         "cautraloi":"<p>In calculating Exchange Trading Power, PPC considers such factors as:<\/p>\r\n\r\n<ul>\r\n\t<li>the demand, supply and utilization of the exchange vacation, and the affiliated resort and geographic regions associated with the exchange vacation<\/li>\r\n\t<li>the seasonal designation of the exchange vacation<\/li>\r\n\t<li>the size and type of the unit (i.e., number of bedrooms, kitchen type and maximum\/private occupancy of the physical unit)<\/li>\r\n\t<li>comment card scores that PPC compiles from comments submitted by members who visit the affiliated resort<\/li>\r\n\t<li>the date of Deposit and the start date of the Deposit.<\/li>\r\n<\/ul>\r\n"
+      },
+      {  
+         "id":3,
+         "cauhoi":"<p><strong>How is my Deposit Trading Power calculated?<\/strong><\/p>\r\n",
+         "cautraloi":"<p>Your Deposit Trading Power is based on the following criteria:<\/p>\r\n\r\n<p>Demand, Supply, and Utilization: This is the biggest influence on your Deposit Trading Power, consisting of:<\/p>\r\n\r\n<p>Demand: The more subscribing members there are who want your deposit, the higher its Trading Power.<\/p>\r\n\r\n<p>Supply: How many similar deposits have been made?<\/p>\r\n\r\n<p>Utilization: How many deposits like yours have been confirmed by other members in the past?<\/p>\r\n\r\n<p>Unit size and type of your week. Is it a 2 room cabin, or an 8 room condominium?<\/p>\r\n\r\n<p>The timing of your deposit: This is the one factor that you can control! Deposit 2 years to 9 months in advance of the start date of your week to get 100% of the available Deposit Trading Power.<\/p>\r\n\r\n<p>Comment Cards: Comment Card scores that members like you fill out after going on vacation are also a component of Deposit Trading Power.<\/p>\r\n\r\n<p>Season: Depending on location, some times of year are worth more than others.<\/p>\r\n"
+      },
+      ....
+   ]
+}
+
+4. introduce 
+url: /introduce
+method: GET
+{  
+   "error":1,
+   "data":[  
+      {  
+         "id":1,
+         "img_tieude":"img\/1484294993_banner_5.png",
+         "tieu_de":"About PPC TIMESHARE",
+         "noidung_gioithieu":"<p style=\"text-align:justify\"><span style=\"font-size:16px\"><strong>In addition, the PPC PPC assets established with the timeshare \u0111\u01b0\u1ee3c hope is a bridge for customers and other investors participating in the field of timeshare, vacation exchange together, and flexibility in the use of resources Ownership production of each other not only in the Vietnam market in particular also in the US market \u0111&oacute;, Japan, South Korea, ...<\/strong><\/span><\/p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\"><strong>Timeshare PPC services are provided additional housekeeping staff makes all the home comfort and peace of mind of coal in the exchange of other property before and after the holiday.<\/strong><\/span><\/p>\r\n"
+      }
+   ]
+}
+
+5. Resort Random
+url: /resort/random
+method: GET
+{
+  "error": 0,
+  "data": [
+    {
+      "id": 32,
+      "address": "Tuyền Lâm, Phường 4, Tp. Đà Lạt, Lâm Đồng, Việt Nam",
+      "price": "5",
+      "priority": 2,
+      "lat": "11.8840813",
+      "lng": "108.43100200000003",
+      "introduce": "<p>Nằm tr&ecirc;n b&aacute;n đảo ri&ecirc;ng biệt của hồ Tuyền L&acirc;m, Sacom Resort l&agrave; một sự lựa chọn ho&agrave;n hảo cho những du kh&aacute;ch đang kiếm t&igrave;m một nơi nghỉ dưỡng l&yacute; tưởng, rời xa khỏi cuộc sống ồn &agrave;o, vội v&atilde; thường ng&agrave;y.<br />\r\nĐược x&acirc;y dựng v&agrave;o năm 2013, Sacom Resort nằm ở giữa khung cảnh y&ecirc;n tĩnh, thanh b&igrave;nh, hứa hẹn sẽ mang cho Qu&yacute; kh&aacute;ch những ph&uacute;t gi&acirc;y nghỉ dưỡng ấn tượng v&agrave; th&uacute; vị.</p>\r\n",
+      "service": "<p>Sacom Resort c&oacute; 8 căn biệt thự sang trọng gồm 55 ph&ograve;ng được thiết kế theo phong c&aacute;ch Ch&acirc;u &Acirc;u v&agrave; set up với ti&ecirc;u chuẩn 4 sao. &nbsp;B&ecirc;n cạnh đ&oacute;, Nh&agrave; h&agrave;ng Resort với đội ngũ nh&acirc;n vi&ecirc;n chuy&ecirc;n nghiệp, th&acirc;n thiện c&ugrave;ng với c&aacute;c đầu bếp c&oacute; tiếng của th&agrave;nh phố hoa sẽ đem đến cho Qu&yacute; Kh&aacute;ch những trải nghiệm ẩm thực kh&oacute; qu&ecirc;n. &nbsp;</p>\r\n",
+      "equipment": "<p>- 55 ph&ograve;ng nghỉ sang trọng, đặc biệt l&agrave; c&aacute;c ph&ograve;ng gia đ&igrave;nh d&agrave;nh cho 4-6 kh&aacute;ch &nbsp;&nbsp;<br />\r\n- 1 Nh&agrave; h&agrave;ng<br />\r\n- Chỗ đậu xe miễn ph&iacute;<br />\r\n- Xe đạp địa h&igrave;nh người lớn &nbsp;&amp; trẻ em<br />\r\n- Dịch vụ giặt ủi<br />\r\n- Dịch vụ b&aacute;o thức<br />\r\n- Dịch vụ đổi tiền<br />\r\n- Dịch vu đưa đ&oacute;n s&acirc;n bay<br />\r\n- Dịch vụ thu&ecirc; xe<br />\r\n- Ph&ograve;ng tập thể dục<br />\r\n- Billards<br />\r\n- Dịch vụ phục vụ ăn uống tại ph&ograve;ng<br />\r\n- Dịch vụ gia đ&igrave;nh bao gồm giường phụ/ cũi trẻ em<br />\r\n- Ph&ograve;ng kh&ocirc;ng h&uacute;t thuốc<br />\r\n- Dịch vụ xe đưa đ&oacute;n trung t&acirc;m th&agrave;nh phố<br />\r\n- Dịch vụ xe điện tham quan Sacom Resort</p>\r\n",
+      "name": "SACOM TUYỀN LÂM",
+      "resort_type": "Resort",
+      "images": [
+        "img/1487043198_h1.jpg",
+        "img/1487043198_h2.jpg",
+        "img/1487043198_h3.jpg",
+        "img/1487043198_h4.jpg",
+        "img/1487043198_h5.jpg",
+        "img/1487043198_h6.jpg",
+        "img/1487043198_h7.jpg",
+        "img/1487043198_h8.jpg",
+        "img/1487043198_h9.jpg"
+      ]
+    },
+	...
+  ]
+}
+
+5. Resort near
+url: /resort/nearby
+method: GET
+params: 
+	lat=? 
+	lng=?
+	km=? (Bán kính km)
+
+{
+  "error": 0,
+  "data": [
+    {
+      "id": 32,
+      "address": "Tuyền Lâm, Phường 4, Tp. Đà Lạt, Lâm Đồng, Việt Nam",
+      "price": "5",
+      "priority": 2,
+      "lat": "11.8840813",
+      "lng": "108.43100200000003",
+	
+      "introduce": "<p>Nằm tr&ecirc;n b&aacute;n đảo ri&ecirc;ng biệt của hồ Tuyền L&acirc;m, Sacom Resort l&agrave; một sự lựa chọn ho&agrave;n hảo cho những du kh&aacute;ch đang kiếm t&igrave;m một nơi nghỉ dưỡng l&yacute; tưởng, rời xa khỏi cuộc sống ồn &agrave;o, vội v&atilde; thường ng&agrave;y.<br />\r\nĐược x&acirc;y dựng v&agrave;o năm 2013, Sacom Resort nằm ở giữa khung cảnh y&ecirc;n tĩnh, thanh b&igrave;nh, hứa hẹn sẽ mang cho Qu&yacute; kh&aacute;ch những ph&uacute;t gi&acirc;y nghỉ dưỡng ấn tượng v&agrave; th&uacute; vị.</p>\r\n",
+      "service": "<p>Sacom Resort c&oacute; 8 căn biệt thự sang trọng gồm 55 ph&ograve;ng được thiết kế theo phong c&aacute;ch Ch&acirc;u &Acirc;u v&agrave; set up với ti&ecirc;u chuẩn 4 sao. &nbsp;B&ecirc;n cạnh đ&oacute;, Nh&agrave; h&agrave;ng Resort với đội ngũ nh&acirc;n vi&ecirc;n chuy&ecirc;n nghiệp, th&acirc;n thiện c&ugrave;ng với c&aacute;c đầu bếp c&oacute; tiếng của th&agrave;nh phố hoa sẽ đem đến cho Qu&yacute; Kh&aacute;ch những trải nghiệm ẩm thực kh&oacute; qu&ecirc;n. &nbsp;</p>\r\n",
+      "equipment": "<p>- 55 ph&ograve;ng nghỉ sang trọng, đặc biệt l&agrave; c&aacute;c ph&ograve;ng gia đ&igrave;nh d&agrave;nh cho 4-6 kh&aacute;ch &nbsp;&nbsp;<br />\r\n- 1 Nh&agrave; h&agrave;ng<br />\r\n- Chỗ đậu xe miễn ph&iacute;<br />\r\n- Xe đạp địa h&igrave;nh người lớn &nbsp;&amp; trẻ em<br />\r\n- Dịch vụ giặt ủi<br />\r\n- Dịch vụ b&aacute;o thức<br />\r\n- Dịch vụ đổi tiền<br />\r\n- Dịch vu đưa đ&oacute;n s&acirc;n bay<br />\r\n- Dịch vụ thu&ecirc; xe<br />\r\n- Ph&ograve;ng tập thể dục<br />\r\n- Billards<br />\r\n- Dịch vụ phục vụ ăn uống tại ph&ograve;ng<br />\r\n- Dịch vụ gia đ&igrave;nh bao gồm giường phụ/ cũi trẻ em<br />\r\n- Ph&ograve;ng kh&ocirc;ng h&uacute;t thuốc<br />\r\n- Dịch vụ xe đưa đ&oacute;n trung t&acirc;m th&agrave;nh phố<br />\r\n- Dịch vụ xe điện tham quan Sacom Resort</p>\r\n",
+      "name": "SACOM TUYỀN LÂM",
+      "resort_type": "Resort",
+      "images": [
+        "img/1487043198_h1.jpg",
+        "img/1487043198_h2.jpg",
+        "img/1487043198_h3.jpg",
+        "img/1487043198_h4.jpg",
+        "img/1487043198_h5.jpg",
+        "img/1487043198_h6.jpg",
+        "img/1487043198_h7.jpg",
+        "img/1487043198_h8.jpg",
+        "img/1487043198_h9.jpg"
+      ]
+    },
+	...
+  ]
+}

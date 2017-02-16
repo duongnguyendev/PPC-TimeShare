@@ -7,41 +7,131 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E105F8F1E4DE80500A2CBC4 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F8E1E4DE80500A2CBC4 /* DiscoverVC.swift */; };
+		4E105E651E51EAA700C13A2C /* MapListResortVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105E641E51EAA700C13A2C /* MapListResortVC.swift */; };
+		4E105F8F1E4DE80500A2CBC4 /* ExploreAllDestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F8E1E4DE80500A2CBC4 /* ExploreAllDestinationVC.swift */; };
 		4E105F911E4DE82000A2CBC4 /* IntroduceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F901E4DE82000A2CBC4 /* IntroduceVC.swift */; };
-		4E105F931E4DE83400A2CBC4 /* PromotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F921E4DE83400A2CBC4 /* PromotionVC.swift */; };
+		4E105F931E4DE83400A2CBC4 /* SpecialOffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F921E4DE83400A2CBC4 /* SpecialOffersVC.swift */; };
 		4E105F951E4DE84E00A2CBC4 /* RecruitmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F941E4DE84E00A2CBC4 /* RecruitmentVC.swift */; };
 		4E105F971E4DE86000A2CBC4 /* SendRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F961E4DE86000A2CBC4 /* SendRequestVC.swift */; };
-		4E105F991E4DE87400A2CBC4 /* SuggestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F981E4DE87400A2CBC4 /* SuggestVC.swift */; };
+		4E105F991E4DE87400A2CBC4 /* PlacesNearbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F981E4DE87400A2CBC4 /* PlacesNearbyVC.swift */; };
 		4E105F9B1E4DE88E00A2CBC4 /* ListOfResortsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F9A1E4DE88E00A2CBC4 /* ListOfResortsVC.swift */; };
+		4E105FA01E4DF4B800A2CBC4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E105FA21E4DF4B800A2CBC4 /* Localizable.strings */; };
+		4E105FA61E4DF57F00A2CBC4 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105FA51E4DF57F00A2CBC4 /* LanguageManager.swift */; };
+		4E119E751E519FF500F85AD4 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E119E741E519FF500F85AD4 /* SettingsVC.swift */; };
+		4E119E781E51A0D800F85AD4 /* ResortDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E119E771E51A0D800F85AD4 /* ResortDetailVC.swift */; };
+		4E119E901E51BBA300F85AD4 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E7A1E51B0FB00F85AD4 /* Roboto-Black.ttf */; };
+		4E119E911E51BBA300F85AD4 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E7B1E51B0FB00F85AD4 /* Roboto-BlackItalic.ttf */; };
+		4E119E921E51BBA300F85AD4 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E7C1E51B0FB00F85AD4 /* Roboto-Bold.ttf */; };
+		4E119E931E51BBA300F85AD4 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E7D1E51B0FB00F85AD4 /* Roboto-BoldItalic.ttf */; };
+		4E119E941E51BBA300F85AD4 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E7E1E51B0FB00F85AD4 /* Roboto-Italic.ttf */; };
+		4E119E951E51BBA300F85AD4 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E7F1E51B0FB00F85AD4 /* Roboto-Light.ttf */; };
+		4E119E961E51BBA300F85AD4 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E801E51B0FB00F85AD4 /* Roboto-LightItalic.ttf */; };
+		4E119E971E51BBA300F85AD4 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E811E51B0FB00F85AD4 /* Roboto-Medium.ttf */; };
+		4E119E981E51BBA300F85AD4 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E821E51B0FB00F85AD4 /* Roboto-MediumItalic.ttf */; };
+		4E119E991E51BBA300F85AD4 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E831E51B0FB00F85AD4 /* Roboto-Regular.ttf */; };
+		4E119E9A1E51BBA300F85AD4 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E841E51B0FB00F85AD4 /* Roboto-Thin.ttf */; };
+		4E119E9B1E51BBA300F85AD4 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E851E51B0FB00F85AD4 /* Roboto-ThinItalic.ttf */; };
+		4E119E9C1E51BBA300F85AD4 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E861E51B0FB00F85AD4 /* RobotoCondensed-Bold.ttf */; };
+		4E119E9D1E51BBA300F85AD4 /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E871E51B0FB00F85AD4 /* RobotoCondensed-BoldItalic.ttf */; };
+		4E119E9E1E51BBA300F85AD4 /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E881E51B0FB00F85AD4 /* RobotoCondensed-Italic.ttf */; };
+		4E119E9F1E51BBA300F85AD4 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E891E51B0FB00F85AD4 /* RobotoCondensed-Light.ttf */; };
+		4E119EA01E51BBA300F85AD4 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E8A1E51B0FB00F85AD4 /* RobotoCondensed-LightItalic.ttf */; };
+		4E119EA11E51BBA300F85AD4 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E8B1E51B0FB00F85AD4 /* RobotoCondensed-Regular.ttf */; };
+		4E119EA41E51BFB900F85AD4 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E119EA31E51BFB900F85AD4 /* SignUpVC.swift */; };
+		4E1B77641E4EAB930024E457 /* IntroduceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B77631E4EAB930024E457 /* IntroduceCell.swift */; };
+		4E1B776A1E4EC1B10024E457 /* IntroductionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */; };
+		4E1B776C1E4EF9C60024E457 /* ResortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B776B1E4EF9C60024E457 /* ResortCell.swift */; };
 		4E5063DB1E4DA89000210411 /* HomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5063DA1E4DA89000210411 /* HomeNavBar.swift */; };
 		4E5063DD1E4DCD0200210411 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5063DC1E4DCD0200210411 /* BaseViewController.swift */; };
+		4E5B13801E52A3C800FD37E6 /* RecruitmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B137F1E52A3C800FD37E6 /* RecruitmentCell.swift */; };
+		4E5B13821E52ABFF00FD37E6 /* RecruitmentDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B13811E52ABFF00FD37E6 /* RecruitmentDetailVC.swift */; };
+		4E5B13841E52C24C00FD37E6 /* PlacesNearbyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B13831E52C24C00FD37E6 /* PlacesNearbyCell.swift */; };
+		4E5B13861E52C35900FD37E6 /* SpecialOffersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B13851E52C35900FD37E6 /* SpecialOffersCell.swift */; };
+		4E5B13881E52E96100FD37E6 /* ResortInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B13871E52E96100FD37E6 /* ResortInfoView.swift */; };
+		4E7F530A1E53F0FA00EBCF04 /* ExploreAllDestinationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F53091E53F0FA00EBCF04 /* ExploreAllDestinationCell.swift */; };
+		4E7F530C1E540BD200EBCF04 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F530B1E540BD200EBCF04 /* InputView.swift */; };
+		4E7F530E1E54291900EBCF04 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F530D1E54291900EBCF04 /* SignInVC.swift */; };
+		4E7F53101E542F3300EBCF04 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F530F1E542F3300EBCF04 /* ForgotPasswordVC.swift */; };
+		4E7F53121E543ACB00EBCF04 /* ButtonCustoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F53111E543ACB00EBCF04 /* ButtonCustoms.swift */; };
+		4E7F53141E54403100EBCF04 /* BookInAdvanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F53131E54403100EBCF04 /* BookInAdvanceVC.swift */; };
+		4E7F53161E54407E00EBCF04 /* BookOnlineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F53151E54407E00EBCF04 /* BookOnlineVC.swift */; };
+		4E7F53181E544BA500EBCF04 /* BookInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F53171E544BA500EBCF04 /* BookInfoButton.swift */; };
 		4E9775391E4C089500227A33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9775381E4C089500227A33 /* AppDelegate.swift */; };
 		4E97753E1E4C089500227A33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E97753C1E4C089500227A33 /* Main.storyboard */; };
 		4E9775401E4C089500227A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E97753F1E4C089500227A33 /* Assets.xcassets */; };
 		4E9775431E4C089500227A33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E9775411E4C089500227A33 /* LaunchScreen.storyboard */; };
+		4EC130BF1E4F4C08005FDB8D /* Customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC130BE1E4F4C08005FDB8D /* Customs.swift */; };
 		4ED1E1AE1E4CB8FF006A562F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1E1AD1E4CB8FF006A562F /* HomeVC.swift */; };
 		4ED1E1B11E4CBA18006A562F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1E1B01E4CBA18006A562F /* Extensions.swift */; };
+		4EF11A221E55491A008473A7 /* Resort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF11A211E55491A008473A7 /* Resort.swift */; };
+		4EF11A241E5587BB008473A7 /* SpecialOffersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF11A231E5587BB008473A7 /* SpecialOffersDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4E105F8E1E4DE80500A2CBC4 /* DiscoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
+		4E105E641E51EAA700C13A2C /* MapListResortVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapListResortVC.swift; sourceTree = "<group>"; };
+		4E105F8E1E4DE80500A2CBC4 /* ExploreAllDestinationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreAllDestinationVC.swift; sourceTree = "<group>"; };
 		4E105F901E4DE82000A2CBC4 /* IntroduceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceVC.swift; sourceTree = "<group>"; };
-		4E105F921E4DE83400A2CBC4 /* PromotionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionVC.swift; sourceTree = "<group>"; };
+		4E105F921E4DE83400A2CBC4 /* SpecialOffersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialOffersVC.swift; sourceTree = "<group>"; };
 		4E105F941E4DE84E00A2CBC4 /* RecruitmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitmentVC.swift; sourceTree = "<group>"; };
 		4E105F961E4DE86000A2CBC4 /* SendRequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendRequestVC.swift; sourceTree = "<group>"; };
-		4E105F981E4DE87400A2CBC4 /* SuggestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestVC.swift; sourceTree = "<group>"; };
+		4E105F981E4DE87400A2CBC4 /* PlacesNearbyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesNearbyVC.swift; sourceTree = "<group>"; };
 		4E105F9A1E4DE88E00A2CBC4 /* ListOfResortsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfResortsVC.swift; sourceTree = "<group>"; };
-		4E5063DA1E4DA89000210411 /* HomeNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNavBar.swift; sourceTree = "<group>"; };
+		4E105F9C1E4DF41B00A2CBC4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		4E105F9D1E4DF41B00A2CBC4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4E105FA11E4DF4B800A2CBC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E105FA31E4DF4BC00A2CBC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E105FA41E4DF4BD00A2CBC4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E105FA51E4DF57F00A2CBC4 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		4E119E741E519FF500F85AD4 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = "PPC-TimeShare/Controller/SettingsVC.swift"; sourceTree = SOURCE_ROOT; };
+		4E119E771E51A0D800F85AD4 /* ResortDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResortDetailVC.swift; sourceTree = "<group>"; };
+		4E119E7A1E51B0FB00F85AD4 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		4E119E7B1E51B0FB00F85AD4 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		4E119E7C1E51B0FB00F85AD4 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		4E119E7D1E51B0FB00F85AD4 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4E119E7E1E51B0FB00F85AD4 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		4E119E7F1E51B0FB00F85AD4 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		4E119E801E51B0FB00F85AD4 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		4E119E811E51B0FB00F85AD4 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		4E119E821E51B0FB00F85AD4 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		4E119E831E51B0FB00F85AD4 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		4E119E841E51B0FB00F85AD4 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		4E119E851E51B0FB00F85AD4 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		4E119E861E51B0FB00F85AD4 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		4E119E871E51B0FB00F85AD4 /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4E119E881E51B0FB00F85AD4 /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
+		4E119E891E51B0FB00F85AD4 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
+		4E119E8A1E51B0FB00F85AD4 /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		4E119E8B1E51B0FB00F85AD4 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		4E119EA31E51BFB900F85AD4 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		4E1B77631E4EAB930024E457 /* IntroduceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceCell.swift; sourceTree = "<group>"; };
+		4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionDetail.swift; sourceTree = "<group>"; };
+		4E1B776B1E4EF9C60024E457 /* ResortCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResortCell.swift; sourceTree = "<group>"; };
+		4E5063DA1E4DA89000210411 /* HomeNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeNavBar.swift; path = ../HomeNavBar.swift; sourceTree = "<group>"; };
 		4E5063DC1E4DCD0200210411 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		4E5B137F1E52A3C800FD37E6 /* RecruitmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitmentCell.swift; sourceTree = "<group>"; };
+		4E5B13811E52ABFF00FD37E6 /* RecruitmentDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecruitmentDetailVC.swift; sourceTree = "<group>"; };
+		4E5B13831E52C24C00FD37E6 /* PlacesNearbyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesNearbyCell.swift; sourceTree = "<group>"; };
+		4E5B13851E52C35900FD37E6 /* SpecialOffersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialOffersCell.swift; sourceTree = "<group>"; };
+		4E5B13871E52E96100FD37E6 /* ResortInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResortInfoView.swift; path = ../ResortInfoView.swift; sourceTree = "<group>"; };
+		4E7F53091E53F0FA00EBCF04 /* ExploreAllDestinationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreAllDestinationCell.swift; sourceTree = "<group>"; };
+		4E7F530B1E540BD200EBCF04 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		4E7F530D1E54291900EBCF04 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		4E7F530F1E542F3300EBCF04 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		4E7F53111E543ACB00EBCF04 /* ButtonCustoms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCustoms.swift; sourceTree = "<group>"; };
+		4E7F53131E54403100EBCF04 /* BookInAdvanceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInAdvanceVC.swift; sourceTree = "<group>"; };
+		4E7F53151E54407E00EBCF04 /* BookOnlineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookOnlineVC.swift; sourceTree = "<group>"; };
+		4E7F53171E544BA500EBCF04 /* BookInfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInfoButton.swift; sourceTree = "<group>"; };
 		4E9775351E4C089500227A33 /* PPC-TimeShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PPC-TimeShare.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E9775381E4C089500227A33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E97753D1E4C089500227A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E97753F1E4C089500227A33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E9775421E4C089500227A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E9775441E4C089500227A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EC130BE1E4F4C08005FDB8D /* Customs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Customs.swift; path = ../../Exten/Customs.swift; sourceTree = "<group>"; };
 		4ED1E1AD1E4CB8FF006A562F /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = ../HomeVC.swift; sourceTree = "<group>"; };
 		4ED1E1B01E4CBA18006A562F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4EF11A211E55491A008473A7 /* Resort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resort.swift; sourceTree = "<group>"; };
+		4EF11A231E5587BB008473A7 /* SpecialOffersDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialOffersDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				4E105F9A1E4DE88E00A2CBC4 /* ListOfResortsVC.swift */,
+				4E119E771E51A0D800F85AD4 /* ResortDetailVC.swift */,
+				4E105E641E51EAA700C13A2C /* MapListResortVC.swift */,
+				4E7F53131E54403100EBCF04 /* BookInAdvanceVC.swift */,
+				4E7F53151E54407E00EBCF04 /* BookOnlineVC.swift */,
 			);
 			path = ListOfResorts;
 			sourceTree = "<group>";
@@ -66,7 +160,7 @@
 		4E105F881E4DE7A800A2CBC4 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				4E105F8E1E4DE80500A2CBC4 /* DiscoverVC.swift */,
+				4E105F8E1E4DE80500A2CBC4 /* ExploreAllDestinationVC.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -75,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				4E105F901E4DE82000A2CBC4 /* IntroduceVC.swift */,
+				4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */,
 			);
 			path = Introduce;
 			sourceTree = "<group>";
@@ -82,7 +177,8 @@
 		4E105F8A1E4DE7A800A2CBC4 /* Promotion */ = {
 			isa = PBXGroup;
 			children = (
-				4E105F921E4DE83400A2CBC4 /* PromotionVC.swift */,
+				4E105F921E4DE83400A2CBC4 /* SpecialOffersVC.swift */,
+				4EF11A231E5587BB008473A7 /* SpecialOffersDetailVC.swift */,
 			);
 			path = Promotion;
 			sourceTree = "<group>";
@@ -91,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				4E105F941E4DE84E00A2CBC4 /* RecruitmentVC.swift */,
+				4E5B13811E52ABFF00FD37E6 /* RecruitmentDetailVC.swift */,
 			);
 			path = Recruitment;
 			sourceTree = "<group>";
@@ -103,18 +200,76 @@
 			path = SendRequest;
 			sourceTree = "<group>";
 		};
-		4E105F8D1E4DE7A800A2CBC4 /* Suggest */ = {
+		4E105F8D1E4DE7A800A2CBC4 /* Places Nearby */ = {
 			isa = PBXGroup;
 			children = (
-				4E105F981E4DE87400A2CBC4 /* SuggestVC.swift */,
+				4E105F981E4DE87400A2CBC4 /* PlacesNearbyVC.swift */,
 			);
+			name = "Places Nearby";
 			path = Suggest;
+			sourceTree = "<group>";
+		};
+		4E119E761E51A00500F85AD4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4E119E741E519FF500F85AD4 /* SettingsVC.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4E119E791E51B0EF00F85AD4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4E119E7A1E51B0FB00F85AD4 /* Roboto-Black.ttf */,
+				4E119E7B1E51B0FB00F85AD4 /* Roboto-BlackItalic.ttf */,
+				4E119E7C1E51B0FB00F85AD4 /* Roboto-Bold.ttf */,
+				4E119E7D1E51B0FB00F85AD4 /* Roboto-BoldItalic.ttf */,
+				4E119E7E1E51B0FB00F85AD4 /* Roboto-Italic.ttf */,
+				4E119E7F1E51B0FB00F85AD4 /* Roboto-Light.ttf */,
+				4E119E801E51B0FB00F85AD4 /* Roboto-LightItalic.ttf */,
+				4E119E811E51B0FB00F85AD4 /* Roboto-Medium.ttf */,
+				4E119E821E51B0FB00F85AD4 /* Roboto-MediumItalic.ttf */,
+				4E119E831E51B0FB00F85AD4 /* Roboto-Regular.ttf */,
+				4E119E841E51B0FB00F85AD4 /* Roboto-Thin.ttf */,
+				4E119E851E51B0FB00F85AD4 /* Roboto-ThinItalic.ttf */,
+				4E119E861E51B0FB00F85AD4 /* RobotoCondensed-Bold.ttf */,
+				4E119E871E51B0FB00F85AD4 /* RobotoCondensed-BoldItalic.ttf */,
+				4E119E881E51B0FB00F85AD4 /* RobotoCondensed-Italic.ttf */,
+				4E119E891E51B0FB00F85AD4 /* RobotoCondensed-Light.ttf */,
+				4E119E8A1E51B0FB00F85AD4 /* RobotoCondensed-LightItalic.ttf */,
+				4E119E8B1E51B0FB00F85AD4 /* RobotoCondensed-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4E119EA21E51BF0700F85AD4 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4E119EA31E51BFB900F85AD4 /* SignUpVC.swift */,
+				4E7F530D1E54291900EBCF04 /* SignInVC.swift */,
+				4E7F530F1E542F3300EBCF04 /* ForgotPasswordVC.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4E1B77621E4EA5060024E457 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4E1B77631E4EAB930024E457 /* IntroduceCell.swift */,
+				4E1B776B1E4EF9C60024E457 /* ResortCell.swift */,
+				4E5B137F1E52A3C800FD37E6 /* RecruitmentCell.swift */,
+				4E5B13831E52C24C00FD37E6 /* PlacesNearbyCell.swift */,
+				4E5B13851E52C35900FD37E6 /* SpecialOffersCell.swift */,
+				4E7F53091E53F0FA00EBCF04 /* ExploreAllDestinationCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		4E5063D71E4DA84200210411 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4E5063DA1E4DA89000210411 /* HomeNavBar.swift */,
+				4E5B13891E52E98700FD37E6 /* CustomView */,
+				4E1B77621E4EA5060024E457 /* Cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,6 +277,7 @@
 		4E5063D81E4DA85000210411 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4EF11A211E55491A008473A7 /* Resort.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,17 +285,32 @@
 		4E5063D91E4DA86400210411 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4E119EA21E51BF0700F85AD4 /* User */,
+				4E119E761E51A00500F85AD4 /* Settings */,
 				4E105F881E4DE7A800A2CBC4 /* Discover */,
 				4E105F891E4DE7A800A2CBC4 /* Introduce */,
 				4E105F8A1E4DE7A800A2CBC4 /* Promotion */,
 				4E105F8B1E4DE7A800A2CBC4 /* Recruitment */,
 				4E105F8C1E4DE7A800A2CBC4 /* SendRequest */,
-				4E105F8D1E4DE7A800A2CBC4 /* Suggest */,
+				4E105F8D1E4DE7A800A2CBC4 /* Places Nearby */,
 				4E105F871E4DE6F500A2CBC4 /* ListOfResorts */,
 				4ED1E1AD1E4CB8FF006A562F /* HomeVC.swift */,
 				4E5063DC1E4DCD0200210411 /* BaseViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E5B13891E52E98700FD37E6 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				4EC130BE1E4F4C08005FDB8D /* Customs.swift */,
+				4E5063DA1E4DA89000210411 /* HomeNavBar.swift */,
+				4E5B13871E52E96100FD37E6 /* ResortInfoView.swift */,
+				4E7F530B1E540BD200EBCF04 /* InputView.swift */,
+				4E7F53111E543ACB00EBCF04 /* ButtonCustoms.swift */,
+				4E7F53171E544BA500EBCF04 /* BookInfoButton.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		4E97752C1E4C089500227A33 = {
@@ -161,6 +332,7 @@
 		4E9775371E4C089500227A33 /* PPC-TimeShare */ = {
 			isa = PBXGroup;
 			children = (
+				4E119E791E51B0EF00F85AD4 /* Fonts */,
 				4E5063D91E4DA86400210411 /* Controller */,
 				4E5063D81E4DA85000210411 /* Model */,
 				4E5063D71E4DA84200210411 /* Views */,
@@ -170,6 +342,7 @@
 				4E97753F1E4C089500227A33 /* Assets.xcassets */,
 				4E9775411E4C089500227A33 /* LaunchScreen.storyboard */,
 				4E9775441E4C089500227A33 /* Info.plist */,
+				4E105FA21E4DF4B800A2CBC4 /* Localizable.strings */,
 			);
 			path = "PPC-TimeShare";
 			sourceTree = "<group>";
@@ -178,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED1E1B01E4CBA18006A562F /* Extensions.swift */,
+				4E105FA51E4DF57F00A2CBC4 /* LanguageManager.swift */,
 			);
 			name = Helpers;
 			path = Exten;
@@ -227,6 +401,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 4E97752C1E4C089500227A33;
 			productRefGroup = 4E9775361E4C089500227A33 /* Products */;
@@ -243,7 +418,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E119E901E51BBA300F85AD4 /* Roboto-Black.ttf in Resources */,
+				4E119E911E51BBA300F85AD4 /* Roboto-BlackItalic.ttf in Resources */,
+				4E119E921E51BBA300F85AD4 /* Roboto-Bold.ttf in Resources */,
+				4E119E931E51BBA300F85AD4 /* Roboto-BoldItalic.ttf in Resources */,
+				4E119E941E51BBA300F85AD4 /* Roboto-Italic.ttf in Resources */,
+				4E119E951E51BBA300F85AD4 /* Roboto-Light.ttf in Resources */,
+				4E119E961E51BBA300F85AD4 /* Roboto-LightItalic.ttf in Resources */,
+				4E119E971E51BBA300F85AD4 /* Roboto-Medium.ttf in Resources */,
+				4E119E981E51BBA300F85AD4 /* Roboto-MediumItalic.ttf in Resources */,
+				4E119E991E51BBA300F85AD4 /* Roboto-Regular.ttf in Resources */,
+				4E119E9A1E51BBA300F85AD4 /* Roboto-Thin.ttf in Resources */,
+				4E119E9B1E51BBA300F85AD4 /* Roboto-ThinItalic.ttf in Resources */,
+				4E119E9C1E51BBA300F85AD4 /* RobotoCondensed-Bold.ttf in Resources */,
+				4E119E9D1E51BBA300F85AD4 /* RobotoCondensed-BoldItalic.ttf in Resources */,
+				4E119E9E1E51BBA300F85AD4 /* RobotoCondensed-Italic.ttf in Resources */,
+				4E119E9F1E51BBA300F85AD4 /* RobotoCondensed-Light.ttf in Resources */,
+				4E119EA01E51BBA300F85AD4 /* RobotoCondensed-LightItalic.ttf in Resources */,
+				4E119EA11E51BBA300F85AD4 /* RobotoCondensed-Regular.ttf in Resources */,
 				4E9775431E4C089500227A33 /* LaunchScreen.storyboard in Resources */,
+				4E105FA01E4DF4B800A2CBC4 /* Localizable.strings in Resources */,
 				4E9775401E4C089500227A33 /* Assets.xcassets in Resources */,
 				4E97753E1E4C089500227A33 /* Main.storyboard in Resources */,
 			);
@@ -256,28 +450,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E5B13821E52ABFF00FD37E6 /* RecruitmentDetailVC.swift in Sources */,
+				4E7F530C1E540BD200EBCF04 /* InputView.swift in Sources */,
+				4E7F53141E54403100EBCF04 /* BookInAdvanceVC.swift in Sources */,
+				4E7F530E1E54291900EBCF04 /* SignInVC.swift in Sources */,
+				4EF11A241E5587BB008473A7 /* SpecialOffersDetailVC.swift in Sources */,
+				4E7F53121E543ACB00EBCF04 /* ButtonCustoms.swift in Sources */,
+				4E7F530A1E53F0FA00EBCF04 /* ExploreAllDestinationCell.swift in Sources */,
 				4E105F971E4DE86000A2CBC4 /* SendRequestVC.swift in Sources */,
+				4E119E781E51A0D800F85AD4 /* ResortDetailVC.swift in Sources */,
+				4E105FA61E4DF57F00A2CBC4 /* LanguageManager.swift in Sources */,
 				4E5063DD1E4DCD0200210411 /* BaseViewController.swift in Sources */,
 				4ED1E1AE1E4CB8FF006A562F /* HomeVC.swift in Sources */,
 				4E9775391E4C089500227A33 /* AppDelegate.swift in Sources */,
-				4E105F991E4DE87400A2CBC4 /* SuggestVC.swift in Sources */,
+				4E105F991E4DE87400A2CBC4 /* PlacesNearbyVC.swift in Sources */,
+				4E5B13861E52C35900FD37E6 /* SpecialOffersCell.swift in Sources */,
 				4E5063DB1E4DA89000210411 /* HomeNavBar.swift in Sources */,
+				4E119EA41E51BFB900F85AD4 /* SignUpVC.swift in Sources */,
+				4E7F53101E542F3300EBCF04 /* ForgotPasswordVC.swift in Sources */,
+				4E5B13841E52C24C00FD37E6 /* PlacesNearbyCell.swift in Sources */,
+				4E1B77641E4EAB930024E457 /* IntroduceCell.swift in Sources */,
+				4EC130BF1E4F4C08005FDB8D /* Customs.swift in Sources */,
 				4E105F951E4DE84E00A2CBC4 /* RecruitmentVC.swift in Sources */,
-				4E105F931E4DE83400A2CBC4 /* PromotionVC.swift in Sources */,
+				4E105F931E4DE83400A2CBC4 /* SpecialOffersVC.swift in Sources */,
+				4E1B776C1E4EF9C60024E457 /* ResortCell.swift in Sources */,
+				4E105E651E51EAA700C13A2C /* MapListResortVC.swift in Sources */,
+				4E7F53181E544BA500EBCF04 /* BookInfoButton.swift in Sources */,
 				4E105F9B1E4DE88E00A2CBC4 /* ListOfResortsVC.swift in Sources */,
+				4E5B13801E52A3C800FD37E6 /* RecruitmentCell.swift in Sources */,
+				4E1B776A1E4EC1B10024E457 /* IntroductionDetail.swift in Sources */,
 				4ED1E1B11E4CBA18006A562F /* Extensions.swift in Sources */,
+				4E7F53161E54407E00EBCF04 /* BookOnlineVC.swift in Sources */,
+				4EF11A221E55491A008473A7 /* Resort.swift in Sources */,
 				4E105F911E4DE82000A2CBC4 /* IntroduceVC.swift in Sources */,
-				4E105F8F1E4DE80500A2CBC4 /* DiscoverVC.swift in Sources */,
+				4E105F8F1E4DE80500A2CBC4 /* ExploreAllDestinationVC.swift in Sources */,
+				4E119E751E519FF500F85AD4 /* SettingsVC.swift in Sources */,
+				4E5B13881E52E96100FD37E6 /* ResortInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4E105FA21E4DF4B800A2CBC4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E105FA11E4DF4B800A2CBC4 /* Base */,
+				4E105FA31E4DF4BC00A2CBC4 /* en */,
+				4E105FA41E4DF4BD00A2CBC4 /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4E97753C1E4C089500227A33 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4E97753D1E4C089500227A33 /* Base */,
+				4E105F9C1E4DF41B00A2CBC4 /* vi */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -286,6 +515,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E9775421E4C089500227A33 /* Base */,
+				4E105F9D1E4DF41B00A2CBC4 /* vi */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -297,6 +527,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -347,6 +578,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -396,6 +628,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ppc.PPC-TimeShare";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -409,6 +642,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ppc.PPC-TimeShare";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
