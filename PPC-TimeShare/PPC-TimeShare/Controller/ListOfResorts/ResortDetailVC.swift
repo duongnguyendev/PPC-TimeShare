@@ -10,38 +10,25 @@ import UIKit
 
 class ResortDetailVC: BaseViewController {
 
-    var scrollViewHeight : CGFloat?
-    override func viewDidLoad() {
-        scrollViewHeight = view.frame.width / 16 * 9;
-        super.viewDidLoad()
-        title = "Resort Detail"
-
-        let colors : [UIColor] = [UIColor.blue, UIColor.green, UIColor.yellow]
-        for i in 0...2 {
-            
-            let imageFrame = CGRect(x: CGFloat(i) * view.frame.width, y: 0, width: view.frame.width, height: scrollViewHeight!)
-            
-            let imageView = UIImageView(frame: imageFrame)
-            imageView.backgroundColor = colors[i]
-            scrollViewImage.addSubview(imageView)
-            
+    var resort : Resort?{
+        didSet{
+            title = resort?.name
         }
-        scrollViewImage.contentSize = CGSize(width: view.frame.width * 3, height: scrollViewHeight!)
-        setupButton()
     }
     
-    let scrollViewImage : UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isPagingEnabled = true
-        scrollView.backgroundColor = UIColor.clear
-        scrollView.showsHorizontalScrollIndicator = false
-        return scrollView
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupButton()
+    }
+    let imageCollection : CollectionImage = {
+        let collection = CollectionImage()
+        
+        return collection
     }()
     
     let buttonMap : MyButton = {
         let button = MyButton()
-        button.backgroundColor = UIColor.red
+        button.setBackgroundImage(UIImage(named: "map_resort_icon"), for: .normal)
         button.addTarget(self, action: #selector(handleMap), for: .touchUpInside)
         return button
     }()
@@ -82,13 +69,13 @@ class ResortDetailVC: BaseViewController {
     }
     
     func setupScrollView(){
-        view.addSubview(scrollViewImage)
         
-        scrollViewImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        scrollViewImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        scrollViewImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        scrollViewImage.heightAnchor.constraint(equalToConstant: scrollViewHeight!).isActive = true
-        
+        view.addSubview(imageCollection)
+        let imageHeight = view.frame.width / 16 * 9;
+        imageCollection.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        imageCollection.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        imageCollection.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        imageCollection.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
     }
     
     func setupMapButton(){
@@ -96,14 +83,14 @@ class ResortDetailVC: BaseViewController {
         
         buttonMap.heightAnchor.constraint(equalToConstant: 40).isActive = true
         buttonMap.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        buttonMap.rightAnchor.constraint(equalTo: scrollViewImage.rightAnchor, constant: -10).isActive = true
-        buttonMap.bottomAnchor.constraint(equalTo: scrollViewImage.bottomAnchor, constant: -10).isActive = true
+        buttonMap.rightAnchor.constraint(equalTo: imageCollection.rightAnchor, constant: -10).isActive = true
+        buttonMap.bottomAnchor.constraint(equalTo: imageCollection.bottomAnchor, constant: -10).isActive = true
         
     }
     
     func setupButton(){
         view.addSubview(tempButtonView)
-        tempButtonView.topAnchor.constraint(equalTo: scrollViewImage.bottomAnchor, constant: 0).isActive = true
+        tempButtonView.topAnchor.constraint(equalTo: imageCollection.bottomAnchor, constant: 0).isActive = true
         tempButtonView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: tempButtonView)
         

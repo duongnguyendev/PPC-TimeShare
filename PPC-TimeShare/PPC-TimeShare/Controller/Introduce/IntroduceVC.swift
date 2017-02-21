@@ -102,7 +102,6 @@ class IntroduceVC: BaseViewController , UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
         var headerView : HearderView? = nil
         if kind == UICollectionElementKindSectionHeader {
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? HearderView

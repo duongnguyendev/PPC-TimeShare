@@ -20,6 +20,7 @@ class ForgotPasswordVC: BaseViewController {
     
     let inputEmailView : InputView = {
         let input = InputView()
+        input.iconName = "your_email_icon"
         input.hint = "Your Email"
         return input
     }()

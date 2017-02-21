@@ -63,10 +63,19 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let tempText = "There was a time when the great Australian dream was a family home on a quarter acre book. Now it seems the aussie dream..."
+//        let height = view.frame.width / 16 * 11
+//        
+//        return CGSize(width: view.frame.width, height: height)
         
-        let height = view.frame.width / 16 * 11
+        let imageheight = (view.frame.width) / 16 * 9
         
-        return CGSize(width: view.frame.width, height: height)
+        let size = CGSize(width: view.frame.width - 50 - 20, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        
+        let estimatedRect = NSString(string: tempText).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 13)], context: nil)
+        
+        return CGSize(width: view.frame.size.width, height: imageheight + estimatedRect.height + 45)
         
     }
     

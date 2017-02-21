@@ -12,7 +12,7 @@ class ResortInfoView: UIScrollView {
 
     let margin : CGFloat = 20
     let iconSize : CGFloat = 20
-    var estimatedRect : CGRect?
+//    var estimatedRect : CGRect?
     let textTemp = "Located in the tranquil southern coast of Vietnam near Lang Cô Bay, retreat to this intimate collection of stunning pool villas in Banyan Tree Lang Cô, Central Vietnam. Step into opulent villas reminiscent of past Vietnamese dynasties complete with sophisticated modern amenities.\n\nSurrounded by eco-diverse mountains, spectacular national parks and awe-inspiring UNESCO World Heritage Sites, explore the cultural riches of Indochina, relax on the private golden beach or indulge yourself in a time-honoured Asian spa treatment.\n\nRetreat, rejuvenate and discover, all at Banyan Tree Lang Cô, Central Vietnam.Located in the tranquil southern coast of Vietnam near Lang Cô Bay, retreat to this intimate collection of stunning pool villas in Banyan Tree Lang Cô, Central Vietnam. Step into opulent villas reminiscent of past Vietnamese dynasties complete with sophisticated modern amenities.\n\nSurrounded by eco-diverse mountains, spectacular national parks and awe-inspiring UNESCO World Heritage Sites, explore the cultural riches of Indochina, relax on the private golden beach or indulge yourself in a time-honoured Asian spa treatment.\n\nRetreat, rejuvenate and discover, all at Banyan Tree Lang Cô, Central Vietnam."
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,8 +82,8 @@ class ResortInfoView: UIScrollView {
             let size = CGSize(width: width - margin - margin, height: 1000)
             let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
             
-            estimatedRect = NSString(string: textTemp).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 12)], context: nil)
-            addConstraintWithFormat(format: "V:|[v0(30)][v1(30)][v2(30)][v3(\((estimatedRect?.height)!))]-\(margin)-|", views: labelName, labelAddress,labelPrice, textViewContent)
+            let estimatedRect = NSString(string: textTemp).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 12)], context: nil)
+            addConstraintWithFormat(format: "V:|[v0(30)][v1(30)][v2(30)][v3(\((estimatedRect.height)))]-\(margin)-|", views: labelName, labelAddress,labelPrice, textViewContent)
             
             labelName.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
             labelName.widthAnchor.constraint(equalToConstant: width - margin).isActive = true

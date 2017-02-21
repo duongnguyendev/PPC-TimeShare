@@ -19,12 +19,14 @@ class SignInVC: BaseViewController {
     let inputEmailView : InputView = {
         let input = InputView()
         input.hint = "Email"
+        input.iconName = "your_email_icon"
         return input
     }()
     let inputPasswordView : InputView = {
         let input = InputView()
         input.type = InputType.password
         input.hint = "Password"
+        input.iconName = "password_icon"
         return input
     }()
     
@@ -89,7 +91,7 @@ class SignInVC: BaseViewController {
         
     }
     func handleSignUpButton(){
-        let signUpVC : SignUpVC = SignUpVC()
+        let signUpVC : SignUp_1VC = SignUp_1VC()
         pushVC(viewController: signUpVC)
         
     }

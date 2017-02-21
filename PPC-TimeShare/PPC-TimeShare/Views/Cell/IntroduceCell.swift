@@ -34,27 +34,27 @@ class IntroduceCell : BaseCell {
             if let myItem = item{
                 switch myItem {
                 case EnumIntroduceName.AboutUs:
-                    icon.image = UIImage(named: "account")
+                    icon.image = UIImage(named: "about_us_icon")
                     titleIntroduce.text = "About us"
                     break
                 case EnumIntroduceName.WhatISTimeshare:
-                    icon.image = UIImage(named: "account")
+                    icon.image = UIImage(named: "what_is_timeshare_icon")
                     titleIntroduce.text = "What is Timeshare"
                     break
                 case EnumIntroduceName.FAQs:
-                    icon.image = UIImage(named: "account")
+                    icon.image = UIImage(named: "FAQs_icon")
                     titleIntroduce.text = "FAQs"
                     break
                 case EnumIntroduceName.PPCTimesharebusiness:
-                    icon.image = UIImage(named: "account")
+                    icon.image = UIImage(named: "PPC_timeshare_business_icon")
                     titleIntroduce.text = "PPC Timeshare business"
                     break
                 case EnumIntroduceName.Benefits:
-                    icon.image = UIImage(named: "account")
+                    icon.image = UIImage(named: "benefit_icon")
                     titleIntroduce.text = LanguageManager.sharedInstance.localizedString(string: "Benefits")
                     break
                 case EnumIntroduceName.ExchangeProgram:
-                    icon.image = UIImage(named: "account")
+                    icon.image = UIImage(named: "exchange_program_icon")
                     titleIntroduce.text = "Exchange Program"
                     break
                 }
@@ -75,7 +75,7 @@ class IntroduceCell : BaseCell {
         return label
     }()
     let arowImage : UIImageView = {
-        let image = UIImage(named: "account")
+        let image = UIImage(named: "arrow_right_icon")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -83,8 +83,7 @@ class IntroduceCell : BaseCell {
     }()
     
     override func setupView() {
-        
-        backgroundColor = UIColor.yellow
+        backgroundColor = UIColor.white
         addSubview(icon)
         addSubview(titleIntroduce)
         addSubview(arowImage)

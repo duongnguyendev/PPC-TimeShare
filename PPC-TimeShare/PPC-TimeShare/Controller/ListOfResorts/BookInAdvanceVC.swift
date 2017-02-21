@@ -18,6 +18,8 @@ class BookInAdvanceVC: BaseViewController {
     override func viewDidLoad() {
         itemHeight = (view.frame.size.height - 80 - 35 - 40 - 64) / 8
         super.viewDidLoad()
+        checkOutView.value = Date().dateToString()
+        checkInView.value = Date().dateToString()
         title = "Book in advance"
     }
     
@@ -57,32 +59,34 @@ class BookInAdvanceVC: BaseViewController {
         return label
     }()
     
-    let checkInView : BookInfoButton = {
-        let v = BookInfoButton()
+    let checkInView : InfoButton = {
+        let v = InfoButton()
         v.addTarget(self, action: #selector(handleCheckInButton), for: .touchUpInside)
         v.title = "Check in"
         v.iconName = "check_in_icon"
         return v
     }()
-    let checkOutView : BookInfoButton = {
-        let v = BookInfoButton()
+    let checkOutView : InfoButton = {
+        let v = InfoButton()
         v.addTarget(self, action: #selector(handleCheckOutButton), for: .touchUpInside)
         v.title = "Check out"
         v.iconName = "check_out_icon"
         return v
     }()
-    let roomView : BookInfoButton = {
-        let v = BookInfoButton()
+    let roomView : InfoButton = {
+        let v = InfoButton()
         v.iconName = "room_icon"
         v.title = "Room"
+        v.value = "0"
         v.addTarget(self, action: #selector(handleRoomButton), for: .touchUpInside)
         return v
     }()
-    let TravelersView : BookInfoButton = {
-        let v = BookInfoButton()
+    let TravelersView : InfoButton = {
+        let v = InfoButton()
         v.addTarget(self, action: #selector(handleTravelersButton), for: .touchUpInside)
         v.title = "Travelers"
         v.iconName = "travelers_icon"
+        v.value = "0"
         return v
     }()
     
@@ -92,6 +96,11 @@ class BookInAdvanceVC: BaseViewController {
         button.addTarget(self, action: #selector(handleBook), for: .touchUpInside)
         button.backgroundColor = UIColor.yellow
         return button
+    }()
+    
+    let datePicker : DateTimeLauncher = {
+        let picker = DateTimeLauncher()
+        return picker
     }()
     
     override func setupView() {
@@ -150,10 +159,10 @@ class BookInAdvanceVC: BaseViewController {
     }
     
     func handleCheckInButton(){
-    print("handleCheckInButton")
+        datePicker.getDateFor(item: checkInView)
     }
     func handleCheckOutButton(){
-        print("handleCheckOutButton")
+       datePicker.getDateFor(item: checkOutView)
     }
     func handleRoomButton(){
         print("handleRoomButton")

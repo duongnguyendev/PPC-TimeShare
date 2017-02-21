@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookInfoButton: BaseButton {
+class InfoButton: BaseButton {
 
     let margin : CGFloat = 20
     let iconSize : CGFloat = 20
@@ -34,8 +34,8 @@ class BookInfoButton: BaseButton {
         return imv
     }()
     let arrowImage : UIImageView = {
-        let imv = UIImageView(image: UIImage(named: "setting_icon"))
-        imv.backgroundColor = UIColor.red
+        let imv = UIImageView(image: UIImage(named: "arrow_expand_icon"))
+        
         return imv
     }()
     

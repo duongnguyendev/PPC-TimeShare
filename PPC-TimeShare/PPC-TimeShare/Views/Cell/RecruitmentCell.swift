@@ -40,12 +40,11 @@ class RecruitmentCell: BaseCell {
         label.font = UIFont.systemFont(ofSize: 12)
         label.text = "123 Holywood, Los Angerles, USA"
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.textColor = UIColor.red
+        
         return label
     }()
     let imageArround : UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "account"))
-        imageView.backgroundColor = UIColor.red
+        let imageView = UIImageView(image: UIImage(named: "arrow_right_icon"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
         

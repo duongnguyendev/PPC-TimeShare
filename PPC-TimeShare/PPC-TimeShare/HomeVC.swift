@@ -10,7 +10,7 @@ import UIKit
 
 class HomeVC: UIViewController {
     
-    let navHeight : CGFloat = 55.0
+    let navHeight : CGFloat = 60.0
     var minumumItemSize : CGFloat?
     
     let background_1: UIImageView = {
@@ -220,10 +220,10 @@ class HomeVC: UIViewController {
     
     // nav event
     func navUserClick(){
-//        let signUpVC : SignUpVC = SignUpVC()
-//        presentVC(viewContronller: signUpVC)
-        let singInVC : SignInVC = SignInVC()
-        presentVC(viewContronller: singInVC)
+//        let singInVC : SignInVC = SignInVC()
+//        presentVC(viewContronller: singInVC)
+        let userProfileVC = UserProfileVC()
+        presentVC(viewContronller: userProfileVC)
     }
     
     func navSettingsClick(){

@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-    
+    weak var activeField: UITextField?
     var presented : Bool?
     
     let languageManager = LanguageManager.sharedInstance
@@ -17,6 +17,8 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         hideKeyboarTouchupOutSide()
         setupNavBar()
         setupView()
@@ -110,5 +112,21 @@ class BaseViewController: UIViewController {
         return button
     }
     
+    func keyboardWillShow(notification: NSNotification) {
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeField = nil
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeField = textField
+    }
 
 }

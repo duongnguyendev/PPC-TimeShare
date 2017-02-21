@@ -11,6 +11,7 @@ import UIKit
 class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     let margin : CGFloat = 25.0
+    let temptext = "There was a time when the great Australian dream was a family home on a quarter acre book. Now it seems the aussie dream..."
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +66,15 @@ class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UI
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = view.frame.width
-        return CGSize(width: size, height: size - margin - margin)
+        
+        let height = view.frame.width / 16 * 9 + 45 + 45
+        
+        let size = CGSize(width: view.frame.width - margin - margin - 10, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        
+        let estimatedRect = NSString(string: temptext).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 11)], context: nil)
+        
+        return CGSize(width: view.frame.size.width, height: height + estimatedRect.height)
         
     }
     

@@ -38,6 +38,35 @@ class MyButton: BaseButton {
     
 }
 
+class TabButton: MyButton {
+    let selectedView = UIView()
+    
+    override var isSelected: Bool{
+        didSet{
+            if isSelected {
+                selectedView.isHidden = false
+            }else{
+                selectedView.isHidden = true
+            }
+        }
+    }
+    
+    override func setupView() {
+        titleLabel?.font = UIFont(name: "Roboto-Light", size: 14)
+        setTitleColor(UIColor.red, for: .normal)
+        setTitleColor(UIColor.rgb(red: 134, green: 0, blue: 1), for: .selected)
+        
+        addSubview(selectedView)
+        selectedView.translatesAutoresizingMaskIntoConstraints = false
+        selectedView.backgroundColor = UIColor.rgb(red: 134, green: 0, blue: 1)
+        selectedView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        selectedView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        selectedView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        selectedView.heightAnchor.constraint(equalToConstant: 3).isActive = true
+        selectedView.isHidden = true
+    }
+}
+
 class HomeButtonCustom : BaseButton {
     
     var type : HomeButtonType?{

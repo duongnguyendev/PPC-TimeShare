@@ -14,7 +14,7 @@ enum InputType {
     case password
 }
 
-class InputView: UIView {
+class InputView: BaseView {
     
     let margin : CGFloat = 20.0
     let iconSize : CGFloat = 20.0
@@ -30,12 +30,6 @@ class InputView: UIView {
         didSet{
             textField.placeholder = hint
         }
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
-        setupView()
     }
     var iconName : String?{
         didSet{
@@ -53,9 +47,10 @@ class InputView: UIView {
         return tF
     }()
     
-    func setupView(){
+    override func setupView(){
         backgroundColor = UIColor.white
-        
+        translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(imageIcon)
         addSubview(textField)
         
@@ -67,11 +62,5 @@ class InputView: UIView {
         addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-[v1]-\(margin)-|", views: imageIcon, textField)
         
         addConstraint(NSLayoutConstraint(item: imageIcon, attribute: .centerY, relatedBy: .equal, toItem: textField, attribute: .centerY, multiplier: 1, constant: 0))
-        
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
 }

@@ -13,7 +13,7 @@ class PlacesNearbyCell: BaseCell {
     let icon : UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "account")
+        imageView.image = UIImage(named: "map_resort_icon")
         return imageView
     }()
     let titleIntroduce : UILabel = {
@@ -23,7 +23,7 @@ class PlacesNearbyCell: BaseCell {
         return label
     }()
     let arowImage : UIImageView = {
-        let image = UIImage(named: "account")
+        let image = UIImage(named: "arrow_right_icon")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -41,7 +41,7 @@ class PlacesNearbyCell: BaseCell {
     }()
     
     override func setupView() {
-        backgroundColor = UIColor.yellow
+        backgroundColor = UIColor.white
         addSubview(icon)
         addSubview(titleIntroduce)
         addSubview(distanceLabel)

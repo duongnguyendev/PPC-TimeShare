@@ -28,14 +28,14 @@ class InfoCell: BaseCell {
         view.backgroundColor = UIColor.white
         return view
     }()
-    let imageView : UIImageView = {
-        let imV = UIImageView(image: UIImage(named: "resort"))
+    let imageView : CustomImageView = {
+        let imV = CustomImageView(image: UIImage(named: "resort"))
         //        imV.contentMode = .scaleAspectFit
         return imV
     }()
     
     func addContent(){
-        let imageHeight = frame.size.height / 16 * 9
+        let imageHeight = frame.size.width / 16 * 9
         contentV.addSubview(imageView)
         imageView.topAnchor.constraint(equalTo: contentV.topAnchor, constant: 0).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
@@ -50,7 +50,11 @@ class ResortCell: InfoCell {
         didSet{
             nameLabel.text = resort?.name
             adressLabel.text = resort?.address
-            
+            if (resort?.images?.count)! > 0{
+                self.imageView.loadImageUsingUrlString(urlString: (resort?.images?[0])!)
+            }
+            priceLabel.text = resort?.price
+            textViewIntro.text = resort?.introduce
         }
     }
     

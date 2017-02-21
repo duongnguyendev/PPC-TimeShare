@@ -12,13 +12,27 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     
     let tabViewHeight : CGFloat = 40.0
     let margin : CGFloat = 25.0
-    var selectNew = true
+    
+    var selectNew : Bool?{
+        didSet{
+            if selectNew! {
+                buttonNew.isSelected = true
+                buttonAll.isSelected = false
+            }else{
+                buttonNew.isSelected = false
+                buttonAll.isSelected = true
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionViewResorts.register(ResortCell.self, forCellWithReuseIdentifier: cellId)
+        collectionViewResorts.register(NewCell.self, forCellWithReuseIdentifier: newCellId)
+        collectionViewResorts.register(AllCell.self, forCellWithReuseIdentifier: allCellId)
         self.title = "Resorts"
-        buttonNew.isSelected = true
+        collectionViewResorts.isPagingEnabled = true
+//        buttonNew.isSelected = true
+        selectNew = true
     }
     override func setupNavBackButton() {
         super.setupNavBackButton()
@@ -37,7 +51,8 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         
     }
     
-    let cellId = "cellId"
+    let newCellId = "cellId"
+    let allCellId = "allCellId"
     lazy var collectionViewResorts : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero , collectionViewLayout: layout)
@@ -54,43 +69,43 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         return tabView
     }()
     
-    let buttonNew : UIButton = {
-        let button = UIButton(type: UIButtonType.custom)
-        button.setTitleColor(UIColor.yellow, for: .selected)
-        button.setTitleColor(UIColor.black, for: .normal)
+    let buttonNew : TabButton = {
+        let button = TabButton()
         button.setTitle("New", for: .normal)
         button.addTarget(self, action: #selector(handleNewButton), for: .touchUpInside)
         return button
     }()
-    let buttonAll : UIButton = {
-        let button = UIButton(type: UIButtonType.custom)
-        button.setTitleColor(UIColor.yellow, for: .selected)
-        button.setTitleColor(UIColor.black, for: .normal)
+    let buttonAll : TabButton = {
+        let button = TabButton()
         button.setTitle("All", for: .normal)
         button.addTarget(self, action: #selector(handleAllButton), for: .touchUpInside)
-
         return button
     }()
     
     let buttonMap : UIButton = {
         let button = UIButton(type: UIButtonType.custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.red
+        button.setBackgroundImage(UIImage(named: "map_resort_icon"), for: .normal)
         button.addTarget(self, action: #selector(handleMap), for: .touchUpInside)
         return button
     }()
-
+    
+    lazy var filterLauncher : FilterLauncher = {
+        let laucher = FilterLauncher()
+        laucher.listOfResortsVC = self
+        return laucher
+    }()
     
     func setupTabView(){
         let lineView = UIView()
         
         tabBarView.addSubview(lineView)
-
+        
         tabBarView.addSubview(buttonNew)
         tabBarView.addSubview(buttonAll)
         tabBarView.addConstraint(NSLayoutConstraint(item: buttonAll, attribute: .width, relatedBy: .equal, toItem: buttonNew, attribute: .width, multiplier: 1, constant: 0))
         
-        tabBarView.addConstraintWithFormat(format: "H:|[v0]-[v1(1)]-[v2]|", views: buttonNew, lineView, buttonAll)
+        tabBarView.addConstraintWithFormat(format: "H:|[v0][v1(1)][v2]|", views: buttonNew, lineView, buttonAll)
         tabBarView.addConstraintWithFormat(format: "V:|-10-[v0]-10-|", views: lineView)
         lineView.backgroundColor = UIColor.red
         
@@ -122,35 +137,40 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         buttonMap.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         buttonMap.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
         
+        if let flowLayout = collectionViewResorts.collectionViewLayout as? UICollectionViewFlowLayout{
+            flowLayout.scrollDirection = .horizontal
+        }
+        
     }
     
     func handleMap(){
-        let mapVC : MapListResortVC = MapListResortVC()
-        pushVC(viewController: mapVC)
+        if buttonNew.isSelected {
+            let newCell = collectionViewResorts.cellForItem(at: IndexPath(item: 0, section: 0)) as! NewCell
+            newCell.mapControl()
+        }
+        else{
+            let newCell = collectionViewResorts.cellForItem(at: IndexPath(item: 1, section: 0)) as! AllCell
+            newCell.mapControl()
+        }
+        
     }
     
     func handleNewButton(){
-//        if buttonNew.isSelected {
-//            
-//        }else{
-//        
-//        }
-        buttonNew.isSelected = true
-        buttonAll.isSelected = false
+        
+        scrollToItem(item: 0)
+        selectNew = true
     }
     
     func handleAllButton(){
-//        if buttonAll.isSelected {
-//            
-//        }else{
-//            
-//        }
-        buttonAll.isSelected = true
-        buttonNew.isSelected = false
+        scrollToItem(item: 1)
+        selectNew = false
     }
     
     override func handleFilter() {
-        print("filter")
+        
+        self.filterLauncher.showFilter()
+        
+        
     }
     
     
@@ -161,27 +181,65 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 2
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ResortCell
-        return cell
+        
+        let identifier : String
+        var cell : NewCell?
+        if indexPath.item == 0 {
+            identifier = newCellId
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? NewCell
+            cell?.lisResortVC = self
+        }else{
+            identifier = allCellId
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! AllCell
+            cell?.lisResortVC = self
+        }
+        
+        
+        return cell!
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = view.frame.width
-        return CGSize(width: size, height: size - margin)
+        let size = view.frame.height - 10 - tabViewHeight - 10 - margin
+        return CGSize(width: view.frame.width, height: size)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let resortDetailVC : ResortDetailVC = ResortDetailVC()
-        pushVC(viewController: resortDetailVC)
+        
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let index = targetContentOffset.pointee.x / view.frame.width
+        if index == 0 {
+            selectNew = true
+        }else{
+            selectNew = false
+        }
+        
+        
+    }
+    func scrollToItem(item: Int){
+        let indexPath = IndexPath(item: item, section: 0)
+        collectionViewResorts.scrollToItem(at: indexPath, at: .left, animated: true)
     }
     
     override func hideKeyboarTouchupOutSide() {
         
+    }
+    
+    func filter(){
+        print("filter")
+    }
+    
+    func handleItemResorstSelected(resort : Resort){
+        let resortDetailVC : ResortDetailVC = ResortDetailVC()
+        resortDetailVC.resort = resort
+        pushVC(viewController: resortDetailVC)
     }
     
 }

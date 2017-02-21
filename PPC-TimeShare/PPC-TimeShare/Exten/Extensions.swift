@@ -35,3 +35,48 @@ extension UIView{
     }
 }
 
+
+extension Date{
+    func dateToString() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let dateString = dateFormatter.string(from: self)
+        return dateString
+    }
+}
+
+let imageCache = NSCache<AnyObject, AnyObject>()
+class CustomImageView : UIImageView{
+    
+    var imageUrlString : String?
+    func loadImageUsingUrlString(urlString: String){
+        
+        imageUrlString = urlString
+        
+        image = nil
+        
+        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
+            image = imageFromCache
+            return
+        }
+        
+        let url = NSURL(string: urlString)
+        URLSession.shared.dataTask(with: url as! URL, completionHandler: { (data, response, error) in
+            if error != nil{
+                print(error!)
+            }
+            DispatchQueue.main.async {
+                let imageToCache = UIImage(data: data!)
+                if self.imageUrlString == urlString{
+                    self.image = imageToCache
+                }
+                imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                
+            }
+            
+            
+        }).resume()
+        
+    }
+}
+
