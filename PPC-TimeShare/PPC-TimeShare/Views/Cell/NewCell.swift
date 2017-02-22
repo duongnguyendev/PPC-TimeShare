@@ -16,7 +16,7 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     var resorts: [Resort]?
     func fetchResort(){
-        APIService.sharedInstance.fetchResort { (resorts: [Resort]) in
+        APIService.sharedInstance.fetchResortNew { (resorts : [Resort]) in
             self.resorts = resorts
             self.collectionView.reloadData()
         }

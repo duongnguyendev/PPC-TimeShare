@@ -220,10 +220,10 @@ class HomeVC: UIViewController {
     
     // nav event
     func navUserClick(){
-//        let singInVC : SignInVC = SignInVC()
-//        presentVC(viewContronller: singInVC)
-        let userProfileVC = UserProfileVC()
-        presentVC(viewContronller: userProfileVC)
+        let singInVC : SignInVC = SignInVC()
+        presentVC(viewContronller: singInVC)
+//        let userProfileVC = UserProfileVC()
+//        presentVC(viewContronller: userProfileVC)
     }
     
     func navSettingsClick(){

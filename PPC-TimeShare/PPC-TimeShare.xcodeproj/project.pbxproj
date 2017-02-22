@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0803301E5D395200F035AA /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08032F1E5D395200F035AA /* DropDownView.swift */; };
+		4E0803331E5D699000F035AA /* CountryDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0803321E5D699000F035AA /* CountryDropDown.swift */; };
+		4E0803351E5D716600F035AA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0803341E5D716600F035AA /* Place.swift */; };
+		4E0803371E5D7CC000F035AA /* ProvinceDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0803361E5D7CC000F035AA /* ProvinceDropDown.swift */; };
 		4E105E651E51EAA700C13A2C /* MapListResortVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105E641E51EAA700C13A2C /* MapListResortVC.swift */; };
 		4E105F8F1E4DE80500A2CBC4 /* ExploreAllDestinationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F8E1E4DE80500A2CBC4 /* ExploreAllDestinationVC.swift */; };
 		4E105F911E4DE82000A2CBC4 /* IntroduceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E105F901E4DE82000A2CBC4 /* IntroduceVC.swift */; };
@@ -75,9 +79,15 @@
 		4EF11A241E5587BB008473A7 /* SpecialOffersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF11A231E5587BB008473A7 /* SpecialOffersDetailVC.swift */; };
 		4EFAFDB81E5B1654001261E1 /* CollectionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAFDB71E5B1654001261E1 /* CollectionImage.swift */; };
 		4EFAFDBA1E5B21CF001261E1 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAFDB91E5B21CF001261E1 /* APIService.swift */; };
+		66D310151703DB1DB310CC1B /* Pods_PPC_TimeShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6710535DE3317D48AA96EE /* Pods_PPC_TimeShare.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BA900CCE38770CB96FFF232 /* Pods-PPC-TimeShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPC-TimeShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PPC-TimeShare/Pods-PPC-TimeShare.debug.xcconfig"; sourceTree = "<group>"; };
+		4E08032F1E5D395200F035AA /* DropDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropDownView.swift; path = "PPC-TimeShare/Views/DropDownView.swift"; sourceTree = SOURCE_ROOT; };
+		4E0803321E5D699000F035AA /* CountryDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryDropDown.swift; sourceTree = "<group>"; };
+		4E0803341E5D716600F035AA /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		4E0803361E5D7CC000F035AA /* ProvinceDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvinceDropDown.swift; sourceTree = "<group>"; };
 		4E105E641E51EAA700C13A2C /* MapListResortVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapListResortVC.swift; sourceTree = "<group>"; };
 		4E105F8E1E4DE80500A2CBC4 /* ExploreAllDestinationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreAllDestinationVC.swift; sourceTree = "<group>"; };
 		4E105F901E4DE82000A2CBC4 /* IntroduceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceVC.swift; sourceTree = "<group>"; };
@@ -152,6 +162,8 @@
 		4EF11A231E5587BB008473A7 /* SpecialOffersDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialOffersDetailVC.swift; sourceTree = "<group>"; };
 		4EFAFDB71E5B1654001261E1 /* CollectionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionImage.swift; sourceTree = "<group>"; };
 		4EFAFDB91E5B21CF001261E1 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		A2A37BB55A4CE9D18BE767A6 /* Pods-PPC-TimeShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPC-TimeShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPC-TimeShare/Pods-PPC-TimeShare.release.xcconfig"; sourceTree = "<group>"; };
+		FC6710535DE3317D48AA96EE /* Pods_PPC_TimeShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PPC_TimeShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,12 +171,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D310151703DB1DB310CC1B /* Pods_PPC_TimeShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E0803311E5D403100F035AA /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				4E08032F1E5D395200F035AA /* DropDownView.swift */,
+				4E0803321E5D699000F035AA /* CountryDropDown.swift */,
+				4E0803361E5D7CC000F035AA /* ProvinceDropDown.swift */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
 		4E105F871E4DE6F500A2CBC4 /* ListOfResorts */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +316,7 @@
 		4E5063D71E4DA84200210411 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E0803311E5D403100F035AA /* DropDown */,
 				4E5B13891E52E98700FD37E6 /* CustomView */,
 				4E1B77621E4EA5060024E457 /* Cell */,
 			);
@@ -303,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				4EF11A211E55491A008473A7 /* Resort.swift */,
+				4E0803341E5D716600F035AA /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -347,6 +372,8 @@
 			children = (
 				4E9775371E4C089500227A33 /* PPC-TimeShare */,
 				4E9775361E4C089500227A33 /* Products */,
+				7883C703FB5F4F8A7BD12D52 /* Pods */,
+				D5AFF1720E507551A89BF436 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -387,6 +414,23 @@
 			path = Exten;
 			sourceTree = "<group>";
 		};
+		7883C703FB5F4F8A7BD12D52 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4BA900CCE38770CB96FFF232 /* Pods-PPC-TimeShare.debug.xcconfig */,
+				A2A37BB55A4CE9D18BE767A6 /* Pods-PPC-TimeShare.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D5AFF1720E507551A89BF436 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC6710535DE3317D48AA96EE /* Pods_PPC_TimeShare.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -394,9 +438,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E9775471E4C089500227A33 /* Build configuration list for PBXNativeTarget "PPC-TimeShare" */;
 			buildPhases = (
+				80E01DE8797A3AA8F7592093 /* [CP] Check Pods Manifest.lock */,
 				4E9775311E4C089500227A33 /* Sources */,
 				4E9775321E4C089500227A33 /* Frameworks */,
 				4E9775331E4C089500227A33 /* Resources */,
+				EC6E5C5684016496F7F0AAFA /* [CP] Embed Pods Frameworks */,
+				0481698D5084743843C34967 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -475,12 +522,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0481698D5084743843C34967 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPC-TimeShare/Pods-PPC-TimeShare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80E01DE8797A3AA8F7592093 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EC6E5C5684016496F7F0AAFA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PPC-TimeShare/Pods-PPC-TimeShare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4E9775311E4C089500227A33 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4E5B13821E52ABFF00FD37E6 /* RecruitmentDetailVC.swift in Sources */,
+				4E0803331E5D699000F035AA /* CountryDropDown.swift in Sources */,
 				4E7F530C1E540BD200EBCF04 /* InputView.swift in Sources */,
 				4ECB4EEC1E5A8D5900F3F03C /* SignUp_3VC.swift in Sources */,
 				4E7F53141E54403100EBCF04 /* BookInAdvanceVC.swift in Sources */,
@@ -493,9 +589,11 @@
 				4E105F971E4DE86000A2CBC4 /* SendRequestVC.swift in Sources */,
 				4E119E781E51A0D800F85AD4 /* ResortDetailVC.swift in Sources */,
 				4E105FA61E4DF57F00A2CBC4 /* LanguageManager.swift in Sources */,
+				4E0803351E5D716600F035AA /* Place.swift in Sources */,
 				4E5063DD1E4DCD0200210411 /* BaseViewController.swift in Sources */,
 				4E400C9C1E56A4E500E6E91D /* FilterLauncher.swift in Sources */,
 				4ED1E1AE1E4CB8FF006A562F /* HomeVC.swift in Sources */,
+				4E0803371E5D7CC000F035AA /* ProvinceDropDown.swift in Sources */,
 				4E9775391E4C089500227A33 /* AppDelegate.swift in Sources */,
 				4EFAFDBA1E5B21CF001261E1 /* APIService.swift in Sources */,
 				4E105F991E4DE87400A2CBC4 /* PlacesNearbyVC.swift in Sources */,
@@ -513,6 +611,7 @@
 				4E1B776C1E4EF9C60024E457 /* ResortCell.swift in Sources */,
 				4E105E651E51EAA700C13A2C /* MapListResortVC.swift in Sources */,
 				4E7F53181E544BA500EBCF04 /* InfoButton.swift in Sources */,
+				4E0803301E5D395200F035AA /* DropDownView.swift in Sources */,
 				4E105F9B1E4DE88E00A2CBC4 /* ListOfResortsVC.swift in Sources */,
 				4E400CA41E56FFDC00E6E91D /* AllCell.swift in Sources */,
 				4ECB4EEA1E5A8D4700F3F03C /* SignUp_2VC.swift in Sources */,
@@ -660,8 +759,11 @@
 		};
 		4E9775481E4C089500227A33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BA900CCE38770CB96FFF232 /* Pods-PPC-TimeShare.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AQSP7FL9Z8;
 				INFOPLIST_FILE = "PPC-TimeShare/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -674,8 +776,11 @@
 		};
 		4E9775491E4C089500227A33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2A37BB55A4CE9D18BE767A6 /* Pods-PPC-TimeShare.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AQSP7FL9Z8;
 				INFOPLIST_FILE = "PPC-TimeShare/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

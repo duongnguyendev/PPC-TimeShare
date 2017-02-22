@@ -11,10 +11,21 @@ import UIKit
 class FilterLauncher: NSObject {
     
     let itemSize : CGFloat = 50.0
+    
+    var currentCountries : Country?{
+        didSet{
+            dropDownCity.country = currentCountries
+        }
+    }
+    var currentProvince : Province?
+    
     override init() {
         super.init()
+        
         setupContent()
+        setupDropDown()
     }
+    
     
     let blackView = UIView()
     let contentView : UIView = {
@@ -83,7 +94,7 @@ class FilterLauncher: NSObject {
         if let window = UIApplication.shared.keyWindow{
             
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-//            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDissmis)))
+            //            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDissmis)))
             window.addSubview(blackView)
             window.addSubview(contentView)
             blackView.frame = window.frame
@@ -141,6 +152,51 @@ class FilterLauncher: NSObject {
         }
     }
     
+    let dropDownCountry = CountryDropDown()
+    let dropDownCity = ProvinceDropDown()
+    let dropDownType = TypeDropDown()
+    let dropDownSearchBy = SearchByDropDown()
+    func setupDropDown(){
+        setupDropDownCountry()
+        setupDownCity()
+        setupDropDownType()
+        setupDownSearchBy()
+    }
+    
+    func setupDropDownCountry(){
+        contentView.addSubview(dropDownCountry)
+        dropDownCountry.filterLauncher = self
+        dropDownCountry.leftAnchor.constraint(equalTo: countryButton.leftAnchor, constant: 0).isActive = true
+        dropDownCountry.rightAnchor.constraint(equalTo: countryButton.rightAnchor, constant: 0).isActive = true
+        dropDownCountry.topAnchor.constraint(equalTo: countryButton.bottomAnchor, constant: 1).isActive = true
+        dropDownCountry.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+    }
+    func setupDownCity(){
+        contentView.addSubview(dropDownCity)
+        dropDownCity.filterLauncher = self
+        dropDownCity.leftAnchor.constraint(equalTo: cityButton.leftAnchor, constant: 0).isActive = true
+        dropDownCity.rightAnchor.constraint(equalTo: cityButton.rightAnchor, constant: 0).isActive = true
+        dropDownCity.topAnchor.constraint(equalTo: cityButton.bottomAnchor, constant: 1).isActive = true
+        dropDownCity.heightAnchor.constraint(equalToConstant: 200).isActive = true
+    }
+    func setupDropDownType(){
+        contentView.addSubview(dropDownType)
+        
+        dropDownType.leftAnchor.constraint(equalTo: typeButton.leftAnchor, constant: 0).isActive = true
+        dropDownType.rightAnchor.constraint(equalTo: typeButton.rightAnchor, constant: 0).isActive = true
+        dropDownType.topAnchor.constraint(equalTo: typeButton.bottomAnchor, constant: 1).isActive = true
+        dropDownType.heightAnchor.constraint(equalToConstant: 90).isActive = true
+    }
+    func setupDownSearchBy(){
+        contentView.addSubview(dropDownSearchBy)
+        
+        dropDownSearchBy.leftAnchor.constraint(equalTo: searchByButton.leftAnchor, constant: 0).isActive = true
+        dropDownSearchBy.rightAnchor.constraint(equalTo: searchByButton.rightAnchor, constant: 0).isActive = true
+        dropDownSearchBy.topAnchor.constraint(equalTo: searchByButton.bottomAnchor, constant: 1).isActive = true
+        dropDownSearchBy.heightAnchor.constraint(equalToConstant: 90).isActive = true
+    }
+    
     func handleDissmis(){
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.alpha = 0
@@ -149,23 +205,80 @@ class FilterLauncher: NSObject {
             
         }
     }
-    
     func handleCountryButton(){
-        print("handleCountryButton")
+        if dropDownCountry.isHidden {
+            hideAllDropDownView()
+            dropDownCountry.show()
+        }
+        else{
+            hideAllDropDownView()
+        }
+        
     }
     func handleCityButton(){
-        print("handleCityButton")
+        if dropDownCity.isHidden {
+            
+            if currentCountries != nil {
+                hideAllDropDownView()
+                dropDownCity.show()
+            }
+        }
+        else{
+            hideAllDropDownView()
+        }
+        
     }
     func handleTypeButton(){
-        print("handleTypeButton")
+        if dropDownType.isHidden {
+            hideAllDropDownView()
+            dropDownType.show()
+        }
+        else{
+            hideAllDropDownView()
+        }
+        
     }
     func handleSearchByButton(){
-        print("handleSearchByButton")
+        
+        if dropDownSearchBy.isHidden {
+            hideAllDropDownView()
+            dropDownSearchBy.show()
+        }
+        else{
+            hideAllDropDownView()
+        }
+
+        
+    }
+    
+    func hideAllDropDownView(){
+        dropDownCountry.hide()
+        dropDownCity.hide()
+        dropDownType.hide()
+        dropDownSearchBy.hide()
     }
     func handleOKButton(){
         
         self.listOfResortsVC?.filter()
         handleDissmis()
+    }
+    
+    func selected(country : Country){
+        
+        countryButton.value = country.countryName
+        currentCountries = country
+        
+    }
+    func selected(province : Province){
+        cityButton.value = province.provinceName
+        currentProvince = province
+        
+    }
+    func selectedType(type : String){
+        typeButton.value = type
+    }
+    func selected(searchBy: String){
+        searchByButton.value = searchBy
     }
     
     

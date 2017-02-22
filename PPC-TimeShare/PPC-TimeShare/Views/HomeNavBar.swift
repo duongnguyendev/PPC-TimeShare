@@ -56,7 +56,7 @@ class HomeNavBar: BaseView {
     }
     
     override func setupView() {
-        backgroundColor = UIColor.rgbAlpha(red: 254, green: 1, blue: 49, alpha: 0.9)
+        backgroundColor = UIColor.rgbAlpha(red: 128, green: 78, blue: 15, alpha: 0.9)
         addSubview(buttonUser)
         addSubview(titleView)
         addSubview(buttonSetting)

@@ -9,5 +9,10 @@
 import UIKit
 
 class AllCell: NewCell {
-    
+    override func fetchResort() {
+        APIService.sharedInstance.fetchResortAll { (resorts:[Resort]) in
+            self.resorts = resorts
+            self.collectionView.reloadData()
+        }
+    }
 }

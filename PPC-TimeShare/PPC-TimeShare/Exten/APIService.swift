@@ -13,8 +13,8 @@ class APIService: NSObject {
     static let sharedInstance = APIService()
     let baseUrl = "http://ppctimeshare.hbbsolution.com/api"
     
-    func fetchResort(completion : @escaping ([Resort])->()){
-        let urlString = "\(baseUrl)/resort/all?page=2"
+    func fetchResortAll(completion : @escaping ([Resort])->()){
+        let urlString = "\(baseUrl)/resort/all?page=1"
         let url = NSURL(string: urlString)
         var request = URLRequest(url: url as! URL)
         request.httpMethod = "GET"
@@ -36,6 +36,31 @@ class APIService: NSObject {
                 }
             }
         }.resume()
+    }
+    
+    func fetchResortNew(completion : @escaping ([Resort])->()){
+        let urlString = "\(baseUrl)/resort/new"
+        let url = NSURL(string: urlString)
+        var request = URLRequest(url: url as! URL)
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil{
+                print(error as Any)
+            }else{
+                do{
+                    if let unwrappedData = data, let jsonDictionaries = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as? [String : Any]{
+                        
+                        DispatchQueue.main.sync {
+                            let resortsDic = jsonDictionaries["data"]
+                            let resorts = self.getResortFrom(dictonary: resortsDic as Any)
+                            completion(resorts)
+                        }
+                    }
+                }catch let jsonError{
+                    print(jsonError)
+                }
+            }
+            }.resume()
     }
     
     func getResortFrom(dictonary : Any) -> [Resort]{
