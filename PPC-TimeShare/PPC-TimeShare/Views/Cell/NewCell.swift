@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -36,10 +37,22 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: mapView)
         addConstraintWithFormat(format: "V:|[v0]|", views: mapView)
         
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let mymapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView = mymapView
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = mymapView
+
+        
     }
   
     let cellId = "cellId"
-    let mapView = UIView()
+    var mapView = UIView()
     
     
     lazy var collectionView: UICollectionView = {
