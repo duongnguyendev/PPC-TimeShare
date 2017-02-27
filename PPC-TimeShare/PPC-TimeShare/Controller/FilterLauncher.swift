@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FilterLauncher: NSObject {
+class FilterLauncher: NSObject, DropDownDelegate {
     
-    let itemSize : CGFloat = 50.0
+    let itemSize : CGFloat = 40.0
     
     var currentCountries : Country?{
         didSet{
@@ -155,7 +155,7 @@ class FilterLauncher: NSObject {
     let dropDownCountry = CountryDropDown()
     let dropDownCity = ProvinceDropDown()
     let dropDownType = TypeDropDown()
-    let dropDownSearchBy = SearchByDropDown()
+    lazy var dropDownSearchBy : SearchByDropDown = SearchByDropDown()
     func setupDropDown(){
         setupDropDownCountry()
         setupDownCity()
@@ -165,7 +165,7 @@ class FilterLauncher: NSObject {
     
     func setupDropDownCountry(){
         contentView.addSubview(dropDownCountry)
-        dropDownCountry.filterLauncher = self
+        dropDownCountry.delegate = self
         dropDownCountry.leftAnchor.constraint(equalTo: countryButton.leftAnchor, constant: 0).isActive = true
         dropDownCountry.rightAnchor.constraint(equalTo: countryButton.rightAnchor, constant: 0).isActive = true
         dropDownCountry.topAnchor.constraint(equalTo: countryButton.bottomAnchor, constant: 1).isActive = true
@@ -174,15 +174,15 @@ class FilterLauncher: NSObject {
     }
     func setupDownCity(){
         contentView.addSubview(dropDownCity)
-        dropDownCity.filterLauncher = self
+        dropDownCity.delegate = self
         dropDownCity.leftAnchor.constraint(equalTo: cityButton.leftAnchor, constant: 0).isActive = true
         dropDownCity.rightAnchor.constraint(equalTo: cityButton.rightAnchor, constant: 0).isActive = true
         dropDownCity.topAnchor.constraint(equalTo: cityButton.bottomAnchor, constant: 1).isActive = true
-        dropDownCity.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        dropDownCity.heightAnchor.constraint(equalToConstant: 170).isActive = true
     }
     func setupDropDownType(){
         contentView.addSubview(dropDownType)
-        
+        dropDownType.delegate = self
         dropDownType.leftAnchor.constraint(equalTo: typeButton.leftAnchor, constant: 0).isActive = true
         dropDownType.rightAnchor.constraint(equalTo: typeButton.rightAnchor, constant: 0).isActive = true
         dropDownType.topAnchor.constraint(equalTo: typeButton.bottomAnchor, constant: 1).isActive = true
@@ -190,7 +190,7 @@ class FilterLauncher: NSObject {
     }
     func setupDownSearchBy(){
         contentView.addSubview(dropDownSearchBy)
-        
+        dropDownSearchBy.delegate = self
         dropDownSearchBy.leftAnchor.constraint(equalTo: searchByButton.leftAnchor, constant: 0).isActive = true
         dropDownSearchBy.rightAnchor.constraint(equalTo: searchByButton.rightAnchor, constant: 0).isActive = true
         dropDownSearchBy.topAnchor.constraint(equalTo: searchByButton.bottomAnchor, constant: 1).isActive = true
@@ -274,7 +274,7 @@ class FilterLauncher: NSObject {
         currentProvince = province
         
     }
-    func selectedType(type : String){
+    func selected(type : String){
         typeButton.value = type
     }
     func selected(searchBy: String){

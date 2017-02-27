@@ -65,6 +65,15 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
         return button
     }()
     
+    let textViewMessage : UITextView = {
+        let textView = UITextView()
+        textView.textColor = UIColor.red
+        textView.font = UIFont(name: "Roboto-Light", size: 14)
+        textView.textAlignment = .center
+        textView.backgroundColor = UIColor.clear
+        return textView
+    }()
+    
     override func setupView() {
         super.setupView()
         
@@ -86,17 +95,22 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
         mainContentView.addSubview(inputPasswordView)
         mainContentView.addSubview(inputComfirmPasswordView)
         mainContentView.addSubview(buttonNext)
+        mainContentView.addSubview(textViewMessage)
         
         inputEmailView.heightAnchor.constraint(equalToConstant: inputSize).isActive = true
         inputPasswordView.heightAnchor.constraint(equalToConstant: inputSize).isActive = true
         inputComfirmPasswordView.heightAnchor.constraint(equalToConstant: inputSize).isActive = true
+        textViewMessage.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: inputEmailView)
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: inputPasswordView)
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: inputComfirmPasswordView)
         mainContentView.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: buttonNext)
+        mainContentView.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: textViewMessage)
         
-        mainContentView.addConstraintWithFormat(format: "V:|-20-[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-20-[v3(40)]-20-|", views: inputEmailView,inputPasswordView, inputComfirmPasswordView, buttonNext)
+        mainContentView.addConstraintWithFormat(format: "V:|-20-[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-20-[v3(40)]-\(spaceLine)-[v4]-20-|", views: inputEmailView,inputPasswordView, inputComfirmPasswordView, buttonNext, textViewMessage)
+        
+        
     }
     
     
@@ -105,8 +119,33 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
         
     }
     func handleNextButton(){
-        let signUp_2VC : SignUp_2VC = SignUp_2VC()
-        pushVC(viewController: signUp_2VC)
+        
+        let email = inputEmailView.textField.text
+        let pass = inputPasswordView.textField.text
+        
+        APIService.sharedInstance.checkEmail(email: email!) { (message) in
+            if message != nil{
+                self.textViewMessage.text = message
+            }
+            else {
+                if let validate = self.validatePass() {
+                    self.textViewMessage.text = validate
+                }
+                else{
+                    let signUp_2VC : SignUp_2VC = SignUp_2VC()
+                    self.textViewMessage.text = ""
+                    signUp_2VC.user.email = email
+                    signUp_2VC.user.password = pass
+                    self.pushVC(viewController: signUp_2VC)
+                }
+            }
+            
+        }
+        //        let signUp_2VC : SignUp_2VC = SignUp_2VC()
+        //        self.textViewMessage.text = ""
+        //        signUp_2VC.user.email = email
+        //        signUp_2VC.user.password = pass
+        //        self.pushVC(viewController: signUp_2VC)
     }
     
     override func keyboardWillHide(notification: NSNotification) {
@@ -127,6 +166,20 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
                 self.mainScrollView.scrollRectToVisible(activeField.frame, animated: true)
             }
         }
+    }
+    
+    func validatePass() -> String?{
+        let pass = inputPasswordView.textField.text
+        let confirmPass = inputComfirmPasswordView.textField.text
+        
+        if (pass?.characters.count)! < 6 {
+            return "password too short"
+        }
+        if pass != confirmPass{
+            return "confirm Pass invalid"
+        }
+        
+        return nil
     }
     
 }

@@ -10,9 +10,10 @@ import UIKit
 
 class AllCell: NewCell {
     override func fetchResort() {
-        APIService.sharedInstance.fetchResortAll { (resorts:[Resort]) in
+        APIService.sharedInstance.fetchResortAll { (resorts:[Resort]?, errorMessage) in
             self.resorts = resorts
             self.collectionView.reloadData()
+            self.addMarkToMap()
         }
     }
 }

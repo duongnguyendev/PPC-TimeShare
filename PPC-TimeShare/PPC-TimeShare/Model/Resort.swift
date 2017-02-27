@@ -9,7 +9,7 @@
 import UIKit
 
 class Resort: NSObject {
-    var resortId : String?
+    var resortId : NSNumber?
     var name : String?
     var address: String?
     var price: String?
@@ -22,12 +22,12 @@ class Resort: NSObject {
     var equipment : String?
     
     init(data : Dictionary<String, Any>) {
-        let idNum = data["id"]
+        
         let latNum = data["lat"] as! NSString
         self.lat = latNum.doubleValue
         let lngNum = data["lng"] as! NSString
         self.lng = lngNum.doubleValue
-        self.resortId = String(describing: idNum!)
+        self.resortId = data["id"] as! NSNumber?
         self.name = data["name"] as! String?
         self.address = data["address"] as! String?
         self.price = data["price"] as! String?

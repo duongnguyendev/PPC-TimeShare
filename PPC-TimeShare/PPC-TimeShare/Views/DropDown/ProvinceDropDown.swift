@@ -28,7 +28,7 @@ class ProvinceDropDown: DropDownView {
         let city7 = Province(provinceId: "7", provinceName: "city 7")
         let city8 = Province(provinceId: "8", provinceName: "city 8")
         let city9 = Province(provinceId: "9", provinceName: "city 9")
-        let city10 = Province(provinceId: "10", provinceName: "Country 10")
+        let city10 = Province(provinceId: "10", provinceName: "city 10")
         listProvince = [city1, city2, city3, city4, city5, city6, city7, city8,city9 , city10]
         collectionView.reloadData()
     }
@@ -47,7 +47,7 @@ class ProvinceDropDown: DropDownView {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        filterLauncher?.selected(province: (listProvince?[indexPath.item])!)
+        self.delegate?.selected!(province: (listProvince?[indexPath.item])!)
         hide()
     }
 }

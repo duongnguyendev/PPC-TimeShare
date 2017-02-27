@@ -88,6 +88,20 @@ class SignInVC: BaseViewController {
     //handle button
     
     func handleSignInButton(){
+        let email = inputEmailView.textField.text
+        let password = inputPasswordView.textField.text
+        APIService.sharedInstance.requestSignIn(email: email!, passWord: password!) { (user, errorMes) in
+            if errorMes != nil{
+                //show message
+                print(errorMes as Any)
+                
+            }else{
+                // go home
+                let userDic = user?.toDictionary()
+                UserDefaults.standard.set(userDic, forKey: "currentUser")
+                self.goHome()
+            }
+        }
         
     }
     func handleSignUpButton(){

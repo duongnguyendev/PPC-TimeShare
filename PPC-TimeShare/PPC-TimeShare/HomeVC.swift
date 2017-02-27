@@ -40,6 +40,11 @@ class HomeVC: UIViewController {
         addContent()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        localize()
+    }
+    
+    
     func setupNavBar() {
         view.addSubview(navBar)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: navBar)
@@ -68,7 +73,6 @@ class HomeVC: UIViewController {
         button.type = HomeButtonType.sendRequest
         button.backgroundColor = UIColor(white: 1, alpha: 0.9)
         button.addTarget(self, action: #selector(handleSendRequestButton), for: .touchUpInside)
-        button.title = "Send request"
         button.iconName = "sent_request_icon"
         return button
     }()
@@ -220,10 +224,24 @@ class HomeVC: UIViewController {
     
     // nav event
     func navUserClick(){
-        let singInVC : SignInVC = SignInVC()
-        presentVC(viewContronller: singInVC)
-//        let userProfileVC = UserProfileVC()
-//        presentVC(viewContronller: userProfileVC)
+        
+//        UserDefaults.standard.removeObject(forKey: "currentUser")
+//        UserDefaults.standard.synchronize()
+        let currentUserInfo = UserDefaults.standard.value(forKey: "currentUser")
+        
+        if currentUserInfo != nil {
+            
+            let user = User(data: currentUserInfo as! Dictionary <String, Any>)
+            let userProfileVC = UserProfileVC()
+            userProfileVC.user = user
+            presentVC(viewContronller: userProfileVC)
+            
+        }else{
+            let singInVC : SignInVC = SignInVC()
+            presentVC(viewContronller: singInVC)
+        }
+        
+        
     }
     
     func navSettingsClick(){
@@ -239,5 +257,9 @@ class HomeVC: UIViewController {
         self.present(navVC, animated: true) { 
             //do something late
         }
+    }
+    
+    func localize() {
+        sendRequestButton.title = LanguageManager.sharedInstance.localizedString(string: "SendRequest")
     }
 }

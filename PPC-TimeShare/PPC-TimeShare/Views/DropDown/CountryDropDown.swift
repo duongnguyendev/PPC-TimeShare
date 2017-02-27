@@ -50,7 +50,7 @@ class CountryDropDown: DropDownView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        filterLauncher?.selected(country: (listCountry?[indexPath.item])!)
+        self.delegate?.selected!(country: (listCountry?[indexPath.item])!)
         hide()
     }
 }

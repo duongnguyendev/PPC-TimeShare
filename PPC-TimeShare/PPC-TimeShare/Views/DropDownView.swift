@@ -8,23 +8,38 @@
 
 import UIKit
 
+@objc  protocol DropDownDelegate{
+    
+    @objc optional func selected(type: String)
+    @objc optional func selected(gender: Gender)
+    @objc optional func selected(country: Country)
+    @objc optional func selected(province : Province)
+    @objc optional func selected(searchBy: String)
+    
+}
+
 class DropDownView: BaseView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func fetchItems() {
         
     }
-    var filterLauncher : FilterLauncher?
+    
+    var collectionViewHeightContraint : NSLayoutConstraint?
+    var delegate : DropDownDelegate?
     override func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor.gray
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
         self.isHidden = true
-        
+        collectionView.layer.cornerRadius = 5
+        collectionView.layer.masksToBounds = true
         addSubview(collectionView)
         collectionView.register(DropDownCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 1).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 1).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -1).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1).isActive = true
     }
     
     lazy var collectionView : UICollectionView = {
@@ -106,7 +121,7 @@ class TypeDropDown: DropDownView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        filterLauncher?.selectedType(type: listType[indexPath.item])
+        self.delegate?.selected!(type: listType[indexPath.item])
         hide()
     }
     
@@ -130,7 +145,8 @@ class SearchByDropDown: DropDownView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        filterLauncher?.selectedType(type: listSearchBy[indexPath.item])
+//        filterLauncher?.selectedType(type: listSearchBy[indexPath.item])
+        self.delegate?.selected!(searchBy: listSearchBy[indexPath.item])
         hide()
     }
     

@@ -8,14 +8,19 @@
 
 import UIKit
 
-class SignUp_2VC: BaseViewController, UITextFieldDelegate {
+class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let itemSize : CGFloat = 60.0
     let spaceLine : CGFloat = 1.0
+    var user = User()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign up"
+        let avatarTap = UITapGestureRecognizer(target: self, action: #selector(handleAvatarClick))
+        imageViewAvatar.addGestureRecognizer(avatarTap)
+        imageViewAvatar.isUserInteractionEnabled = true
     }
     
     let mainScrollView : UIScrollView = {
@@ -32,7 +37,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate {
     }()
     
     let imageViewAvatar : UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "resort"))
+        let iv = UIImageView(image: UIImage(named: "icon_avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -67,6 +72,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate {
         button.iconName = "gender_icon"
         button.title = "Gender" // title = value
         button.value = ""
+        button.addTarget(self, action: #selector(handleGenderButton), for: .touchUpInside)
         return button
     }()
     
@@ -85,6 +91,8 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate {
         button.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
         return button
     }()
+    
+    let genderDropDown = GenderDropDown ()
     
     override func setupView() {
         
@@ -135,14 +143,80 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate {
         inputAddressView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         
         mainContentView.addConstraintWithFormat(format: "V:[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-\(spaceLine)-[v3]-\(spaceLine)-[v4]-20-[v5(40)]-20-|", views: updateProFilePictureLabel, inputNameView, buttonGender, inputMobileView, inputAddressView, buttonNext)
+        
+        mainContentView.addSubview(genderDropDown)
+        genderDropDown.delegate = self
+        genderDropDown.topAnchor.constraint(equalTo: buttonGender.bottomAnchor, constant: 1).isActive = true
+        genderDropDown.leftAnchor.constraint(equalTo: buttonGender.leftAnchor, constant: 40).isActive = true
+        genderDropDown.rightAnchor.constraint(equalTo: buttonGender.rightAnchor, constant: 0).isActive = true
+        genderDropDown.heightAnchor.constraint(equalToConstant: 63).isActive = true
 
     }
     
     func handleNextButton(){
-        let signUP_3VC = SignUp_3VC()
-        
-        pushVC(viewController: signUP_3VC)
+        dismissKeyboard()
+        if let validateMes = validate(){
+            print(validateMes)
+        }else{
+            self.user.address = self.inputAddressView.textField.text
+            self.user.userName = self.inputNameView.textField.text
+            self.user.mobileNumber = self.inputMobileView.textField.text
+            let signUP_3VC = SignUp_3VC()
+            signUP_3VC.user = self.user
+            pushVC(viewController: signUP_3VC)
+        }
     }
+    
+    func handleGenderButton(){
+        if genderDropDown.isHidden {
+            genderDropDown.isHidden = false
+        }else{
+            genderDropDown.isHidden = true
+        }
+    }
+    // avatar handle
+    func handleAvatarClick(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        let actionSheet = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo libary", style: .default, handler: { (action) in
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            else{
+                print("camera unavailable")
+            }
+            
+        }))
+        self.present(actionSheet, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            
+            let avatarImage = image.resize(newWidth: 500)
+            imageViewAvatar.image = avatarImage
+            let imageData = UIImagePNGRepresentation(avatarImage)
+            let base64String = imageData?.base64EncodedString(options: .init(rawValue: 0))
+            self.user.avartarUrl = base64String
+            picker.dismiss(animated: true, completion: nil)
+        }else {
+            picker.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     
     override func keyboardWillHide(notification: NSNotification) {
         let contentInsets = UIEdgeInsets.zero
@@ -152,15 +226,66 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate {
     }
     
     override func keyboardWillShow(notification: NSNotification) {
-        if let activeField = self.activeField, let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        genderDropDown.hide()
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
             self.mainScrollView.contentInset = contentInsets
             self.mainScrollView.scrollIndicatorInsets = contentInsets
-            var aRect = self.view.frame
-            aRect.size.height -= keyboardSize.size.height
-            if (!aRect.contains(activeField.frame.origin)) {
-                self.mainScrollView.scrollRectToVisible(activeField.frame, animated: true)
-            }
         }
+    }
+    
+    //validate
+    func validate() -> String?{
+        
+        if (validateUserName() != nil) {
+            return validateUserName()
+        }
+        if (validateMobile() != nil) {
+            return validateMobile()
+        }
+        if (validateGender() != nil) {
+            return validateGender()
+        }
+        if (validateAddress() != nil) {
+            return validateAddress()
+        }
+        return nil
+    }
+    
+    func validateUserName() ->String?{
+        if (inputNameView.textField.text?.characters.count)! < 2 {
+            return "user name invalid"
+        }
+        return nil
+    }
+    func validateMobile() ->String? {
+        let mobileFormat = "^\\d{10,11}$"
+        
+        let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobileFormat)
+        let mobileTestResult = mobileTest.evaluate(with: inputMobileView.textField.text)
+        if !mobileTestResult {
+            return "mobile number invalid"
+        }
+        return nil
+    }
+    func validateGender() -> String? {
+        if self.user.gender == nil{
+            return "please select gender"
+        }
+        return nil
+    }
+    func validateAddress() ->String?{
+        if (inputAddressView.textField.text?.isEmpty)! {
+            return "please type address"
+        }
+        return nil
+    }
+    func selected(gender: Gender) {
+        genderDropDown.hide()
+        self.user.gender = gender
+        buttonGender.title = gender.genderValue
+    }
+    override func hideKeyboarTouchupOutSide() {
+        
     }
 }

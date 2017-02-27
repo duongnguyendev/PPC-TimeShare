@@ -15,7 +15,7 @@ class SignUp_3VC: BaseViewController {
 
         title = "Sign up"
     }
-    
+    var user: User = User()
     let labelTitle : UILabel = {
         let label = UILabel()
         label.text = "Terms and conditions"
@@ -53,6 +53,12 @@ class SignUp_3VC: BaseViewController {
     }
     
     func handleCompleteButton(){
-        print("handleCompleteButton")
+        APIService.sharedInstance.requestSignUp(user: self.user, completion: { (signUpUser, errorMes) in
+            if errorMes != nil{
+                //show error
+            }else{
+                //do some thing
+            }
+        })
     }
 }

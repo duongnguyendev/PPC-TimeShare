@@ -10,6 +10,13 @@ import UIKit
 
 class UserProfileVC: BaseViewController, UITextFieldDelegate {
 
+    var user : User?{
+        didSet{
+            
+        }
+    }
+    
+    
     override func setupNavBar() {
         super.setupNavBar()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -84,11 +91,11 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         return input
     }()
     
-    let buttonNext : MyButton = {
+    let buttonUpdate : MyButton = {
         let button = MyButton()
-        button.setTitle("Next", for: .normal)
+        button.setTitle("Update", for: .normal)
         button.backgroundColor = UIColor.green
-        button.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleUpdateButton), for: .touchUpInside)
         return button
     }()
     
@@ -115,7 +122,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         mainContentView.addSubview(buttonGender)
         mainContentView.addSubview(inputMobileView)
         mainContentView.addSubview(inputAddressView)
-        mainContentView.addSubview(buttonNext)
+        mainContentView.addSubview(buttonUpdate)
         
         imageViewAvatar.layer.cornerRadius = avatarSize / 2
         imageViewAvatar.layer.masksToBounds = true
@@ -130,7 +137,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: buttonGender)
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: inputMobileView)
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: inputAddressView)
-        mainContentView.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: buttonNext)
+        mainContentView.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: buttonUpdate)
         
         
         updateProFilePictureLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -140,11 +147,11 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         inputMobileView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         inputAddressView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         
-        mainContentView.addConstraintWithFormat(format: "V:[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-\(spaceLine)-[v3]-\(spaceLine)-[v4]-20-[v5(40)]-20-|", views: updateProFilePictureLabel, inputNameView, buttonGender, inputMobileView, inputAddressView, buttonNext)
+        mainContentView.addConstraintWithFormat(format: "V:[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-\(spaceLine)-[v3]-\(spaceLine)-[v4]-20-[v5(40)]-20-|", views: updateProFilePictureLabel, inputNameView, buttonGender, inputMobileView, inputAddressView, buttonUpdate)
         
     }
     
-    func handleNextButton(){
+    func handleUpdateButton(){
 //        let signUP_3VC = SignUp_3VC()
 //        
 //        pushVC(viewController: signUP_3VC)

@@ -45,6 +45,8 @@
 		4E1B77641E4EAB930024E457 /* IntroduceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B77631E4EAB930024E457 /* IntroduceCell.swift */; };
 		4E1B776A1E4EC1B10024E457 /* IntroductionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */; };
 		4E1B776C1E4EF9C60024E457 /* ResortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B776B1E4EF9C60024E457 /* ResortCell.swift */; };
+		4E31E12D1E5E918900B05F66 /* GenderDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31E12C1E5E918900B05F66 /* GenderDropDown.swift */; };
+		4E31E12F1E5E9F2000B05F66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31E12E1E5E9F2000B05F66 /* User.swift */; };
 		4E400C9C1E56A4E500E6E91D /* FilterLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400C9B1E56A4E500E6E91D /* FilterLauncher.swift */; };
 		4E400C9E1E56B99600E6E91D /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400C9D1E56B99600E6E91D /* FilterButton.swift */; };
 		4E400CA01E56D22200E6E91D /* DateTimeLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400C9F1E56D22200E6E91D /* DateTimeLauncher.swift */; };
@@ -70,6 +72,7 @@
 		4E97753E1E4C089500227A33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E97753C1E4C089500227A33 /* Main.storyboard */; };
 		4E9775401E4C089500227A33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E97753F1E4C089500227A33 /* Assets.xcassets */; };
 		4E9775431E4C089500227A33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E9775411E4C089500227A33 /* LaunchScreen.storyboard */; };
+		4EBFC7151E5FD72B00F67025 /* Recruitment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFC7141E5FD72B00F67025 /* Recruitment.swift */; };
 		4EC130BF1E4F4C08005FDB8D /* Customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC130BE1E4F4C08005FDB8D /* Customs.swift */; };
 		4ECB4EEA1E5A8D4700F3F03C /* SignUp_2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB4EE91E5A8D4700F3F03C /* SignUp_2VC.swift */; };
 		4ECB4EEC1E5A8D5900F3F03C /* SignUp_3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECB4EEB1E5A8D5900F3F03C /* SignUp_3VC.swift */; };
@@ -99,8 +102,6 @@
 		4E105F9C1E4DF41B00A2CBC4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		4E105F9D1E4DF41B00A2CBC4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4E105FA11E4DF4B800A2CBC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4E105FA31E4DF4BC00A2CBC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4E105FA41E4DF4BD00A2CBC4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E105FA51E4DF57F00A2CBC4 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		4E119E741E519FF500F85AD4 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = "PPC-TimeShare/Controller/SettingsVC.swift"; sourceTree = SOURCE_ROOT; };
 		4E119E771E51A0D800F85AD4 /* ResortDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResortDetailVC.swift; sourceTree = "<group>"; };
@@ -126,6 +127,10 @@
 		4E1B77631E4EAB930024E457 /* IntroduceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceCell.swift; sourceTree = "<group>"; };
 		4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionDetail.swift; sourceTree = "<group>"; };
 		4E1B776B1E4EF9C60024E457 /* ResortCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResortCell.swift; sourceTree = "<group>"; };
+		4E31E12C1E5E918900B05F66 /* GenderDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderDropDown.swift; sourceTree = "<group>"; };
+		4E31E12E1E5E9F2000B05F66 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4E3989D21E61357B0011B406 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E3989D31E6135800011B406 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E400C9B1E56A4E500E6E91D /* FilterLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterLauncher.swift; sourceTree = "<group>"; };
 		4E400C9D1E56B99600E6E91D /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		4E400C9F1E56D22200E6E91D /* DateTimeLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimeLauncher.swift; path = ListOfResorts/DateTimeLauncher.swift; sourceTree = "<group>"; };
@@ -153,6 +158,7 @@
 		4E97753F1E4C089500227A33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E9775421E4C089500227A33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E9775441E4C089500227A33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EBFC7141E5FD72B00F67025 /* Recruitment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recruitment.swift; sourceTree = "<group>"; };
 		4EC130BE1E4F4C08005FDB8D /* Customs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Customs.swift; path = ../../Exten/Customs.swift; sourceTree = "<group>"; };
 		4ECB4EE91E5A8D4700F3F03C /* SignUp_2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp_2VC.swift; sourceTree = "<group>"; };
 		4ECB4EEB1E5A8D5900F3F03C /* SignUp_3VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp_3VC.swift; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 				4E08032F1E5D395200F035AA /* DropDownView.swift */,
 				4E0803321E5D699000F035AA /* CountryDropDown.swift */,
 				4E0803361E5D7CC000F035AA /* ProvinceDropDown.swift */,
+				4E31E12C1E5E918900B05F66 /* GenderDropDown.swift */,
 			);
 			path = DropDown;
 			sourceTree = "<group>";
@@ -328,6 +335,8 @@
 			children = (
 				4EF11A211E55491A008473A7 /* Resort.swift */,
 				4E0803341E5D716600F035AA /* Place.swift */,
+				4E31E12E1E5E9F2000B05F66 /* User.swift */,
+				4EBFC7141E5FD72B00F67025 /* Recruitment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -575,8 +584,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E31E12F1E5E9F2000B05F66 /* User.swift in Sources */,
 				4E5B13821E52ABFF00FD37E6 /* RecruitmentDetailVC.swift in Sources */,
 				4E0803331E5D699000F035AA /* CountryDropDown.swift in Sources */,
+				4E31E12D1E5E918900B05F66 /* GenderDropDown.swift in Sources */,
 				4E7F530C1E540BD200EBCF04 /* InputView.swift in Sources */,
 				4ECB4EEC1E5A8D5900F3F03C /* SignUp_3VC.swift in Sources */,
 				4E7F53141E54403100EBCF04 /* BookInAdvanceVC.swift in Sources */,
@@ -612,6 +623,7 @@
 				4E105E651E51EAA700C13A2C /* MapListResortVC.swift in Sources */,
 				4E7F53181E544BA500EBCF04 /* InfoButton.swift in Sources */,
 				4E0803301E5D395200F035AA /* DropDownView.swift in Sources */,
+				4EBFC7151E5FD72B00F67025 /* Recruitment.swift in Sources */,
 				4E105F9B1E4DE88E00A2CBC4 /* ListOfResortsVC.swift in Sources */,
 				4E400CA41E56FFDC00E6E91D /* AllCell.swift in Sources */,
 				4ECB4EEA1E5A8D4700F3F03C /* SignUp_2VC.swift in Sources */,
@@ -635,8 +647,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E105FA11E4DF4B800A2CBC4 /* Base */,
-				4E105FA31E4DF4BC00A2CBC4 /* en */,
-				4E105FA41E4DF4BD00A2CBC4 /* vi */,
+				4E3989D21E61357B0011B406 /* en */,
+				4E3989D31E6135800011B406 /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

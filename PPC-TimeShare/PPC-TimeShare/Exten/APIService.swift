@@ -9,51 +9,146 @@
 import UIKit
 
 class APIService: NSObject {
-
+    
     static let sharedInstance = APIService()
     let baseUrl = "http://ppctimeshare.hbbsolution.com/api"
     
-    func fetchResortAll(completion : @escaping ([Resort])->()){
+    func fetchResortAll(completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
         let urlString = "\(baseUrl)/resort/all?page=1"
-        let url = NSURL(string: urlString)
-        var request = URLRequest(url: url as! URL)
-        request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if error != nil{
-                print(error as Any)
-            }else{
-                do{
-                    if let unwrappedData = data, let jsonDictionaries = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as? [String : Any]{
-                        
-                        DispatchQueue.main.sync {
-                            let resortsDic = jsonDictionaries["data"]
-                            let resorts = self.getResortFrom(dictonary: resortsDic as Any)
-                            completion(resorts)
-                        }                        
-                    }
-                }catch let jsonError{
-                    print(jsonError)
-                }
+        self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            
+            if error == nil && errorMes == nil {
+                let resortsDic = response?["data"]
+                let resorts = self.getResortFrom(dictonary: resortsDic as Any)
+                completion(resorts, nil)
             }
-        }.resume()
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
+            
+        }
     }
     
-    func fetchResortNew(completion : @escaping ([Resort])->()){
+    func fetchResortNew(completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
         let urlString = "\(baseUrl)/resort/new"
+        self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            
+            if error == nil && errorMes == nil {
+                let resortsDic = response?["data"]
+                let resorts = self.getResortFrom(dictonary: resortsDic as Any)
+                completion(resorts, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
+            
+        }
+    }
+    
+    func requestSignUp(user : User, completion : @escaping (User?, String?)->()){
+        
+        let urlString = "\(baseUrl)/register"
+        let params = ["email":user.email!,
+                      "diachi":user.address!,
+                      "hoten":user.userName!,
+                      "dienthoai":user.mobileNumber!,
+                      "password":user.password!,
+                      "avatar": user.avartarUrl!,
+                      "sex": user.gender?.genderId as Any] as Dictionary<String,Any>
+        
+        postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
+            if error == nil && errorMes == nil {
+                //parse data
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
+        }
+    }
+    
+    func requestSignIn(email: String, passWord : String, completion: @escaping (User?, String?) ->()){
+        let urlString = "\(baseUrl)/login"
+        let params = ["email":email, "password": passWord] as Dictionary<String, Any>
+        postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
+            if error == nil && errorMes == nil{
+                //parse data
+                let userDic = response?["data"]
+                let user = User(data: userDic as! Dictionary<String, Any>)
+                completion(user, nil)
+            }else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }else{
+                    completion(nil, errorMes)
+                }
+            }
+        }
+    }
+    
+    func checkEmail(email : String, completion : @escaping (String?) ->()){
+        let urlString = "\(baseUrl)/check-email"
+        let params = ["email": email] as Dictionary<String, Any>
+        postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
+            if error == nil && errorMes == nil{
+                completion(nil)
+            }else{
+                if error != nil{
+                    completion("Can't connect to server")
+                }
+                else{
+                    completion(errorMes)
+                }
+            }
+        }
+    }
+    
+    func getRecruitment(completion: ([Recruitment]) -> ()) {
+        
+        
+    }
+    
+    func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
+        
         let url = NSURL(string: urlString)
         var request = URLRequest(url: url as! URL)
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil{
-                print(error as Any)
+                completion(nil, error, nil)
             }else{
                 do{
                     if let unwrappedData = data, let jsonDictionaries = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as? [String : Any]{
                         
-                        DispatchQueue.main.sync {
-                            let resortsDic = jsonDictionaries["data"]
-                            let resorts = self.getResortFrom(dictonary: resortsDic as Any)
-                            completion(resorts)
+                        let responseError = jsonDictionaries["error"] as! NSNumber
+                        
+                        if responseError != 0 {
+                            let errorMes = jsonDictionaries["message"] as! String
+                            DispatchQueue.main.sync {
+                                completion(nil, nil, errorMes)
+                            }
+                            
+                        }else{
+                            DispatchQueue.main.sync {
+                                completion(jsonDictionaries, nil, nil)
+                            }
                         }
                     }
                 }catch let jsonError{
@@ -62,6 +157,52 @@ class APIService: NSObject {
             }
             }.resume()
     }
+    
+    func postRequestWith(urlString : String, params : Dictionary<String, Any>, completion: @escaping (Dictionary<String, Any>?, _ err : Error?, String? ) ->()){
+        
+        let url = NSURL(string: urlString)
+        var request = URLRequest(url: url as! URL)
+        
+        do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        request.httpMethod = "POST"
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil{
+                completion(nil, error, nil)
+                
+            }else{
+                do{
+                    if let unwrappedData = data, let jsonDictionaries = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as? [String : Any]{
+                        
+                        let responseError = jsonDictionaries["error"] as! NSNumber
+                        
+                        if responseError != 0 {
+                            let errorMes = jsonDictionaries["message"] as! String
+                            DispatchQueue.main.sync {
+                                completion(nil, nil, errorMes)
+                            }
+  
+                        }else{
+                            DispatchQueue.main.sync {
+                                completion(jsonDictionaries, nil, nil)
+                            }
+                        }
+                    }
+                }catch let jsonError{
+                    print(jsonError)
+                }
+            }
+            }.resume()
+        
+    }
+    
     
     func getResortFrom(dictonary : Any) -> [Resort]{
         let arrayData = dictonary as? Array<Any>

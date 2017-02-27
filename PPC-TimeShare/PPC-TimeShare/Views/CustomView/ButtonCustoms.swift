@@ -100,15 +100,15 @@ class HomeButtonCustom : BaseButton {
         addSubview(iconView)
         addSubview(titleTextView)
     }
-    var iconName : NSString?{
+    var iconName : String?{
         didSet{
-            iconView.image = UIImage(named: iconName as! String)
+            iconView.image = UIImage(named: iconName!)
         }
     }
-    var title : NSString?{
+    var title : String?{
         didSet{
-            titleTextView.text = title as String?
-            titleLabelView.text = title as String?
+            titleTextView.text = title
+            titleLabelView.text = title
         }
     }
     

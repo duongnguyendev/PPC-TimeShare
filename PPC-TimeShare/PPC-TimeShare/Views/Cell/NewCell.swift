@@ -17,9 +17,13 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     var resorts: [Resort]?
     func fetchResort(){
-        APIService.sharedInstance.fetchResortNew { (resorts : [Resort]) in
-            self.resorts = resorts
-            self.collectionView.reloadData()
+        APIService.sharedInstance.fetchResortNew { (resorts : [Resort]?, errorMessage) in
+            
+            if errorMessage == nil{
+                self.resorts = resorts
+                self.collectionView.reloadData()
+                self.addMarkToMap()
+            }  
         }
     }
     
@@ -27,32 +31,35 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         fetchResort()
         backgroundColor = UIColor.clear
         addSubview(collectionView)
-        addSubview(mapView)
-        mapView.backgroundColor = UIColor.gray
-        mapView.isHidden = true
-        addConstraintWithFormat(format: "H:|[v0]|", views: collectionView)
-        addConstraintWithFormat(format: "V:|[v0]|", views: collectionView)
-        collectionView.register(ResortCell.self, forCellWithReuseIdentifier: cellId)
-//        
-        addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: mapView)
-        addConstraintWithFormat(format: "V:|[v0]|", views: mapView)
         
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mymapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView = mymapView
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        //        mapView = mymapView
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
         marker.title = "Sydney"
         marker.snippet = "Australia"
-        marker.map = mymapView
+        marker.map = mapView
+        
+        mapView?.isHidden = true
+        
+        addSubview(mapView!)
+        addConstraintWithFormat(format: "H:|[v0]|", views: collectionView)
+        addConstraintWithFormat(format: "V:|[v0]|", views: collectionView)
+        collectionView.register(ResortCell.self, forCellWithReuseIdentifier: cellId)
+//        
+        addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: mapView!)
+        addConstraintWithFormat(format: "V:|[v0]|", views: mapView!)
+        
+        
 
         
     }
   
     let cellId = "cellId"
-    var mapView = UIView()
+    var mapView : GMSMapView?
     
     
     lazy var collectionView: UICollectionView = {
@@ -91,11 +98,21 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     
     func mapControl(){
-        if mapView.isHidden {
-            mapView.isHidden = false
+        if (mapView?.isHidden)! {
+            mapView?.isHidden = false
         }
         else{
-            mapView.isHidden = true
+            mapView?.isHidden = true
+        }
+    }
+    func addMarkToMap(){
+        
+        for resort in resorts!{
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: resort.lat!, longitude: resort.lng!)
+            marker.title = resort.name
+//            marker.snippet = "Australia"
+            marker.map = mapView
         }
     }
 }

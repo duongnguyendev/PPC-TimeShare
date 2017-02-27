@@ -11,7 +11,6 @@ import UIKit
 class BaseViewController: UIViewController {
     weak var activeField: UITextField?
     var presented : Bool?
-    
     let languageManager = LanguageManager.sharedInstance
 
     override func viewDidLoad() {
@@ -22,6 +21,9 @@ class BaseViewController: UIViewController {
         hideKeyboarTouchupOutSide()
         setupNavBar()
         setupView()
+    }
+    override func viewDidAppear(_ animated: Bool){
+        localizeString()
     }
     
     func setupNavBar(){
@@ -56,10 +58,6 @@ class BaseViewController: UIViewController {
         viewController.presented = false
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
-    func localizeString(){
-    
-    }
     func setupNavBackButton(){
         
         let backButton = barButton(iconName: "back_icon")
@@ -74,8 +72,13 @@ class BaseViewController: UIViewController {
     func setupFilterButton(){
         let filterButton = barButton(iconName: "filter_icon")
         filterButton.addTarget(self, action: #selector(handleFilter), for: .touchUpInside)
-        let barButtonItem = UIBarButtonItem(customView: filterButton)
-        self.navigationItem.rightBarButtonItem = barButtonItem
+        let barButtonFilterItem = UIBarButtonItem(customView: filterButton)
+//        self.navigationItem.rightBarButtonItem = barButtonFilterItem
+        
+        let searchButton = barButton(iconName: "find_resort_icon")
+        searchButton.addTarget(self, action: #selector(handleSearch), for: .touchUpInside)
+        let barSearchButtonItem = UIBarButtonItem(customView: searchButton)
+        self.navigationItem.rightBarButtonItems = [barButtonFilterItem, barSearchButtonItem]
 
     }
     func setupGoHomeButton(){
@@ -87,6 +90,10 @@ class BaseViewController: UIViewController {
     
     func setupView() {
         
+    }
+    
+    func handleSearch(){
+        // filter us for sub view controller
     }
     
     func handleFilter(){
@@ -128,5 +135,9 @@ class BaseViewController: UIViewController {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.activeField = textField
     }
-
+    
+    //localizeString
+    func localizeString(){
+        
+    }
 }

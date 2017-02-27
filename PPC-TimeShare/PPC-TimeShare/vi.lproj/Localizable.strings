@@ -8,4 +8,52 @@
 
 // title base view controller
 
-titleDiscover = "Discover";
+ForgotPassword= "Forgot Password";
+YourEmail= "Your email";
+Confirm= "Confirm";
+SignIn= "Sign in";
+Password= "Password";
+ForgotPassowrd= "Forgot Passowrd=";
+PPCTimeshare= "PC Timeshare";
+ResortDirectory= "Resort Directory";
+SpecialOffers= "Special offers";
+ExploreAllDestinations=  "Explore all destinations";
+PlacesNearby= "Places nearby";
+Introduction= "Introduction";
+Recruitment= "Recruitment";
+SendRequest= "Send Request";
+Introduction="Introduction";
+AboutUs= "About us";
+WhatIsTimeshare= "What is timeshare";
+PPCTimeshareBusiness= "PPC Timeshare business";
+Benefits= "Benefits";
+ExchangeProgram= "Exchange program";
+SignUp= "Sign Up";
+Name= "Name";
+Email= "Email";
+MibilePhone= "Mibile phone";
+Address= "Address";
+Password= "Password";
+ConfirmPassword= "Confirm Password";
+AcceptTerms= "Accept terms";
+SignIn= "Sign in";
+SendRequest= "Gửi Yêu Cầu";
+Mobile= "Mobile";
+Title= "Title";
+ComposeRequest= "Compose request";
+NameResort= "Name resort";
+Resorts= "Resorts";
+New= "New";
+All= "All";
+Country= "Country";
+City= "City";
+Type= "Type";
+SearchBy= "Search by";
+ExploreAllDestinations= "Explore all destinations";
+Recruitment= "Recruitment";
+CheckIn= "Check in";
+CheckOut= "Check out";
+Room= "Room";
+Travellers= "ravellers";
+Payment= "Payment";
+
