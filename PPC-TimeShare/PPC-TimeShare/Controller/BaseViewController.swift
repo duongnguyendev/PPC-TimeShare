@@ -23,7 +23,9 @@ class BaseViewController: UIViewController {
         setupView()
     }
     override func viewDidAppear(_ animated: Bool){
+//        setupView()
         localizeString()
+        
     }
     
     func setupNavBar(){

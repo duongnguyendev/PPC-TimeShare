@@ -11,7 +11,7 @@ import UIKit
 class APIService: NSObject {
     
     static let sharedInstance = APIService()
-    let baseUrl = "http://ppctimeshare.hbbsolution.com/api"
+    let baseUrl = "http://ppctimeshare.hbbsolution.com/api/vi"
     
     func fetchResortAll(completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
         let urlString = "\(baseUrl)/resort/all?page=1"
@@ -19,7 +19,7 @@ class APIService: NSObject {
             
             if error == nil && errorMes == nil {
                 let resortsDic = response?["data"]
-                let resorts = self.getResortFrom(dictonary: resortsDic as Any)
+                let resorts = self.getResortFrom(dictionary: resortsDic as Any)
                 completion(resorts, nil)
             }
             else{
@@ -41,7 +41,7 @@ class APIService: NSObject {
             
             if error == nil && errorMes == nil {
                 let resortsDic = response?["data"]
-                let resorts = self.getResortFrom(dictonary: resortsDic as Any)
+                let resorts = self.getResortFrom(dictionary: resortsDic as Any)
                 completion(resorts, nil)
             }
             else{
@@ -54,6 +54,26 @@ class APIService: NSObject {
                 
             }
             
+        }
+    }
+    
+    func getRecruitments(completion : @escaping ([Recruitment]?, String?)->()){
+        let urlString = "\(baseUrl)/recruitment"
+        self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            if error == nil && errorMes == nil {
+                let recruitmentsDic = response?["data"]
+                let recruitments = self.getRecruitmentsFrom(dictionary: recruitmentsDic as Any)
+                completion(recruitments, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
         }
     }
     
@@ -70,7 +90,9 @@ class APIService: NSObject {
         
         postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
             if error == nil && errorMes == nil {
-                //parse data
+                let userDic = response?["data"]
+                let user = User(data: userDic as! Dictionary<String, Any>)
+                completion(user, nil)
             }
             else{
                 if error != nil{
@@ -103,6 +125,32 @@ class APIService: NSObject {
         }
     }
     
+    func requestUpdate(user : User, completion :@escaping (User?, String?) ->()){
+        let urlString = "\(baseUrl)/profile"
+        let params = ["id": user.userId!,
+                      "diachi":user.address!,
+                      "hoten":user.userName!,
+                      "dienthoai":user.mobileNumber!,
+                      "avatar": user.avartarUrl!,
+                      "sex": user.gender?.genderId as Any,
+                      "token":user.token!] as Dictionary<String,Any>
+        postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
+            if error == nil && errorMes == nil{
+                let userDic = response?["data"]
+                let user = User(data: userDic as! Dictionary<String, Any>)
+                completion(user, nil)
+            }else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else{
+                    completion(nil, errorMes)
+                }
+            }
+        }
+        
+    }
+    
     func checkEmail(email : String, completion : @escaping (String?) ->()){
         let urlString = "\(baseUrl)/check-email"
         let params = ["email": email] as Dictionary<String, Any>
@@ -118,11 +166,6 @@ class APIService: NSObject {
                 }
             }
         }
-    }
-    
-    func getRecruitment(completion: ([Recruitment]) -> ()) {
-        
-        
     }
     
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
@@ -180,7 +223,6 @@ class APIService: NSObject {
             }else{
                 do{
                     if let unwrappedData = data, let jsonDictionaries = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as? [String : Any]{
-                        
                         let responseError = jsonDictionaries["error"] as! NSNumber
                         
                         if responseError != 0 {
@@ -204,14 +246,24 @@ class APIService: NSObject {
     }
     
     
-    func getResortFrom(dictonary : Any) -> [Resort]{
-        let arrayData = dictonary as? Array<Any>
+    func getResortFrom(dictionary : Any) -> [Resort]{
+        let arrayData = dictionary as? Array<Any>
         var resorts : [Resort] = [Resort]()
         for resortData in arrayData!{
             let resort = Resort(data: resortData as! Dictionary<String, Any>)
             resorts.append(resort)
         }
         return resorts
+    }
+    
+    func getRecruitmentsFrom(dictionary : Any) -> [Recruitment] {
+        let arrayData = dictionary as? Array<Any>
+        var recruitments : [Recruitment] = [Recruitment]()
+        for resortData in arrayData!{
+            let recruitment = Recruitment(data: resortData as! Dictionary<String, Any>)
+            recruitments.append(recruitment)
+        }
+        return recruitments
     }
     
     

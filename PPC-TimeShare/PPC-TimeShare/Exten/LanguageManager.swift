@@ -11,27 +11,37 @@ import UIKit
 class LanguageManager: NSObject {
     
     static let sharedInstance = LanguageManager()
-    static let string = "test"
+    var bundle : Bundle?
     
     override init() {
-        
-        let langCode = NSLocale.preferredLanguages[0]
-        let bundlePath = Bundle.main.path(forResource: langCode, ofType: "lproj")
-        self.bundle = Bundle(path: bundlePath!)!
+        super.init()
+        let languageCode = self.getCurrentLanguage().languageCode
+        let bundlePath = Bundle.main.path(forResource: languageCode, ofType: "lproj")
+        bundle = Bundle(path: bundlePath!)
     }
-    var bundle : Bundle = Bundle()
-    
     func localizedString(string: String) -> String?{
         
-        return NSLocalizedString(string,bundle : bundle, comment: "")
+        return NSLocalizedString(string, bundle: bundle!, comment: "")
     }
     
-    func setCurrentLanguage(languageCode : String){
-        UserDefaults.standard.set([languageCode], forKey: "AppleLanguages")
+    func setCurrentLanguage(language : Language){
+        UserDefaults.standard.set([language.languageCode], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
-        let bundlePath = Bundle.main.path(forResource: languageCode, ofType: "lproj")
-        self.bundle = Bundle(path: bundlePath!)!
+        let bundlePath = Bundle.main.path(forResource: language.languageCode, ofType: "lproj")
+        bundle = Bundle(path: bundlePath!)
     }
     
-    
+    func getCurrentLanguage() -> Language {
+        let languageCode = Locale.preferredLanguages[0]
+        var language : Language?
+        
+        if languageCode != "vi"{
+            language = Language(languageCode: "en", language: "English")
+        }else{
+            language = Language(languageCode: "vi", language: "Vietnamese")
+        }
+//        var language = Language()
+        
+        return language!
+    }
 }

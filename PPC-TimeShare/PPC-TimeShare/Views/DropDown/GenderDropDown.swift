@@ -24,8 +24,8 @@ class Gender :  NSObject{
 class GenderDropDown: DropDownView {
     
     let listGender : [Gender] = {
-        let male = Gender(genderId: 0, genderValue: "Male")
-        let female = Gender(genderId: 1, genderValue: "Female")
+        let male = Gender(genderId: 1, genderValue: "Male")
+        let female = Gender(genderId: 0, genderValue: "Female")
         return [male, female]
     }()
     

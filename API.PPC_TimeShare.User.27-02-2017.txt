@@ -21,7 +21,9 @@ email=?
 diachi=?
 hoten=?
 dienthoai=?
+sex=? (1=Nam, 0=Nữ)
 password=?
+avatar=? (base64 or null)
 
 Success
 {
@@ -31,6 +33,9 @@ Success
     "hoten": "administrator",
     "dienthoai": "123456789",
     "tendangnhap": "nhatvy2018@gmail.com",
+	"sex":1,
+	"avatar": "url",
+	"share_code": "TSET5572",
     "id": 13,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYXBpLnBwY3RpbWVzaGFyZS9hcGkvcmVnaXN0ZXIiLCJpYXQiOjE0ODcyOTU5NTIsImV4cCI6MTQ4NzI5OTU1MiwibmJmIjoxNDg3Mjk1OTUyLCJqdGkiOiJpanRJcVM0dEF3b1p2VWZyIiwic3ViIjoxM30.Wb-j2NUFyR2HepK3vdlM1B_7M-lzrkxDvNl1-HEfpbU"
   }
@@ -72,6 +77,9 @@ Success
     "hoten": "administrator",
     "dienthoai": "123456789",
     "tendangnhap": "nhatvy2018@gmail.com",
+	"sex":1,
+	"avatar": "url",
+	"share_code": "TSET5572",
     "id": 13,
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYXBpLnBwY3RpbWVzaGFyZS9hcGkvcmVnaXN0ZXIiLCJpYXQiOjE0ODcyOTU5NTIsImV4cCI6MTQ4NzI5OTU1MiwibmJmIjoxNDg3Mjk1OTUyLCJqdGkiOiJpanRJcVM0dEF3b1p2VWZyIiwic3ViIjoxM30.Wb-j2NUFyR2HepK3vdlM1B_7M-lzrkxDvNl1-HEfpbU"
   }
@@ -83,4 +91,72 @@ Error
 }
 
 
+5. Update Profile
+method: POST
+url: /profile
+params: 
+id=?
+diachi=?
+hoten=?
+dienthoai=?
+sex=? (1=Nam, 0=Nữ)
+avatar=? (base64 or null)
+token=?
 
+Success
+{
+  "error": 0,
+  "data": {
+	"diachi": "123",
+    "hoten": "administrator",
+    "dienthoai": "123456789",
+    "tendangnhap": "nhatvy2018@gmail.com",
+	"sex":1,
+	"avatar": "url",
+	"share_code": "TSET5572",
+    "id": 13,
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYXBpLnBwY3RpbWVzaGFyZS9hcGkvcmVnaXN0ZXIiLCJpYXQiOjE0ODcyOTU5NTIsImV4cCI6MTQ4NzI5OTU1MiwibmJmIjoxNDg3Mjk1OTUyLCJqdGkiOiJpanRJcVM0dEF3b1p2VWZyIiwic3ViIjoxM30.Wb-j2NUFyR2HepK3vdlM1B_7M-lzrkxDvNl1-HEfpbU"
+  }
+}
+Error
+{
+  "error": 1,
+  "message": "failed"
+}
+
+6.Add share code
+url: /share-code
+method: POST
+params: 
+share_code=?
+id=?
+
+{
+  "error": 1,
+  "message": "app.share_code_not_found"
+}
+
+{
+  "error": 0,
+  "message": "app.share_code_success"
+}
+
+7. List Voucher
+url: /vouchers
+method: GET
+params: 
+id=?
+
+{
+  "error": 0,
+  "data": [
+    {
+      "id": 0,
+      "name": "New register voucher",
+      "cost": "5$",
+      "date": "2017-02-27",
+      "id_user": 44,
+      "total": 1
+    }
+  ]
+}

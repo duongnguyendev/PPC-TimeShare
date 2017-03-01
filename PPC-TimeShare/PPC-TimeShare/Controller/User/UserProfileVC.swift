@@ -8,29 +8,40 @@
 
 import UIKit
 
-class UserProfileVC: BaseViewController, UITextFieldDelegate {
-
+class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate, DropDownDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     var user : User?{
         didSet{
-            
+            if user?.avartarUrl != nil && user?.avartarUrl != ""{
+                self.imageViewAvatar.loadImageUsingUrlString(urlString: (user?.avartarUrl)!)
+            }
+            inputNameView.string = user?.userName
+            inputMobileView.string = user?.mobileNumber
+            inputAddressView.string = user?.address
+            buttonGender.title = user?.gender?.genderValue
         }
     }
     
     
     override func setupNavBar() {
         super.setupNavBar()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+        
+        if let navigationBar = navigationController?.navigationBar{
+            navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationBar.shadowImage = UIImage()
+            navigationBar.isTranslucent = true
+        }
     }
     let itemSize : CGFloat = 60.0
     let spaceLine : CGFloat = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Profile"
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleAvatarClick))
+        imageViewAvatar.isUserInteractionEnabled = true
+        imageViewAvatar.addGestureRecognizer(tap)
+        
     }
-    
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor.clear
@@ -43,15 +54,20 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    let imageViewAvatar : UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "icon_avatar"))
+    let imageBackgroup : UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "bg_avatar"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+        
+    }()
+    let imageViewAvatar : CustomImageView = {
+        let iv = CustomImageView(image: UIImage(named: "icon_avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
-    let updateProFilePictureLabel : UILabel = {
+    let userTypeLabel : UILabel = {
         let label = UILabel()
-        label.text = "UPDATE PROFILE PICTURE"
+        label.text = "Membership: Sliver"
         label.font = UIFont(name: "Roboto-Light", size: 16)
         label.textAlignment = .center
         return label
@@ -61,7 +77,10 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         let input = InputView()
         input.iconName = "name_icon"
         input.hint = "Name"
+        input.editAble = false
+        input.editControllButton.isHidden = false
         input.textField.delegate = self
+        input.delegate = self
         
         return input
     }()
@@ -70,7 +89,10 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         let input = InputView()
         input.iconName = "mobile_number_icon"
         input.hint = "Mobile number"
+        input.editAble = false
+        input.editControllButton.isHidden = false
         input.textField.delegate = self
+        input.delegate = self
         return input
     }()
     
@@ -78,6 +100,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         let button = InfoButton()
         button.labelTitle.font = UIFont(name: "Roboto-Light", size: 14)
         button.iconName = "gender_icon"
+        button.addTarget(self, action: #selector(handleButtonGender), for: .touchUpInside)
         button.title = "Gender" // title = value
         button.value = ""
         return button
@@ -87,7 +110,10 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         let input = InputView()
         input.iconName = "adress_icon_1"
         input.hint = "Address"
+        input.editAble = false
+        input.editControllButton.isHidden = false
         input.textField.delegate = self
+        input.delegate = self
         return input
     }()
     
@@ -99,15 +125,23 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         return button
     }()
     
+    let genderDropDown = GenderDropDown ()
+    
+    
+    
     override func setupView() {
+        let avatarSize : CGFloat = 100
         
         view.addSubview(mainScrollView)
         mainScrollView.addSubview(mainContentView)
         
-        mainScrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        //scrollView
+        mainScrollView.showsVerticalScrollIndicator = false
+        mainScrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -44 ).isActive = true
         mainScrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
         mainScrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
         mainScrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
+        // contentView
         
         mainContentView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
         mainContentView.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 0).isActive = true
@@ -115,24 +149,34 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         mainContentView.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0).isActive = true
         mainContentView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor, constant: 0).isActive = true
         
+        
+        mainContentView.addSubview(imageBackgroup)
         mainContentView.addSubview(imageViewAvatar)
-        let avatarSize : CGFloat = 100
-        mainContentView.addSubview(updateProFilePictureLabel)
+        mainContentView.addSubview(userTypeLabel)
         mainContentView.addSubview(inputNameView)
         mainContentView.addSubview(buttonGender)
         mainContentView.addSubview(inputMobileView)
         mainContentView.addSubview(inputAddressView)
         mainContentView.addSubview(buttonUpdate)
         
+        // imageBackgroup
+        imageBackgroup.topAnchor.constraint(equalTo: mainContentView.topAnchor, constant: 0).isActive = true
+        imageBackgroup.leftAnchor.constraint(equalTo: mainContentView.leftAnchor, constant: 0).isActive = true
+        imageBackgroup.rightAnchor.constraint(equalTo: mainContentView.rightAnchor, constant: 0).isActive = true
+        imageBackgroup.bottomAnchor.constraint(equalTo: imageViewAvatar.topAnchor, constant: avatarSize / 2).isActive = true
+        
+        //imageViewAvatar
+        
         imageViewAvatar.layer.cornerRadius = avatarSize / 2
         imageViewAvatar.layer.masksToBounds = true
         
-        imageViewAvatar.topAnchor.constraint(equalTo: mainContentView.topAnchor, constant: 20).isActive = true
+        imageViewAvatar.topAnchor.constraint(equalTo: mainContentView.topAnchor, constant: 64).isActive = true
         mainContentView.addConstraint(NSLayoutConstraint(item: imageViewAvatar, attribute: .centerX, relatedBy: .equal, toItem: mainContentView, attribute: .centerX, multiplier: 1, constant: 0))
         imageViewAvatar.heightAnchor.constraint(equalToConstant: avatarSize).isActive = true
         imageViewAvatar.widthAnchor.constraint(equalToConstant: avatarSize).isActive = true
         
-        mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: updateProFilePictureLabel)
+        // input view
+        mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: userTypeLabel)
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: inputNameView)
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: buttonGender)
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: inputMobileView)
@@ -140,25 +184,47 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
         mainContentView.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: buttonUpdate)
         
         
-        updateProFilePictureLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        updateProFilePictureLabel.topAnchor.constraint(equalTo: imageViewAvatar.bottomAnchor, constant: 0).isActive = true
+        userTypeLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        userTypeLabel.topAnchor.constraint(equalTo: imageViewAvatar.bottomAnchor, constant: 0).isActive = true
         inputNameView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         buttonGender.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         inputMobileView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         inputAddressView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         
-        mainContentView.addConstraintWithFormat(format: "V:[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-\(spaceLine)-[v3]-\(spaceLine)-[v4]-20-[v5(40)]-20-|", views: updateProFilePictureLabel, inputNameView, buttonGender, inputMobileView, inputAddressView, buttonUpdate)
+        mainContentView.addConstraintWithFormat(format: "V:[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-\(spaceLine)-[v3]-\(spaceLine)-[v4]-20-[v5(40)]-20-|", views: userTypeLabel, inputNameView, buttonGender, inputMobileView, inputAddressView, buttonUpdate)
+        
+        buttonUpdate.isHidden = true
+        
+        
+        mainContentView.addSubview(genderDropDown)
+        genderDropDown.delegate = self
+        genderDropDown.topAnchor.constraint(equalTo: buttonGender.bottomAnchor, constant: 1).isActive = true
+        genderDropDown.leftAnchor.constraint(equalTo: buttonGender.leftAnchor, constant: 40).isActive = true
+        genderDropDown.rightAnchor.constraint(equalTo: buttonGender.rightAnchor, constant: 0).isActive = true
+        genderDropDown.heightAnchor.constraint(equalToConstant: 63).isActive = true
         
     }
     
     func handleUpdateButton(){
-//        let signUP_3VC = SignUp_3VC()
-//        
-//        pushVC(viewController: signUP_3VC)
+        self.user?.userName = self.inputNameView.textField.text
+        self.user?.address = self.inputAddressView.textField.text
+        self.user?.mobileNumber = self.inputMobileView.textField.text
+        // gender update when select
+        
+        APIService.sharedInstance.requestUpdate(user: self.user!) { (userUpdated, errorMes) in
+            if errorMes != nil{
+                //show message faild
+            }else{
+                let userDic = userUpdated?.toDictionary()
+                UserDefaults.standard.set(userDic, forKey: "currentUser")
+            }
+        }
+        
     }
     
     override func keyboardWillHide(notification: NSNotification) {
-        let contentInsets = UIEdgeInsets.zero
+        var contentInsets = UIEdgeInsets.zero
+        contentInsets.top = 64
         self.mainScrollView.contentInset = contentInsets
         self.mainScrollView.scrollIndicatorInsets = contentInsets
         
@@ -166,7 +232,8 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
     
     override func keyboardWillShow(notification: NSNotification) {
         if let activeField = self.activeField, let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            var contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            contentInsets.top = 64
             self.mainScrollView.contentInset = contentInsets
             self.mainScrollView.scrollIndicatorInsets = contentInsets
             var aRect = self.view.frame
@@ -176,5 +243,75 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate {
             }
         }
     }
-
+    
+    func handleButtonGender(){
+        if genderDropDown.isHidden {
+            genderDropDown.isHidden = false
+        }else{
+            genderDropDown.isHidden = true
+        }
+    }
+    
+    
+    func input(edited: Bool) {
+        if edited {
+            self.buttonUpdate.isHidden = false
+        }
+    }
+    func selected(gender: Gender) {
+        if self.user?.gender?.genderId != gender.genderId {
+            buttonUpdate.isHidden = false
+            self.user?.gender = gender
+            buttonGender.title = gender.genderValue
+        }
+    }
+    
+    func handleAvatarClick(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        let actionSheet = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo libary", style: .default, handler: { (action) in
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            else{
+                print("camera unavailable")
+            }
+            
+        }))
+        self.present(actionSheet, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            let avatarImage = image.resize(newWidth: 500)
+            imageViewAvatar.image = avatarImage
+            let imageData = UIImagePNGRepresentation(avatarImage)
+            let base64String = imageData?.base64EncodedString(options: .init(rawValue: 0))
+            self.user?.avartarUrl = base64String
+            self.buttonUpdate.isHidden = false
+            picker.dismiss(animated: true, completion: nil)
+        }else {
+            picker.dismiss(animated: true, completion: nil)
+        }
+    }
+    override func localizeString() {
+        title = "Profile"
+    }
+    override func hideKeyboarTouchupOutSide() {
+        
+    }
+    
 }

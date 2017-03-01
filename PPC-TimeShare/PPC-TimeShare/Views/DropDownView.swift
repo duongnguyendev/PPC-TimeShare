@@ -15,6 +15,7 @@ import UIKit
     @objc optional func selected(country: Country)
     @objc optional func selected(province : Province)
     @objc optional func selected(searchBy: String)
+    @objc optional func selected(language: Language)
     
 }
 
@@ -98,7 +99,7 @@ class DropDownCell: BaseCell {
         labelString.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         labelString.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         labelString.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
-        labelString.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        labelString.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         
     }
 }

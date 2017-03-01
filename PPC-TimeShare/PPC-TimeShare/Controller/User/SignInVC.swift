@@ -99,6 +99,7 @@ class SignInVC: BaseViewController {
                 // go home
                 let userDic = user?.toDictionary()
                 UserDefaults.standard.set(userDic, forKey: "currentUser")
+                UserDefaults.standard.set(user?.token, forKey: "token")
                 self.goHome()
             }
         }

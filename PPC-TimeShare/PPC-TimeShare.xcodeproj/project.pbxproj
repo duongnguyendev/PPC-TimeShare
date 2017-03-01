@@ -42,6 +42,7 @@
 		4E119EA01E51BBA300F85AD4 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E8A1E51B0FB00F85AD4 /* RobotoCondensed-LightItalic.ttf */; };
 		4E119EA11E51BBA300F85AD4 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E119E8B1E51B0FB00F85AD4 /* RobotoCondensed-Regular.ttf */; };
 		4E119EA41E51BFB900F85AD4 /* SignUp_1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E119EA31E51BFB900F85AD4 /* SignUp_1VC.swift */; };
+		4E18D7D91E651809003F6A0B /* DropDownLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18D7D81E651809003F6A0B /* DropDownLanguages.swift */; };
 		4E1B77641E4EAB930024E457 /* IntroduceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B77631E4EAB930024E457 /* IntroduceCell.swift */; };
 		4E1B776A1E4EC1B10024E457 /* IntroductionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */; };
 		4E1B776C1E4EF9C60024E457 /* ResortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B776B1E4EF9C60024E457 /* ResortCell.swift */; };
@@ -100,7 +101,6 @@
 		4E105F981E4DE87400A2CBC4 /* PlacesNearbyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesNearbyVC.swift; sourceTree = "<group>"; };
 		4E105F9A1E4DE88E00A2CBC4 /* ListOfResortsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfResortsVC.swift; sourceTree = "<group>"; };
 		4E105F9C1E4DF41B00A2CBC4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
-		4E105F9D1E4DF41B00A2CBC4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4E105FA11E4DF4B800A2CBC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E105FA51E4DF57F00A2CBC4 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		4E119E741E519FF500F85AD4 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = "PPC-TimeShare/Controller/SettingsVC.swift"; sourceTree = SOURCE_ROOT; };
@@ -124,6 +124,7 @@
 		4E119E8A1E51B0FB00F85AD4 /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		4E119E8B1E51B0FB00F85AD4 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		4E119EA31E51BFB900F85AD4 /* SignUp_1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp_1VC.swift; sourceTree = "<group>"; };
+		4E18D7D81E651809003F6A0B /* DropDownLanguages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownLanguages.swift; sourceTree = "<group>"; };
 		4E1B77631E4EAB930024E457 /* IntroduceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceCell.swift; sourceTree = "<group>"; };
 		4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionDetail.swift; sourceTree = "<group>"; };
 		4E1B776B1E4EF9C60024E457 /* ResortCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResortCell.swift; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 		4E5B13831E52C24C00FD37E6 /* PlacesNearbyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesNearbyCell.swift; sourceTree = "<group>"; };
 		4E5B13851E52C35900FD37E6 /* SpecialOffersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialOffersCell.swift; sourceTree = "<group>"; };
 		4E5B13871E52E96100FD37E6 /* ResortInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResortInfoView.swift; path = ../ResortInfoView.swift; sourceTree = "<group>"; };
+		4E6967F41E63DA68004293A4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = vi; path = vi.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E7F53091E53F0FA00EBCF04 /* ExploreAllDestinationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreAllDestinationCell.swift; sourceTree = "<group>"; };
 		4E7F530B1E540BD200EBCF04 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		4E7F530D1E54291900EBCF04 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				4E0803321E5D699000F035AA /* CountryDropDown.swift */,
 				4E0803361E5D7CC000F035AA /* ProvinceDropDown.swift */,
 				4E31E12C1E5E918900B05F66 /* GenderDropDown.swift */,
+				4E18D7D81E651809003F6A0B /* DropDownLanguages.swift */,
 			);
 			path = DropDown;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				4E9775391E4C089500227A33 /* AppDelegate.swift in Sources */,
 				4EFAFDBA1E5B21CF001261E1 /* APIService.swift in Sources */,
 				4E105F991E4DE87400A2CBC4 /* PlacesNearbyVC.swift in Sources */,
+				4E18D7D91E651809003F6A0B /* DropDownLanguages.swift in Sources */,
 				4E5B13861E52C35900FD37E6 /* SpecialOffersCell.swift in Sources */,
 				4E5063DB1E4DA89000210411 /* HomeNavBar.swift in Sources */,
 				4E119EA41E51BFB900F85AD4 /* SignUp_1VC.swift in Sources */,
@@ -666,7 +670,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E9775421E4C089500227A33 /* Base */,
-				4E105F9D1E4DF41B00A2CBC4 /* vi */,
+				4E6967F41E63DA68004293A4 /* vi */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

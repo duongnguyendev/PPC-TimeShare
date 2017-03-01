@@ -50,10 +50,10 @@ City= "City";
 Type= "Type";
 SearchBy= "Search by";
 ExploreAllDestinations= "Explore all destinations";
-Recruitment= "Recruitment";
+Recruitment= "Tuyển dụng";
 CheckIn= "Check in";
 CheckOut= "Check out";
 Room= "Room";
 Travellers= "ravellers";
 Payment= "Payment";
-
+Settings = "Cài đặt";

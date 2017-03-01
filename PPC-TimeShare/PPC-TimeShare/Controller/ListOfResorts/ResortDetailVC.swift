@@ -43,7 +43,7 @@ class ResortDetailVC: BaseViewController {
     
     let reservationButton : MyButton = {
         let button = MyButton()
-        button.setTitle("Reservation", for: .normal)
+        button.setTitle("Book in advance", for: .normal)
         button.backgroundColor = UIColor.green
         button.addTarget(self, action: #selector(handleReservationButton), for: .touchUpInside)
         return button
@@ -90,22 +90,22 @@ class ResortDetailVC: BaseViewController {
     
     func setupButton(){
         view.addSubview(tempButtonView)
-        tempButtonView.topAnchor.constraint(equalTo: imageCollection.bottomAnchor, constant: 0).isActive = true
+        tempButtonView.topAnchor.constraint(equalTo: imageCollection.bottomAnchor, constant: 20).isActive = true
         tempButtonView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: tempButtonView)
+        view.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: tempButtonView)
         
         tempButtonView.addSubview(reservationButton)
-        tempButtonView.addSubview(bookOnlineButton)
+//        tempButtonView.addSubview(bookOnlineButton)
         
         tempButtonView.addConstraintWithFormat(format: "V:|[v0]|", views: reservationButton)
-        tempButtonView.addConstraintWithFormat(format: "V:|[v0]|", views: bookOnlineButton)
-        tempButtonView.addConstraint(NSLayoutConstraint(item: reservationButton, attribute: .width, relatedBy: .equal, toItem: bookOnlineButton, attribute: .width, multiplier: 1, constant: 0))
-        tempButtonView.addConstraintWithFormat(format: "H:|[v0][v1]|", views: reservationButton, bookOnlineButton)
+//        tempButtonView.addConstraintWithFormat(format: "V:|[v0]|", views: bookOnlineButton)
+//        tempButtonView.addConstraint(NSLayoutConstraint(item: reservationButton, attribute: .width, relatedBy: .equal, toItem: bookOnlineButton, attribute: .width, multiplier: 1, constant: 0))
+        tempButtonView.addConstraintWithFormat(format: "H:|[v0]|", views: reservationButton)
         
     }
     func setupInfoView(){
         view.addSubview(infoView)
-        infoView.topAnchor.constraint(equalTo: tempButtonView.bottomAnchor, constant: 0).isActive = true
+        infoView.topAnchor.constraint(equalTo: tempButtonView.bottomAnchor, constant: 10).isActive = true
         infoView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         infoView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         infoView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true

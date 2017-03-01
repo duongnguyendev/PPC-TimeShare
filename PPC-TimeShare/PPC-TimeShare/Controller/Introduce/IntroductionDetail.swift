@@ -54,9 +54,6 @@ class IntroductionDetail: BaseViewController {
         webView.isOpaque = false
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.loadHTMLString("<p style=\"text-align:justify\"><span style=\"font-size:16px\"><strong>In addition, the PPC PPC assets established with the timeshare được hope is a bridge for customers and other investors participating in the field of timeshare, vacation exchange together, and flexibility in the use of resources Ownership production of each other not only in the Vietnam market in particular also in the US market đ&oacute;, Japan, South Korea, ...</strong></span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\"><strong>Timeshare PPC services are provided additional housekeeping staff makes all the home comfort and peace of mind of coal in the exchange of other property before and after the holiday.</strong></span></p>\r\n", baseURL: nil)
-//        let url = URL(string: "https://facebook.com")
-//        let fbRequest = URLRequest(url: url!)
-//        webView.loadRequest(fbRequest)
         return webView
     }()
     override func setupView() {

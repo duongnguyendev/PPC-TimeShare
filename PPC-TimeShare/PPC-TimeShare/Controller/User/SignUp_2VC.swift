@@ -17,11 +17,15 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sign up"
-        let avatarTap = UITapGestureRecognizer(target: self, action: #selector(handleAvatarClick))
-        imageViewAvatar.addGestureRecognizer(avatarTap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleAvatarClick))
         imageViewAvatar.isUserInteractionEnabled = true
+        imageViewAvatar.addGestureRecognizer(tap)
     }
+    override func viewDidAppear(_ animated: Bool) {
+//        setupView()
+        localizeString()
+    }
+
     
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -98,7 +102,6 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
         
         view.addSubview(mainScrollView)
         mainScrollView.addSubview(mainContentView)
-        
         mainScrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
         mainScrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
         mainScrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
@@ -150,6 +153,8 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
         genderDropDown.leftAnchor.constraint(equalTo: buttonGender.leftAnchor, constant: 40).isActive = true
         genderDropDown.rightAnchor.constraint(equalTo: buttonGender.rightAnchor, constant: 0).isActive = true
         genderDropDown.heightAnchor.constraint(equalToConstant: 63).isActive = true
+        
+        
 
     }
     

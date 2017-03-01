@@ -18,30 +18,33 @@ class User: NSObject {
     var address : String?
     var gender : Gender?
     var token: String?
+    var shareCode : String?
     
     override init() {
-         userId = 0
-         userName = ""
-         email = ""
-         mobileNumber = ""
-         password = ""
-         avartarUrl = ""
-         address = ""
-         gender = Gender(genderId: 1, genderValue: "Male")
-         token  = ""
+        userId = 0
+        userName = ""
+        email = ""
+        mobileNumber = ""
+        password = ""
+        avartarUrl = ""
+        address = ""
+        gender = Gender(genderId: 1, genderValue: "Male")
+        token  = ""
+        shareCode = ""
     }
-
+    
     init(data: Dictionary<String, Any>) {
         userId = data["id"] as! NSNumber?
         userName = data["hoten"] as! String?
         email = data["tendangnhap"] as! String?
         mobileNumber = data["dienthoai"] as! String?
         address = data["diachi"] as! String?
-        gender = Gender(genderId: 1)
+        gender = Gender(genderId: data["sex"] as! Int)
         token  = data["token"] as! String?
         if let avatar = data["avatar"]{
             avartarUrl = avatar as? String
         }
+        shareCode = data["share_code"] as! String?
         
     }
     func toDictionary() -> Dictionary<String, Any>?{
@@ -53,8 +56,8 @@ class User: NSObject {
                    "password":"",
                    "avatar":self.avartarUrl ?? "",
                    "diachi":self.address!,
-                   "gender":self.gender?.genderId as Any,
-                   "token":self.token!] as Dictionary<String, Any>
+                   "sex":self.gender?.genderId as Any,
+                   "share_code":self.shareCode!] as Dictionary<String, Any>
         return dic
         
     }

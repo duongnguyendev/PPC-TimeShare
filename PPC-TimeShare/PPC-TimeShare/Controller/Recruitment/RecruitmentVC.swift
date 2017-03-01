@@ -10,6 +10,7 @@ import UIKit
 
 class RecruitmentVC: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    var recruitments : [Recruitment]?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +19,20 @@ class RecruitmentVC: BaseViewController, UICollectionViewDelegate, UICollectionV
         collectionRecruitment.register(RecruitmentCell.self, forCellWithReuseIdentifier: cellId)
     }
     
+    func fetchRecruitments(){
+        APIService.sharedInstance.getRecruitments { (recruitments, errorMes) in
+            if errorMes != nil{
+                //show mes
+            }else{
+                self.recruitments = recruitments
+                self.collectionRecruitment.reloadData()
+            }
+            
+        }
+    }
+    
     override func setupView() {
+        fetchRecruitments()
         setupCollectionView()
         
     }
@@ -49,7 +63,7 @@ class RecruitmentVC: BaseViewController, UICollectionViewDelegate, UICollectionV
     // collection delegate - datasource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return recruitments?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: cellHeight)
@@ -62,6 +76,7 @@ class RecruitmentVC: BaseViewController, UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! RecruitmentCell
+        cell.recruitment = recruitments?[indexPath.item]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -70,8 +85,14 @@ class RecruitmentVC: BaseViewController, UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC : RecruitmentDetailVC = RecruitmentDetailVC()
-        
+        detailVC.recruitment = recruitments?[indexPath.item]
         pushVC(viewController: detailVC)
+    }
+    override func hideKeyboarTouchupOutSide() {
+        
+    }
+    override func localizeString() {
+        title = languageManager.localizedString(string: "Recruitment")
     }
     
 }

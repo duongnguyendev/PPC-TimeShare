@@ -10,6 +10,12 @@ import UIKit
 
 class RecruitmentCell: BaseCell {
 
+    var recruitment: Recruitment?{
+        didSet{
+            labelTitle.text = recruitment?.title
+            labelAddress.text = recruitment?.date
+        }
+    }
     override func setupView() {
         backgroundColor = UIColor.white
         addSubview(labelTitle)

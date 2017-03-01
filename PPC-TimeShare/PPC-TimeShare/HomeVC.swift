@@ -32,18 +32,15 @@ class HomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         minumumItemSize = view.bounds.width / 3
-        
         addBackground()
         setupNavBar()
         addContent()
+
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         localize()
     }
-    
     
     func setupNavBar() {
         view.addSubview(navBar)
@@ -225,13 +222,12 @@ class HomeVC: UIViewController {
     // nav event
     func navUserClick(){
         
-//        UserDefaults.standard.removeObject(forKey: "currentUser")
-//        UserDefaults.standard.synchronize()
         let currentUserInfo = UserDefaults.standard.value(forKey: "currentUser")
-        
+        let userToken = UserDefaults.standard.value(forKey: "token")
         if currentUserInfo != nil {
             
             let user = User(data: currentUserInfo as! Dictionary <String, Any>)
+            user.token = userToken as! String?
             let userProfileVC = UserProfileVC()
             userProfileVC.user = user
             presentVC(viewContronller: userProfileVC)
