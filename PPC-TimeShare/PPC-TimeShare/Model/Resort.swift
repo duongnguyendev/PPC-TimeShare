@@ -20,6 +20,11 @@ class Resort: NSObject {
     var service: String?
     var images : [String]?
     var equipment : String?
+    var introduceFull: String?
+    
+    override init() {
+        super.init()
+    }
     
     init(data : Dictionary<String, Any>) {
         
@@ -37,6 +42,7 @@ class Resort: NSObject {
         self.service = data["service"] as! String?
         self.equipment = data["equipment"] as! String?
         self.images = data["images"] as! [String]?
+        self.introduceFull = data["introduce_full"] as! String?
         
     }
 }

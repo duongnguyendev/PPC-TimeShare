@@ -8,8 +8,15 @@
 
 import UIKit
 
+@objc protocol SignInDelegate {
+    
+    @objc optional func signInWith(user: User)
+}
+
 class SignInVC: BaseViewController {
 
+    var delegate : SignInDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Sign In"
@@ -96,10 +103,13 @@ class SignInVC: BaseViewController {
                 print(errorMes as Any)
                 
             }else{
-                // go home
+                //save data to userdefaults
                 let userDic = user?.toDictionary()
                 UserDefaults.standard.set(userDic, forKey: "currentUser")
                 UserDefaults.standard.set(user?.token, forKey: "token")
+                if self.delegate != nil {
+                    self.delegate?.signInWith!(user: user!)
+                }
                 self.goHome()
             }
         }

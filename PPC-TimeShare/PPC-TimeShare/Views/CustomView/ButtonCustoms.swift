@@ -53,7 +53,7 @@ class TabButton: MyButton {
     
     override func setupView() {
         titleLabel?.font = UIFont(name: "Roboto-Light", size: 14)
-        setTitleColor(UIColor.red, for: .normal)
+        setTitleColor(UIColor.rgb(red: 255, green: 200, blue: 0), for: .normal)
         setTitleColor(UIColor.rgb(red: 134, green: 0, blue: 1), for: .selected)
         
         addSubview(selectedView)
@@ -237,7 +237,7 @@ class HomeButtonCustom : BaseButton {
         titleLabelView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         titleLabelView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         titleLabelView.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 0).isActive = true
-        titleLabelView.textColor = UIColor.red
+        titleLabelView.textColor = UIColor.white
         
         titleTextView.isHidden = true
         

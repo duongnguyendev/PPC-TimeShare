@@ -15,7 +15,19 @@ extension UIColor {
     static func rgbAlpha(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
-
+    
+    static func appStyleColor() -> UIColor{
+        return UIColor.rgb(red: 52, green: 34, blue: 19)
+    }
+    static func button1Collor() -> UIColor{
+        return UIColor.rgb(red: 255, green: 0, blue: 47)
+    }
+    static func button2Collor() -> UIColor{
+        return UIColor.rgb(red: 188, green: 215, blue: 0)
+    }
+    static func buttonOKCollor() -> UIColor{
+        return UIColor.rgb(red: 255, green: 205, blue: 0)
+    }
 }
 
 extension UIView{
@@ -39,7 +51,7 @@ extension UIView{
 extension Date{
     func dateToString() -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: self)
         return dateString
     }

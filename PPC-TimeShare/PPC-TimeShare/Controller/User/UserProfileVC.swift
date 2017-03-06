@@ -25,14 +25,19 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     
     override func setupNavBar() {
         super.setupNavBar()
-        
-        if let navigationBar = navigationController?.navigationBar{
-            navigationBar.setBackgroundImage(UIImage(), for: .default)
-            navigationBar.shadowImage = UIImage()
-            navigationBar.isTranslucent = true
-        }
+        setupHistoryButton()
+
     }
-    let itemSize : CGFloat = 60.0
+    
+    func setupHistoryButton(){
+        
+        let historyButton = barButton(iconName: "home_icon")
+        historyButton.addTarget(self, action: #selector(handleHistory), for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: historyButton)
+        self.navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    let itemSize : CGFloat = 45.0
     let spaceLine : CGFloat = 1.0
     
     override func viewDidLoad() {
@@ -42,6 +47,15 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         imageViewAvatar.addGestureRecognizer(tap)
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let navigationBar = navigationController?.navigationBar{
+            navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationBar.shadowImage = UIImage()
+            navigationBar.isTranslucent = true
+        }
+    }
+    
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor.clear
@@ -125,6 +139,26 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         return button
     }()
     
+    let buttonYourVoucher : InfoButton = {
+        let button = InfoButton()
+        button.labelTitle.font = UIFont(name: "Roboto-Light", size: 14)
+        button.iconName = "gender_icon"
+        button.addTarget(self, action: #selector(handleButtonVoucher), for: .touchUpInside)
+        button.title = "Your voucher" // title = value
+        button.value = ""
+        return button
+    }()
+    let buttonShareYourApp : InfoButton = {
+        let button = InfoButton()
+        button.labelTitle.font = UIFont(name: "Roboto-Light", size: 14)
+        button.iconName = "gender_icon"
+        button.addTarget(self, action: #selector(handleButtonShare), for: .touchUpInside)
+        button.title = "Share your app" // title = value
+        button.value = ""
+        return button
+    }()
+    
+    
     let genderDropDown = GenderDropDown ()
     
     
@@ -158,6 +192,8 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         mainContentView.addSubview(inputMobileView)
         mainContentView.addSubview(inputAddressView)
         mainContentView.addSubview(buttonUpdate)
+        mainContentView.addSubview(buttonYourVoucher)
+        mainContentView.addSubview(buttonShareYourApp)
         
         // imageBackgroup
         imageBackgroup.topAnchor.constraint(equalTo: mainContentView.topAnchor, constant: 0).isActive = true
@@ -183,6 +219,10 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: inputAddressView)
         mainContentView.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: buttonUpdate)
         
+        mainContentView.addConstraintWithFormat(format: "H:|[v0]", views: buttonYourVoucher)
+        buttonYourVoucher.rightAnchor.constraint(equalTo: mainContentView.rightAnchor, constant: 40).isActive = true
+        mainContentView.addConstraintWithFormat(format: "H:|[v0]", views: buttonShareYourApp)
+        buttonShareYourApp.rightAnchor.constraint(equalTo: mainContentView.rightAnchor, constant: 40).isActive = true
         
         userTypeLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         userTypeLabel.topAnchor.constraint(equalTo: imageViewAvatar.bottomAnchor, constant: 0).isActive = true
@@ -190,8 +230,10 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         buttonGender.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         inputMobileView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         inputAddressView.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
+        buttonShareYourApp.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
+        buttonYourVoucher.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         
-        mainContentView.addConstraintWithFormat(format: "V:[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-\(spaceLine)-[v3]-\(spaceLine)-[v4]-20-[v5(40)]-20-|", views: userTypeLabel, inputNameView, buttonGender, inputMobileView, inputAddressView, buttonUpdate)
+        mainContentView.addConstraintWithFormat(format: "V:[v0]-\(spaceLine)-[v1]-\(spaceLine)-[v2]-\(spaceLine)-[v3]-\(spaceLine)-[v4]-\(spaceLine)-[v5]-\(spaceLine)-[v6]-20-[v7(40)]-20-|", views: userTypeLabel, inputNameView, buttonGender, inputMobileView, inputAddressView, buttonYourVoucher, buttonShareYourApp, buttonUpdate)
         
         buttonUpdate.isHidden = true
         
@@ -252,6 +294,12 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         }
     }
     
+    func handleButtonShare() {
+        print("handleButtonShare")
+    }
+    func handleButtonVoucher() {
+        print("handleButtonVoucher")
+    }
     
     func input(edited: Bool) {
         if edited {
@@ -312,6 +360,11 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     }
     override func hideKeyboarTouchupOutSide() {
         
+    }
+    
+    func handleHistory() {
+        let historyVC = HistoryVC()
+        self.pushVC(viewController: historyVC)
     }
     
 }

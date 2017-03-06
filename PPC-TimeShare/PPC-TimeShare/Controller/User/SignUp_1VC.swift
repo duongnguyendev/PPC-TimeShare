@@ -141,11 +141,6 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
             }
             
         }
-        //        let signUp_2VC : SignUp_2VC = SignUp_2VC()
-        //        self.textViewMessage.text = ""
-        //        signUp_2VC.user.email = email
-        //        signUp_2VC.user.password = pass
-        //        self.pushVC(viewController: signUp_2VC)
     }
     
     override func keyboardWillHide(notification: NSNotification) {

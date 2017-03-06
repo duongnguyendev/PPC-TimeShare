@@ -9,7 +9,14 @@
 import UIKit
 
 class CollectionImage: BaseView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
+    var listImageUrlString : [String]?{
+        didSet{
+            self.collectionView.reloadData()
+        }
+    }
+    
+    
     override func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
@@ -33,11 +40,12 @@ class CollectionImage: BaseView, UICollectionViewDelegate, UICollectionViewDataS
     }()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return listImageUrlString?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ImageCell
+        cell.imageUrlString = listImageUrlString?[indexPath.item]
         return cell
     }
     
@@ -52,15 +60,20 @@ class CollectionImage: BaseView, UICollectionViewDelegate, UICollectionViewDataS
 
 class ImageCell: BaseCell {
     
-    
+    var imageUrlString : String?{
+        didSet{
+            self.imageView.loadImageUsingUrlString(urlString: imageUrlString!)
+        }
+    }
     override func setupView() {
         addSubview(imageView)
         addConstraintWithFormat(format: "V:|[v0]|", views: imageView)
         addConstraintWithFormat(format: "H:|[v0]|", views: imageView)
     }
     
-    let imageView : UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "resort"))
+    let imageView : CustomImageView = {
+        let iv = CustomImageView(image: UIImage(named: "no_image_icon"))
+        iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()

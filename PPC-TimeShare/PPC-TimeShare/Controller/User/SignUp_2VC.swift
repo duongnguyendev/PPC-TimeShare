@@ -22,7 +22,6 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
         imageViewAvatar.addGestureRecognizer(tap)
     }
     override func viewDidAppear(_ animated: Bool) {
-//        setupView()
         localizeString()
     }
 

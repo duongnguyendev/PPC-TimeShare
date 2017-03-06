@@ -68,7 +68,7 @@ class HomeVC: UIViewController {
         
         let button = HomeButtonCustom()
         button.type = HomeButtonType.sendRequest
-        button.backgroundColor = UIColor(white: 1, alpha: 0.9)
+        button.backgroundColor = UIColor(white: 0, alpha: 0.5)
         button.addTarget(self, action: #selector(handleSendRequestButton), for: .touchUpInside)
         button.iconName = "sent_request_icon"
         return button
@@ -87,8 +87,7 @@ class HomeVC: UIViewController {
         let button = HomeButtonCustom()
         button.type = HomeButtonType.system
         button.addTarget(self, action: #selector(handleIntroduceButton), for: .touchUpInside)
-//        button.backgroundColor = UIColor.rgb(red: 208, green: 235, blue: 41)
-        button.backgroundColor = UIColor.red
+        button.backgroundColor = UIColor.rgbAlpha(red: 0, green: 0, blue: 0, alpha: 0.3)
         button.title = "Introduce"
 
         return button
@@ -163,17 +162,17 @@ class HomeVC: UIViewController {
         
         //placesNearbyButton contraint
         placesNearbyButton.heightAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
-        placesNearbyButton.widthAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
+        placesNearbyButton.widthAnchor.constraint(equalToConstant: minumumItemSize!-1).isActive = true
         placesNearbyButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true;
         placesNearbyButton.bottomAnchor.constraint(equalTo: recruitmentButton.topAnchor, constant: 0).isActive = true
         //exploreAllDestinationButton contraint
         exploreAllDestinationButton.heightAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
         exploreAllDestinationButton.widthAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
-        exploreAllDestinationButton.rightAnchor.constraint(equalTo: placesNearbyButton.leftAnchor, constant: 0).isActive = true;
+        exploreAllDestinationButton.rightAnchor.constraint(equalTo: placesNearbyButton.leftAnchor, constant: -1).isActive = true;
         exploreAllDestinationButton.bottomAnchor.constraint(equalTo: recruitmentButton.topAnchor, constant: 0).isActive = true
         //specialOffersButton contraint
         specialOffersButton.heightAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
-        specialOffersButton.widthAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
+        specialOffersButton.widthAnchor.constraint(equalToConstant: minumumItemSize! - 1).isActive = true
         specialOffersButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
         specialOffersButton.bottomAnchor.constraint(equalTo: recruitmentButton.topAnchor, constant: 0).isActive = true
 

@@ -61,6 +61,7 @@ class SettingsVC: BaseViewController, DropDownDelegate {
     
     func handleLogoutButton(){
         UserDefaults.standard.removeObject(forKey: "currentUser")
+        UserDefaults.standard.removeObject(forKey: "token")
         goHome()
     }
     

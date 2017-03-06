@@ -8,7 +8,9 @@
 
 import UIKit
 
-class FilterLauncher: NSObject, DropDownDelegate {
+class FilterLauncher: BaseLauncher, DropDownDelegate {
+    
+    
     
     let itemSize : CGFloat = 40.0
     
@@ -25,18 +27,9 @@ class FilterLauncher: NSObject, DropDownDelegate {
         setupContent()
         setupDropDown()
     }
-    
-    
-    let blackView = UIView()
-    let contentView : UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
     let titleView : UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.red
+        label.backgroundColor = UIColor.appStyleColor()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.white
         label.text = "Filter"
@@ -90,66 +83,56 @@ class FilterLauncher: NSObject, DropDownDelegate {
         }, completion: nil)
         
     }
-    func setupContent(){
-        if let window = UIApplication.shared.keyWindow{
-            
-            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-            //            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDissmis)))
-            window.addSubview(blackView)
-            window.addSubview(contentView)
-            blackView.frame = window.frame
-            blackView.alpha = 0
-            
-            contentView.alpha = 0
-            contentView.heightAnchor.constraint(equalToConstant: 300).isActive = true
-            contentView.widthAnchor.constraint(equalToConstant: 250).isActive = true
-            window.addConstraint(NSLayoutConstraint(item: contentView, attribute: .centerY, relatedBy: .equal, toItem: window, attribute: .centerY, multiplier: 1, constant: 0))
-            window.addConstraint(NSLayoutConstraint(item: contentView, attribute: .centerX, relatedBy: .equal, toItem: window, attribute: .centerX, multiplier: 1, constant: 0))
-            
-            // add view content
-            
-            contentView.addSubview(titleView)
-            contentView.addSubview(buttonCancel)
-            contentView.addSubview(buttonOK)
-            contentView.addSubview(countryButton)
-            contentView.addSubview(cityButton)
-            contentView.addSubview(typeButton)
-            contentView.addSubview(searchByButton)
-            
-            //titleView x, y w h
-            titleView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
-            titleView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
-            titleView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0).isActive = true
-            titleView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-            
-            // ok, cancel button x y w h
-            buttonCancel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-            buttonCancel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-            
-            buttonOK.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-            buttonOK.heightAnchor.constraint(equalToConstant: 40).isActive = true
-            
-            contentView.addConstraintWithFormat(format: "H:|[v0][v1]|", views: buttonCancel, buttonOK)
-            
-            contentView.addConstraint(NSLayoutConstraint(item: buttonCancel, attribute: .width, relatedBy: .equal, toItem: buttonOK, attribute: .width, multiplier: 1, constant: 0))
-            
-            // item x y w h
-            
-            countryButton.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 0).isActive = true
-            contentView.addConstraintWithFormat(format: "V:[v0(\(itemSize))]-1-[v1(\(itemSize))]-1-[v2(\(itemSize))]-1-[v3(\(itemSize))]", views: countryButton, cityButton, typeButton,searchByButton)
-            contentView.addConstraintWithFormat(format: "H:|[v0]|", views: countryButton)
-            contentView.addConstraintWithFormat(format: "H:|[v0]|", views: cityButton)
-            contentView.addConstraintWithFormat(format: "H:|[v0]|", views: typeButton)
-            contentView.addConstraintWithFormat(format: "H:|[v0]|", views: searchByButton)
-            
-            buttonCancel.addTarget(self, action: #selector(handleDissmis), for: .touchUpInside)
-            countryButton.addTarget(self, action: #selector(handleCountryButton), for: .touchUpInside)
-            cityButton.addTarget(self, action: #selector(handleCityButton), for: .touchUpInside)
-            typeButton.addTarget(self, action: #selector(handleTypeButton), for: .touchUpInside)
-            searchByButton.addTarget(self, action: #selector(handleSearchByButton), for: .touchUpInside)
-            buttonOK.addTarget(self, action: #selector(handleOKButton), for: .touchUpInside)
-            
-        }
+    override func setupContent(){
+        super.setupContent()
+        
+        contentView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        contentView.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        
+        // add view content
+        
+        contentView.addSubview(titleView)
+        contentView.addSubview(buttonCancel)
+        contentView.addSubview(buttonOK)
+        contentView.addSubview(countryButton)
+        contentView.addSubview(cityButton)
+        contentView.addSubview(typeButton)
+        contentView.addSubview(searchByButton)
+        
+        //titleView x, y w h
+        titleView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+        titleView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
+        titleView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0).isActive = true
+        titleView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        // ok, cancel button x y w h
+        buttonCancel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+        buttonCancel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        buttonOK.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+        buttonOK.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        contentView.addConstraintWithFormat(format: "H:|[v0][v1]|", views: buttonCancel, buttonOK)
+        
+        contentView.addConstraint(NSLayoutConstraint(item: buttonCancel, attribute: .width, relatedBy: .equal, toItem: buttonOK, attribute: .width, multiplier: 1, constant: 0))
+        
+        // item x y w h
+        
+        countryButton.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 0).isActive = true
+        contentView.addConstraintWithFormat(format: "V:[v0(\(itemSize))]-1-[v1(\(itemSize))]-1-[v2(\(itemSize))]-1-[v3(\(itemSize))]", views: countryButton, cityButton, typeButton,searchByButton)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: countryButton)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: cityButton)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: typeButton)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: searchByButton)
+        
+        buttonCancel.addTarget(self, action: #selector(hide), for: .touchUpInside)
+        countryButton.addTarget(self, action: #selector(handleCountryButton), for: .touchUpInside)
+        cityButton.addTarget(self, action: #selector(handleCityButton), for: .touchUpInside)
+        typeButton.addTarget(self, action: #selector(handleTypeButton), for: .touchUpInside)
+        searchByButton.addTarget(self, action: #selector(handleSearchByButton), for: .touchUpInside)
+        buttonOK.addTarget(self, action: #selector(handleOKButton), for: .touchUpInside)
+        
+        
     }
     
     let dropDownCountry = CountryDropDown()
@@ -197,14 +180,6 @@ class FilterLauncher: NSObject, DropDownDelegate {
         dropDownSearchBy.heightAnchor.constraint(equalToConstant: 90).isActive = true
     }
     
-    func handleDissmis(){
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blackView.alpha = 0
-            self.contentView.alpha = 0
-        }) { (Bool) in
-            
-        }
-    }
     func handleCountryButton(){
         if dropDownCountry.isHidden {
             hideAllDropDownView()
@@ -247,7 +222,7 @@ class FilterLauncher: NSObject, DropDownDelegate {
         else{
             hideAllDropDownView()
         }
-
+        
         
     }
     
@@ -260,7 +235,7 @@ class FilterLauncher: NSObject, DropDownDelegate {
     func handleOKButton(){
         
         self.listOfResortsVC?.filter()
-        handleDissmis()
+        hide()
     }
     
     func selected(country : Country){

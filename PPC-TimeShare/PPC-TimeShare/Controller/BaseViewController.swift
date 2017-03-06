@@ -34,7 +34,7 @@ class BaseViewController: UIViewController {
              NSFontAttributeName: UIFont(name: "Roboto-Medium", size: 17)!]
 
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = UIColor.red
+        navigationController?.navigationBar.barTintColor = UIColor.appStyleColor()
         setupNavBackButton()
     }
     func goHome(){
@@ -60,6 +60,15 @@ class BaseViewController: UIViewController {
         viewController.presented = false
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    func presentVC(viewContronller : BaseViewController) {
+        viewContronller.presented = true
+        let navVC : UINavigationController = UINavigationController(rootViewController: viewContronller)
+        self.present(navVC, animated: true) {
+            
+        }
+    }
+    
     func setupNavBackButton(){
         
         let backButton = barButton(iconName: "back_icon")

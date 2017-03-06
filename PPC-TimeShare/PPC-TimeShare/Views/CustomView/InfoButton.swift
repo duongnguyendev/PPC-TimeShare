@@ -12,6 +12,11 @@ class InfoButton: BaseButton {
 
     let margin : CGFloat = 20
     let iconSize : CGFloat = 20
+    var dateValue : Date? {
+        didSet{
+            value = dateValue?.dateToString()
+        }
+    }
     var iconName : String?{
         didSet{
             iconImage.image = UIImage(named: iconName!)
@@ -65,7 +70,7 @@ class InfoButton: BaseButton {
         iconImage.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
         arrowImage.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
         
-        addConstraintWithFormat(format: "H:|-\(margin)-[v0(\(iconSize))]-\(margin)-[v1][v2]-\(margin)-[v3(\(iconSize))]-10-|", views: iconImage, labelTitle, labelValue, arrowImage)
+        addConstraintWithFormat(format: "H:|-\(margin)-[v0(\(iconSize))]-\(margin)-[v1][v2]-\(margin)-[v3(\(iconSize))]-20-|", views: iconImage, labelTitle, labelValue, arrowImage)
         
         addConstraint(NSLayoutConstraint(item: iconImage, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
         

@@ -9,12 +9,26 @@
 import UIKit
 
 class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    var offers : [Offer]?
+    
+    func fetchOffers(){
+        APIService.sharedInstance.requestGetOffers { (offers, errorMes) in
+            if errorMes != nil{
+                //show mes
+            }else{
+                self.offers = offers
+                self.collectionOffers.reloadData()
+            }
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.title = "Special Offers"
-        collectionPlacesNearby.register(SpecialOffersCell.self, forCellWithReuseIdentifier: cellId)
+        collectionOffers.register(SpecialOffersCell.self, forCellWithReuseIdentifier: cellId)
+        fetchOffers()
 
     }
     override func setupView() {
@@ -25,7 +39,7 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
     
     let cellId = "cellId"
     
-    lazy var collectionPlacesNearby : UICollectionView = {
+    lazy var collectionOffers : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = UIColor.clear
@@ -38,10 +52,10 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
     // set up view
     
     func setupCollectionView(){
-        view.addSubview(collectionPlacesNearby)
+        view.addSubview(collectionOffers)
         
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionPlacesNearby)
-        view.addConstraintWithFormat(format: "V:|-20-[v0]|", views: collectionPlacesNearby)
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionOffers)
+        view.addConstraintWithFormat(format: "V:|-20-[v0]|", views: collectionOffers)
         
     }
     
@@ -49,7 +63,7 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
         let redView : UIView = UIView()
         redView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(redView)
-        redView.backgroundColor = UIColor.red
+        redView.backgroundColor = UIColor.appStyleColor()
         redView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         redView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         redView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
@@ -60,20 +74,16 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
     // collection delegate - datasource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return offers?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let tempText = "There was a time when the great Australian dream was a family home on a quarter acre book. Now it seems the aussie dream..."
-//        let height = view.frame.width / 16 * 11
-//        
-//        return CGSize(width: view.frame.width, height: height)
-        
+
         let imageheight = (view.frame.width) / 16 * 9
         
         let size = CGSize(width: view.frame.width - 50 - 20, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         
-        let estimatedRect = NSString(string: tempText).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 13)], context: nil)
+        let estimatedRect = NSString(string: (offers?[indexPath.item].title)!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 13)], context: nil)
         
         return CGSize(width: view.frame.size.width, height: imageheight + estimatedRect.height + 45)
         
@@ -85,6 +95,7 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SpecialOffersCell
+        cell.offer = offers?[indexPath.item]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -93,8 +104,8 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC : SpecialOffersDetailVC = SpecialOffersDetailVC()
-        
         pushVC(viewController: detailVC)
+        detailVC.offer = offers?[indexPath.item]
     }
     override func hideKeyboarTouchupOutSide() {
         

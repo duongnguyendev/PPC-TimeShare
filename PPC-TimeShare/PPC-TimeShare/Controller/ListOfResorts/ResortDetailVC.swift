@@ -8,11 +8,17 @@
 
 import UIKit
 
-class ResortDetailVC: BaseViewController {
+class ResortDetailVC: BaseViewController, SignInDelegate {
 
     var resort : Resort?{
         didSet{
             title = resort?.name
+            imageCollection.listImageUrlString = resort?.images
+            labelName.text = resort?.name
+            labelPrice.text = resort?.price
+            labelAddress.text = resort?.address
+            webViewContent.loadHTMLString((resort?.introduceFull)!, baseURL: nil)
+            
         }
     }
     
@@ -22,7 +28,6 @@ class ResortDetailVC: BaseViewController {
     }
     let imageCollection : CollectionImage = {
         let collection = CollectionImage()
-        
         return collection
     }()
     
@@ -60,6 +65,51 @@ class ResortDetailVC: BaseViewController {
         let view = ResortInfoView()
         return view
     }()
+    // info view
+    let labelName : UILabel = {
+        let label = UILabel()
+        label.text = "Name Resort"
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let iconAddress : UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "adress_icon"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+        
+    }()
+    let iconPrice : UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "price_icon"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    let labelAddress : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.text = "123 Holywood, Los Angerles, USA"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.red
+        return label
+    }()
+    
+    let labelPrice : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.text = "2000 USD"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.red
+        return label
+    }()
+    
+    let webViewContent : UIWebView = {
+        let webView = UIWebView()
+        webView.backgroundColor = UIColor.clear
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.isOpaque = false
+        return webView
+    }()
     
     override func setupView() {
         setupScrollView()
@@ -95,20 +145,34 @@ class ResortDetailVC: BaseViewController {
         view.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: tempButtonView)
         
         tempButtonView.addSubview(reservationButton)
-//        tempButtonView.addSubview(bookOnlineButton)
         
         tempButtonView.addConstraintWithFormat(format: "V:|[v0]|", views: reservationButton)
-//        tempButtonView.addConstraintWithFormat(format: "V:|[v0]|", views: bookOnlineButton)
-//        tempButtonView.addConstraint(NSLayoutConstraint(item: reservationButton, attribute: .width, relatedBy: .equal, toItem: bookOnlineButton, attribute: .width, multiplier: 1, constant: 0))
         tempButtonView.addConstraintWithFormat(format: "H:|[v0]|", views: reservationButton)
         
     }
     func setupInfoView(){
-        view.addSubview(infoView)
-        infoView.topAnchor.constraint(equalTo: tempButtonView.bottomAnchor, constant: 10).isActive = true
-        infoView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        infoView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        infoView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        view.addSubview(labelName)
+        view.addSubview(iconAddress)
+        view.addSubview(labelAddress)
+        view.addSubview(iconPrice)
+        view.addSubview(labelPrice)
+        view.addSubview(webViewContent)
+        
+        view.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: labelName)
+        view.addConstraintWithFormat(format: "H:|-20-[v0(25)][v1]-20-|", views: iconAddress, labelAddress)
+        view.addConstraintWithFormat(format: "H:|-20-[v0(25)][v1]-20-|", views: iconPrice, labelPrice)
+        view.addConstraintWithFormat(format: "H:|-15-[v0]-15-|", views: webViewContent)
+        
+        labelName.topAnchor.constraint(equalTo: tempButtonView.bottomAnchor, constant: 10).isActive = true
+        view.addConstraintWithFormat(format: "V:[v0(20)][v1(25)][v2(25)][v3]-10-|", views: labelName, iconAddress, iconPrice, webViewContent)
+        
+        // address label
+        labelAddress.centerYAnchor.constraint(equalTo: iconAddress.centerYAnchor, constant: 0).isActive = true
+        labelAddress.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        // price label
+        labelPrice.centerYAnchor.constraint(equalTo: iconPrice.centerYAnchor, constant: 0).isActive = true
+        labelPrice.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
     }
     
@@ -117,11 +181,33 @@ class ResortDetailVC: BaseViewController {
     }
     
     func handleReservationButton(){
-        let bookVC = BookInAdvanceVC()
-        pushVC(viewController: bookVC)
+        
+        let currentUserInfo = UserDefaults.standard.value(forKey: "currentUser")
+        let userToken = UserDefaults.standard.value(forKey: "token")
+        if currentUserInfo != nil {
+            
+            let user = User(data: currentUserInfo as! Dictionary <String, Any>)
+            user.token = userToken as! String?
+            let bookVC = BookInAdvanceVC()
+            bookVC.resort = self.resort
+            bookVC.user = user
+            pushVC(viewController: bookVC)
+            
+        }else{
+            let singInVC : SignInVC = SignInVC()
+            singInVC.delegate = self
+            presentVC(viewContronller: singInVC)
+        }
     }
     func handleBookOnlineButton(){
         let bookVC = BookOnlineVC()
+        pushVC(viewController: bookVC)
+    }
+    func signInWith(user: User) {
+        
+        let bookVC = BookInAdvanceVC()
+        bookVC.resort = self.resort
+        bookVC.user = user
         pushVC(viewController: bookVC)
     }
 }

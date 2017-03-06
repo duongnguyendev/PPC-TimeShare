@@ -43,7 +43,7 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         let redView : UIView = UIView()
         redView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(redView)
-        redView.backgroundColor = UIColor.red
+        redView.backgroundColor = UIColor.appStyleColor()
         redView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         redView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         redView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true

@@ -10,6 +10,13 @@ import UIKit
 
 class SpecialOffersCell: InfoCell {
     
+    var offer : Offer?{
+        didSet{
+            self.imageView.loadImageUsingUrlString(urlString: (offer?.imageUrlString)!)
+            self.textViewIntro.text = offer?.title
+        }
+    }
+    
     override func setupView() {
         
         super.setupView()
@@ -25,7 +32,6 @@ class SpecialOffersCell: InfoCell {
     let textViewIntro : UITextView = {
         let textView = UITextView()
         textView.isScrollEnabled = false
-        textView.text = "There was a time when the great Australian dream was a family home on a quarter acre book. Now it seems the aussie dream..."
         textView.isEditable = false
         textView.font = UIFont.boldSystemFont(ofSize: 13)
         textView.textAlignment = .justified

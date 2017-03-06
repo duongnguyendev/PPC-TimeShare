@@ -57,6 +57,28 @@ class APIService: NSObject {
         }
     }
     
+    func fetchResortRandom(completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
+        let urlString = "\(baseUrl)/resort/random"
+        self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            
+            if error == nil && errorMes == nil {
+                let resortsDic = response?["data"]
+                let resorts = self.getResortFrom(dictionary: resortsDic as Any)
+                completion(resorts, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
+            
+        }
+    }
+    
     func getRecruitments(completion : @escaping ([Recruitment]?, String?)->()){
         let urlString = "\(baseUrl)/recruitment"
         self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
@@ -125,6 +147,26 @@ class APIService: NSObject {
         }
     }
     
+    func requestGetListVoucher(userId : Int, completion : @escaping ([Voucher]?, String?)->()){
+        let urlString = "\(baseUrl)/vouchers?id=\(userId)"
+        getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            if error == nil && errorMes == nil {
+                let voucherDic = response?["data"]
+                let vouchers = self.getVouchersFrom(dictionary: voucherDic as Any)
+                completion(vouchers, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
+        }
+    }
+    
     func requestUpdate(user : User, completion :@escaping (User?, String?) ->()){
         let urlString = "\(baseUrl)/profile"
         let params = ["id": user.userId!,
@@ -151,6 +193,7 @@ class APIService: NSObject {
         
     }
     
+    
     func checkEmail(email : String, completion : @escaping (String?) ->()){
         let urlString = "\(baseUrl)/check-email"
         let params = ["email": email] as Dictionary<String, Any>
@@ -168,6 +211,54 @@ class APIService: NSObject {
         }
     }
     
+    func requestGetOffers(completion : @escaping ([Offer]?, String?) ->()){
+        let urlString = "\(baseUrl)/deal"
+        self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            if error == nil && errorMes == nil {
+                let offersDic = response?["data"]
+                let offers = self.getOffersFrom(dictionary: offersDic as Any)
+                completion(offers, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
+        }
+    }
+    func requestBook(user : User, info : BookInfo, voucherId : Int?, completion : @escaping (String?, String?) ->()){
+        
+        let urlString = "\(baseUrl)/booking"
+        let params = ["id_user": user.userId!,
+                      "id_resort":(info.resort?.resortId)! as Any,
+                      "note":info.note!,
+                      "start_date":info.checkInDate!,
+                      "end_date": info.checkOutDate!,
+                      "adults": info.numberAdults,
+                      "childs":info.numberChilds,
+                      "room":info.room!,
+                      "token":user.token!,
+                      "voucher_id":voucherId ?? ""] as Dictionary<String,Any>
+        postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
+            if error == nil && errorMes == nil{
+                
+                completion("Success", nil)
+            }else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else{
+                    completion(nil, errorMes)
+                }
+            }
+        }
+    }
+    
+    // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
         
         let url = NSURL(string: urlString)
@@ -201,6 +292,8 @@ class APIService: NSObject {
             }.resume()
     }
     
+    
+    // post request
     func postRequestWith(urlString : String, params : Dictionary<String, Any>, completion: @escaping (Dictionary<String, Any>?, _ err : Error?, String? ) ->()){
         
         let url = NSURL(string: urlString)
@@ -245,7 +338,7 @@ class APIService: NSObject {
         
     }
     
-    
+    // parse data list
     func getResortFrom(dictionary : Any) -> [Resort]{
         let arrayData = dictionary as? Array<Any>
         var resorts : [Resort] = [Resort]()
@@ -264,6 +357,26 @@ class APIService: NSObject {
             recruitments.append(recruitment)
         }
         return recruitments
+    }
+    
+    func getOffersFrom(dictionary : Any) ->[Offer]{
+        let arrayData = dictionary as? Array<Any>
+        var offers : [Offer] = [Offer]()
+        for resortData in arrayData!{
+            let offer = Offer(data: resortData as! Dictionary<String, Any>)
+            offers.append(offer)
+        }
+        return offers
+    }
+    
+    func getVouchersFrom(dictionary : Any) -> [Voucher]{
+        let arrayData = dictionary as? Array<Any>
+        var vouchers : [Voucher] = [Voucher]()
+        for vouchersData in arrayData!{
+            let voucher = Voucher(data: vouchersData as! Dictionary<String, Any>)
+            vouchers.append(voucher)
+        }
+        return vouchers
     }
     
     
