@@ -12,17 +12,18 @@ import GoogleMaps
 class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var lisResortVC : ListOfResortsVC?
-    
     let margin : CGFloat = 25.0
-    
-    var resorts: [Resort]?
+    let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    var resorts: [Resort] = [Resort]()
     func fetchResort(){
+        self.activity.startAnimating()
         APIService.sharedInstance.fetchResortNew { (resorts : [Resort]?, errorMessage) in
             
             if errorMessage == nil{
-                self.resorts = resorts
+                self.resorts = self.resorts + resorts!
                 self.collectionView.reloadData()
-                self.addMarkToMap()
+                self.addMarkToMap(resorts: resorts!)
+                self.activity.stopAnimating()
             }  
         }
     }
@@ -34,15 +35,6 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        //        mapView = mymapView
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-        
         mapView?.isHidden = true
         
         addSubview(mapView!)
@@ -53,14 +45,17 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: mapView!)
         addConstraintWithFormat(format: "V:|[v0]|", views: mapView!)
         
+        addSubview(activity)
         
-
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        activity.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        activity.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        self.activity.hidesWhenStopped = true
         
     }
   
     let cellId = "cellId"
     var mapView : GMSMapView?
-    
     
     lazy var collectionView: UICollectionView = {
         
@@ -74,12 +69,12 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
     }()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return resorts?.count ?? 0
+        return resorts.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ResortCell
         
-        cell.resort = resorts?[indexPath.item]
+        cell.resort = resorts[indexPath.item]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -87,13 +82,13 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         
         let size = CGSize(width: frame.width - margin - margin - 10, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        let text = resorts?[indexPath.item].introduce
+        let text = resorts[indexPath.item].introduce
         let estimatedRect = NSString(string: text!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 11)], context: nil)
         
         return CGSize(width: frame.size.width, height: height + estimatedRect.height)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        lisResortVC?.handleItemResorstSelected(resort: (self.resorts?[indexPath.item])!)
+        lisResortVC?.handleItemResorstSelected(resort: (self.resorts[indexPath.item]))
     }
     
     
@@ -105,13 +100,12 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
             mapView?.isHidden = true
         }
     }
-    func addMarkToMap(){
+    func addMarkToMap(resorts : [Resort]){
         
-        for resort in resorts!{
+        for resort in resorts{
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: resort.lat!, longitude: resort.lng!)
             marker.title = resort.name
-//            marker.snippet = "Australia"
             marker.map = mapView
         }
     }

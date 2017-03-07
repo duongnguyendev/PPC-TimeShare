@@ -14,7 +14,7 @@ class HistoryCell: BaseCell {
         didSet{
             self.labelName.text = bookInfo?.resort?.name
             self.labelAddress.text = bookInfo?.resort?.address
-            self.labelAddress.text = bookInfo?.resort?.price
+            self.labelPrice.text = bookInfo?.resort?.price
         }
     }
     
@@ -37,6 +37,7 @@ class HistoryCell: BaseCell {
     let labelAddress : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Light", size: 13)
+        label.text = "Name Resort"
         label.textColor = UIColor.red
         return label
     }()
@@ -44,21 +45,27 @@ class HistoryCell: BaseCell {
     let labelPrice : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Light", size: 13)
+        label.text = "Name Resort"
         label.textColor = UIColor.red
         return label
     }()
 
     override func setupView() {
+        self.backgroundColor = UIColor.white
         addSubview(labelName)
         addSubview(iconAddress)
         addSubview(iconPrice)
         addSubview(labelAddress)
         addSubview(labelPrice)
         
-        addConstraintWithFormat(format: "V:|[v0(20)]-5-[v1(20)][v2(20)]|", views: labelName, iconAddress, iconPrice)
+        addConstraintWithFormat(format: "V:|-5-[v0]-5-[v1(20)][v2(20)]-5-|", views: labelName, iconAddress, iconPrice)
+        addConstraintWithFormat(format: "H:|-20-[v0]|", views: labelName)
+        addConstraintWithFormat(format: "H:|-17-[v0(20)]-5-[v1]|", views: iconAddress, labelAddress)
+        addConstraintWithFormat(format: "H:|-17-[v0(20)]-5-[v1]|", views: iconPrice, labelPrice)
         
+        labelAddress.centerYAnchor.constraint(equalTo: iconAddress.centerYAnchor, constant: 0).isActive = true
+        labelPrice.centerYAnchor.constraint(equalTo: iconPrice.centerYAnchor, constant: 0).isActive = true
         
-
     }
 
 }

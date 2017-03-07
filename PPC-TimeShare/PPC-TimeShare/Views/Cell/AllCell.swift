@@ -11,9 +11,9 @@ import UIKit
 class AllCell: NewCell {
     override func fetchResort() {
         APIService.sharedInstance.fetchResortAll { (resorts:[Resort]?, errorMessage) in
-            self.resorts = resorts
+            self.resorts = self.resorts + resorts!
             self.collectionView.reloadData()
-            self.addMarkToMap()
+            self.addMarkToMap(resorts: resorts!)
         }
     }
 }

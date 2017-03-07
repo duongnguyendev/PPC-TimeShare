@@ -77,10 +77,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     
     func showFilter(){
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blackView.alpha = 1
-            self.contentView.alpha = 1
-        }, completion: nil)
+        self.show()
         
     }
     override func setupContent(){

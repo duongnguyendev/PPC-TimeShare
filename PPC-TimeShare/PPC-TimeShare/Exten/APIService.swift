@@ -258,6 +258,27 @@ class APIService: NSObject {
         }
     }
     
+    func requestGetListBook(userId : NSNumber, completion : @escaping ([BookInfo]?, String?) ->()){
+        let urlString = "\(baseUrl)/bookings?id=\(userId)"
+        getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            if error == nil && errorMes == nil {
+                let bookDic = response?["data"]
+                let bookings = self.getBooksFrom(dictionary: bookDic as Any)
+                completion(bookings, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
+        }
+        
+    }
+    
     // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
         
@@ -377,6 +398,16 @@ class APIService: NSObject {
             vouchers.append(voucher)
         }
         return vouchers
+    }
+    
+    func getBooksFrom(dictionary : Any) -> [BookInfo]{
+        let arrayData = dictionary as? Array<Any>
+        var books : [BookInfo] = [BookInfo]()
+        for bookData in arrayData!{
+            let bookInfo = BookInfo(data: bookData as! Dictionary<String, Any>)
+            books.append(bookInfo)
+        }
+        return books
     }
     
     

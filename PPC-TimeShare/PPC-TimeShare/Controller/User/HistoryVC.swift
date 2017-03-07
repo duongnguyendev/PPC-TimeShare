@@ -15,6 +15,20 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
 
         // Do any additional setup after loading the view.
     }
+    var userId : NSNumber?
+    var books : [BookInfo]?
+    
+    func fetchBookInfo(){
+        APIService.sharedInstance.requestGetListBook(userId: userId!) { (listBook, errorMes) in
+            if errorMes != nil{
+                
+            }else{
+                self.books = listBook!
+                self.collectionHistory.reloadData()
+            }
+        }
+    }
+    
     let cellId = "cellId"
     lazy var collectionHistory : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -25,8 +39,11 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
         return collectionView
 
     }()
+    
+    let historyLauncher = HistoryLauncher()
     override func setupView() {
-        collectionHistory.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        self.fetchBookInfo()
+        collectionHistory.register(HistoryCell.self, forCellWithReuseIdentifier: cellId)
         
         view.addSubview(collectionHistory)
         
@@ -42,11 +59,11 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
     
     //collection delegate - datasouce
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return books?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = UIColor.red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HistoryCell
+        cell.bookInfo = books?[indexPath.item]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -54,10 +71,16 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: 100)
+        return CGSize(width: self.view.frame.width, height: 70)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.historyLauncher.bookInfo = self.books?[indexPath.item]
+        self.historyLauncher.show()
     }
     
     
-    
+    override func hideKeyboarTouchupOutSide() {
+        
+    }
 
 }

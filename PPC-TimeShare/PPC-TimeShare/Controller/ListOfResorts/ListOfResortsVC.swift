@@ -169,8 +169,6 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     override func handleFilter() {
         
         self.filterLauncher.showFilter()
-        
-        
     }
     
     

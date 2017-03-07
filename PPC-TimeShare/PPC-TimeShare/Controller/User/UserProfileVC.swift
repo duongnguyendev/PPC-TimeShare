@@ -31,7 +31,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     
     func setupHistoryButton(){
         
-        let historyButton = barButton(iconName: "home_icon")
+        let historyButton = barButton(iconName: "icon_history")
         historyButton.addTarget(self, action: #selector(handleHistory), for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: historyButton)
         self.navigationItem.rightBarButtonItem = barButtonItem
@@ -142,7 +142,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     let buttonYourVoucher : InfoButton = {
         let button = InfoButton()
         button.labelTitle.font = UIFont(name: "Roboto-Light", size: 14)
-        button.iconName = "gender_icon"
+        button.iconName = "icon_gift"
         button.addTarget(self, action: #selector(handleButtonVoucher), for: .touchUpInside)
         button.title = "Your voucher" // title = value
         button.value = ""
@@ -151,7 +151,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     let buttonShareYourApp : InfoButton = {
         let button = InfoButton()
         button.labelTitle.font = UIFont(name: "Roboto-Light", size: 14)
-        button.iconName = "gender_icon"
+        button.iconName = "icon_share"
         button.addTarget(self, action: #selector(handleButtonShare), for: .touchUpInside)
         button.title = "Share your app" // title = value
         button.value = ""
@@ -295,10 +295,14 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     }
     
     func handleButtonShare() {
-        print("handleButtonShare")
+        let shareVC = ShareAppVC()
+        shareVC.user = self.user
+        self.pushVC(viewController: shareVC)
     }
     func handleButtonVoucher() {
-        print("handleButtonVoucher")
+        let voucherVC = YourVoucherVC()
+        voucherVC.userId = self.user?.userId
+        self.pushVC(viewController: voucherVC)
     }
     
     func input(edited: Bool) {
@@ -364,6 +368,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     
     func handleHistory() {
         let historyVC = HistoryVC()
+        historyVC.userId = self.user?.userId
         self.pushVC(viewController: historyVC)
     }
     

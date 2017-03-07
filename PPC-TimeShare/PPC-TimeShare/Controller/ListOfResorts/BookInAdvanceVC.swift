@@ -123,7 +123,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     }()
     let voucherView : InfoButton = {
         let v = InfoButton()
-        v.iconName = "room_icon"
+        v.iconName = "icon_gift"
         v.title = "Select voucher"
         v.value = ""
         v.addTarget(self, action: #selector(handleVoucherButton), for: .touchUpInside)

@@ -24,6 +24,8 @@ class BaseLauncher: NSObject {
     }
     
     func setupContent(){
+        
+        contentView.clipsToBounds = true
         if let window = UIApplication.shared.keyWindow{
             
 //            blackView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +60,12 @@ class BaseLauncher: NSObject {
             self.blackView.isHidden = true
             self.contentView.isHidden = true
         }
+    }
+    
+    func touchUpOutSize(){
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hide))
+        self.blackView.isUserInteractionEnabled = true
+        self.blackView.addGestureRecognizer(tap)
     }
 }
 

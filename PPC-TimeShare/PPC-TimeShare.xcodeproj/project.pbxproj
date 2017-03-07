@@ -44,6 +44,9 @@
 		4E119EA41E51BFB900F85AD4 /* SignUp_1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E119EA31E51BFB900F85AD4 /* SignUp_1VC.swift */; };
 		4E158F181E6D408B0062ED5D /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E158F171E6D408B0062ED5D /* HistoryVC.swift */; };
 		4E158F1A1E6D47490062ED5D /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E158F191E6D47490062ED5D /* HistoryCell.swift */; };
+		4E158F1C1E6D54D80062ED5D /* HistoryLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E158F1B1E6D54D80062ED5D /* HistoryLauncher.swift */; };
+		4E158F201E6D65D40062ED5D /* YourVoucherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E158F1F1E6D65D40062ED5D /* YourVoucherVC.swift */; };
+		4E158F221E6D65FE0062ED5D /* ShareAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E158F211E6D65FE0062ED5D /* ShareAppVC.swift */; };
 		4E18D7D91E651809003F6A0B /* DropDownLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18D7D81E651809003F6A0B /* DropDownLanguages.swift */; };
 		4E1B77641E4EAB930024E457 /* IntroduceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B77631E4EAB930024E457 /* IntroduceCell.swift */; };
 		4E1B776A1E4EC1B10024E457 /* IntroductionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */; };
@@ -133,6 +136,9 @@
 		4E119EA31E51BFB900F85AD4 /* SignUp_1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp_1VC.swift; sourceTree = "<group>"; };
 		4E158F171E6D408B0062ED5D /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		4E158F191E6D47490062ED5D /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		4E158F1B1E6D54D80062ED5D /* HistoryLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryLauncher.swift; sourceTree = "<group>"; };
+		4E158F1F1E6D65D40062ED5D /* YourVoucherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourVoucherVC.swift; sourceTree = "<group>"; };
+		4E158F211E6D65FE0062ED5D /* ShareAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareAppVC.swift; sourceTree = "<group>"; };
 		4E18D7D81E651809003F6A0B /* DropDownLanguages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownLanguages.swift; sourceTree = "<group>"; };
 		4E1B77631E4EAB930024E457 /* IntroduceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceCell.swift; sourceTree = "<group>"; };
 		4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionDetail.swift; sourceTree = "<group>"; };
@@ -319,6 +325,8 @@
 				4E7F530F1E542F3300EBCF04 /* ForgotPasswordVC.swift */,
 				4E51A14C1E5C209E005FC363 /* UserProfileVC.swift */,
 				4E158F171E6D408B0062ED5D /* HistoryVC.swift */,
+				4E158F1F1E6D65D40062ED5D /* YourVoucherVC.swift */,
+				4E158F211E6D65FE0062ED5D /* ShareAppVC.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -440,6 +448,7 @@
 				4E400C9B1E56A4E500E6E91D /* FilterLauncher.swift */,
 				4E2402B71E67BB71002D8FF9 /* InputTravelersLauncher.swift */,
 				4ED93F5C1E69254100C881A1 /* ListVoucherLauncher.swift */,
+				4E158F1B1E6D54D80062ED5D /* HistoryLauncher.swift */,
 			);
 			path = Launcher;
 			sourceTree = "<group>";
@@ -630,14 +639,17 @@
 				4E7F53121E543ACB00EBCF04 /* ButtonCustoms.swift in Sources */,
 				4E7F530A1E53F0FA00EBCF04 /* ExploreAllDestinationCell.swift in Sources */,
 				4E400C9E1E56B99600E6E91D /* FilterButton.swift in Sources */,
+				4E158F201E6D65D40062ED5D /* YourVoucherVC.swift in Sources */,
 				4E51A14D1E5C209E005FC363 /* UserProfileVC.swift in Sources */,
 				4E105F971E4DE86000A2CBC4 /* SendRequestVC.swift in Sources */,
+				4E158F1C1E6D54D80062ED5D /* HistoryLauncher.swift in Sources */,
 				4E119E781E51A0D800F85AD4 /* ResortDetailVC.swift in Sources */,
 				4E105FA61E4DF57F00A2CBC4 /* LanguageManager.swift in Sources */,
 				4E0803351E5D716600F035AA /* Place.swift in Sources */,
 				4E5063DD1E4DCD0200210411 /* BaseViewController.swift in Sources */,
 				4E400C9C1E56A4E500E6E91D /* FilterLauncher.swift in Sources */,
 				4ED1E1AE1E4CB8FF006A562F /* HomeVC.swift in Sources */,
+				4E158F221E6D65FE0062ED5D /* ShareAppVC.swift in Sources */,
 				4E0803371E5D7CC000F035AA /* ProvinceDropDown.swift in Sources */,
 				4E9775391E4C089500227A33 /* AppDelegate.swift in Sources */,
 				4EFAFDBA1E5B21CF001261E1 /* APIService.swift in Sources */,

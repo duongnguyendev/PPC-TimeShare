@@ -84,12 +84,6 @@ class ListVoucherLauncher: BaseLauncher, UICollectionViewDelegate, UICollectionV
         return 1
     }
     
-    func touchUpOutSize(){
-        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hide))
-        self.blackView.isUserInteractionEnabled = true
-        self.blackView.addGestureRecognizer(tap)
-    }
-    
     func noResult(){
         
         let imageView = UIImageView(image: UIImage(named: "noresult_icon"))
