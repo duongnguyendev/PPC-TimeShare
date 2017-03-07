@@ -64,20 +64,20 @@ class ResortCell: InfoCell {
     }
     let adressLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11)
+        label.font = UIFont(name: "Roboto-Light", size: 13)
         label.text = "Los Angerles, USA"
         label.textColor = UIColor.red
         return label
     }()
     let nameLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont(name: "Roboto-Medium", size: 15)
         label.text = "Name Resort"
         return label
     }()
     let priceLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11)
+        label.font = UIFont(name: "Roboto-Light", size: 13)
         label.textColor = UIColor.red
         label.text = "2.000 USD"
         return label
@@ -89,7 +89,7 @@ class ResortCell: InfoCell {
         textView.isScrollEnabled = false
         textView.text = "There was a time when the great Australian dream was a family home on a quarter acre book. Now it seems the aussie dream..."
         textView.isEditable = false
-        textView.font = UIFont.systemFont(ofSize: 11)
+        textView.font = UIFont(name: "Roboto-Light", size: 13)
         textView.textAlignment = .justified
         textView.backgroundColor = UIColor.clear
         return textView
@@ -116,23 +116,23 @@ class ResortCell: InfoCell {
         
         nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5).isActive = true
         contentV.addConstraintWithFormat(format: "H:|-\(self.pedding)-[v0]|", views: nameLabel)
-        nameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         // address
-        iconAdress.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        iconAdress.heightAnchor.constraint(equalToConstant: 20).isActive = true
         contentV.addConstraint(NSLayoutConstraint(item: iconAdress, attribute: .centerY, relatedBy: .equal, toItem: adressLabel, attribute: .centerY, multiplier: 1, constant: 0))
 
         adressLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0).isActive = true
-        contentV.addConstraintWithFormat(format: "H:|-\(self.pedding)-[v0(15)][v1]-\(self.pedding)-|", views: iconAdress, adressLabel)
-        adressLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        contentV.addConstraintWithFormat(format: "H:|-\(self.pedding - 2)-[v0(20)][v1]-\(self.pedding)-|", views: iconAdress, adressLabel)
+        adressLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         //price
-        iconPrice.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        iconPrice.heightAnchor.constraint(equalToConstant: 20).isActive = true
         contentV.addConstraint(NSLayoutConstraint(item: iconPrice, attribute: .centerY, relatedBy: .equal, toItem: priceLabel, attribute: .centerY, multiplier: 1, constant: 0))
         
         priceLabel.topAnchor.constraint(equalTo: adressLabel.bottomAnchor, constant: 0).isActive = true
-        contentV.addConstraintWithFormat(format: "H:|-\(self.pedding)-[v0(15)][v1]-\(self.pedding)-|", views:iconPrice, priceLabel)
-        priceLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        contentV.addConstraintWithFormat(format: "H:|-\(self.pedding - 2)-[v0(20)][v1]-\(self.pedding)-|", views:iconPrice, priceLabel)
+        priceLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         textViewIntro.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: -5).isActive = true
         contentV.addConstraintWithFormat(format: "H:|-5-[v0]-5-|", views: textViewIntro)

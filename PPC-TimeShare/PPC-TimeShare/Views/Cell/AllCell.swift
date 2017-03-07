@@ -9,11 +9,34 @@
 import UIKit
 
 class AllCell: NewCell {
+    
+    var currentPage : Int = 0
+    var nextPageUrl : String? = "\(LanguageManager.sharedInstance.localizedString(string: "domain")!)resort/all?page=1"
     override func fetchResort() {
-        APIService.sharedInstance.fetchResortAll { (resorts:[Resort]?, errorMessage) in
-            self.resorts = self.resorts + resorts!
-            self.collectionView.reloadData()
-            self.addMarkToMap(resorts: resorts!)
+        if nextPageUrl != nil{
+            self.activity.startAnimating()
+            APIService.sharedInstance.fetchResortAll(pageUrl: nextPageUrl!) { (resorts, errorMes, nextPage) in
+                if errorMes != nil {
+                    if self.resorts.count == 0{
+                        self.noResult()
+                    }
+                    self.activity.stopAnimating()
+                }
+                else{
+                    self.resorts = self.resorts + resorts!
+                    self.collectionView.reloadData()
+                    self.addMarkToMap(resorts: resorts!)
+                    self.nextPageUrl = nextPage
+                    self.activity.stopAnimating()
+                }
+            }
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == resorts.count - 1 {
+            self.fetchResort()
         }
     }
 }

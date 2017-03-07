@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().setBackgroundImage(UIImage(),for: .default)
         
         let statusBarBackgroundView = UIView()
-        statusBarBackgroundView.backgroundColor = UIColor.rgb(red: 79, green: 44, blue: 29)
+        statusBarBackgroundView.backgroundColor = UIColor.rgb(red: 43, green: 32, blue: 26)
         statusBarBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         window?.addSubview(statusBarBackgroundView)
         window?.addConstraintWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)

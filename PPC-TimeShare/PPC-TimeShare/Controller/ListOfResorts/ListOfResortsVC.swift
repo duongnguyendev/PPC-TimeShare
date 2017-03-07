@@ -12,7 +12,7 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     
     let tabViewHeight : CGFloat = 40.0
     let margin : CGFloat = 25.0
-    
+
     var selectNew : Bool?{
         didSet{
             if selectNew! {
@@ -72,12 +72,14 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     let buttonNew : TabButton = {
         let button = TabButton()
         button.setTitle("New", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Roboto-Light", size: 16)
         button.addTarget(self, action: #selector(handleNewButton), for: .touchUpInside)
         return button
     }()
     let buttonAll : TabButton = {
         let button = TabButton()
         button.setTitle("All", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Roboto-Light", size: 16)
         button.addTarget(self, action: #selector(handleAllButton), for: .touchUpInside)
         return button
     }()

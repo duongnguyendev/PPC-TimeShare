@@ -6,7 +6,14 @@
   Copyright © 2017 Nguyen Duy Duong. All rights reserved.
 */
 
+// host
+
+domain = "http://ppctimeshare.hbbsolution.com/api/";
+
 // title base view controller
+
+
+
 
 ForgotPassword= "Forgot Password";
 YourEmail= "Your email";

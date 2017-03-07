@@ -61,14 +61,14 @@ class HomeNavBar: BaseView {
         addSubview(titleView)
         addSubview(buttonSetting)
         
-        addConstraintWithFormat(format: "H:|-10-[v0(20)][v1][v2(20)]-10-|", views: buttonUser, titleView, buttonSetting)
+        addConstraintWithFormat(format: "H:|-10-[v0(25)][v1][v2(25)]-10-|", views: buttonUser, titleView, buttonSetting)
         
         addConstraintWithFormat(format: "V:|-5-[v0]-5-|", views: titleView)
         
-        buttonUser.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        buttonUser.heightAnchor.constraint(equalToConstant: 25).isActive = true
         buttonUser.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         
-        buttonSetting.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        buttonSetting.heightAnchor.constraint(equalToConstant: 25).isActive = true
         buttonSetting.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
 
     }

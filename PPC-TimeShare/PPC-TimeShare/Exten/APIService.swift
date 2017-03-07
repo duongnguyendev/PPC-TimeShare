@@ -11,23 +11,23 @@ import UIKit
 class APIService: NSObject {
     
     static let sharedInstance = APIService()
-    let baseUrl = "http://ppctimeshare.hbbsolution.com/api/vi"
     
-    func fetchResortAll(completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
-        let urlString = "\(baseUrl)/resort/all?page=1"
+    func fetchResortAll(pageUrl: String, completion : @escaping ([Resort]?, _ errorMessage : String?, _ nextPageUrl: String?)->()){
+        let urlString = pageUrl
         self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
             
             if error == nil && errorMes == nil {
                 let resortsDic = response?["data"]
+                let nextPage = response?["next_page_url"]
                 let resorts = self.getResortFrom(dictionary: resortsDic as Any)
-                completion(resorts, nil)
+                completion(resorts, nil,nextPage as? String)
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, "Can't connect to server", nil)
                 }
                 else {
-                    completion(nil, errorMes)
+                    completion(nil, errorMes, nil)
                 }
                 
             }
@@ -36,7 +36,7 @@ class APIService: NSObject {
     }
     
     func fetchResortNew(completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
-        let urlString = "\(baseUrl)/resort/new"
+        let urlString = "\(self.getCurrentDomain())resort/new"
         self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
             
             if error == nil && errorMes == nil {
@@ -58,7 +58,7 @@ class APIService: NSObject {
     }
     
     func fetchResortRandom(completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
-        let urlString = "\(baseUrl)/resort/random"
+        let urlString = "\(self.getCurrentDomain())resort/random"
         self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
             
             if error == nil && errorMes == nil {
@@ -80,7 +80,7 @@ class APIService: NSObject {
     }
     
     func getRecruitments(completion : @escaping ([Recruitment]?, String?)->()){
-        let urlString = "\(baseUrl)/recruitment"
+        let urlString = "\(self.getCurrentDomain())recruitment"
         self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
             if error == nil && errorMes == nil {
                 let recruitmentsDic = response?["data"]
@@ -101,7 +101,7 @@ class APIService: NSObject {
     
     func requestSignUp(user : User, completion : @escaping (User?, String?)->()){
         
-        let urlString = "\(baseUrl)/register"
+        let urlString = "\(self.getCurrentDomain())register"
         let params = ["email":user.email!,
                       "diachi":user.address!,
                       "hoten":user.userName!,
@@ -129,7 +129,7 @@ class APIService: NSObject {
     }
     
     func requestSignIn(email: String, passWord : String, completion: @escaping (User?, String?) ->()){
-        let urlString = "\(baseUrl)/login"
+        let urlString = "\(self.getCurrentDomain())login"
         let params = ["email":email, "password": passWord] as Dictionary<String, Any>
         postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
             if error == nil && errorMes == nil{
@@ -148,7 +148,7 @@ class APIService: NSObject {
     }
     
     func requestGetListVoucher(userId : Int, completion : @escaping ([Voucher]?, String?)->()){
-        let urlString = "\(baseUrl)/vouchers?id=\(userId)"
+        let urlString = "\(self.getCurrentDomain())vouchers?id=\(userId)"
         getRequestWith(urlString: urlString) { (response, error, errorMes) in
             if error == nil && errorMes == nil {
                 let voucherDic = response?["data"]
@@ -168,7 +168,7 @@ class APIService: NSObject {
     }
     
     func requestUpdate(user : User, completion :@escaping (User?, String?) ->()){
-        let urlString = "\(baseUrl)/profile"
+        let urlString = "\(self.getCurrentDomain())profile"
         let params = ["id": user.userId!,
                       "diachi":user.address!,
                       "hoten":user.userName!,
@@ -195,7 +195,7 @@ class APIService: NSObject {
     
     
     func checkEmail(email : String, completion : @escaping (String?) ->()){
-        let urlString = "\(baseUrl)/check-email"
+        let urlString = "\(self.getCurrentDomain())check-email"
         let params = ["email": email] as Dictionary<String, Any>
         postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
             if error == nil && errorMes == nil{
@@ -212,7 +212,7 @@ class APIService: NSObject {
     }
     
     func requestGetOffers(completion : @escaping ([Offer]?, String?) ->()){
-        let urlString = "\(baseUrl)/deal"
+        let urlString = "\(self.getCurrentDomain())deal"
         self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
             if error == nil && errorMes == nil {
                 let offersDic = response?["data"]
@@ -232,7 +232,7 @@ class APIService: NSObject {
     }
     func requestBook(user : User, info : BookInfo, voucherId : Int?, completion : @escaping (String?, String?) ->()){
         
-        let urlString = "\(baseUrl)/booking"
+        let urlString = "\(self.getCurrentDomain())booking"
         let params = ["id_user": user.userId!,
                       "id_resort":(info.resort?.resortId)! as Any,
                       "note":info.note!,
@@ -259,7 +259,7 @@ class APIService: NSObject {
     }
     
     func requestGetListBook(userId : NSNumber, completion : @escaping ([BookInfo]?, String?) ->()){
-        let urlString = "\(baseUrl)/bookings?id=\(userId)"
+        let urlString = "\(self.getCurrentDomain())bookings?id=\(userId)"
         getRequestWith(urlString: urlString) { (response, error, errorMes) in
             if error == nil && errorMes == nil {
                 let bookDic = response?["data"]
@@ -357,6 +357,10 @@ class APIService: NSObject {
             }
             }.resume()
         
+    }
+    
+    func getCurrentDomain() -> String{
+        return LanguageManager.sharedInstance.localizedString(string: "domain")!
     }
     
     // parse data list

@@ -72,7 +72,7 @@ class DropDownView: BaseView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.size.width, height: 30)
+        return CGSize(width: self.frame.size.width, height: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -89,7 +89,7 @@ class DropDownCell: BaseCell {
     let labelString : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Roboto-Light", size: 16)
         return label
     }()
     
@@ -118,7 +118,7 @@ class TypeDropDown: DropDownView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.size.width, height: 30)
+        return CGSize(width: self.frame.size.width, height: 40)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -142,7 +142,7 @@ class SearchByDropDown: DropDownView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.size.width, height: 30)
+        return CGSize(width: self.frame.size.width, height: 40)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

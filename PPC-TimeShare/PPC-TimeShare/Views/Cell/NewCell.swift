@@ -18,13 +18,18 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
     func fetchResort(){
         self.activity.startAnimating()
         APIService.sharedInstance.fetchResortNew { (resorts : [Resort]?, errorMessage) in
-            
             if errorMessage == nil{
                 self.resorts = self.resorts + resorts!
                 self.collectionView.reloadData()
                 self.addMarkToMap(resorts: resorts!)
                 self.activity.stopAnimating()
-            }  
+            }
+            else{
+                if self.resorts.count == 0{
+                    self.noResult()
+                }
+                self.activity.stopAnimating()
+            }
         }
     }
     
@@ -78,19 +83,28 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = frame.width / 16 * 9 + 45 + 45
+        let height = frame.width / 16 * 9 + 110
         
         let size = CGSize(width: frame.width - margin - margin - 10, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let text = resorts[indexPath.item].introduce
-        let estimatedRect = NSString(string: text!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 11)], context: nil)
+        let estimatedRect = NSString(string: text!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.init(name: "Roboto-Medium", size: 13) as Any], context: nil)
         
         return CGSize(width: frame.size.width, height: height + estimatedRect.height)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         lisResortVC?.handleItemResorstSelected(resort: (self.resorts[indexPath.item]))
     }
-    
+
+    func noResult(){
+        let imageView = UIImageView(image: UIImage(named: "noresult_icon"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(imageView)
+        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: margin).isActive = true
+        
+    }
     
     func mapControl(){
         if (mapView?.isHidden)! {

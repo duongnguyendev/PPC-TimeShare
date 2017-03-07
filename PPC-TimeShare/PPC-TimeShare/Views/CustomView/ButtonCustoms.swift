@@ -98,7 +98,6 @@ class HomeButtonCustom : BaseButton {
         addBackGround()
         addSubview(titleLabelView)
         addSubview(iconView)
-        addSubview(titleTextView)
     }
     var iconName : String?{
         didSet{
@@ -107,7 +106,6 @@ class HomeButtonCustom : BaseButton {
     }
     var title : String?{
         didSet{
-            titleTextView.text = title
             titleLabelView.text = title
         }
     }
@@ -132,24 +130,15 @@ class HomeButtonCustom : BaseButton {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
-    let titleTextView : UITextView = {
-        let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textAlignment = .center
-        textView.textColor = UIColor.white
-        textView.backgroundColor = UIColor.clear
-        textView.font = UIFont.systemFont(ofSize: 18)
-        textView.isEditable = false
-        return textView
-    }()
     let titleLabelView : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = UIColor.white
         label.backgroundColor = UIColor.clear
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 2
+        
+        label.font = UIFont(name: "Roboto-Regular", size: 20)
         return label
         
     }()
@@ -172,27 +161,22 @@ class HomeButtonCustom : BaseButton {
         
         addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: (1 / 2) , constant: 0))
         
-        
-        titleTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
-        titleTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        
-        addConstraint(NSLayoutConstraint(item: titleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: (1 / 2) , constant: 0))
-        titleTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        titleLabelView.isHidden = true
+        titleLabelView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        titleLabelView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        titleLabelView.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        titleLabelView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         
     }
     
     func setupSystemView(){
         addConstraintWithFormat(format: "H:|[v0]|", views: titleLabelView)
         addConstraintWithFormat(format: "V:|[v0]|", views: titleLabelView)
-        titleTextView.isHidden = true
         iconView.isHidden = true
         
     }
     func setupListResortView(){
         
         iconView.isHidden = true
-        titleTextView.isHidden = true
         let titleBackground = UIImageView(image: UIImage(named: "list_resort_text_bg"))
         addSubview(titleBackground)
         
@@ -212,8 +196,6 @@ class HomeButtonCustom : BaseButton {
         
     }
     func setupRecruitmentView(){
-        
-        titleTextView.isHidden = true
         
         iconView.heightAnchor.constraint(equalToConstant: 45).isActive = true
         iconView.widthAnchor.constraint(equalToConstant: 45).isActive = true
@@ -238,8 +220,6 @@ class HomeButtonCustom : BaseButton {
         titleLabelView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         titleLabelView.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 0).isActive = true
         titleLabelView.textColor = UIColor.white
-        
-        titleTextView.isHidden = true
         
     }
 }

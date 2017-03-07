@@ -10,7 +10,7 @@ import UIKit
 
 class HomeVC: UIViewController {
     
-    let navHeight : CGFloat = 60.0
+    let navHeight : CGFloat = 80.0
     var minumumItemSize : CGFloat?
     
     let background_1: UIImageView = {

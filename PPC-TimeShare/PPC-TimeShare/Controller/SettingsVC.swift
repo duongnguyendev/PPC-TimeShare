@@ -53,8 +53,8 @@ class SettingsVC: BaseViewController, DropDownDelegate {
         
         languageDropDown.topAnchor.constraint(equalTo: buttonLanguage.bottomAnchor, constant: 1).isActive = true
         languageDropDown.rightAnchor.constraint(equalTo: buttonLanguage.rightAnchor, constant: -10).isActive = true
-        languageDropDown.heightAnchor.constraint(equalToConstant: 63).isActive = true
-        languageDropDown.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        languageDropDown.heightAnchor.constraint(equalToConstant: 83).isActive = true
+        languageDropDown.widthAnchor.constraint(equalToConstant: 150).isActive = true
     }
     
     func handleLogoutButton(){

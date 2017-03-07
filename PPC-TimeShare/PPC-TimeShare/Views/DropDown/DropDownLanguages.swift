@@ -41,7 +41,7 @@ class DropDownLanguages: DropDownView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.size.width, height: 30)
+        return CGSize(width: self.frame.size.width, height: 40)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

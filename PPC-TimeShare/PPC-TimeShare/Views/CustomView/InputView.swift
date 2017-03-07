@@ -66,7 +66,7 @@ class InputView: BaseView {
     
     let textField : UITextField = {
         let tF = UITextField()
-        tF.font = UIFont(name: "Roboto-Light", size: 14)
+        tF.font = UIFont(name: "Roboto-Light", size: 16)
         return tF
     }()
     let editControllButton : BaseButton = {

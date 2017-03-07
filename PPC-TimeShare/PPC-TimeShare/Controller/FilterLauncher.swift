@@ -135,7 +135,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     let dropDownCountry = CountryDropDown()
     let dropDownCity = ProvinceDropDown()
     let dropDownType = TypeDropDown()
-    lazy var dropDownSearchBy : SearchByDropDown = SearchByDropDown()
+    let dropDownSearchBy = SearchByDropDown()
     func setupDropDown(){
         setupDropDownCountry()
         setupDownCity()
