@@ -97,7 +97,13 @@ class CustomImageView : UIImageView{
                 if self.imageUrlString == urlString{
                     self.image = imageToCache
                 }
-                imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                if imageToCache != nil{
+                    imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                }
+                else{
+                    self.image = UIImage(named: "no_image_icon")
+                }
+                
                 
             }
             

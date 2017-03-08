@@ -278,6 +278,65 @@ class APIService: NSObject {
         }
         
     }
+    func requestGetCountries(completion: @escaping ([Country]?, String?) -> ()){
+        let urlString = "\(self.getCurrentDomain())countries"
+        
+        getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            if error == nil && errorMes == nil {
+                let countriesDic = response?["data"]
+                let countries = self.getCountriesFrom(dictionary: countriesDic as Any)
+                completion(countries, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+            }
+        }
+    }
+
+    func requestGetProvinces(country: Country, completion: @escaping ([Province]?, String?) -> ()){
+        let urlString = "\(self.getCurrentDomain())provinces?country_id=\(country.countryId!)"
+        
+        getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            if error == nil && errorMes == nil {
+                let provincesDic = response?["data"]
+                let provinces = self.getProvincesFrom(dictionary: provincesDic as Any)
+                completion(provinces, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+            }
+        }
+    }
+    
+    func requestGetTypesResort(completion: @escaping ([TypeResort]?, String?) -> ()){
+        let urlString = "\(self.getCurrentDomain())types"
+        
+        getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            if error == nil && errorMes == nil {
+                let typesDic = response?["data"]
+                let types = self.getTypesResort(dictionary: typesDic as Any)
+                completion(types, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+            }
+        }
+    }
     
     // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
@@ -359,10 +418,6 @@ class APIService: NSObject {
         
     }
     
-    func getCurrentDomain() -> String{
-        return LanguageManager.sharedInstance.localizedString(string: "domain")!
-    }
-    
     // parse data list
     func getResortFrom(dictionary : Any) -> [Resort]{
         let arrayData = dictionary as? Array<Any>
@@ -414,5 +469,38 @@ class APIService: NSObject {
         return books
     }
     
+    func getCountriesFrom(dictionary : Any) -> [Country]{
+        let arrayData = dictionary as? Array<Any>
+        var countries : [Country] = [Country]()
+        for countryData in arrayData!{
+            let country = Country(data: countryData as! Dictionary<String, Any>)
+            countries.append(country)
+        }
+        return countries
+    }
     
+    func getProvincesFrom(dictionary : Any) -> [Province]{
+        let arrayData = dictionary as? Array<Any>
+        var provinces : [Province] = [Province]()
+        for countryData in arrayData!{
+            let country = Province(data: countryData as! Dictionary<String, Any>)
+            provinces.append(country)
+        }
+        return provinces
+    }
+    func getTypesResort(dictionary : Any) ->[TypeResort]{
+        
+        let arrayData = dictionary as? Array<Any>
+        var types : [TypeResort] = [TypeResort]()
+        for typeData in arrayData!{
+            let type = TypeResort(data: typeData as! Dictionary<String, Any>)
+            types.append(type)
+        }
+        return types
+    }
+    
+
+    func getCurrentDomain() -> String{
+        return LanguageManager.sharedInstance.localizedString(string: "domain")!
+    }
 }

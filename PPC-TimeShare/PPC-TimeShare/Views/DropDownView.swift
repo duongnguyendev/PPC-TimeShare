@@ -10,11 +10,11 @@ import UIKit
 
 @objc  protocol DropDownDelegate{
     
-    @objc optional func selected(type: String)
+    @objc optional func selected(type: TypeResort)
     @objc optional func selected(gender: Gender)
     @objc optional func selected(country: Country)
     @objc optional func selected(province : Province)
-    @objc optional func selected(searchBy: String)
+    @objc optional func selected(searchBy: SearchBy)
     @objc optional func selected(language: Language)
     
 }
@@ -29,7 +29,7 @@ class DropDownView: BaseView, UICollectionViewDelegate, UICollectionViewDataSour
     var delegate : DropDownDelegate?
     override func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = UIColor.gray
+        self.backgroundColor = UIColor.clear
         self.layer.cornerRadius = 5
         self.layer.masksToBounds = true
         self.isHidden = true
@@ -94,7 +94,9 @@ class DropDownCell: BaseCell {
     }()
     
     override func setupView() {
-        backgroundColor = UIColor.white
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 5
+        backgroundColor = UIColor.rgb(red: 238, green: 238, blue: 238)
         addSubview(labelString)
         labelString.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         labelString.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
@@ -106,14 +108,28 @@ class DropDownCell: BaseCell {
 
 class TypeDropDown: DropDownView {
     
-    let listType = ["Home", "Resort"]
+    var listType : [TypeResort] = [TypeResort]()
+    
+    override func fetchItems() {
+        APIService.sharedInstance.requestGetTypesResort { (types, errorMes) in
+            if errorMes == nil{
+                self.listType = types!
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    override func setupView() {
+        super.setupView()
+        self.fetchItems()
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listType.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DropDownCell
-        cell.labelString.text = listType[indexPath.item]
+        cell.labelString.text = listType[indexPath.item].typeName
         return cell
     }
     
@@ -122,7 +138,7 @@ class TypeDropDown: DropDownView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.selected!(type: listType[indexPath.item])
+        self.delegate?.selected!(type: (listType[indexPath.item]))
         hide()
     }
     
@@ -130,14 +146,20 @@ class TypeDropDown: DropDownView {
 
 class SearchByDropDown: DropDownView {
     
-    let listSearchBy = ["All", "New"]
+    let listSearchBy : [SearchBy] = {
+        let all = SearchBy(searchById: 0, searchByName: "All")
+        let new = SearchBy(searchById: 1, searchByName: "New")
+        let sale = SearchBy(searchById: 2, searchByName: "Sale")
+        
+        return [all, new, sale]
+    }()
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listSearchBy.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DropDownCell
-        cell.labelString.text = listSearchBy[indexPath.item]
+        cell.labelString.text = listSearchBy[indexPath.item].searchByName
         return cell
     }
     

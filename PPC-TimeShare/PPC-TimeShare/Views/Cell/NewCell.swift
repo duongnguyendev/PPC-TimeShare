@@ -23,6 +23,9 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
                 self.collectionView.reloadData()
                 self.addMarkToMap(resorts: resorts!)
                 self.activity.stopAnimating()
+                if self.resorts.count == 0{
+                    self.noResult()
+                }
             }
             else{
                 if self.resorts.count == 0{
@@ -34,6 +37,7 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     override func setupView() {
+        
         fetchResort()
         backgroundColor = UIColor.clear
         addSubview(collectionView)
@@ -55,6 +59,7 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         activity.translatesAutoresizingMaskIntoConstraints = false
         activity.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
         activity.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        
         self.activity.hidesWhenStopped = true
         
     }
@@ -122,5 +127,10 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
             marker.title = resort.name
             marker.map = mapView
         }
+        
+    }
+    
+    func fillter(option : FillterOption){
+        mapView?.clear()
     }
 }

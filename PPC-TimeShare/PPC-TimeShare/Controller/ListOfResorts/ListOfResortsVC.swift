@@ -151,8 +151,8 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
             newCell.mapControl()
         }
         else{
-            let newCell = collectionViewResorts.cellForItem(at: IndexPath(item: 1, section: 0)) as! AllCell
-            newCell.mapControl()
+            let allCell = collectionViewResorts.cellForItem(at: IndexPath(item: 1, section: 0)) as! AllCell
+            allCell.mapControl()
         }
         
     }
@@ -232,8 +232,20 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         
     }
     
-    func filter(){
-        print("filter")
+    func filter(country: Country?, province : Province?, type : TypeResort?, searchBy : SearchBy?){
+        let option = FillterOption()
+        option.country = country
+        option.province = province
+        option.type = type
+        option.searchBy = searchBy
+        if buttonNew.isSelected {
+            let newCell = collectionViewResorts.cellForItem(at: IndexPath(item: 0, section: 0)) as! NewCell
+            newCell.fillter(option: option)
+        }
+        else{
+            let allCell = collectionViewResorts.cellForItem(at: IndexPath(item: 1, section: 0)) as! AllCell
+            allCell.fillter(option: option)
+        }
     }
     
     func handleItemResorstSelected(resort : Resort){

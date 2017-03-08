@@ -16,10 +16,15 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     
     var currentCountries : Country?{
         didSet{
-            dropDownCity.country = currentCountries
+            if currentCountries?.countryId != 0{
+                dropDownCity.country = currentCountries
+            }
+            
         }
     }
     var currentProvince : Province?
+    var searchBy : SearchBy?
+    var type : TypeResort?
     
     override init() {
         super.init()
@@ -82,8 +87,8 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     }
     override func setupContent(){
         super.setupContent()
-        
-        contentView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        contentView.clipsToBounds = false
+        contentView.heightAnchor.constraint(equalToConstant: 330).isActive = true
         contentView.widthAnchor.constraint(equalToConstant: 250).isActive = true
         
         // add view content
@@ -147,7 +152,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         contentView.addSubview(dropDownCountry)
         dropDownCountry.delegate = self
         dropDownCountry.leftAnchor.constraint(equalTo: countryButton.leftAnchor, constant: 0).isActive = true
-        dropDownCountry.rightAnchor.constraint(equalTo: countryButton.rightAnchor, constant: 0).isActive = true
+        dropDownCountry.rightAnchor.constraint(equalTo: countryButton.rightAnchor, constant: -50).isActive = true
         dropDownCountry.topAnchor.constraint(equalTo: countryButton.bottomAnchor, constant: 1).isActive = true
         dropDownCountry.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
@@ -156,7 +161,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         contentView.addSubview(dropDownCity)
         dropDownCity.delegate = self
         dropDownCity.leftAnchor.constraint(equalTo: cityButton.leftAnchor, constant: 0).isActive = true
-        dropDownCity.rightAnchor.constraint(equalTo: cityButton.rightAnchor, constant: 0).isActive = true
+        dropDownCity.rightAnchor.constraint(equalTo: cityButton.rightAnchor, constant: -50).isActive = true
         dropDownCity.topAnchor.constraint(equalTo: cityButton.bottomAnchor, constant: 1).isActive = true
         dropDownCity.heightAnchor.constraint(equalToConstant: 170).isActive = true
     }
@@ -164,17 +169,17 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         contentView.addSubview(dropDownType)
         dropDownType.delegate = self
         dropDownType.leftAnchor.constraint(equalTo: typeButton.leftAnchor, constant: 0).isActive = true
-        dropDownType.rightAnchor.constraint(equalTo: typeButton.rightAnchor, constant: 0).isActive = true
+        dropDownType.rightAnchor.constraint(equalTo: typeButton.rightAnchor, constant: -50).isActive = true
         dropDownType.topAnchor.constraint(equalTo: typeButton.bottomAnchor, constant: 1).isActive = true
-        dropDownType.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        dropDownType.heightAnchor.constraint(equalToConstant: 82).isActive = true
     }
     func setupDownSearchBy(){
         contentView.addSubview(dropDownSearchBy)
         dropDownSearchBy.delegate = self
         dropDownSearchBy.leftAnchor.constraint(equalTo: searchByButton.leftAnchor, constant: 0).isActive = true
-        dropDownSearchBy.rightAnchor.constraint(equalTo: searchByButton.rightAnchor, constant: 0).isActive = true
+        dropDownSearchBy.rightAnchor.constraint(equalTo: searchByButton.rightAnchor, constant: -50).isActive = true
         dropDownSearchBy.topAnchor.constraint(equalTo: searchByButton.bottomAnchor, constant: 1).isActive = true
-        dropDownSearchBy.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        dropDownSearchBy.heightAnchor.constraint(equalToConstant: 122).isActive = true
     }
     
     func handleCountryButton(){
@@ -190,7 +195,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     func handleCityButton(){
         if dropDownCity.isHidden {
             
-            if currentCountries != nil {
+            if currentCountries != nil, currentCountries?.countryId != 0 {
                 hideAllDropDownView()
                 dropDownCity.show()
             }
@@ -231,7 +236,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     }
     func handleOKButton(){
         
-        self.listOfResortsVC?.filter()
+        self.listOfResortsVC?.filter(country: currentCountries, province: currentProvince, type: type, searchBy: searchBy)
         hide()
     }
     
@@ -246,11 +251,13 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         currentProvince = province
         
     }
-    func selected(type : String){
-        typeButton.value = type
+    func selected(type : TypeResort){
+        typeButton.value = type.typeName
+        self.type = type
     }
-    func selected(searchBy: String){
-        searchByButton.value = searchBy
+    func selected(searchBy: SearchBy){
+        searchByButton.value = searchBy.searchByName
+        self.searchBy = searchBy
     }
     
     

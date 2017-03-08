@@ -28,6 +28,9 @@ class AllCell: NewCell {
                     self.addMarkToMap(resorts: resorts!)
                     self.nextPageUrl = nextPage
                     self.activity.stopAnimating()
+                    if self.resorts.count == 0{
+                        self.noResult()
+                    }
                 }
             }
         }
