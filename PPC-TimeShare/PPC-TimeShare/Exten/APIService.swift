@@ -338,6 +338,34 @@ class APIService: NSObject {
         }
     }
     
+    func requestFilterResort(option : FilterOption, completion:@escaping ([Resort]?, String?, String?) -> ()){
+        let countryId = option.country?.countryId
+        let cityId = option.province?.provinceId
+        let type = option.type?.typeId
+        let searchBy = option.searchBy?.searchById
+        let urlString = "\(getCurrentDomain())resort/all?country_id=\(countryId!)&city_id=\(cityId!)&type_id=\(type!)&search_by=\(searchBy!)"
+        
+        self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            
+            if error == nil && errorMes == nil {
+                let resortsDic = response?["data"]
+                let nextPage = response?["next_page_url"]
+                let resorts = self.getResortFrom(dictionary: resortsDic as Any)
+                completion(resorts, nil,nextPage as? String)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server", nil)
+                }
+                else {
+                    completion(nil, errorMes, nil)
+                }
+                
+            }
+            
+        }
+    }
+    
     // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
         

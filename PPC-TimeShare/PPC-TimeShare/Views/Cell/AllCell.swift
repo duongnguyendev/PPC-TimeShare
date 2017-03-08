@@ -34,12 +34,30 @@ class AllCell: NewCell {
                 }
             }
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == resorts.count - 1 {
             self.fetchResort()
+        }
+    }
+    
+    func filter(option: FilterOption) {
+        APIService.sharedInstance.requestFilterResort(option: option) { (resorts, errorMes, nextPage) in
+            if errorMes == nil {
+                self.resorts = resorts!
+                self.collectionView.reloadData()
+                self.nextPageUrl = nextPage
+                if resorts?.count != 0{
+                    let index = IndexPath(item: 0, section: 0)
+                    self.collectionView.scrollToItem(at: index, at: .bottom, animated: true)
+                    self.haveResult()
+                }
+                else{
+                    self.noResult()
+                }
+            }
+            
         }
     }
 }

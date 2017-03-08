@@ -12,7 +12,13 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     
     let tabViewHeight : CGFloat = 40.0
     let margin : CGFloat = 25.0
-
+    var filterOption : FilterOption? {
+        didSet{
+            
+        }
+    }
+    var filtered : Bool = false
+    
     var selectNew : Bool?{
         didSet{
             if selectNew! {
@@ -31,7 +37,6 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         collectionViewResorts.register(AllCell.self, forCellWithReuseIdentifier: allCellId)
         self.title = "Resorts"
         collectionViewResorts.isPagingEnabled = true
-//        buttonNew.isSelected = true
         selectNew = true
     }
     override func setupNavBackButton() {
@@ -160,12 +165,12 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     func handleNewButton(){
         
         scrollToItem(item: 0)
-        selectNew = true
+        //        selectNew = true
     }
     
     func handleAllButton(){
         scrollToItem(item: 1)
-        selectNew = false
+        //        selectNew = false
     }
     
     override func handleFilter() {
@@ -193,6 +198,7 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? NewCell
             cell?.lisResortVC = self
         }else{
+            
             identifier = allCellId
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! AllCell
             cell?.lisResortVC = self
@@ -224,6 +230,12 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         
     }
     func scrollToItem(item: Int){
+        
+        if item == 0 {
+            selectNew = true
+        }else{
+            selectNew = false
+        }
         let indexPath = IndexPath(item: item, section: 0)
         collectionViewResorts.scrollToItem(at: indexPath, at: .left, animated: true)
     }
@@ -231,21 +243,39 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     override func hideKeyboarTouchupOutSide() {
         
     }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if indexPath.item == 1{
+            if self.filterOption != nil, self.filtered == false{
+                let allCell = cell as! AllCell
+                allCell.filter(option: self.filterOption!)
+                filtered = true
+            }
+            
+        }
+    }
     
     func filter(country: Country?, province : Province?, type : TypeResort?, searchBy : SearchBy?){
-        let option = FillterOption()
+        //filter
+        
+        let option = FilterOption()
         option.country = country
         option.province = province
         option.type = type
         option.searchBy = searchBy
-        if buttonNew.isSelected {
-            let newCell = collectionViewResorts.cellForItem(at: IndexPath(item: 0, section: 0)) as! NewCell
-            newCell.fillter(option: option)
+        self.filterOption = option
+        
+        if selectNew! {
+            scrollToItem(item: 1)
+            self.filtered = false
         }
-        else{
-            let allCell = collectionViewResorts.cellForItem(at: IndexPath(item: 1, section: 0)) as! AllCell
-            allCell.fillter(option: option)
+        else {
+            let allCell = self.collectionViewResorts.cellForItem(at: IndexPath(item: 1, section: 0)) as! AllCell
+            allCell.filter(option: option)
+            self.filtered = true
         }
+        
     }
     
     func handleItemResorstSelected(resort : Resort){

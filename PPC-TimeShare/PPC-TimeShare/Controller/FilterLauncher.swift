@@ -14,7 +14,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     
     let itemSize : CGFloat = 40.0
     
-    var currentCountries : Country?{
+    var currentCountries : Country? = Country(){
         didSet{
             if currentCountries?.countryId != 0{
                 dropDownCity.country = currentCountries
@@ -22,9 +22,9 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
             
         }
     }
-    var currentProvince : Province?
-    var searchBy : SearchBy?
-    var type : TypeResort?
+    var currentProvince : Province = Province()
+    var searchBy : SearchBy = SearchBy()
+    var type : TypeResort = TypeResort()
     
     override init() {
         super.init()
@@ -79,7 +79,6 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     }()
     
     var listOfResortsVC : ListOfResortsVC?
-    
     func showFilter(){
         
         self.show()

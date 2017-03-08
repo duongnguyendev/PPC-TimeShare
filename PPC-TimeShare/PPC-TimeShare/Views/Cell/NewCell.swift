@@ -38,6 +38,13 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     override func setupView() {
         
+        imageViewNoResult.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(imageViewNoResult)
+        imageViewNoResult.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        imageViewNoResult.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        imageViewNoResult.leftAnchor.constraint(equalTo: self.leftAnchor, constant: margin).isActive = true
+        imageViewNoResult.isHidden = true
+        
         fetchResort()
         backgroundColor = UIColor.clear
         addSubview(collectionView)
@@ -101,14 +108,15 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         lisResortVC?.handleItemResorstSelected(resort: (self.resorts[indexPath.item]))
     }
 
+    let imageViewNoResult = UIImageView(image: UIImage(named: "noresult_icon"))
+    
     func noResult(){
-        let imageView = UIImageView(image: UIImage(named: "noresult_icon"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(imageView)
-        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
-        imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: margin).isActive = true
+        imageViewNoResult.isHidden = false
+
         
+    }
+    func haveResult(){
+        imageViewNoResult.isHidden = true
     }
     
     func mapControl(){
@@ -127,10 +135,5 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
             marker.title = resort.name
             marker.map = mapView
         }
-        
-    }
-    
-    func fillter(option : FillterOption){
-        mapView?.clear()
     }
 }
