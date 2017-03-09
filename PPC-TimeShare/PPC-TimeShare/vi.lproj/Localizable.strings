@@ -12,7 +12,7 @@ domain = "http://ppctimeshare.hbbsolution.com/api/vi/";
 
 // title base view controller
 
-ForgotPassword= "Forgot Password";
+ForgotPassword= "Quên mật khẩu";
 YourEmail= "Your email";
 Confirm= "Confirm";
 SignIn= "Sign in";
