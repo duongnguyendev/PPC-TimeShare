@@ -17,14 +17,14 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         hideKeyboarTouchupOutSide()
         setupNavBar()
         setupView()
     }
     override func viewDidAppear(_ animated: Bool){
-//        setupView()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         localizeString()
         
     }
@@ -60,6 +60,7 @@ class BaseViewController: UIViewController {
     {
         viewController.presented = false
         self.navigationController?.pushViewController(viewController, animated: true)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func presentVC(viewController : BaseViewController) {

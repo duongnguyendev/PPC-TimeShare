@@ -61,6 +61,9 @@ class ListVoucherLauncher: BaseLauncher, UICollectionViewDelegate, UICollectionV
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: collectionVoucher)
         contentView.addConstraintWithFormat(format: "V:|[v0(40)][v1]-40-|", views:titleLabel, collectionVoucher)
         
+        self.buttonCancel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0).isActive = true
+        self.buttonOK.isHidden = true
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -128,8 +131,8 @@ class VoucherCell : BaseCell {
         
         labelName.text = "Voucher 1"
         labelCost.text = "$100"
-        addConstraintWithFormat(format: "H:|-10-[v0]-10-|", views: labelName)
-        addConstraintWithFormat(format: "V:|-10-[v0(20)][v1(20)]", views: labelName, iconCost)
+        addConstraintWithFormat(format: "H:|-12-[v0]-10-|", views: labelName)
+        addConstraintWithFormat(format: "V:|-10-[v0(20)][v1(20)]-10-|", views: labelName, iconCost)
         addConstraintWithFormat(format: "H:|-10-[v0(20)]-10-[v1]|", views: iconCost, labelCost)
         labelCost.centerYAnchor.constraint(equalTo: iconCost.centerYAnchor, constant: 0).isActive = true
     }

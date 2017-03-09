@@ -54,6 +54,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
             navigationBar.shadowImage = UIImage()
             navigationBar.isTranslucent = true
         }
+        
     }
     
     let mainScrollView : UIScrollView = {
@@ -243,7 +244,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         genderDropDown.topAnchor.constraint(equalTo: buttonGender.bottomAnchor, constant: 1).isActive = true
         genderDropDown.leftAnchor.constraint(equalTo: buttonGender.leftAnchor, constant: 40).isActive = true
         genderDropDown.rightAnchor.constraint(equalTo: buttonGender.rightAnchor, constant: 0).isActive = true
-        genderDropDown.heightAnchor.constraint(equalToConstant: 63).isActive = true
+        genderDropDown.heightAnchor.constraint(equalToConstant: 83).isActive = true
         
         
         super.setupView()
@@ -282,7 +283,6 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         contentInsets.top = 64
         self.mainScrollView.contentInset = contentInsets
         self.mainScrollView.scrollIndicatorInsets = contentInsets
-        
     }
     
     override func keyboardWillShow(notification: NSNotification) {
@@ -308,11 +308,13 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     }
     
     func handleButtonShare() {
+        view.endEditing(true)
         let shareVC = ShareAppVC()
         shareVC.user = self.user
         self.pushVC(viewController: shareVC)
     }
     func handleButtonVoucher() {
+        view.endEditing(true)
         let voucherVC = YourVoucherVC()
         voucherVC.userId = self.user?.userId
         self.pushVC(viewController: voucherVC)

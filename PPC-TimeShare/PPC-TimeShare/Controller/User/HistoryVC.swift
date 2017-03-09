@@ -19,12 +19,17 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
     var books : [BookInfo]?
     
     func fetchBookInfo(){
+        self.activity.startAnimating()
         APIService.sharedInstance.requestGetListBook(userId: userId!) { (listBook, errorMes) in
+            self.activity.stopAnimating()
             if errorMes != nil{
-                
+                let alert = UIAlertController(title: "Thông báo", message: "lỗi khi cập nhật dữ liệu", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             }else{
+                
                 self.books = listBook!
                 self.collectionHistory.reloadData()
+                
             }
         }
     }
@@ -42,6 +47,7 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
     
     let historyLauncher = HistoryLauncher()
     override func setupView() {
+        super.setupView()
         self.fetchBookInfo()
         collectionHistory.register(HistoryCell.self, forCellWithReuseIdentifier: cellId)
         

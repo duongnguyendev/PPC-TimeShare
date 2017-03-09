@@ -74,7 +74,7 @@ class HistoryLauncher: BaseLauncher {
         super.setupContent()
         self.touchUpOutSize()
         self.contentView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        self.contentView.heightAnchor.constraint(equalToConstant: 345).isActive = true
+        self.contentView.heightAnchor.constraint(equalToConstant: 385).isActive = true
         
         contentView.addSubview(labelTitle)
         contentView.addSubview(checkInView)
@@ -104,7 +104,10 @@ class HistoryLauncher: BaseLauncher {
         contentView.addConstraintWithFormat(format: "H:|[v0]", views: statusView)
         statusView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 50).isActive = true
         
-        contentView.addConstraintWithFormat(format: "V:|[v0(40)][v1(50)]-1-[v2(50)]-1-[v3(50)]-1-[v4(50)]-1-[v5(50)]-1-[v6(50)]|", views: labelTitle, checkInView, checkOutView, roomView, travelersView, voucherView, statusView)
+        contentView.addConstraintWithFormat(format: "V:|[v0(40)][v1(50)]-1-[v2(50)]-1-[v3(50)]-1-[v4(50)]-1-[v5(50)]-1-[v6(50)]", views: labelTitle, checkInView, checkOutView, roomView, travelersView, voucherView, statusView)
+        
+        buttonCancel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0)
+        buttonOK.isHidden = true
         
     }
 }

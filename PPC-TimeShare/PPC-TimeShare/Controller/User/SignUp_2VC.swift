@@ -98,7 +98,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     let genderDropDown = GenderDropDown ()
     
     override func setupView() {
-        
+        super.setupView()
         view.addSubview(mainScrollView)
         mainScrollView.addSubview(mainContentView)
         mainScrollView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true

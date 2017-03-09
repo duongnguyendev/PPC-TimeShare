@@ -366,8 +366,10 @@ class APIService: NSObject {
         }
     }
     func requestSearch(keyword: String, completion : @escaping ([Resort]?, String?)->()){
-        let urlString = "\(self.getCurrentDomain())search?q=\(keyword)"
         
+        
+        var urlString = "\(self.getCurrentDomain())resort/search?q=\(keyword)"
+        urlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         getRequestWith(urlString: urlString) { (response, error, errorMes) in
             if error == nil && errorMes == nil{
                 if error == nil && errorMes == nil {
@@ -403,10 +405,7 @@ class APIService: NSObject {
     // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
         
-        var mUrlString = urlString
-        mUrlString = mUrlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-        
-        let url = NSURL(string: mUrlString)
+        let url = NSURL(string: urlString)
         var request = URLRequest(url: url as! URL)
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request) { (data, response, error) in
