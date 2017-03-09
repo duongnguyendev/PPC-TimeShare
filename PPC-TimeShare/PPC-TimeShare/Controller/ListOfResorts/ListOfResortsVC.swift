@@ -278,6 +278,14 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         
     }
     
+    //search
+    override func handleSearch() {
+        let searchVC = SearchVC()
+        
+        self.presentVC(viewController: searchVC)
+    }
+    
+    
     func handleItemResorstSelected(resort : Resort){
         let resortDetailVC : ResortDetailVC = ResortDetailVC()
         resortDetailVC.resort = resort

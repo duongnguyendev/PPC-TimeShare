@@ -193,7 +193,7 @@ class ResortDetailVC: BaseViewController, SignInDelegate {
         }else{
             let singInVC : SignInVC = SignInVC()
             singInVC.delegate = self
-            presentVC(viewContronller: singInVC)
+            presentVC(viewController: singInVC)
         }
     }
     func handleBookOnlineButton(){

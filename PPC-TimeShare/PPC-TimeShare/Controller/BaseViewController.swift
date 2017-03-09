@@ -61,9 +61,9 @@ class BaseViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func presentVC(viewContronller : BaseViewController) {
-        viewContronller.presented = true
-        let navVC : UINavigationController = UINavigationController(rootViewController: viewContronller)
+    func presentVC(viewController : BaseViewController) {
+        viewController.presented = true
+        let navVC : UINavigationController = UINavigationController(rootViewController: viewController)
         self.present(navVC, animated: true) {
             
         }
