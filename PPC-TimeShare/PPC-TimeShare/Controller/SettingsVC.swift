@@ -18,6 +18,9 @@ class SettingsVC: BaseViewController, DropDownDelegate {
         super.viewDidLoad()
         let curentLanguage = LanguageManager.sharedInstance.getCurrentLanguage()
         self.buttonLanguage.value = curentLanguage.language
+        if UserDefaults.standard.object(forKey: "token") == nil{
+            self.buttonLogout.isHidden = true
+        }
     }
     
     let buttonLogout : InfoButton = {
@@ -58,6 +61,8 @@ class SettingsVC: BaseViewController, DropDownDelegate {
     }
     
     func handleLogoutButton(){
+        
+        
         UserDefaults.standard.removeObject(forKey: "currentUser")
         UserDefaults.standard.removeObject(forKey: "token")
         goHome()

@@ -62,7 +62,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
     let sendButton : MyButton = {
         let button = MyButton()
         button.setTitle("Send", for: .normal)
-        button.backgroundColor = UIColor.green
+        button.backgroundColor = UIColor.button1Collor()
         return button
     }()
     let contentTextView : UITextView = {

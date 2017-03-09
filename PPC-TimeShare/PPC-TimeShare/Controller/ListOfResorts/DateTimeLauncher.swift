@@ -17,6 +17,20 @@ class BaseLauncher: NSObject {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    let buttonOK : MyButton = {
+        let button = MyButton()
+        button.setTitle("OK", for: .normal)
+        button.backgroundColor = UIColor.buttonOKCollor()
+        
+        return button
+    }()
+    let buttonCancel : MyButton = {
+        let button = MyButton()
+        button.setTitle("Cancel", for: .normal)
+        button.backgroundColor = UIColor.button2Collor()
+        return button
+        
+    }()
     
     override init() {
         super.init()
@@ -34,13 +48,30 @@ class BaseLauncher: NSObject {
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             window.addSubview(blackView)
             window.addSubview(contentView)
+            
+            contentView.addSubview(buttonCancel)
+            contentView.addSubview(buttonOK)
+            
             blackView.frame = window.frame
             blackView.alpha = 0
             contentView.alpha = 0
             window.addConstraint(NSLayoutConstraint(item: contentView, attribute: .centerY, relatedBy: .equal, toItem: window, attribute: .centerY, multiplier: 1, constant: 0))
             window.addConstraint(NSLayoutConstraint(item: contentView, attribute: .centerX, relatedBy: .equal, toItem: window, attribute: .centerX, multiplier: 1, constant: 0))
             
+            // ok, cancel button x y w h
+            buttonCancel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+            buttonCancel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            
+            buttonOK.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+            buttonOK.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            
+            contentView.addConstraintWithFormat(format: "H:|[v0][v1]|", views: buttonCancel, buttonOK)
+            
+            contentView.addConstraint(NSLayoutConstraint(item: buttonCancel, attribute: .width, relatedBy: .equal, toItem: buttonOK, attribute: .width, multiplier: 1, constant: 0))
+            
         }
+        buttonCancel.addTarget(self, action: #selector(handleCancelButton), for: .touchUpInside)
+        buttonOK.addTarget(self, action: #selector(handleOKButton), for: .touchUpInside)
     }
     
     func show(){
@@ -62,6 +93,12 @@ class BaseLauncher: NSObject {
         }
     }
     
+    func handleOKButton(){
+        
+    }
+    func handleCancelButton(){
+        hide()
+    }
     func touchUpOutSize(){
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hide))
         self.blackView.isUserInteractionEnabled = true
@@ -76,12 +113,6 @@ class DateTimeLauncher: BaseLauncher {
         setupContent()
     }
     
-    let buttonOK : MyButton = {
-        let button = MyButton()
-        button.setTitle("OK", for: .normal)
-        button.backgroundColor = UIColor.yellow
-        return button
-    }()
     
     let datePicker : UIDatePicker = {
         let picker = UIDatePicker()
@@ -117,7 +148,7 @@ class DateTimeLauncher: BaseLauncher {
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: datePicker)
         contentView.addConstraintWithFormat(format: "V:|[v0][v1(40)]|", views: datePicker, buttonOK)
     }
-    func handleOKButton(){
+    override func handleOKButton(){
         self.item?.dateValue = datePicker.date
         hide()
     }

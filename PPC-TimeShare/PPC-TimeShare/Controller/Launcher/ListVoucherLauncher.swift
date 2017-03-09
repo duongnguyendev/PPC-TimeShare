@@ -22,7 +22,7 @@ class ListVoucherLauncher: BaseLauncher, UICollectionViewDelegate, UICollectionV
     }()
     let titleLabel : UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.appStyleColor()
+        label.backgroundColor = UIColor.button1Collor()
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.text = "Vouchers"
@@ -59,7 +59,7 @@ class ListVoucherLauncher: BaseLauncher, UICollectionViewDelegate, UICollectionV
         contentView.addSubview(collectionVoucher)
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: titleLabel)
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: collectionVoucher)
-        contentView.addConstraintWithFormat(format: "V:|[v0(40)][v1]|", views:titleLabel, collectionVoucher)
+        contentView.addConstraintWithFormat(format: "V:|[v0(40)][v1]-40-|", views:titleLabel, collectionVoucher)
         
     }
     

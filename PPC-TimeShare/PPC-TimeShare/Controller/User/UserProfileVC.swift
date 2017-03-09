@@ -134,7 +134,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     let buttonUpdate : MyButton = {
         let button = MyButton()
         button.setTitle("Update", for: .normal)
-        button.backgroundColor = UIColor.green
+        button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleUpdateButton), for: .touchUpInside)
         return button
     }()
@@ -245,6 +245,8 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         genderDropDown.rightAnchor.constraint(equalTo: buttonGender.rightAnchor, constant: 0).isActive = true
         genderDropDown.heightAnchor.constraint(equalToConstant: 63).isActive = true
         
+        
+        super.setupView()
     }
     
     func handleUpdateButton(){
@@ -252,14 +254,25 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         self.user?.address = self.inputAddressView.textField.text
         self.user?.mobileNumber = self.inputMobileView.textField.text
         // gender update when select
-        
+        self.activity.startAnimating()
         APIService.sharedInstance.requestUpdate(user: self.user!) { (userUpdated, errorMes) in
+            self.activity.stopAnimating()
+            var alert : UIAlertController?
             if errorMes != nil{
-                //show message faild
+                alert = UIAlertController(title: "Cập nhật thất bại", message: "Vui lòng thử lại!", preferredStyle: .alert)
+                alert?.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                    
+                }))
+            
             }else{
                 let userDic = userUpdated?.toDictionary()
                 UserDefaults.standard.set(userDic, forKey: "currentUser")
+                alert = UIAlertController(title: "Cập nhật thành công", message: "Thông tin của bạn đã được cập nhật", preferredStyle: .alert)
+                alert?.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                    
+                }))
             }
+            self.present(alert!, animated: true, completion: nil)
         }
         
     }

@@ -366,7 +366,7 @@ class APIService: NSObject {
         }
     }
     func requestSearch(keyword: String, completion : @escaping ([Resort]?, String?)->()){
-        let urlString = "http://ppctimeshare.hbbsolution.com/api/resort/search?q=\(keyword)"
+        let urlString = "\(self.getCurrentDomain())search?q=\(keyword)"
         
         getRequestWith(urlString: urlString) { (response, error, errorMes) in
             if error == nil && errorMes == nil{
@@ -386,11 +386,27 @@ class APIService: NSObject {
             }
         }
     }
+    func requestForgotPass(email : String, completion : @escaping ((Bool) ->())) {
+        let urlString = "\(self.getCurrentDomain())forget-pass"
+        let params = ["email": email] as Dictionary<String,Any>
+        
+        postRequestWith(urlString: urlString, params: params) { (response, error, errorMes) in
+            if error == nil && errorMes == nil{
+                completion(true)
+            }
+            else{
+                completion(false)
+            }
+        }
+    }
     
     // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
         
-        let url = NSURL(string: urlString)
+        var mUrlString = urlString
+        mUrlString = mUrlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+        
+        let url = NSURL(string: mUrlString)
         var request = URLRequest(url: url as! URL)
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request) { (data, response, error) in

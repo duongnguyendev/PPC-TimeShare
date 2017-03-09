@@ -36,11 +36,12 @@ class InfoButton: BaseButton {
 
     let iconImage : UIImageView = {
         let imv = UIImageView(image: UIImage(named: ""))
+        imv.translatesAutoresizingMaskIntoConstraints = false
         return imv
     }()
     let arrowImage : UIImageView = {
         let imv = UIImageView(image: UIImage(named: "arrow_expand_icon"))
-        
+        imv.translatesAutoresizingMaskIntoConstraints = false
         return imv
     }()
     
@@ -48,6 +49,7 @@ class InfoButton: BaseButton {
         let label = UILabel()
         label.text = "Check in"
         label.font = UIFont(name: "Roboto-Bold", size: 15)
+        
         return label
     }()
     
@@ -66,7 +68,8 @@ class InfoButton: BaseButton {
         addSubview(labelValue)
         addSubview(arrowImage)
         
-        labelValue.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        labelValue.widthAnchor.constraint(equalToConstant: 90).isActive = true
         iconImage.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
         arrowImage.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
         

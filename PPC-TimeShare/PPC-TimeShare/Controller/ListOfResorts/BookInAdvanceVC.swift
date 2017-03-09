@@ -134,7 +134,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
         let button = MyButton()
         button.setTitle("Book now", for: .normal)
         button.addTarget(self, action: #selector(handleBook), for: .touchUpInside)
-        button.backgroundColor = UIColor.yellow
+        button.backgroundColor = UIColor.button1Collor()
         return button
     }()
     
@@ -313,11 +313,15 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     }
     func handleRoomButton(){
         inputNumberRoomsLauncher.delegate = self
+        inputNumberRoomsLauncher.currentRome = self.numberRooms
         inputNumberRoomsLauncher.show()
     }
     func handleTravelersButton(){
         
         inputTravelersLauncher.delegate = self
+        inputTravelersLauncher.currentChild = self.numberChilds
+        inputTravelersLauncher.currentAdult = self.numberAdults
+        
         inputTravelersLauncher.show()
         
     }

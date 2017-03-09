@@ -60,13 +60,13 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
     let buttonNext : MyButton = {
         let button = MyButton()
         button.setTitle("Next", for: .normal)
-        button.backgroundColor = UIColor.green
+        button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
         return button
     }()
     
-    let textViewMessage : UITextView = {
-        let textView = UITextView()
+    let textViewMessage : UILabel = {
+        let textView = UILabel()
         textView.textColor = UIColor.red
         textView.font = UIFont(name: "Roboto-Light", size: 14)
         textView.textAlignment = .center
@@ -113,11 +113,6 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
         
     }
     
-    
-    // handle button
-    func handleAcceptTermsButton(){
-        
-    }
     func handleNextButton(){
         
         let email = inputEmailView.textField.text
@@ -141,6 +136,8 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
             }
             
         }
+        //        let signUp_3VC : SignUp_3VC = SignUp_3VC()
+        //        self.pushVC(viewController: signUp_3VC)
     }
     
     override func keyboardWillHide(notification: NSNotification) {

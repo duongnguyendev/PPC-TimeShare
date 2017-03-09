@@ -67,6 +67,51 @@ class TabButton: MyButton {
     }
 }
 
+class ButtonCheckBook : BaseButton{
+    
+    var title: String?{
+        didSet{
+            self.titleView.text = title
+        }
+    }
+    
+    override var isSelected: Bool{
+        didSet{
+            if isSelected{
+                statusIcon.image = UIImage(named: "check")
+            }else{
+                statusIcon.image = UIImage(named: "uncheck")
+            }
+        }
+    }
+    
+    let statusIcon : UIImageView = {
+
+        let iv = UIImageView(image: UIImage(named: "uncheck"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    let titleView : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    override func setupView() {
+        
+        addSubview(statusIcon)
+        addSubview(titleView)
+        
+        titleView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        titleView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 30).isActive = true
+        
+        statusIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        statusIcon.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        statusIcon.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        statusIcon.rightAnchor.constraint(equalTo: self.titleView.leftAnchor, constant: -10).isActive = true
+    }
+}
+
+
 class HomeButtonCustom : BaseButton {
     
     var type : HomeButtonType?{

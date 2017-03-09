@@ -34,7 +34,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     }
     let titleView : UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.appStyleColor()
+        label.backgroundColor = UIColor.button1Collor()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.white
         label.text = "Filter"
@@ -64,19 +64,6 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     }()
     
     
-    let buttonOK : MyButton = {
-        let button = MyButton()
-        button.setTitle("OK", for: .normal)
-        button.backgroundColor = UIColor.yellow
-        return button
-    }()
-    let buttonCancel : MyButton = {
-        let button = MyButton()
-        button.setTitle("Cancel", for: .normal)
-        button.backgroundColor = UIColor.green
-        return button
-        
-    }()
     
     var listOfResortsVC : ListOfResortsVC?
     func showFilter(){
@@ -93,8 +80,6 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         // add view content
         
         contentView.addSubview(titleView)
-        contentView.addSubview(buttonCancel)
-        contentView.addSubview(buttonOK)
         contentView.addSubview(countryButton)
         contentView.addSubview(cityButton)
         contentView.addSubview(typeButton)
@@ -106,16 +91,6 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         titleView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0).isActive = true
         titleView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        // ok, cancel button x y w h
-        buttonCancel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-        buttonCancel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        buttonOK.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-        buttonOK.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        contentView.addConstraintWithFormat(format: "H:|[v0][v1]|", views: buttonCancel, buttonOK)
-        
-        contentView.addConstraint(NSLayoutConstraint(item: buttonCancel, attribute: .width, relatedBy: .equal, toItem: buttonOK, attribute: .width, multiplier: 1, constant: 0))
         
         // item x y w h
         
@@ -126,12 +101,12 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: typeButton)
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: searchByButton)
         
-        buttonCancel.addTarget(self, action: #selector(hide), for: .touchUpInside)
+        
         countryButton.addTarget(self, action: #selector(handleCountryButton), for: .touchUpInside)
         cityButton.addTarget(self, action: #selector(handleCityButton), for: .touchUpInside)
         typeButton.addTarget(self, action: #selector(handleTypeButton), for: .touchUpInside)
         searchByButton.addTarget(self, action: #selector(handleSearchByButton), for: .touchUpInside)
-        buttonOK.addTarget(self, action: #selector(handleOKButton), for: .touchUpInside)
+        
         
         
     }
@@ -233,7 +208,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         dropDownType.hide()
         dropDownSearchBy.hide()
     }
-    func handleOKButton(){
+    override func handleOKButton(){
         
         self.listOfResortsVC?.filter(country: currentCountries, province: currentProvince, type: type, searchBy: searchBy)
         hide()

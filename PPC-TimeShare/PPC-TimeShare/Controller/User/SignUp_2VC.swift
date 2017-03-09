@@ -90,7 +90,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     let buttonNext : MyButton = {
         let button = MyButton()
         button.setTitle("Next", for: .normal)
-        button.backgroundColor = UIColor.green
+        button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
         return button
     }()

@@ -18,7 +18,8 @@ import UIKit
 class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
     
     var delegate : InputLauncherDelegate?
-    
+    var currentChild : Int? = 0
+    var currentAdult : Int? = 0
     let labelTitle : UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor.appStyleColor()
@@ -47,12 +48,6 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
         tF.delegate = self
         return tF
     }()
-    let buttonOk : MyButton = {
-        let button = MyButton()
-        button.setTitle("Ok", for: .normal)
-        button.backgroundColor = UIColor.yellow
-        return button
-    }()
     
     override func setupContent() {
         super.setupContent()
@@ -74,23 +69,18 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
         contentView.addSubview(labelChilds)
         contentView.addSubview(textFieldNumberAdults)
         contentView.addSubview(textFieldNumberChilds)
-        contentView.addSubview(buttonOk)
         
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: labelTitle)
-        contentView.addConstraintWithFormat(format: "H:|-10-[v0]-10-|", views: buttonOk)
         contentView.addConstraintWithFormat(format: "H:|-10-[v0(50)]-5-[v1]-10-|", views:labelAdults,  textFieldNumberAdults)
         contentView.addConstraintWithFormat(format: "H:|-10-[v0(50)]-5-[v1]-10-|", views:labelChilds, textFieldNumberChilds)
         
-        contentView.addConstraintWithFormat(format: "V:|[v0(40)]-10-[v1(30)]-10-[v2(30)]-10-[v3(40)]-10-|", views: labelTitle, textFieldNumberAdults, textFieldNumberChilds, buttonOk)
+        contentView.addConstraintWithFormat(format: "V:|[v0(40)]-10-[v1(30)]-10-[v2(30)]", views: labelTitle, textFieldNumberAdults, textFieldNumberChilds)
         
         labelAdults.centerYAnchor.constraint(equalTo: textFieldNumberAdults.centerYAnchor, constant: 0).isActive = true
         labelChilds.centerYAnchor.constraint(equalTo: textFieldNumberChilds.centerYAnchor, constant: 0).isActive = true
         
-        buttonOk.addTarget(self, action: #selector(handleButtonOk), for: .touchUpInside)
     }
-    
-    func handleButtonOk(){
-        
+    override func handleOKButton() {
         if self.delegate != nil {
             if let numberAdults = Int(textFieldNumberAdults.text!), let numberChilds = Int(textFieldNumberChilds.text!){
                 self.delegate?.getNumberTravelers!(adults: numberAdults, childs: numberChilds)
@@ -99,7 +89,12 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
                 self.hide()
             }
         }
-        
+    }
+    override func handleCancelButton() {
+        if self.delegate != nil {
+            self.delegate?.getNumberTravelers!(adults: currentAdult!, childs: currentChild!)
+        }
+        self.hide()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -119,10 +114,11 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
 class InputRoomLauncher: BaseLauncher, UITextFieldDelegate {
     
     var delegate : InputLauncherDelegate?
+    var currentRome : Int? = 0
     
     let labelTitle : UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.appStyleColor()
+        label.backgroundColor = UIColor.button1Collor()
         label.text = "Rooms"
         label.textColor = UIColor.white
         label.textAlignment = .center
@@ -139,13 +135,6 @@ class InputRoomLauncher: BaseLauncher, UITextFieldDelegate {
         return tF
     }()
     
-    let buttonOk : MyButton = {
-        let button = MyButton()
-        button.setTitle("Ok", for: .normal)
-        button.backgroundColor = UIColor.yellow
-        return button
-    }()
-    
     override func setupContent() {
         super.setupContent()
         
@@ -157,21 +146,22 @@ class InputRoomLauncher: BaseLauncher, UITextFieldDelegate {
         
         contentView.addSubview(labelTitle)
         contentView.addSubview(textFieldNumbersRoom)
-        contentView.addSubview(buttonOk)
         
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: labelTitle)
-        contentView.addConstraintWithFormat(format: "H:|-10-[v0]-10-|", views: buttonOk)
         contentView.addConstraintWithFormat(format: "H:|-10-[v0]-10-|", views:textFieldNumbersRoom)
         
-        contentView.addConstraintWithFormat(format: "V:|[v0(40)]-10-[v1(30)]-10-[v2(40)]-10-|", views: labelTitle, textFieldNumbersRoom, buttonOk)
-
-        buttonOk.addTarget(self, action: #selector(handleButtonOk), for: .touchUpInside)
+        contentView.addConstraintWithFormat(format: "V:|[v0(40)]-10-[v1(30)]", views: labelTitle, textFieldNumbersRoom)
     }
     
-    func handleButtonOk(){
-        
+    override func handleOKButton() {
         if self.delegate != nil , textFieldNumbersRoom.text != ""{
             self.delegate?.getNumberRooms!(rooms: Int(textFieldNumbersRoom.text!)!)
+        }
+        self.hide()
+    }
+    override func handleCancelButton() {
+        if self.delegate != nil{
+            self.delegate?.getNumberRooms!(rooms: currentRome!)
         }
         self.hide()
     }

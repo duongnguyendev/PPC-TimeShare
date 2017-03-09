@@ -27,7 +27,7 @@ class ForgotPasswordVC: BaseViewController {
     
     let buttonConfirm : UIButton = {
         let button = UIButton(type: UIButtonType.custom)
-        button.backgroundColor = UIColor.blue
+        button.backgroundColor = UIColor.button1Collor()
         button.setTitle("Confirm", for: .normal)
         button.addTarget(self, action: #selector(handleConfirmButton), for: .touchUpInside)
         return button
@@ -53,6 +53,25 @@ class ForgotPasswordVC: BaseViewController {
 
     }
     func handleConfirmButton(){
-        
+        self.activity.startAnimating()
+        if (self.inputEmailView.textField.text?.characters.count)! > 0 {
+            APIService.sharedInstance.requestForgotPass(email: self.inputEmailView.textField.text!, completion: { (success) in
+                self.activity.stopAnimating()
+                if success{
+                    let alert = UIAlertController(title: "Thông báo", message: "Yêu cầu gửi thành công. Vui lòng kiểm tra email của bạn", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in                    }))
+                    self.present(alert, animated: true, completion: {
+                        self.goHome()
+                    })
+                }else{
+                    let alert = UIAlertController(title: "Thông báo", message: "Yêu cầu gửi thất bại. Vui lòng thử lại", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in
+                    }))
+                    self.present(alert, animated: true, completion: {
+                        
+                    })
+                }
+            })
+        }
     }
 }

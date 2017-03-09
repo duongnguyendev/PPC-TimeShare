@@ -48,7 +48,7 @@ class SignInVC: BaseViewController {
     let buttonSignIn : MyButton = {
         let button = MyButton()
         button.setTitle("Sign In", for: .normal)
-        button.backgroundColor = UIColor.green
+        button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleSignInButton), for: .touchUpInside)
         return button
     }()
@@ -57,7 +57,7 @@ class SignInVC: BaseViewController {
         let button = MyButton()
         button.setTitle("Sign Up", for: .normal)
         button.addTarget(self, action: #selector(handleSignUpButton), for: .touchUpInside)
-        button.backgroundColor = UIColor.yellow
+        button.backgroundColor = UIColor.button2Collor()
         return button
     }()
     

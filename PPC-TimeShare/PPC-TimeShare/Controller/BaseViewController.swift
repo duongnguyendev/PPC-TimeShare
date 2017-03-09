@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
     weak var activeField: UITextField?
     var presented : Bool?
     let languageManager = LanguageManager.sharedInstance
+    let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +101,13 @@ class BaseViewController: UIViewController {
     }
     
     func setupView() {
+        view.addSubview(activity)
+        activity.layer.zPosition = 1
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        activity.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        activity.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
         
+        self.activity.hidesWhenStopped = true
     }
     
     func handleSearch(){
