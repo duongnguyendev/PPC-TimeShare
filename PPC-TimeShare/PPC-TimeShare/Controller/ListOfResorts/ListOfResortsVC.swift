@@ -282,7 +282,7 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     override func handleSearch() {
         let searchVC = SearchVC()
         
-        self.presentVC(viewController: searchVC)
+        self.pushVC(viewController: searchVC)
     }
     
     

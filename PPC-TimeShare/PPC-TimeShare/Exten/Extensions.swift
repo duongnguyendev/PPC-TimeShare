@@ -86,30 +86,30 @@ class CustomImageView : UIImageView{
             image = imageFromCache
             return
         }
-        
-        let url = NSURL(string: urlString)
-        URLSession.shared.dataTask(with: url as! URL, completionHandler: { (data, response, error) in
-            if error != nil{
-                print(error!)
-            }
-            DispatchQueue.main.async {
-                let imageToCache = UIImage(data: data!)
-                if self.imageUrlString == urlString{
-                    self.image = imageToCache
+        var mUrlString = urlString
+        mUrlString = mUrlString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+        if let url = URL(string: mUrlString){
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                if error != nil{
+                    print(error!)
                 }
-                if imageToCache != nil{
-                    imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                DispatchQueue.main.async {
+                    let imageToCache = UIImage(data: data!)
+                    if self.imageUrlString == urlString{
+                        self.image = imageToCache
+                    }
+                    if imageToCache != nil{
+                        imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                    }
+                    else{
+                        self.image = UIImage(named: "no_image_icon")
+                    }
                 }
-                else{
-                    self.image = UIImage(named: "no_image_icon")
-                }
-                
-                
-            }
-            
-            
-        }).resume()
-        
+    
+            }).resume()
+        }else{
+            self.image = UIImage(named: "no_image_icon")
+        }
     }
 }
 

@@ -365,6 +365,27 @@ class APIService: NSObject {
             
         }
     }
+    func requestSearch(keyword: String, completion : @escaping ([Resort]?, String?)->()){
+        let urlString = "http://ppctimeshare.hbbsolution.com/api/resort/search?q=\(keyword)"
+        
+        getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            if error == nil && errorMes == nil{
+                if error == nil && errorMes == nil {
+                    let resortsDic = response?["data"]
+                    let resorts = self.getResortFrom(dictionary: resortsDic as Any)
+                    completion(resorts, nil)
+                }
+                else{
+                    if error != nil{
+                        completion(nil, "Can't connect to server")
+                    }
+                    else {
+                        completion(nil, errorMes)
+                    }
+                }
+            }
+        }
+    }
     
     // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){

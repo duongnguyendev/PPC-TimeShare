@@ -10,6 +10,8 @@ import UIKit
 
 class SearchVC: BaseViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    var resorts : [Resort]?
+    
     var searchViewController : UISearchController!
     lazy var colletionSearchResult: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -36,47 +38,54 @@ class SearchVC: BaseViewController, UISearchControllerDelegate, UISearchResultsU
     }
     
     override func setupView() {
-        colletionSearchResult.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        colletionSearchResult.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
         view.addSubview(colletionSearchResult)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: colletionSearchResult)
         view.addConstraintWithFormat(format: "V:|-20-[v0]|", views: colletionSearchResult)
     }
     //search bar
     func updateSearchResults(for searchController: UISearchController) {
-
+        
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        print(searchText)
-    }
-
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        print(searchBar.text as Any)
-        return true
+        print(searchText)
+        
+        APIService.sharedInstance.requestSearch(keyword: searchText) { (resorts, ErrorMes) in
+            if ErrorMes == nil{
+                self.resorts = resorts
+                self.colletionSearchResult.reloadData()
+            }
+        }
+        
     }
     
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == " " {
-            print(searchBar.text!)
-        }
-        return true
-    }
-
     // collection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = UIColor.red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
+        cell.resort = resorts?[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return resorts?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)
+        return CGSize(width: view.frame.width, height: 120)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let resortDetailVC = ResortDetailVC()
+        resortDetailVC.resort = resorts?[indexPath.item]
+        pushVC(viewController: resortDetailVC)
+    }
+    
+    override func hideKeyboarTouchupOutSide() {
+        
+    }
 }
+

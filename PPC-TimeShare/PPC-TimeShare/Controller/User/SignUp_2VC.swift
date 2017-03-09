@@ -151,7 +151,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
         genderDropDown.topAnchor.constraint(equalTo: buttonGender.bottomAnchor, constant: 1).isActive = true
         genderDropDown.leftAnchor.constraint(equalTo: buttonGender.leftAnchor, constant: 40).isActive = true
         genderDropDown.rightAnchor.constraint(equalTo: buttonGender.rightAnchor, constant: 0).isActive = true
-        genderDropDown.heightAnchor.constraint(equalToConstant: 63).isActive = true
+        genderDropDown.heightAnchor.constraint(equalToConstant: 83).isActive = true
         
         
 
@@ -172,6 +172,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     }
     
     func handleGenderButton(){
+        self.view.endEditing(true)
         if genderDropDown.isHidden {
             genderDropDown.isHidden = false
         }else{
