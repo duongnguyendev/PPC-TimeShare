@@ -10,6 +10,13 @@ import UIKit
 
 class PlacesNearbyCell: BaseCell {
 
+    var resort: Resort?{
+        didSet{
+            self.distanceLabel.text = "\((resort?.distance)!) km"
+            self.titleIntroduce.text = resort?.name
+        }
+    }
+    
     let icon : UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

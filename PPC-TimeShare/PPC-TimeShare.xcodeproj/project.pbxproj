@@ -56,6 +56,8 @@
 		4E2468B31E70488B0023885E /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2468B21E70488B0023885E /* SearchVC.swift */; };
 		4E31E12D1E5E918900B05F66 /* GenderDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31E12C1E5E918900B05F66 /* GenderDropDown.swift */; };
 		4E31E12F1E5E9F2000B05F66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E31E12E1E5E9F2000B05F66 /* User.swift */; };
+		4E32F77D1E73CF9D0027DA85 /* FAQsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F77C1E73CF9D0027DA85 /* FAQsCell.swift */; };
+		4E32F77F1E73EF9B0027DA85 /* FAQsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32F77E1E73EF9B0027DA85 /* FAQsDetailVC.swift */; };
 		4E400C9C1E56A4E500E6E91D /* FilterLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400C9B1E56A4E500E6E91D /* FilterLauncher.swift */; };
 		4E400C9E1E56B99600E6E91D /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400C9D1E56B99600E6E91D /* FilterButton.swift */; };
 		4E400CA01E56D22200E6E91D /* DateTimeLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400C9F1E56D22200E6E91D /* DateTimeLauncher.swift */; };
@@ -93,6 +95,7 @@
 		4ED93F611E69663700C881A1 /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED93F601E69663700C881A1 /* BookInfo.swift */; };
 		4EF11A221E55491A008473A7 /* Resort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF11A211E55491A008473A7 /* Resort.swift */; };
 		4EF11A241E5587BB008473A7 /* SpecialOffersDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF11A231E5587BB008473A7 /* SpecialOffersDetailVC.swift */; };
+		4EF1DCAB1E72A38C0028087B /* FAQsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1DCAA1E72A38C0028087B /* FAQsVC.swift */; };
 		4EFAFDB81E5B1654001261E1 /* CollectionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAFDB71E5B1654001261E1 /* CollectionImage.swift */; };
 		4EFAFDBA1E5B21CF001261E1 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAFDB91E5B21CF001261E1 /* APIService.swift */; };
 		66D310151703DB1DB310CC1B /* Pods_PPC_TimeShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6710535DE3317D48AA96EE /* Pods_PPC_TimeShare.framework */; };
@@ -150,6 +153,8 @@
 		4E2468B21E70488B0023885E /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		4E31E12C1E5E918900B05F66 /* GenderDropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderDropDown.swift; sourceTree = "<group>"; };
 		4E31E12E1E5E9F2000B05F66 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4E32F77C1E73CF9D0027DA85 /* FAQsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQsCell.swift; sourceTree = "<group>"; };
+		4E32F77E1E73EF9B0027DA85 /* FAQsDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQsDetailVC.swift; sourceTree = "<group>"; };
 		4E3989D21E61357B0011B406 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E3989D31E6135800011B406 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E400C9B1E56A4E500E6E91D /* FilterLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterLauncher.swift; path = ../FilterLauncher.swift; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 		4ED93F601E69663700C881A1 /* BookInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
 		4EF11A211E55491A008473A7 /* Resort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resort.swift; sourceTree = "<group>"; };
 		4EF11A231E5587BB008473A7 /* SpecialOffersDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialOffersDetailVC.swift; sourceTree = "<group>"; };
+		4EF1DCAA1E72A38C0028087B /* FAQsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQsVC.swift; sourceTree = "<group>"; };
 		4EFAFDB71E5B1654001261E1 /* CollectionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionImage.swift; sourceTree = "<group>"; };
 		4EFAFDB91E5B21CF001261E1 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		A2A37BB55A4CE9D18BE767A6 /* Pods-PPC-TimeShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PPC-TimeShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-PPC-TimeShare/Pods-PPC-TimeShare.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,7 +253,9 @@
 			isa = PBXGroup;
 			children = (
 				4E105F901E4DE82000A2CBC4 /* IntroduceVC.swift */,
+				4EF1DCAA1E72A38C0028087B /* FAQsVC.swift */,
 				4E1B77691E4EC1B10024E457 /* IntroductionDetail.swift */,
+				4E32F77E1E73EF9B0027DA85 /* FAQsDetailVC.swift */,
 			);
 			path = Introduce;
 			sourceTree = "<group>";
@@ -349,6 +357,7 @@
 				4E400CA31E56FFDC00E6E91D /* AllCell.swift */,
 				4E158F191E6D47490062ED5D /* HistoryCell.swift */,
 				4E1CEEDF1E70F73800AA0C07 /* SearchResultCell.swift */,
+				4E32F77C1E73CF9D0027DA85 /* FAQsCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -651,6 +660,7 @@
 				4E158F1C1E6D54D80062ED5D /* HistoryLauncher.swift in Sources */,
 				4E119E781E51A0D800F85AD4 /* ResortDetailVC.swift in Sources */,
 				4E105FA61E4DF57F00A2CBC4 /* LanguageManager.swift in Sources */,
+				4E32F77D1E73CF9D0027DA85 /* FAQsCell.swift in Sources */,
 				4E0803351E5D716600F035AA /* Place.swift in Sources */,
 				4E5063DD1E4DCD0200210411 /* BaseViewController.swift in Sources */,
 				4E400C9C1E56A4E500E6E91D /* FilterLauncher.swift in Sources */,
@@ -663,6 +673,7 @@
 				4E18D7D91E651809003F6A0B /* DropDownLanguages.swift in Sources */,
 				4E5B13861E52C35900FD37E6 /* SpecialOffersCell.swift in Sources */,
 				4E5063DB1E4DA89000210411 /* HomeNavBar.swift in Sources */,
+				4EF1DCAB1E72A38C0028087B /* FAQsVC.swift in Sources */,
 				4E119EA41E51BFB900F85AD4 /* SignUp_1VC.swift in Sources */,
 				4E7F53101E542F3300EBCF04 /* ForgotPasswordVC.swift in Sources */,
 				4EBA78CC1E6669980039AF3B /* Offer.swift in Sources */,
@@ -684,6 +695,7 @@
 				4E105F9B1E4DE88E00A2CBC4 /* ListOfResortsVC.swift in Sources */,
 				4E400CA41E56FFDC00E6E91D /* AllCell.swift in Sources */,
 				4ED93F5D1E69254100C881A1 /* ListVoucherLauncher.swift in Sources */,
+				4E32F77F1E73EF9B0027DA85 /* FAQsDetailVC.swift in Sources */,
 				4ECB4EEA1E5A8D4700F3F03C /* SignUp_2VC.swift in Sources */,
 				4E5B13801E52A3C800FD37E6 /* RecruitmentCell.swift in Sources */,
 				4E1B776A1E4EC1B10024E457 /* IntroductionDetail.swift in Sources */,

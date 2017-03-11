@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
     
     var resorts : [Resort]?
-    func fetchResorts(){
-        APIService.sharedInstance.fetchResortRandom { (resorts, errorMes) in
+    var userId : NSNumber = 0
+    
+    let locationManager = CLLocationManager()
+    func fetchResorts(lat : String, lng : String){
+        
+        let userInfo = UserDefaults.standard.value(forKey: "currentUser")
+        if userInfo != nil{
+            let user = User(data: userInfo as! Dictionary <String, Any>)
+            userId = user.userId!
+        }
+        
+        self.activity.startAnimating()
+        APIService.sharedInstance.fetchResortRandom(userId: userId, lat:lat, lng:lng) { (resorts, errorMes) in
+            self.activity.stopAnimating()
             if errorMes != nil{
-            // show mes
+                // show mes
             }
             else{
                 self.resorts = resorts
@@ -24,18 +37,46 @@ class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UI
     }
     
     let margin : CGFloat = 25.0
-    let temptext = "There was a time when the great Australian dream was a family home on a quarter acre book. Now it seems the aussie dream..."
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Explore All Destination"
         collectionResorts.register(ResortCell.self, forCellWithReuseIdentifier: cellId)
         
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            
+            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways{
+                locationManager.startUpdatingLocation()
+            }
+            else{
+                let alertController = UIAlertController (title: "Setting Location", message: "Go to Settings?", preferredStyle: .alert)
+                
+                let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                        return
+                    }
+                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.openURL(settingsUrl)
+                    }
+                    self.goHome()
+                }
+                alertController.addAction(settingsAction)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                
+                present(alertController, animated: true, completion: nil)
+            }
+        }else{
+            fetchResorts(lat: "", lng: "")
+        }
     }
     override func setupView() {
         setupBackGround()
         setupCollectionView()
-        fetchResorts()
     }
     
     let cellId = "cellId"
@@ -107,6 +148,19 @@ class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UI
         let detailVC : ResortDetailVC = ResortDetailVC()
         detailVC.resort = resorts?[indexPath.item]
         pushVC(viewController: detailVC)
+    }
+    
+    //location manager
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.locationManager.stopUpdatingLocation()
+        let location : CLLocationCoordinate2D = (manager.location?.coordinate)!
+        
+        let latValue = "\(location.latitude)"
+        let lngValue = "\(location.longitude)"
+        
+        self.fetchResorts(lat: latValue, lng: lngValue)
+        
     }
     
     override func hideKeyboarTouchupOutSide() {

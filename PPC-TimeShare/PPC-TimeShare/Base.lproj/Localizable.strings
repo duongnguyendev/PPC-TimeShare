@@ -12,9 +12,6 @@ domain = "http://ppctimeshare.hbbsolution.com/api/";
 
 // title base view controller
 
-
-
-
 ForgotPassword= "Forgot Password";
 YourEmail= "Your email";
 Confirm= "Confirm";
@@ -56,7 +53,6 @@ Country= "Country";
 City= "City";
 Type= "Type";
 SearchBy= "Search by";
-ExploreAllDestinations= "Explore all destinations";
 Recruitment= "Recruitment";
 CheckIn= "Check in";
 CheckOut= "Check out";

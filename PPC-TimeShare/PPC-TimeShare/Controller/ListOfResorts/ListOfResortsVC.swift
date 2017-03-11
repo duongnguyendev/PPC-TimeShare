@@ -35,7 +35,7 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         super.viewDidLoad()
         collectionViewResorts.register(NewCell.self, forCellWithReuseIdentifier: newCellId)
         collectionViewResorts.register(AllCell.self, forCellWithReuseIdentifier: allCellId)
-        self.title = "Resorts"
+        self.title = LanguageManager.sharedInstance.localizedString(string: "Resorts")
         collectionViewResorts.isPagingEnabled = true
         selectNew = true
     }
@@ -76,14 +76,16 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     
     let buttonNew : TabButton = {
         let button = TabButton()
-        button.setTitle("New", for: .normal)
+        let title = LanguageManager.sharedInstance.localizedString(string: "New")
+        button.setTitle(title, for: .normal)
         button.titleLabel?.font = UIFont(name: "Roboto-Light", size: 16)
         button.addTarget(self, action: #selector(handleNewButton), for: .touchUpInside)
         return button
     }()
     let buttonAll : TabButton = {
         let button = TabButton()
-        button.setTitle("All", for: .normal)
+        let title = LanguageManager.sharedInstance.localizedString(string: "All")
+        button.setTitle(title, for: .normal)
         button.titleLabel?.font = UIFont(name: "Roboto-Light", size: 16)
         button.addTarget(self, action: #selector(handleAllButton), for: .touchUpInside)
         return button

@@ -57,8 +57,11 @@ class APIService: NSObject {
         }
     }
     
-    func fetchResortRandom(completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
-        let urlString = "\(self.getCurrentDomain())resort/random"
+    func fetchResortRandom(userId: NSNumber?, lat: String?, lng :String?, completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
+        
+        let useridString = "\(userId)"
+        
+        let urlString = "\(self.getCurrentDomain())resort/random?lat=\(lat!)&lng=\(lng!)&user_id=\(useridString)"
         self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
             
             if error == nil && errorMes == nil {
@@ -78,6 +81,29 @@ class APIService: NSObject {
             
         }
     }
+    func fetchResortNearBy(lat: String, lng : String, completion:@escaping (([Resort]?, String?)->())){
+        let urlString = "\(getCurrentDomain())resort/nearby?lat=\(lat)&lng=\(lng)&km=1000"
+        self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
+            
+            if error == nil && errorMes == nil {
+                let resortsDic = response?["data"]
+                let resorts = self.getResortFrom(dictionary: resortsDic as Any)
+                completion(resorts, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errorMes)
+                }
+                
+            }
+            
+        }
+        
+    }
+    
     
     func getRecruitments(completion : @escaping ([Recruitment]?, String?)->()){
         let urlString = "\(self.getCurrentDomain())recruitment"
@@ -297,7 +323,7 @@ class APIService: NSObject {
             }
         }
     }
-
+    
     func requestGetProvinces(country: Country, completion: @escaping ([Province]?, String?) -> ()){
         let urlString = "\(self.getCurrentDomain())provinces?country_id=\(country.countryId!)"
         
@@ -402,6 +428,102 @@ class APIService: NSObject {
         }
     }
     
+    func requestSendRequest(email : String, name : String, mobile : String, title : String, content : String, completion:@escaping ((Bool)->())){
+        
+        let urlString = "\(self.getCurrentDomain())contact"
+        let param = ["ten_lienhe":name,
+                     "sdt_lienhe":mobile,
+                     "email_lienhe": email,
+                     "title_lienhe":title,
+                     "conten_lienhe":content] as Dictionary <String, Any>
+        postRequestWith(urlString: urlString, params: param) { (response, error, errorMes) in
+            if error == nil && errorMes == nil{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+        
+    }
+    
+    func getBenefit(completion:@escaping ((Dictionary<String, Any>?, String?)->())){
+        let urlString = "\(self.getCurrentDomain())benefit"
+        
+        getRequestWith(urlString: urlString) { (response, error, errMes) in
+            if error == nil && errMes == nil{
+                let data = response?["data"] as! Dictionary<String, Any>
+                completion(data, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errMes)
+                }
+            }
+        }
+        
+    }
+    
+    func getWhatIsTimeShare(completion:@escaping ((Dictionary<String, Any>?, String?)->())){
+        let urlString = "\(self.getCurrentDomain())about"
+        
+        getRequestWith(urlString: urlString) { (response, error, errMes) in
+            if error == nil && errMes == nil{
+                let data = response?["data"] as! Dictionary<String, Any>
+                completion(data, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errMes)
+                }
+            }
+        }
+        
+        
+    }
+    func getAboutUs(completion:@escaping ((Dictionary<String, Any>?, String?)->())){
+        let urlString = "\(self.getCurrentDomain())introduce"
+        getRequestWith(urlString: urlString) { (response, error, errMes) in
+            if error == nil && errMes == nil{
+                let data = response?["data"] as! Dictionary<String, Any>
+                completion(data, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errMes)
+                }
+            }
+        }
+        
+    }
+    func getFAQs(completion:@escaping (([Dictionary<String, Any>]?, String?)->())){
+        let urlString = "\(self.getCurrentDomain())faq"
+        getRequestWith(urlString: urlString) { (response, error, errMes) in
+            if error == nil && errMes == nil{
+                let data = response?["data"] as Any
+                let dataArray = data as? Array<Any>
+                completion(dataArray as! [Dictionary<String, Any>]?, nil)
+            }
+            else{
+                if error != nil{
+                    completion(nil, "Can't connect to server")
+                }
+                else {
+                    completion(nil, errMes)
+                }
+            }
+        }
+        
+    }
+    
     // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
         
@@ -467,7 +589,7 @@ class APIService: NSObject {
                             DispatchQueue.main.sync {
                                 completion(nil, nil, errorMes)
                             }
-  
+                            
                         }else{
                             DispatchQueue.main.sync {
                                 completion(jsonDictionaries, nil, nil)
@@ -563,7 +685,7 @@ class APIService: NSObject {
         return types
     }
     
-
+    
     func getCurrentDomain() -> String{
         return LanguageManager.sharedInstance.localizedString(string: "domain")!
     }

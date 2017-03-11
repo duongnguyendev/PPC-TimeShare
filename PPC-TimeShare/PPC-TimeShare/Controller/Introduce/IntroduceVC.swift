@@ -93,6 +93,9 @@ class IntroduceVC: BaseViewController , UICollectionViewDelegate, UICollectionVi
             let detailVC = IntroductionDetail()
             detailVC.introduce = intro
             pushVC(viewController: detailVC)
+        }else{
+            let faqsVC = FAQsVC()
+            pushVC(viewController: faqsVC)
         }
     }
     

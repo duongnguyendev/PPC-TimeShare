@@ -40,7 +40,6 @@ Address= "Address";
 Password= "Password";
 ConfirmPassword= "Confirm Password";
 AcceptTerms= "Accept terms";
-SignIn= "Sign in";
 SendRequest= "Send Request";
 Mobile= "Mobile";
 Title= "Title";

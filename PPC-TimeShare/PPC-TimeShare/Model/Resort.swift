@@ -21,6 +21,7 @@ class Resort: NSObject {
     var images : [String]?
     var equipment : String?
     var introduceFull: String?
+    var distance : String?
     
     override init() {
         super.init()
@@ -43,6 +44,7 @@ class Resort: NSObject {
         self.equipment = data["equipment"] as! String?
         self.images = data["images"] as! [String]?
         self.introduceFull = data["introduce_full"] as! String?
+        self.distance = data["distance"] as! String?
         
     }
 }

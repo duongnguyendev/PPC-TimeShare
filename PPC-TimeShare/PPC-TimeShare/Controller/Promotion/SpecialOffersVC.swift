@@ -26,7 +26,7 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Special Offers"
+        self.title = LanguageManager.sharedInstance.localizedString(string: "SpecialOffers")
         collectionOffers.register(SpecialOffersCell.self, forCellWithReuseIdentifier: cellId)
         fetchOffers()
 

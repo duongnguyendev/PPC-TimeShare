@@ -12,10 +12,25 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
 
     let itemHeight : CGFloat = 40
     let spaceLine : CGFloat = 1
+    var user : User?{
+        didSet{
+            self.inputEmailView.textField.text = user?.email
+            self.inputNameView.textField.text = user?.userName
+            self.inputMobileView.textField.text = user?.mobileNumber
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Send Request"
+        
+        let userInfo = UserDefaults.standard.value(forKey: "currentUser")
+        if userInfo != nil{
+            let user = User(data: userInfo as! Dictionary <String, Any>)
+            self.user = user
+        }
     }
+    
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor.clear
@@ -62,6 +77,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
     let sendButton : MyButton = {
         let button = MyButton()
         button.setTitle("Send", for: .normal)
+        button.addTarget(self, action: #selector(handleButtonSend), for: .touchUpInside)
         button.backgroundColor = UIColor.button1Collor()
         return button
     }()
@@ -119,6 +135,89 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
         contentTextView.bottomAnchor.constraint(equalTo: sendButton.topAnchor, constant: -20).isActive = true
     }
     
+    func handleButtonSend(){
+        let alter = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alter.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        let validateMes = validate()
+        if validateMes == nil{
+            let name = self.inputNameView.textField.text
+            let email = self.inputEmailView.textField.text
+            let mobile = self.inputMobileView.textField.text
+            let title = self.inputTitleView.textField.text
+            let content = self.contentTextView.text
+            APIService.sharedInstance.requestSendRequest(email: email!, name: name!, mobile: mobile!, title: title!, content: content!, completion: { (success) in
+                if success{
+                    alter.title = "Gửi yêu cầu thành công"
+                    alter.message = "Xong!"
+                    self.view.endEditing(true)
+                }
+                else{
+                    alter.title = "Gửi yêu cầu thất bại"
+                    alter.message = "Thử lại!"
+                }
+                self.present(alter, animated: true, completion: {})
+            })
+            
+        }else{
+            //show mes
+            alter.title = "Thông tin nhập chưa đủ"
+            alter.message = validateMes
+            self.present(alter, animated: true, completion: {})
+        }
+    }
+    
+    func validate()->String?{
+        return validateUserName()
+    }
+    
+    func validateUserName()->String?{
+        if (inputNameView.textField.text?.trimmingCharacters(in: CharacterSet.whitespaces).characters.count)! < 1 {
+            inputNameView.textField.becomeFirstResponder()
+            return "Vui lòng nhập tên"
+        }
+        
+        return validateEmail()
+    }
+    func validateEmail()-> String?{
+        
+
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        if emailTest.evaluate(with: inputEmailView.textField.text){
+            return validatePhone()
+        }
+        return "Sai định dạng email"
+    }
+    func validatePhone()-> String?{
+        let mobileFormat = "^\\d{10,11}$"
+        
+        let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobileFormat)
+        if mobileTest.evaluate(with: inputMobileView.textField.text){
+            inputMobileView.becomeFirstResponder()
+            return validateTitle()
+        }
+        return "Số điện thoại chưa đúng"
+    }
+    func validateTitle()->String?{
+        
+        if (inputTitleView.textField.text?.trimmingCharacters(in: CharacterSet.whitespaces).characters.count)! < 1 {
+            inputTitleView.textField.becomeFirstResponder()
+            return "Vui lòng nhập tiêu đề"
+        }
+        
+        return validateContent()
+    }
+    func validateContent() -> String? {
+        if (contentTextView.text?.trimmingCharacters(in: CharacterSet.whitespaces).characters.count)! < 50 {
+            contentTextView.becomeFirstResponder()
+            return "Vui lòng nhập nội dung tối thiểu 50 ký tự"
+        }
+        
+        return nil
+    }
+    
+    
     override func keyboardWillHide(notification: NSNotification) {
         let contentInsets = UIEdgeInsets.zero
         self.mainScrollView.contentInset = contentInsets
@@ -127,27 +226,12 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
     }
     
     override func keyboardWillShow(notification: NSNotification) {
-//        if let activeField = self.activeField, let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
-//            self.mainScrollView.contentInset = contentInsets
-//            self.mainScrollView.scrollIndicatorInsets = contentInsets
-//            var aRect = self.view.frame
-//            aRect.size.height -= keyboardSize.size.height
-//            if (!aRect.contains(activeField.frame.origin)) {
-//                self.mainScrollView.scrollRectToVisible(activeField.frame, animated: true)
-//            }
-//        }
-        
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
             self.mainScrollView.contentInset = contentInsets
             self.mainScrollView.scrollIndicatorInsets = contentInsets
             var aRect = self.view.frame
             aRect.size.height -= keyboardSize.size.height
-//            if (!aRect.contains(activeField.frame.origin)) {
-//                self.mainScrollView.scrollRectToVisible(activeField.frame, animated: true)
-//            }
         }
-        
     }
 }

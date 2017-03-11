@@ -42,7 +42,6 @@ class BaseLauncher: NSObject {
         contentView.clipsToBounds = true
         if let window = UIApplication.shared.keyWindow{
             
-//            blackView.translatesAutoresizingMaskIntoConstraints = false
             self.blackView.isHidden = true
             self.contentView.isHidden = true
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -61,13 +60,15 @@ class BaseLauncher: NSObject {
             // ok, cancel button x y w h
             buttonCancel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
             buttonCancel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            buttonCancel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
+            contentView.addConstraint(NSLayoutConstraint(item: buttonCancel, attribute: .width, relatedBy: .equal, toItem: buttonOK, attribute: .width, multiplier: 1, constant: 0))
             
             buttonOK.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
             buttonOK.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            buttonOK.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0).isActive = true
+            buttonOK.leftAnchor.constraint(equalTo: buttonCancel.rightAnchor, constant: 0).isActive = true
             
-            contentView.addConstraintWithFormat(format: "H:|[v0][v1]|", views: buttonCancel, buttonOK)
             
-            contentView.addConstraint(NSLayoutConstraint(item: buttonCancel, attribute: .width, relatedBy: .equal, toItem: buttonOK, attribute: .width, multiplier: 1, constant: 0))
             
         }
         buttonCancel.addTarget(self, action: #selector(handleCancelButton), for: .touchUpInside)
@@ -120,7 +121,7 @@ class DateTimeLauncher: BaseLauncher {
         picker.datePickerMode = .date
         return picker
     }()
-
+    
     var item : InfoButton?
     func getDateFor(item : InfoButton){
         show()
@@ -134,23 +135,15 @@ class DateTimeLauncher: BaseLauncher {
         contentView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         contentView.widthAnchor.constraint(equalToConstant: 250).isActive = true
         
-        //content item
-        contentView.addSubview(buttonOK)
-        
-        buttonOK.addTarget(self, action: #selector(handleOKButton), for: .touchUpInside)
-        
-        buttonOK.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
-        buttonOK.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0).isActive = true
-        
         
         contentView.addSubview(datePicker)
         
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: datePicker)
-        contentView.addConstraintWithFormat(format: "V:|[v0][v1(40)]|", views: datePicker, buttonOK)
+        contentView.addConstraintWithFormat(format: "V:|[v0]-40-|", views: datePicker)
     }
     override func handleOKButton(){
         self.item?.dateValue = datePicker.date
         hide()
     }
-
+    
 }

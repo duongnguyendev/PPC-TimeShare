@@ -50,7 +50,6 @@ class ListVoucherLauncher: BaseLauncher, UICollectionViewDelegate, UICollectionV
     override func setupContent() {
         fretchVoucher()
         super.setupContent()
-        touchUpOutSize()
         collectionVoucher.register(VoucherCell.self, forCellWithReuseIdentifier: cellId)
         contentView.widthAnchor.constraint(equalToConstant: 250).isActive = true
         contentView.heightAnchor.constraint(equalToConstant: 300).isActive = true
@@ -61,7 +60,8 @@ class ListVoucherLauncher: BaseLauncher, UICollectionViewDelegate, UICollectionV
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: collectionVoucher)
         contentView.addConstraintWithFormat(format: "V:|[v0(40)][v1]-40-|", views:titleLabel, collectionVoucher)
         
-        self.buttonCancel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0).isActive = true
+//        self.buttonCancel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0).isActive = true
+        contentView.addConstraint(NSLayoutConstraint(item: buttonCancel, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: 1, constant: 0))
         self.buttonOK.isHidden = true
         
     }

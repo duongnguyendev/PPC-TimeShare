@@ -183,7 +183,7 @@ class HomeButtonCustom : BaseButton {
         label.backgroundColor = UIColor.clear
         label.numberOfLines = 2
         
-        label.font = UIFont(name: "Roboto-Regular", size: 20)
+        label.font = UIFont(name: "Roboto-Regular", size: 19)
         return label
         
     }()
@@ -233,7 +233,7 @@ class HomeButtonCustom : BaseButton {
         titleLabelView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         titleLabelView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30).isActive = true
         titleLabelView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        titleLabelView.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabelView.font = UIFont(name: "Roboto-Medium", size: 22)
         titleLabelView.textAlignment = .left
         titleLabelView.layer.zPosition = 1
         

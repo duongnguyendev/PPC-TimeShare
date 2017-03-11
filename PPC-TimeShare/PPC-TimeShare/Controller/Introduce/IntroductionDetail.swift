@@ -21,21 +21,26 @@ class IntroductionDetail: BaseViewController {
                 switch intro {
                 case EnumIntroduceName.AboutUs:
                     labelTitle.text = "About us"
+                    handleAboutUS()
                     break
                 case EnumIntroduceName.WhatISTimeshare:
                     labelTitle.text = "What is Timeshare"
+                    handleWhatIsTimeshare()
                     break
                 case EnumIntroduceName.FAQs:
                     labelTitle.text = "FAQs"
                     break
                 case EnumIntroduceName.PPCTimesharebusiness:
                     labelTitle.text = "PPC Timeshare business"
+                    handlePPCTimesharebusiness()
                     break
                 case EnumIntroduceName.Benefits:
                     labelTitle.text = LanguageManager.sharedInstance.localizedString(string: "Benefits")
+                    handleBenefits()
                     break
                 case EnumIntroduceName.ExchangeProgram:
                     labelTitle.text = "Exchange Program"
+                    handleExchangeProgram()
                     break
                 }
             }
@@ -53,7 +58,6 @@ class IntroductionDetail: BaseViewController {
         webView.backgroundColor = UIColor.clear
         webView.isOpaque = false
         webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.loadHTMLString("<p style=\"text-align:justify\"><span style=\"font-size:16px\"><strong>In addition, the PPC PPC assets established with the timeshare được hope is a bridge for customers and other investors participating in the field of timeshare, vacation exchange together, and flexibility in the use of resources Ownership production of each other not only in the Vietnam market in particular also in the US market đ&oacute;, Japan, South Korea, ...</strong></span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:16px\"><strong>Timeshare PPC services are provided additional housekeeping staff makes all the home comfort and peace of mind of coal in the exchange of other property before and after the holiday.</strong></span></p>\r\n", baseURL: nil)
         return webView
     }()
     override func setupView() {
@@ -63,6 +67,45 @@ class IntroductionDetail: BaseViewController {
         view.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: labelTitle)
         view.addConstraintWithFormat(format: "H:|-15-[v0]-15-|", views: webViewIntroduction)
         view.addConstraintWithFormat(format: "V:|-10-[v0(30)][v1]-20-|", views: labelTitle, webViewIntroduction)
+    }
+    
+    func handleAboutUS(){
+        APIService.sharedInstance.getAboutUs { (data, errorMes) in
+            if errorMes == nil{
+                let content = data?["noidung_gioithieu"] as! String
+                self.webViewIntroduction.loadHTMLString(content, baseURL: nil)
+            }else{
+            }
+        }
+    }
+    func handleWhatIsTimeshare(){
+        APIService.sharedInstance.getWhatIsTimeShare { (data, errorMes) in
+            if errorMes == nil{
+                let title1 = data?["title_about_1"] as! String
+                let title2 = data?["title_about_2"] as! String
+                let content1 = data?["content_about_1"] as! String
+                let content2 = data?["content_about_2"] as! String
+                
+                let htmlString = "<strong>\(title1)</strong>\r\n\(content1)<strong>\(title2)</strong>\r\n\(content2)"
+                self.webViewIntroduction.loadHTMLString(htmlString, baseURL: nil)
+            }
+        }
+    }
+    func handleBenefits(){
+        APIService.sharedInstance.getBenefit { (data, errorMes) in
+            if errorMes == nil{
+                let content = data?["content"] as! String
+                self.webViewIntroduction.loadHTMLString(content, baseURL: nil)
+            }else{
+            }
+
+        }
+    }
+    func handlePPCTimesharebusiness(){
+        //hardcode
+    }
+    func handleExchangeProgram(){
+        //hardcode
     }
     
 }

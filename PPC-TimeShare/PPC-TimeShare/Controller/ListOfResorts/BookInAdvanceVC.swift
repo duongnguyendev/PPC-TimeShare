@@ -338,12 +338,15 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
         self.numberChilds = childs
         self.TravelersView.value = String(adults + childs)
         self.textViewNote.becomeFirstResponder()
+        self.view.endEditing(true)
     }
     
     func getNumberRooms(rooms: Int) {
         self.numberRooms = rooms
         self.roomView.value = String(rooms)
         self.textViewNote.becomeFirstResponder()
+        self.view.endEditing(true)
+
     }
     func getVoucher(voucher: Voucher) {
         self.voucherId = Int(voucher.voucherId!)

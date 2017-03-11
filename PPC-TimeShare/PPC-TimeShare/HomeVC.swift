@@ -78,7 +78,6 @@ class HomeVC: UIViewController {
         let button = HomeButtonCustom()
         button.type = HomeButtonType.recruitment
         button.addTarget(self, action: #selector(handleRecruitmentButton), for: .touchUpInside)
-        button.title = "Recruitment"
         button.iconName = "recruitment_icon"
         
         return button
@@ -88,7 +87,6 @@ class HomeVC: UIViewController {
         button.type = HomeButtonType.system
         button.addTarget(self, action: #selector(handleIntroduceButton), for: .touchUpInside)
         button.backgroundColor = UIColor.rgbAlpha(red: 0, green: 0, blue: 0, alpha: 0.3)
-        button.title = "Introduce"
 
         return button
     }()
@@ -98,7 +96,6 @@ class HomeVC: UIViewController {
         button.addTarget(self, action: #selector(handlePlacesNearbyButton), for: .touchUpInside)
         button.backGroundImage = "button_3"
         button.iconName = "place_nearby_icon"
-        button.title = "Places Nearby"
 
         return button
     }()
@@ -255,6 +252,13 @@ class HomeVC: UIViewController {
     }
     
     func localize() {
+        listOfResortsButton.title = LanguageManager.sharedInstance.localizedString(string: "ResortDirectory")
+        specialOffersButton.title = LanguageManager.sharedInstance.localizedString(string: "SpecialOffers")
+        placesNearbyButton.title = LanguageManager.sharedInstance.localizedString(string: "PlacesNearby")
+        exploreAllDestinationButton.title = LanguageManager.sharedInstance.localizedString(string: "ExploreAllDestinations")
+        introduceButton.title = LanguageManager.sharedInstance.localizedString(string: "Introduction")
+        recruitmentButton.title = LanguageManager.sharedInstance.localizedString(string: "Recruitment")
         sendRequestButton.title = LanguageManager.sharedInstance.localizedString(string: "SendRequest")
+        
     }
 }

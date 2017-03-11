@@ -85,9 +85,9 @@ class SettingsVC: BaseViewController, DropDownDelegate {
     }
     
     override func localizeString() {
-        
         title = LanguageManager.sharedInstance.localizedString(string: "Settings")
-        
+        buttonLogout.title = LanguageManager.sharedInstance.localizedString(string: "")
+        buttonLanguage.title = LanguageManager.sharedInstance.localizedString(string: "")
     }
     override func hideKeyboarTouchupOutSide() {
         
