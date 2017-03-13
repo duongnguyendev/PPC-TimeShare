@@ -48,7 +48,7 @@ class ResortDetailVC: BaseViewController, SignInDelegate {
     
     let reservationButton : MyButton = {
         let button = MyButton()
-        button.setTitle("Book in advance", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "BookNow"), for: .normal)
         button.backgroundColor = UIColor.green
         button.addTarget(self, action: #selector(handleReservationButton), for: .touchUpInside)
         return button
@@ -175,6 +175,9 @@ class ResortDetailVC: BaseViewController, SignInDelegate {
     
     func handleMap(){
         print("handle Map detail resort")
+        let resortMapVC = ResortMapVC()
+        resortMapVC.resort = self.resort
+        pushVC(viewController: resortMapVC)
     }
     
     func handleReservationButton(){

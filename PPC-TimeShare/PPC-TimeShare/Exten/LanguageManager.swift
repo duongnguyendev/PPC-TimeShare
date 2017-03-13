@@ -34,11 +34,10 @@ class LanguageManager: NSObject {
     func getCurrentLanguage() -> Language {
         let languageCode = Locale.preferredLanguages[0]
         var language : Language?
-        
         if languageCode != "vi"{
             language = Language(languageCode: "en", language: "English")
         }else{
-            language = Language(languageCode: "vi", language: "Vietnamese")
+            language = Language(languageCode: "vi", language: "Tiếng Việt")
         }
 //        var language = Language()
         

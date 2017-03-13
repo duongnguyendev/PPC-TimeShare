@@ -26,7 +26,7 @@ class FAQsDetailVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "FAQs"
+        title = languageManager.localizedString(string: "FAQs")
     }
 
     override func setupView() {

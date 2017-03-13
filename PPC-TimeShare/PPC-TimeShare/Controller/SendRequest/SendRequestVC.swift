@@ -10,7 +10,7 @@ import UIKit
 
 class SendRequestVC: BaseViewController, UITextFieldDelegate {
 
-    let itemHeight : CGFloat = 40
+    let itemHeight : CGFloat = 50
     let spaceLine : CGFloat = 1
     var user : User?{
         didSet{
@@ -22,7 +22,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Send Request"
+        self.title = languageManager.localizedString(string: "SendRequest")
         
         let userInfo = UserDefaults.standard.value(forKey: "currentUser")
         if userInfo != nil{
@@ -76,7 +76,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
     
     let sendButton : MyButton = {
         let button = MyButton()
-        button.setTitle("Send", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "Send"), for: .normal)
         button.addTarget(self, action: #selector(handleButtonSend), for: .touchUpInside)
         button.backgroundColor = UIColor.button1Collor()
         return button
@@ -85,7 +85,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Roboto-Light", size: 14)
-        textView.text = "Compose request"
+        textView.text = LanguageManager.sharedInstance.localizedString(string: "ComposeRequest")
         return textView
     }()
     
@@ -147,12 +147,11 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
             let content = self.contentTextView.text
             APIService.sharedInstance.requestSendRequest(email: email!, name: name!, mobile: mobile!, title: title!, content: content!, completion: { (success) in
                 if success{
-                    alter.title = "Gửi yêu cầu thành công"
-                    alter.message = "Xong!"
+                    alter.message = self.languageManager.localizedString(string: "SendRequestSuccessfully")
                     self.view.endEditing(true)
                 }
                 else{
-                    alter.title = "Gửi yêu cầu thất bại"
+                    alter.title = self.languageManager.localizedString(string: "SendRequestFailed")
                     alter.message = "Thử lại!"
                 }
                 self.present(alter, animated: true, completion: {})

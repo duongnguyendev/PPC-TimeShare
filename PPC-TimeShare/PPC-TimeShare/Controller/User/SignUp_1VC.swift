@@ -14,7 +14,7 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sign up"
+        title = languageManager.localizedString(string: "SignUp")
     }
     let inputSize : CGFloat = 60.0
     let spaceLine : CGFloat = 1.0
@@ -52,14 +52,14 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
         let input = InputView()
         input.iconName = "confirm_password_icon"
         input.type = InputType.password
-        input.hint = "Confirm password"
+        input.hint = "ConfirmPassword"
         input.textField.delegate = self
         return input
     }()
     
     let buttonNext : MyButton = {
         let button = MyButton()
-        button.setTitle("Next", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "Next"), for: .normal)
         button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
         return button
@@ -165,10 +165,10 @@ class SignUp_1VC: BaseViewController, UITextFieldDelegate{
         let confirmPass = inputComfirmPasswordView.textField.text
         
         if (pass?.characters.count)! < 6 {
-            return "password too short"
+            return languageManager.localizedString(string: "PasswordIsTooShort")
         }
         if pass != confirmPass{
-            return "confirm Pass invalid"
+            return languageManager.localizedString(string: "PasswordIsInvalid")
         }
         
         return nil

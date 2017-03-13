@@ -33,7 +33,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
         checkOutView.value = Date().dateToString()
         checkInView.dateValue = Date()
         checkInView.value = Date().dateToString()
-        title = "Book in advance"
+        title = languageManager.localizedString(string: "BookNow")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -94,21 +94,21 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     let checkInView : InfoButton = {
         let v = InfoButton()
         v.addTarget(self, action: #selector(handleCheckInButton), for: .touchUpInside)
-        v.title = "Check in"
+        v.title = "CheckIn"
         v.iconName = "check_in_icon"
         return v
     }()
     let checkOutView : InfoButton = {
         let v = InfoButton()
         v.addTarget(self, action: #selector(handleCheckOutButton), for: .touchUpInside)
-        v.title = "Check out"
+        v.title = "CheckOut"
         v.iconName = "check_out_icon"
         return v
     }()
     let roomView : InfoButton = {
         let v = InfoButton()
         v.iconName = "room_icon"
-        v.title = "Room"
+        v.title = "QuantityOfRoom"
         v.value = "0"
         v.addTarget(self, action: #selector(handleRoomButton), for: .touchUpInside)
         return v
@@ -124,7 +124,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     let voucherView : InfoButton = {
         let v = InfoButton()
         v.iconName = "icon_gift"
-        v.title = "Select voucher"
+        v.title = "Voucher"
         v.value = ""
         v.addTarget(self, action: #selector(handleVoucherButton), for: .touchUpInside)
         return v
@@ -132,7 +132,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     
     let bookButton : MyButton = {
         let button = MyButton()
-        button.setTitle("Book now", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "BookNow"), for: .normal)
         button.addTarget(self, action: #selector(handleBook), for: .touchUpInside)
         button.backgroundColor = UIColor.button1Collor()
         return button
@@ -147,7 +147,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Roboto-Light", size: 14)
-        textView.text = "Note"
+        textView.text = LanguageManager.sharedInstance.localizedString(string: "Note")
         return textView
     }()
     
@@ -278,11 +278,12 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     }
     
     func validateDate() -> String? {
+        // if check in date < now
         let compareCheckInToNow = NSCalendar.current.compare(checkInView.dateValue!, to: Date(), toGranularity: .day)
+        // if check in > check out
         let compareCheckInToCheckOut = NSCalendar.current.compare(checkInView.dateValue!, to: checkOutView.dateValue!, toGranularity: .day)
         
-        if  compareCheckInToNow == .orderedDescending || compareCheckInToCheckOut == .orderedDescending  {
-            
+        if  compareCheckInToNow == .orderedAscending || compareCheckInToCheckOut == .orderedDescending  {
             return "wrong date"
         }
         
@@ -327,6 +328,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     }
     func handleVoucherButton(){
         
+        self.view.endEditing(true)
         listVoucherLauncher.delegate = self
         listVoucherLauncher.show()
     }

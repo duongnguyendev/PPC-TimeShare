@@ -24,7 +24,7 @@ class InfoButton: BaseButton {
     }
     var title : String?{
         didSet{
-            labelTitle.text = title
+            labelTitle.text = LanguageManager.sharedInstance.localizedString(string: title!)
         }
     }
     var value : String?{

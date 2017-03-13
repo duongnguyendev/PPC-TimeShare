@@ -17,12 +17,15 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = LanguageManager.sharedInstance.localizedString(string: "SignUp") 
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleAvatarClick))
         imageViewAvatar.isUserInteractionEnabled = true
         imageViewAvatar.addGestureRecognizer(tap)
     }
     override func viewDidAppear(_ animated: Bool) {
-        localizeString()
+        super.viewDidAppear(animated)
     }
 
     
@@ -46,7 +49,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     }()
     let updateProFilePictureLabel : UILabel = {
         let label = UILabel()
-        label.text = "UPDATE PROFILE PICTURE"
+        label.text = LanguageManager.sharedInstance.localizedString(string: "UPDATEPROFILEPICTURE")
         label.font = UIFont(name: "Roboto-Light", size: 16)
         label.textAlignment = .center
         return label
@@ -64,7 +67,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     lazy var inputMobileView : InputView = {
         let input = InputView()
         input.iconName = "mobile_number_icon"
-        input.hint = "Mobile number"
+        input.hint = "MobilePhone"
         input.textField.delegate = self
         return input
     }()
@@ -89,7 +92,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     
     let buttonNext : MyButton = {
         let button = MyButton()
-        button.setTitle("Next", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "Next"), for: .normal)
         button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
         return button
@@ -183,15 +186,21 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     func handleAvatarClick(){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        let actionSheet = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+        let actionSheet = UIAlertController(title: self.languageManager.localizedString(string: ""),
+                                            message: nil, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: self.languageManager.localizedString(string: "Cancel"),
+                                            style: .cancel,
+                                            handler: { (action) in
             
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Photo libary", style: .default, handler: { (action) in
+                                            }))
+        actionSheet.addAction(UIAlertAction(title: self.languageManager.localizedString(string: "Gallery"),
+                                            style: .default, handler: { (action) in
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: self.languageManager.localizedString(string: "TakePhoto"),
+                                            style: .default, handler: { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 imagePicker.sourceType = .camera
                 self.present(imagePicker, animated: true, completion: nil)
@@ -259,7 +268,8 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     
     func validateUserName() ->String?{
         if (inputNameView.textField.text?.characters.count)! < 2 {
-            return "user name invalid"
+            
+            return languageManager.localizedString(string: "UsernameIsNotCorrect")
         }
         return nil
     }
@@ -269,19 +279,19 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
         let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobileFormat)
         let mobileTestResult = mobileTest.evaluate(with: inputMobileView.textField.text)
         if !mobileTestResult {
-            return "mobile number invalid"
+            return languageManager.localizedString(string: "IncorrectPhoneNumber")
         }
         return nil
     }
     func validateGender() -> String? {
         if self.user.gender == nil{
-            return "please select gender"
+            return languageManager.localizedString(string: "PleaseSelectYourGender")
         }
         return nil
     }
     func validateAddress() ->String?{
         if (inputAddressView.textField.text?.isEmpty)! {
-            return "please type address"
+            return languageManager.localizedString(string: "PleaseInputYourAddress")
         }
         return nil
     }

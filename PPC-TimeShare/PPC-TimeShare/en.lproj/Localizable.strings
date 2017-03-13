@@ -17,7 +17,7 @@ YourEmail= "Your email";
 Confirm= "Confirm";
 SignIn= "Sign in";
 Password= "Password";
-ForgotPassowrd= "Forgot Passowrd=";
+ForgotPassowrd= "Forgot Passowrd";
 PPCTimeshare= "PC Timeshare";
 ResortDirectory= "Resort Directory";
 SpecialOffers= "Special offers";
@@ -26,7 +26,6 @@ PlacesNearby= "Places nearby";
 Introduction= "Introduction";
 Recruitment= "Recruitment";
 SendRequest= "Send Request";
-Introduction="Introduction";
 AboutUs= "About us";
 WhatIsTimeshare= "What is timeshare";
 PPCTimeshareBusiness= "PPC Timeshare business";
@@ -35,12 +34,11 @@ ExchangeProgram= "Exchange program";
 SignUp= "Sign Up";
 Name= "Name";
 Email= "Email";
-MibilePhone= "Mibile phone";
+MobilePhone= "Mobile phone";
 Address= "Address";
 Password= "Password";
 ConfirmPassword= "Confirm Password";
 AcceptTerms= "Accept terms";
-SendRequest= "Send Request";
 Mobile= "Mobile";
 Title= "Title";
 ComposeRequest= "Compose request";
@@ -52,11 +50,80 @@ Country= "Country";
 City= "City";
 Type= "Type";
 SearchBy= "Search by";
-ExploreAllDestinations= "Explore all destinations";
 Recruitment= "Recruitment";
 CheckIn= "Check in";
 CheckOut= "Check out";
 Room= "Room";
-Travellers= "ravellers";
+Travelers= "Travelers";
 Payment= "Payment";
-Settings = "Settings";
+Settings= "Settings";
+English= "English";
+Vietnamese= "Vietnamese";
+Languages= "Languages";
+LogOut= "Log out";
+Profile = "Profile";
+Gender = "Gender";
+Update="Update";
+Voucher="Voucher";
+Vouchers="Vouchers";
+ShareApp="Share app";
+Share = "Share";
+TransactionHistory = "Transaction history";
+QuantityOfRoom="Quantity of room";
+Status="Status";
+Next = "Next";
+UPDATEPROFILEPICTURE="UPDATE PROFILE PICTURE";
+Complete="Complete";
+TermsAndConditions="Terms and conditions";
+AcceptTerms ="Accept terms";
+ServerErrorMes ="Không thể kết nối tới server";
+Cancel="Cancel";
+ComposeRequest= "Compose request";
+Done="Done";
+FAQs="FAQs";
+Adult= "Adult";
+Children="Children";
+BookNow ="Book now";
+Male = "Male";
+Female="Female";
+Note="Note";
+IncorrectPhoneNumber="Incorrect phone number";
+WrongEmailAddress="Wrong email address";
+PasswordIsTooShort="Password is too short";
+PasswordIsInvalid="Password is invalid";
+EmailAlreadyExists="Email already exists";
+LogedInFailed="Loged in failed";
+LogInSuccessfully="Log in successfully";
+PleaseInputTheTitle="Please input the title";
+PleaseInputAtLeast50letters="Please input at least 50 letters";
+SendRequestSuccessfully="Send request successfully";
+SendRequestFailed="Send request failed";
+UpdatedSuccessfully="Updated successfully";
+UpdatedFailed="Updated failed";
+PleaseTryAgain="Please try again";
+YourInformationIsUpdated="Your information is updated";
+PleaseInputYourAddress="Please inpur your address";
+PleaseSelectYourGender="Please select your gender";
+UsernameIsNotCorrect="Username is not correct";
+Gallery="Gallery";
+TakePhoto="Take photo";
+SelectImage="Select image";
+YouMustAcceptTermsOfUse="You must accept terms of use";
+Notifications="Notifications";
+SignedUpSuccessfully="Signed up successfully";
+SignedUpFailed="Signed up failed";
+PleaseCheckYourEmail="Please check your email";
+AnErrorOccurredUpdatingData="an error occurred updating data";
+
+
+
+
+
+
+
+
+
+
+
+
+

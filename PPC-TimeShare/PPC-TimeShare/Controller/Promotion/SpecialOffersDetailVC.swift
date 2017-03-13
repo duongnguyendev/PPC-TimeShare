@@ -27,8 +27,7 @@ class SpecialOffersDetailVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Special Offers"
+        self.title = LanguageManager.sharedInstance.localizedString(string: "SpecialOffers")
         
     }
     

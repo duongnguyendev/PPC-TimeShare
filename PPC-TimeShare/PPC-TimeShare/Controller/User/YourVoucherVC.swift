@@ -15,9 +15,11 @@ class YourVoucherVC: BaseViewController, UICollectionViewDelegate, UICollectionV
     var vouchers : [Voucher]?
     
     func fretchVoucher(){
+        self.activity.startAnimating()
         let userInfo = UserDefaults.standard.value(forKey: "currentUser")
         let user = User(data: userInfo as! Dictionary <String, Any>)
         APIService.sharedInstance.requestGetListVoucher(userId: user.userId as! Int) { (vouchers, errorMes) in
+            self.activity.stopAnimating()
             if errorMes != nil{
                 // show mes
             }else{
@@ -68,10 +70,6 @@ class YourVoucherVC: BaseViewController, UICollectionViewDelegate, UICollectionV
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
-    }
-
-    override func localizeString() {
-        title = "Your Voucher"
     }
 
 }

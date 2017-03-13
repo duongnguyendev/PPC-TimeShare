@@ -35,7 +35,7 @@ class FAQsVC: BaseViewController, UICollectionViewDataSource, UICollectionViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "FAQs"
+        title = languageManager.localizedString(string: "FAQs")
         collectionFAQs.register(FAQsCell.self, forCellWithReuseIdentifier: cellId)
 
     }

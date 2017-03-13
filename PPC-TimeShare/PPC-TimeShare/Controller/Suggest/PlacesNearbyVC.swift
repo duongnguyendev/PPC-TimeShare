@@ -28,7 +28,7 @@ class PlacesNearbyVC: BaseViewController , UICollectionViewDelegate, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Places Nearby"
+        self.title = languageManager.localizedString(string: "PlacesNearby")
         collectionPlacesNearby.register(PlacesNearbyCell.self, forCellWithReuseIdentifier: cellId)
 
         

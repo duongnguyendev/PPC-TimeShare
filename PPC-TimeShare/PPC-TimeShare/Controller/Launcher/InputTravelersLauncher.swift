@@ -119,7 +119,7 @@ class InputRoomLauncher: BaseLauncher, UITextFieldDelegate {
     let labelTitle : UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor.button1Collor()
-        label.text = "Rooms"
+        label.text = LanguageManager.sharedInstance.localizedString(string: "QuantityOfRoom")
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -11,6 +11,7 @@ import UIKit
 class APIService: NSObject {
     
     static let sharedInstance = APIService()
+    let serverErrorMes = LanguageManager.sharedInstance.localizedString(string: "ServerErrorMes")
     
     func fetchResortAll(pageUrl: String, completion : @escaping ([Resort]?, _ errorMessage : String?, _ nextPageUrl: String?)->()){
         let urlString = pageUrl
@@ -24,7 +25,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server", nil)
+                    completion(nil, self.serverErrorMes, nil)
                 }
                 else {
                     completion(nil, errorMes, nil)
@@ -46,7 +47,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -71,7 +72,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -92,7 +93,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -115,7 +116,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -144,7 +145,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -165,7 +166,7 @@ class APIService: NSObject {
                 completion(user, nil)
             }else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }else{
                     completion(nil, errorMes)
                 }
@@ -183,7 +184,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -209,7 +210,7 @@ class APIService: NSObject {
                 completion(user, nil)
             }else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else{
                     completion(nil, errorMes)
@@ -228,7 +229,7 @@ class APIService: NSObject {
                 completion(nil)
             }else{
                 if error != nil{
-                    completion("Can't connect to server")
+                    completion(self.serverErrorMes)
                 }
                 else{
                     completion(errorMes)
@@ -247,7 +248,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -275,7 +276,7 @@ class APIService: NSObject {
                 completion("Success", nil)
             }else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else{
                     completion(nil, errorMes)
@@ -294,7 +295,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -315,7 +316,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -335,7 +336,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -355,7 +356,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errorMes)
@@ -381,7 +382,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server", nil)
+                    completion(nil, self.serverErrorMes, nil)
                 }
                 else {
                     completion(nil, errorMes, nil)
@@ -405,7 +406,7 @@ class APIService: NSObject {
                 }
                 else{
                     if error != nil{
-                        completion(nil, "Can't connect to server")
+                        completion(nil, self.serverErrorMes)
                     }
                     else {
                         completion(nil, errorMes)
@@ -456,7 +457,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errMes)
@@ -476,7 +477,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errMes)
@@ -495,7 +496,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errMes)
@@ -514,7 +515,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, "Can't connect to server")
+                    completion(nil, self.serverErrorMes)
                 }
                 else {
                     completion(nil, errMes)

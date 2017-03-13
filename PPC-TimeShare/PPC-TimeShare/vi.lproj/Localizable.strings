@@ -19,14 +19,13 @@ SignIn= "Đăng nhập";
 Password= "Mật khẩu";
 ForgotPassowrd= "Quên mật khẩu";
 PPCTimeshare= "PPC Timeshare";
-ResortDirectory= "Danh mục Resorts";
+ResortDirectory= "Danh mục khu nghỉ dưỡng";
 SpecialOffers= "Ưu đãi";
 ExploreAllDestinations=  "Khám phá";
 PlacesNearby= "Những nơi gần đây";
 Introduction= "Giới thiệu";
 Recruitment= "Tuyển dụng";
 SendRequest= "Gửi yêu cầu";
-Introduction="Giới thiệu";
 AboutUs= "Về chúng tôi";
 WhatIsTimeshare= "Timeshare là gì";
 PPCTimeshareBusiness= "Các hoạt động của PPC";
@@ -35,12 +34,11 @@ ExchangeProgram= "Chương trình trao đổi";
 SignUp= "Đăng ký";
 Name= "Tên";
 Email= "Email";
-MibilePhone= "Số điện thoại di động";
+MobilePhone= "Số điện thoại di động";
 Address= "Địa chỉ";
 Password= "Mật khẩu";
 ConfirmPassword= "Xác nhận lại mật khẩu";
 AcceptTerms= "Chấp nhận các điều khoản";
-SendRequest= "Gửi yêu cầu";
 Mobile= "Số điện thoại";
 Title= "Tiêu đề";
 ComposeRequest= "Soạn yêu cầu";
@@ -56,6 +54,80 @@ Recruitment= "Tuyển dụng";
 CheckIn= "Ngày đến";
 CheckOut= "Ngày rời đi";
 Room= "Room";
-Travellers= "Du khách";
+Travelers= "Du khách";
 Payment= "Thanh toán";
-Settings = "Cài đặt";
+Settings= "Cài đặt";
+English= "Tiếng Anh";
+Vietnamese= "Tiếng Việt";
+Languages= "Ngôn ngữ";
+LogOut="Đăng xuất";
+Profile = "Thông tin cá nhân";
+Gender = "Giới tính";
+Update="Cập nhật";
+Voucher="Thẻ ưu đãi";
+Vouchers="Thẻ ưu đãi";
+ShareApp="Chia sẻ sứng dụng";
+Share = "Chia sẻ";
+TransactionHistory = "Lịch sử giao dịch";
+QuantityOfRoom="Số lượng phòng";
+Status="Trạng thái";
+Next = "Tiếp tục";
+UPDATEPROFILEPICTURE="THÊM HÌNH ĐẠI DIỆN";
+Complete="Hoàn tất";
+TermsAndConditions="Điều khoản và điều kiện";
+AcceptTerms ="Đồng ý các điều khoản";
+ServerErrorMes ="Không thể kết nối tới server";
+Cancel="Huỷ";
+ComposeRequest= "Soạn thư";
+Done="Xong";
+FAQs="Câu hỏi thường gặp";
+Adult= "Người lớn";
+Children="Trẻ em";
+BookNow ="Đặt chỗ";
+Male = "Nam";
+Female="Nữ";
+Note="Ghi chú";
+IncorrectPhoneNumber="Số điện thoại không đúng";
+WrongEmailAddress="Email không đúng định dạng";
+PasswordIsTooShort="Mật khẩu quá ngắn";
+PasswordIsInvalid="Xác nhận mật khẩu không trùng khớp";
+EmailAlreadyExists="Email đã tồn tại";
+LogedInFailed="Đăng nhập không thành công";
+LogInSuccessfully="Đăng nhập thành công";
+PleaseInputTheTitle="Vui lòng nhập tiêu đề";
+PleaseInputAtLeast50letters="Vui lòng nhập nội dung tối thiểu 50 ký tự";
+SendRequestSuccessfully="Gửi yêu cầu thành công";
+SendRequestFailed="Gửi yêu cầu không thành công";
+UpdatedSuccessfully="Cập nhật thành công";
+UpdatedFailed="Cập nhật không thành công";
+PleaseTryAgain="Vui lòng thử lại";
+YourInformationIsUpdated="Thông tin của bạn đã được cập nhật";
+PleaseInpurYourAddress="Vui lòng nhập địa chỉ";
+PleaseSelectYourGender="Vui lòng chọn giới tính";
+UsernameIsNotCorrect="Tên đăng nhập không đúng";
+Gallery="Thư viện ảnh";
+TakePhoto="Chụp ảnh";
+SelectImage="Chọn hình ảnh";
+YouMustAcceptTermsOfUse="Bạn chưa đồng ý điều khoảng sử dụng ứng dụng";
+Notifications="Thông báo";
+SignedUpSuccessfully="Đăng ký thành công";
+SignedUpFailed="Đăng ký không thành công";
+PleaseCheckYourEmail="Vui lòng kiểm tra email của bạn";
+AnErrorOccurredUpdatingData="lỗi khi cập nhật dữ liệu";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

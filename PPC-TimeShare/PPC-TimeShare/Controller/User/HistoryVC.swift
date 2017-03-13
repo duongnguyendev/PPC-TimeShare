@@ -13,7 +13,7 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        title = languageManager.localizedString(string: "TransactionHistory")
     }
     var userId : NSNumber?
     var books : [BookInfo]?
@@ -23,7 +23,9 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
         APIService.sharedInstance.requestGetListBook(userId: userId!) { (listBook, errorMes) in
             self.activity.stopAnimating()
             if errorMes != nil{
-                let alert = UIAlertController(title: "Thông báo", message: "lỗi khi cập nhật dữ liệu", preferredStyle: .alert)
+                let alert = UIAlertController(title: self.languageManager.localizedString(string: "Notifications"),
+                                              message: self.languageManager.localizedString(string: "Notifications"),
+                                              preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             }else{
                 
@@ -55,12 +57,8 @@ class HistoryVC: BaseViewController, UICollectionViewDelegate, UICollectionViewD
         
         view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionHistory)
         view.addConstraintWithFormat(format: "V:|-20-[v0]|", views: collectionHistory)
+        
 
-    }
-
-    
-    override func localizeString() {
-        title = "Transaction history"
     }
     
     //collection delegate - datasouce

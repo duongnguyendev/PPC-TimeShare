@@ -22,7 +22,7 @@ class IntroduceVC: BaseViewController , UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Introduction"
+        self.title = languageManager.localizedString(string: "Introduction")
         collectionView.register(IntroduceCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView.register(HearderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
@@ -109,7 +109,7 @@ class IntroduceVC: BaseViewController , UICollectionViewDelegate, UICollectionVi
         if kind == UICollectionElementKindSectionHeader {
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? HearderView
             if indexPath.section == 1 {
-                headerView?.labelHeader.text = "Introduction"
+                headerView?.labelHeader.text = languageManager.localizedString(string: "Introduction")
             }else{
                 headerView?.labelHeader.text = "PPC TimeShare"
             }

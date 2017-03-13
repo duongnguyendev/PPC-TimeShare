@@ -19,7 +19,7 @@ class SignInVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Sign In"
+        title = LanguageManager.sharedInstance.localizedString(string: "SignIn")
     }
     let inputSize : CGFloat = 60.0
     let spaceLine : CGFloat = 1.0
@@ -41,13 +41,13 @@ class SignInVC: BaseViewController {
         let button = MyButton()
         
         button.setTitleColor(UIColor.black, for: .normal)
-        button.setTitle("Forgot Password?", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "ForgotPassword"), for: .normal)
         button.addTarget(self, action: #selector(handleForgotPasswordButton), for: .touchUpInside)
         return button
     }()
     let buttonSignIn : MyButton = {
         let button = MyButton()
-        button.setTitle("Sign In", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "SignIn"), for: .normal)
         button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleSignInButton), for: .touchUpInside)
         return button
@@ -55,7 +55,7 @@ class SignInVC: BaseViewController {
     
     let buttonSignUp : MyButton = {
         let button = MyButton()
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "SignUp"), for: .normal)
         button.addTarget(self, action: #selector(handleSignUpButton), for: .touchUpInside)
         button.backgroundColor = UIColor.button2Collor()
         return button
@@ -95,22 +95,40 @@ class SignInVC: BaseViewController {
     //handle button
     
     func handleSignInButton(){
+        self.view.endEditing(true)
         let email = inputEmailView.textField.text
         let password = inputPasswordView.textField.text
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        self.activity.startAnimating()
         APIService.sharedInstance.requestSignIn(email: email!, passWord: password!) { (user, errorMes) in
+            self.activity.stopAnimating()
             if errorMes != nil{
-                //show message
-                print(errorMes as Any)
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.title = self.languageManager.localizedString(string: "LogedInFailed")
+                alert.message = errorMes
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: { 
+                    //do something
+                })
                 
             }else{
-                //save data to userdefaults
+                
                 let userDic = user?.toDictionary()
                 UserDefaults.standard.set(userDic, forKey: "currentUser")
                 UserDefaults.standard.set(user?.token, forKey: "token")
                 if self.delegate != nil {
                     self.delegate?.signInWith!(user: user!)
                 }
-                self.goHome()
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                    self.goHome()
+                })
+                alert.message = self.languageManager.localizedString(string: "LogInSuccessfully")
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: { 
+                    //do something
+                })
+                
             }
         }
         

@@ -23,20 +23,20 @@ class DropDownLanguages: DropDownView {
     override func setupView() {
         super.setupView()
         collectionView.register(LanguageCell.self, forCellWithReuseIdentifier: cellId)
+        localizeString()
     }
     
-    let lisLanguages : [Language] = {
-        let en = Language(languageCode: "en", language: "English")
-        let vi = Language(languageCode: "vi", language: "Vietnamese")
-        return [en, vi]
-    }()
-    
+    var lisLanguages : [Language]? = [Language](){
+        didSet{
+            self.collectionView.reloadData()
+        }
+    }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lisLanguages.count
+        return lisLanguages!.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! LanguageCell
-        cell.labelString.text = lisLanguages[indexPath.item].language
+        cell.labelString.text = lisLanguages?[indexPath.item].language
         return cell
     }
     
@@ -45,8 +45,16 @@ class DropDownLanguages: DropDownView {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.selected!(language: lisLanguages[indexPath.row])
+        LanguageManager.sharedInstance.setCurrentLanguage(language: (lisLanguages?[indexPath.item])!)
+        localizeString()
+        self.delegate?.selected!(language: (lisLanguages?[indexPath.item])!)
         hide()
+    }
+    
+    func localizeString(){
+        let en = Language(languageCode: "en", language: LanguageManager.sharedInstance.localizedString(string:"English")!)
+        let vi = Language(languageCode: "vi", language: LanguageManager.sharedInstance.localizedString(string:"Vietnamese")!)
+        self.lisLanguages = [en, vi]
     }
 }
 

@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate {
     let tabViewHeight : CGFloat = 40.0
     let margin : CGFloat = 25.0
     var filterOption : FilterOption? {
@@ -32,6 +32,7 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         collectionViewResorts.register(NewCell.self, forCellWithReuseIdentifier: newCellId)
         collectionViewResorts.register(AllCell.self, forCellWithReuseIdentifier: allCellId)

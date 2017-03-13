@@ -52,7 +52,7 @@ class RecruitmentDetailVC: BaseViewController{
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = languageManager.localizedString(string: "Recruitment")
         // Do any additional setup after loading the view.
     }
     
@@ -74,10 +74,6 @@ class RecruitmentDetailVC: BaseViewController{
         
         self.view.addConstraintWithFormat(format: "V:[v0(20)][v1(20)][v2]|", views:labelTitle, labelDate, webViewContent)
         
-    }
-    
-    override func localizeString() {
-        title = languageManager.localizedString(string: "Recruitment")
     }
 
 }

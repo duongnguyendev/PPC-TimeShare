@@ -17,15 +17,15 @@ class Gender :  NSObject{
     }
     init(genderId : Int) {
         self.genderId = genderId
-        self.genderValue = ((genderId == 1) ? "Male" : "Female")
+        self.genderValue = ((genderId == 1) ? LanguageManager.sharedInstance.localizedString(string: "Male") : LanguageManager.sharedInstance.localizedString(string: "Female"))
     }
 }
 
 class GenderDropDown: DropDownView {
     
     let listGender : [Gender] = {
-        let male = Gender(genderId: 1, genderValue: "Male")
-        let female = Gender(genderId: 0, genderValue: "Female")
+        let male = Gender(genderId: 1)
+        let female = Gender(genderId: 0)
         return [male, female]
     }()
     

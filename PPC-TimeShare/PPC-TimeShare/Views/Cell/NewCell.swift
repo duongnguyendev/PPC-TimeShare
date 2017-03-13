@@ -11,6 +11,12 @@ import GoogleMaps
 
 class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var location : CLLocationCoordinate2D?{
+        didSet{
+            mapView?.animate(toLocation: location!)
+        }
+    }
+    
     var lisResortVC : ListOfResortsVC?
     let margin : CGFloat = 25.0
     let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
@@ -23,6 +29,8 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
                 self.collectionView.reloadData()
                 self.addMarkToMap(resorts: resorts!)
                 self.activity.stopAnimating()
+                let firstLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: resorts![0].lat!, longitude: resorts![0].lng!)
+                self.location = firstLocation
                 if self.resorts.count == 0{
                     self.noResult()
                 }
@@ -49,8 +57,8 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         backgroundColor = UIColor.clear
         addSubview(collectionView)
         
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude:151.20 , zoom: 2.0)
+        self.mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         mapView?.isHidden = true
         
         addSubview(mapView!)

@@ -19,7 +19,7 @@ class ShareAppVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = languageManager.localizedString(string: "Share")
         // Do any additional setup after loading the view.
     }
 
@@ -35,7 +35,7 @@ class ShareAppVC: BaseViewController {
     let buttonShare : MyButton = {
         let button  = MyButton()
         button.backgroundColor = UIColor.button1Collor()
-        button.setTitle("Share", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "Share"), for: .normal)
         button.addTarget(self, action: #selector(handleShare), for: .touchUpInside)
         return button
     }()
@@ -60,7 +60,7 @@ class ShareAppVC: BaseViewController {
     
     func handleShare(){
         
-        let text = "This is some text that I want to share."
+        let text = "This is some text that I want to share.\n\(user?.shareCode)"
         
         // set up activity view controller
         let textToShare = [ text ]
@@ -73,10 +73,4 @@ class ShareAppVC: BaseViewController {
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
     }
-    
-    override func localizeString() {
-        title = "Share"
-    }
-    
-
 }

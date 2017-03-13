@@ -33,19 +33,19 @@ class HistoryLauncher: BaseLauncher {
     }()
     let checkInView : InfoButton = {
         let v = InfoButton()
-        v.title = "Check in"
+        v.title = "CheckIn"
         v.iconName = "check_in_icon"
         return v
     }()
     let checkOutView : InfoButton = {
         let v = InfoButton()
-        v.title = "Check out"
+        v.title = "CheckOut"
         v.iconName = "check_out_icon"
         return v
     }()
     let roomView : InfoButton = {
         let v = InfoButton()
-        v.title = "Room"
+        v.title = "QuantityOfRoom"
         v.iconName = "room_icon"
         return v
     }()
@@ -106,8 +106,12 @@ class HistoryLauncher: BaseLauncher {
         
         contentView.addConstraintWithFormat(format: "V:|[v0(40)][v1(50)]-1-[v2(50)]-1-[v3(50)]-1-[v4(50)]-1-[v5(50)]-1-[v6(50)]", views: labelTitle, checkInView, checkOutView, roomView, travelersView, voucherView, statusView)
         
-        buttonCancel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0)
-        buttonOK.isHidden = true
+        buttonOK.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
+        buttonCancel.isHidden = true
         
+    }
+    
+    override func handleOKButton() {
+        self.hide()
     }
 }

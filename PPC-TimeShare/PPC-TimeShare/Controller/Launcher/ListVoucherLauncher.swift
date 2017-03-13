@@ -25,7 +25,7 @@ class ListVoucherLauncher: BaseLauncher, UICollectionViewDelegate, UICollectionV
         label.backgroundColor = UIColor.button1Collor()
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.text = "Vouchers"
+        label.text = LanguageManager.sharedInstance.localizedString(string: "Vouchers")
         return label
     }()
     

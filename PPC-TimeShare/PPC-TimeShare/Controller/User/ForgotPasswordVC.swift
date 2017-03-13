@@ -13,7 +13,7 @@ class ForgotPasswordVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Forgot Password"
+        title = LanguageManager.sharedInstance.localizedString(string: "ForgotPassword")
     }
     let inputSize : CGFloat = 60.0
     let spaceLine : CGFloat = 1.0
@@ -21,14 +21,14 @@ class ForgotPasswordVC: BaseViewController {
     let inputEmailView : InputView = {
         let input = InputView()
         input.iconName = "your_email_icon"
-        input.hint = "Your Email"
+        input.hint = "YourEmail"
         return input
     }()
     
     let buttonConfirm : UIButton = {
         let button = UIButton(type: UIButtonType.custom)
         button.backgroundColor = UIColor.button1Collor()
-        button.setTitle("Confirm", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "Confirm"), for: .normal)
         button.addTarget(self, action: #selector(handleConfirmButton), for: .touchUpInside)
         return button
     }()
@@ -58,13 +58,15 @@ class ForgotPasswordVC: BaseViewController {
             APIService.sharedInstance.requestForgotPass(email: self.inputEmailView.textField.text!, completion: { (success) in
                 self.activity.stopAnimating()
                 if success{
-                    let alert = UIAlertController(title: "Thông báo", message: "Yêu cầu gửi thành công. Vui lòng kiểm tra email của bạn", preferredStyle: .alert)
+                    let alert = UIAlertController(title: self.languageManager.localizedString(string: "SendRequestSuccessfully"),
+                                                  message: "Vui lòng kiểm tra email của bạn", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in                    }))
                     self.present(alert, animated: true, completion: {
                         self.goHome()
                     })
                 }else{
-                    let alert = UIAlertController(title: "Thông báo", message: "Yêu cầu gửi thất bại. Vui lòng thử lại", preferredStyle: .alert)
+                    let alert = UIAlertController(title: self.languageManager.localizedString(string: "SendRequestFailed"),
+                                                  message: self.languageManager.localizedString(string: "PleaseTryAgain"), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in
                     }))
                     self.present(alert, animated: true, completion: {

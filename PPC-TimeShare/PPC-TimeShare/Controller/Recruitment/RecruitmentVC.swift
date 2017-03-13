@@ -15,12 +15,14 @@ class RecruitmentVC: BaseViewController, UICollectionViewDelegate, UICollectionV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "Recruitment"
+        self.title = languageManager.localizedString(string: "Recruitment")
         collectionRecruitment.register(RecruitmentCell.self, forCellWithReuseIdentifier: cellId)
     }
     
     func fetchRecruitments(){
+        self.activity.startAnimating()
         APIService.sharedInstance.getRecruitments { (recruitments, errorMes) in
+            self.activity.stopAnimating()
             if errorMes != nil{
                 //show mes
             }else{
@@ -32,6 +34,7 @@ class RecruitmentVC: BaseViewController, UICollectionViewDelegate, UICollectionV
     }
     
     override func setupView() {
+        super.setupView()
         fetchRecruitments()
         setupCollectionView()
         
@@ -90,9 +93,6 @@ class RecruitmentVC: BaseViewController, UICollectionViewDelegate, UICollectionV
     }
     override func hideKeyboarTouchupOutSide() {
         
-    }
-    override func localizeString() {
-        title = languageManager.localizedString(string: "Recruitment")
     }
     
 }

@@ -13,12 +13,12 @@ class SignUp_3VC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Sign up"
+        title = LanguageManager.sharedInstance.localizedString(string: "SignUp") 
     }
     var user: User = User()
     let labelTitle : UILabel = {
         let label = UILabel()
-        label.text = "Terms and conditions"
+        label.text = LanguageManager.sharedInstance.localizedString(string: "TermsAndConditions")
         label.font = UIFont(name: "Roboto-Light", size: 16)
         return label
    
@@ -37,13 +37,13 @@ class SignUp_3VC: BaseViewController {
     let buttonTerms : ButtonCheckBook = {
         let button = ButtonCheckBook()
         button.addTarget(self, action: #selector(handleTermsButton), for: .touchUpInside)
-        button.title = "Accept terms"
+        button.title = "AcceptTerms"
         button.isSelected = false
         return button
     }()
     let buttonComplete : MyButton = {
         let button = MyButton()
-        button.setTitle("Complete", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "Complete"), for: .normal)
         button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleCompleteButton), for: .touchUpInside)
         return button
@@ -84,7 +84,9 @@ class SignUp_3VC: BaseViewController {
     func handleCompleteButton(){
         var alert : UIAlertController?
         if buttonTerms.isSelected == false {
-            alert = UIAlertController(title: "Thông báo", message: "Bạn chưa đồng ý điều khoảng sử dụng ứng dụng", preferredStyle: .alert)
+            alert = UIAlertController(title: self.languageManager.localizedString(string: "Notification"),
+                                      message: self.languageManager.localizedString(string: "YouMustAcceptTermsOfUse"),
+                                      preferredStyle: .alert)
             alert?.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in
 
             }))
@@ -99,7 +101,8 @@ class SignUp_3VC: BaseViewController {
             
             if errorMes != nil{
                 //show error
-                alert = UIAlertController(title: "Thông báo", message: "Đăng ký không thành công", preferredStyle: .alert)
+                alert = UIAlertController(title: self.languageManager.localizedString(string: "Notifications"),
+                                          message: self.languageManager.localizedString(string: "SignedUpFailed"), preferredStyle: .alert)
                 alert?.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in
                     
                 }))
@@ -112,7 +115,8 @@ class SignUp_3VC: BaseViewController {
                 UserDefaults.standard.set(userDic, forKey: "currentUser")
                 UserDefaults.standard.set(signUpUser?.token, forKey: "token")
                 
-                alert = UIAlertController(title: "Thông báo", message: "Đăng ký thành công", preferredStyle: .alert)
+                alert = UIAlertController(title: self.languageManager.localizedString(string: "Notifications"),
+                                          message: self.languageManager.localizedString(string: "SignedUpSuccessfully"), preferredStyle: .alert)
                 alert?.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in
                     self.goHome()
                 }))

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AllCell: NewCell {
     
@@ -31,6 +32,8 @@ class AllCell: NewCell {
                     if self.resorts.count == 0{
                         self.noResult()
                     }
+                    let firstLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: resorts![0].lat!, longitude: resorts![0].lng!)
+                    self.location = firstLocation
                 }
             }
         }

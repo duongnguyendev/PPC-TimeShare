@@ -26,7 +26,7 @@ class BaseLauncher: NSObject {
     }()
     let buttonCancel : MyButton = {
         let button = MyButton()
-        button.setTitle("Cancel", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "Cancel"), for: .normal)
         button.backgroundColor = UIColor.button2Collor()
         return button
         

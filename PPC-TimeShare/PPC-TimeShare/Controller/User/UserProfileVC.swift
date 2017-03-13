@@ -42,6 +42,9 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = languageManager.localizedString(string: "Profile")
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleAvatarClick))
         imageViewAvatar.isUserInteractionEnabled = true
         imageViewAvatar.addGestureRecognizer(tap)
@@ -82,7 +85,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     }()
     let userTypeLabel : UILabel = {
         let label = UILabel()
-        label.text = "Membership: Sliver"
+//        label.text = "Membership: Sliver"
         label.font = UIFont(name: "Roboto-Light", size: 16)
         label.textAlignment = .center
         return label
@@ -96,14 +99,13 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         input.editControllButton.isHidden = false
         input.textField.delegate = self
         input.delegate = self
-        
         return input
     }()
     
     lazy var inputMobileView : InputView = {
         let input = InputView()
         input.iconName = "mobile_number_icon"
-        input.hint = "Mobile number"
+        input.hint = "MobilePhone"
         input.editAble = false
         input.editControllButton.isHidden = false
         input.textField.delegate = self
@@ -134,7 +136,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     
     let buttonUpdate : MyButton = {
         let button = MyButton()
-        button.setTitle("Update", for: .normal)
+        button.setTitle(LanguageManager.sharedInstance.localizedString(string: "Update"), for: .normal)
         button.backgroundColor = UIColor.button1Collor()
         button.addTarget(self, action: #selector(handleUpdateButton), for: .touchUpInside)
         return button
@@ -145,7 +147,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         button.labelTitle.font = UIFont(name: "Roboto-Light", size: 14)
         button.iconName = "icon_gift"
         button.addTarget(self, action: #selector(handleButtonVoucher), for: .touchUpInside)
-        button.title = "Your voucher" // title = value
+        button.title = "Voucher" // title = value
         button.value = ""
         return button
     }()
@@ -154,7 +156,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         button.labelTitle.font = UIFont(name: "Roboto-Light", size: 14)
         button.iconName = "icon_share"
         button.addTarget(self, action: #selector(handleButtonShare), for: .touchUpInside)
-        button.title = "Share your app" // title = value
+        button.title = "ShareApp" // title = value
         button.value = ""
         return button
     }()
@@ -260,7 +262,9 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
             self.activity.stopAnimating()
             var alert : UIAlertController?
             if errorMes != nil{
-                alert = UIAlertController(title: "Cập nhật thất bại", message: "Vui lòng thử lại!", preferredStyle: .alert)
+                alert = UIAlertController(title: self.languageManager.localizedString(string: "UpdatedFailed"),
+                                          message: self.languageManager.localizedString(string: "PleaseTryAgain"),
+                                          preferredStyle: .alert)
                 alert?.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
                     
                 }))
@@ -268,7 +272,9 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
             }else{
                 let userDic = userUpdated?.toDictionary()
                 UserDefaults.standard.set(userDic, forKey: "currentUser")
-                alert = UIAlertController(title: "Cập nhật thành công", message: "Thông tin của bạn đã được cập nhật", preferredStyle: .alert)
+                alert = UIAlertController(title: self.languageManager.localizedString(string: "UpdatedSuccessfully"),
+                                          message: self.languageManager.localizedString(string: "YourInformationIsUpdated"),
+                                          preferredStyle: .alert)
                 alert?.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
                     
                 }))
@@ -336,15 +342,19 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
     func handleAvatarClick(){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        let actionSheet = UIAlertController(title: "Select image", message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+        let actionSheet = UIAlertController(title: self.languageManager.localizedString(string: "SelectImage"),
+                                            message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel, handler: { (action) in
             
         }))
-        actionSheet.addAction(UIAlertAction(title: "Photo libary", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: self.languageManager.localizedString(string: "Gallery"),
+                                            style: .default, handler: { (action) in
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+        actionSheet.addAction(UIAlertAction(title: self.languageManager.localizedString(string: "TakePhoto"),
+                                            style: .default, handler: { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 imagePicker.sourceType = .camera
                 self.present(imagePicker, animated: true, completion: nil)
@@ -373,9 +383,6 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         }else {
             picker.dismiss(animated: true, completion: nil)
         }
-    }
-    override func localizeString() {
-        title = "Profile"
     }
     override func hideKeyboarTouchupOutSide() {
         

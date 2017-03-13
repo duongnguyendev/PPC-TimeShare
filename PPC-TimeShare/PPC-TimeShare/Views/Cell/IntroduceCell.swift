@@ -35,19 +35,19 @@ class IntroduceCell : BaseCell {
                 switch myItem {
                 case EnumIntroduceName.AboutUs:
                     icon.image = UIImage(named: "about_us_icon")
-                    titleIntroduce.text = "About us"
+                    titleIntroduce.text = LanguageManager.sharedInstance.localizedString(string: "AboutUs")
                     break
                 case EnumIntroduceName.WhatISTimeshare:
                     icon.image = UIImage(named: "what_is_timeshare_icon")
-                    titleIntroduce.text = "What is Timeshare"
+                    titleIntroduce.text = LanguageManager.sharedInstance.localizedString(string: "WhatIsTimeshare")
                     break
                 case EnumIntroduceName.FAQs:
                     icon.image = UIImage(named: "FAQs_icon")
-                    titleIntroduce.text = "FAQs"
+                    titleIntroduce.text = LanguageManager.sharedInstance.localizedString(string: "FAQs")
                     break
                 case EnumIntroduceName.PPCTimesharebusiness:
                     icon.image = UIImage(named: "PPC_timeshare_business_icon")
-                    titleIntroduce.text = "PPC Timeshare business"
+                    titleIntroduce.text = LanguageManager.sharedInstance.localizedString(string: "PPCTimeshareBusiness")
                     break
                 case EnumIntroduceName.Benefits:
                     icon.image = UIImage(named: "benefit_icon")
@@ -55,7 +55,7 @@ class IntroduceCell : BaseCell {
                     break
                 case EnumIntroduceName.ExchangeProgram:
                     icon.image = UIImage(named: "exchange_program_icon")
-                    titleIntroduce.text = "Exchange Program"
+                    titleIntroduce.text = LanguageManager.sharedInstance.localizedString(string: "ExchangeProgram")
                     break
                 }
             }

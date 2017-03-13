@@ -12,7 +12,7 @@ class IntroductionDetail: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Introduction"
+        title = LanguageManager.sharedInstance.localizedString(string: "Introduction")
     }
 
     var introduce : EnumIntroduceName?{
@@ -20,18 +20,18 @@ class IntroductionDetail: BaseViewController {
             if let intro = introduce{
                 switch intro {
                 case EnumIntroduceName.AboutUs:
-                    labelTitle.text = "About us"
+                    labelTitle.text = LanguageManager.sharedInstance.localizedString(string: "AboutUs")
                     handleAboutUS()
                     break
                 case EnumIntroduceName.WhatISTimeshare:
-                    labelTitle.text = "What is Timeshare"
+                    labelTitle.text = LanguageManager.sharedInstance.localizedString(string: "WhatIsTimeshare")
                     handleWhatIsTimeshare()
                     break
                 case EnumIntroduceName.FAQs:
                     labelTitle.text = "FAQs"
                     break
                 case EnumIntroduceName.PPCTimesharebusiness:
-                    labelTitle.text = "PPC Timeshare business"
+                    labelTitle.text = LanguageManager.sharedInstance.localizedString(string: "PPCTimeshareBusiness")
                     handlePPCTimesharebusiness()
                     break
                 case EnumIntroduceName.Benefits:
@@ -39,7 +39,7 @@ class IntroductionDetail: BaseViewController {
                     handleBenefits()
                     break
                 case EnumIntroduceName.ExchangeProgram:
-                    labelTitle.text = "Exchange Program"
+                    labelTitle.text = LanguageManager.sharedInstance.localizedString(string: "ExchangeProgram")
                     handleExchangeProgram()
                     break
                 }
@@ -61,6 +61,7 @@ class IntroductionDetail: BaseViewController {
         return webView
     }()
     override func setupView() {
+        super.setupView()
         view.addSubview(labelTitle)
         view.addSubview(webViewIntroduction)
         
@@ -70,7 +71,9 @@ class IntroductionDetail: BaseViewController {
     }
     
     func handleAboutUS(){
+        self.activity.startAnimating()
         APIService.sharedInstance.getAboutUs { (data, errorMes) in
+            self.activity.stopAnimating()
             if errorMes == nil{
                 let content = data?["noidung_gioithieu"] as! String
                 self.webViewIntroduction.loadHTMLString(content, baseURL: nil)
@@ -79,20 +82,24 @@ class IntroductionDetail: BaseViewController {
         }
     }
     func handleWhatIsTimeshare(){
+        self.activity.startAnimating()
         APIService.sharedInstance.getWhatIsTimeShare { (data, errorMes) in
+            self.activity.stopAnimating()
             if errorMes == nil{
                 let title1 = data?["title_about_1"] as! String
                 let title2 = data?["title_about_2"] as! String
                 let content1 = data?["content_about_1"] as! String
                 let content2 = data?["content_about_2"] as! String
                 
-                let htmlString = "<strong>\(title1)</strong>\r\n\(content1)<strong>\(title2)</strong>\r\n\(content2)"
+                let htmlString = "<strong>\(title1)</strong>\r\n\(content1)<strong>\(title2)</` strong>\r\n\(content2)"
                 self.webViewIntroduction.loadHTMLString(htmlString, baseURL: nil)
             }
         }
     }
     func handleBenefits(){
+        self.activity.startAnimating()
         APIService.sharedInstance.getBenefit { (data, errorMes) in
+            self.activity.stopAnimating()
             if errorMes == nil{
                 let content = data?["content"] as! String
                 self.webViewIntroduction.loadHTMLString(content, baseURL: nil)

@@ -44,22 +44,22 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     
     let countryButton : FilterButton = {
         let button = FilterButton()
-        button.value = "Country"
+        button.value = LanguageManager.sharedInstance.localizedString(string: "Country")
         return button
     }()
     let cityButton : FilterButton = {
         let button = FilterButton()
-        button.value = "City"
+        button.value = LanguageManager.sharedInstance.localizedString(string: "City")
         return button
     }()
     let typeButton : FilterButton = {
         let button = FilterButton()
-        button.value = "Type"
+        button.value = LanguageManager.sharedInstance.localizedString(string: "Type")
         return button
     }()
     let searchByButton : FilterButton = {
         let button = FilterButton()
-        button.value = "Search by"
+        button.value = LanguageManager.sharedInstance.localizedString(string: "SearchBy")
         return button
     }()
     

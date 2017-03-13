@@ -53,12 +53,11 @@ class TabButton: MyButton {
     
     override func setupView() {
         titleLabel?.font = UIFont(name: "Roboto-Light", size: 14)
-        setTitleColor(UIColor.rgb(red: 255, green: 200, blue: 0), for: .normal)
-        setTitleColor(UIColor.rgb(red: 134, green: 0, blue: 1), for: .selected)
+        setTitleColor(UIColor.appStyleColor(), for: .normal)
         
         addSubview(selectedView)
         selectedView.translatesAutoresizingMaskIntoConstraints = false
-        selectedView.backgroundColor = UIColor.rgb(red: 134, green: 0, blue: 1)
+        selectedView.backgroundColor = UIColor.button1Collor()
         selectedView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         selectedView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         selectedView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
@@ -71,7 +70,7 @@ class ButtonCheckBook : BaseButton{
     
     var title: String?{
         didSet{
-            self.titleView.text = title
+            self.titleView.text = LanguageManager.sharedInstance.localizedString(string: title!)
         }
     }
     

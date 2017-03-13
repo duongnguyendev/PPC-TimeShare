@@ -46,7 +46,7 @@ class InputView: BaseView {
     }
     var hint : String?{
         didSet{
-            textField.placeholder = hint
+            textField.placeholder = LanguageManager.sharedInstance.localizedString(string: hint!)
         }
     }
     var iconName : String?{

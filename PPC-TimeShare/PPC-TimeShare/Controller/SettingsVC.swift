@@ -25,7 +25,6 @@ class SettingsVC: BaseViewController, DropDownDelegate {
     
     let buttonLogout : InfoButton = {
         let button = InfoButton()
-        button.title = "Log out"
         button.value = ""
         button.iconName = "sign_out"
         button.addTarget(self, action: #selector(handleLogoutButton), for: .touchUpInside)
@@ -34,7 +33,6 @@ class SettingsVC: BaseViewController, DropDownDelegate {
     
     let buttonLanguage : InfoButton = {
         let button = InfoButton()
-        button.title = "Languages"
         button.iconName = "icon_language"
         button.addTarget(self, action: #selector(handleLanguageButton), for: .touchUpInside)
         return button
@@ -79,15 +77,14 @@ class SettingsVC: BaseViewController, DropDownDelegate {
     
     func selected(language: Language) {
         self.buttonLanguage.value = language.language
-        LanguageManager.sharedInstance.setCurrentLanguage(language: language)
         languageDropDown.hide()
         localizeString()
     }
     
     override func localizeString() {
         title = LanguageManager.sharedInstance.localizedString(string: "Settings")
-        buttonLogout.title = LanguageManager.sharedInstance.localizedString(string: "")
-        buttonLanguage.title = LanguageManager.sharedInstance.localizedString(string: "")
+        buttonLogout.title = LanguageManager.sharedInstance.localizedString(string: "LogOut")
+        buttonLanguage.title = LanguageManager.sharedInstance.localizedString(string: "Languages")
     }
     override func hideKeyboarTouchupOutSide() {
         

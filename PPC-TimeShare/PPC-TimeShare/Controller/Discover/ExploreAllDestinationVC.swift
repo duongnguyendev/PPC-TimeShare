@@ -40,7 +40,7 @@ class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Explore All Destination"
+        self.title = languageManager.localizedString(string: "ExploreAllDestinations")
         collectionResorts.register(ResortCell.self, forCellWithReuseIdentifier: cellId)
         
         locationManager.requestWhenInUseAuthorization()
