@@ -22,7 +22,7 @@ PPCTimeshare= "PPC Timeshare";
 ResortDirectory= "Danh mục khu nghỉ dưỡng";
 SpecialOffers= "Ưu đãi";
 ExploreAllDestinations=  "Khám phá";
-PlacesNearby= "Những nơi gần đây";
+PlacesNearby= "Địa điểm gần đây";
 Introduction= "Giới thiệu";
 Recruitment= "Tuyển dụng";
 SendRequest= "Gửi yêu cầu";
@@ -119,9 +119,9 @@ InvalidDateTime="Chọn sai ngày";
 PleaseChooseTheQuantityOfRoom="Vui lòng chọn số lượng phòng";
 PleaseChooseTheQuantityOfGuest="Vui lòng chọn số lượng du khách";
 LocationServices="Cài đặt định vị";
-
-
-
+EnterASpecialOfferCode = "Nhập mã khuyễn mãi";
+TheCodeHasBeenSentSuccessfully="Gửi mã thành công";
+PromotionalCodeIsNotCorrect="Mã khuyến mãi không đúng";
 
 
 

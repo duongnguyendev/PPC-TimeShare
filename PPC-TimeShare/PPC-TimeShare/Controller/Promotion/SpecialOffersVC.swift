@@ -52,14 +52,40 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
         return cv
     }()
     
+    let textFielCode : UITextField = {
+        let textFiel = UITextField()
+        textFiel.font = UIFont(name: "Roboto-Light", size: 17)
+        textFiel.placeholder = LanguageManager.sharedInstance.localizedString(string: "EnterASpecialOfferCode")
+        return textFiel
+    }()
+    let butttonAddCode : MyButton = {
+        let button = MyButton()
+        button.setTitle("OK", for: .normal)
+        button.backgroundColor = UIColor.button1Collor()
+        button.addTarget(self, action: #selector(handleAddcode), for: .touchUpInside)
+        return button
+    }()
+    
     // set up view
     
     func setupCollectionView(){
         view.addSubview(collectionOffers)
+        let inputCodeView = UIView()
+        inputCodeView.translatesAutoresizingMaskIntoConstraints = false
+        inputCodeView.backgroundColor = UIColor.white
+        view.addSubview(inputCodeView)
+        view.addConstraintWithFormat(format: "H:|-25-[v0]-25-|", views: inputCodeView)
+
         
         view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionOffers)
-        view.addConstraintWithFormat(format: "V:|-20-[v0]|", views: collectionOffers)
+        view.addConstraintWithFormat(format: "V:|-10-[v0(50)]-20-[v1]|", views:inputCodeView, collectionOffers)
         
+        inputCodeView.addSubview(textFielCode)
+        inputCodeView.addSubview(butttonAddCode)
+        
+        inputCodeView.addConstraintWithFormat(format: "V:|[v0]|", views: textFielCode)
+        inputCodeView.addConstraintWithFormat(format: "V:|[v0]|", views: butttonAddCode)
+        inputCodeView.addConstraintWithFormat(format: "H:|-10-[v0][v1(50)]|", views: textFielCode, butttonAddCode)
     }
     
     func setupBackGround(){
@@ -110,7 +136,42 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
         pushVC(viewController: detailVC)
         detailVC.offer = offers?[indexPath.item]
     }
+    
+    func handleAddcode(){
+        let currentUserInfo = UserDefaults.standard.value(forKey: "currentUser")
+        
+        if currentUserInfo != nil {
+            let user = User(data: currentUserInfo as! Dictionary <String, Any>)
+            if (textFielCode.text?.trimmingCharacters(in: CharacterSet.whitespaces).characters.count)! > 6 {
+                APIService.sharedInstance.requestAddShareCode(id: user.userId!, code: self.textFielCode.text!, completion: { (errorMes) in
+                    if errorMes != nil{
+                        self.showMes(mes: errorMes!)
+                    }else{
+                        self.showMes(mes: self.languageManager.localizedString(string: "TheCodeHasBeenSentSuccessfully")!)
+                    }
+                })
+            }else{
+                self.showMes(mes: self.languageManager.localizedString(string: "PromotionalCodeIsNotCorrect")!)
+            }
+            
+            
+        }else{
+            let singInVC : SignInVC = SignInVC()
+            presentVC(viewController: singInVC)
+        }
+    }
     override func hideKeyboarTouchupOutSide() {
         
+    }
+    
+    func showMes(mes: String) {
+        self.view.endEditing(true)
+        let alert  = UIAlertController(title: "", message: mes, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+            
+        }))
+        self.present(alert, animated: true) { 
+            
+        }
     }
 }

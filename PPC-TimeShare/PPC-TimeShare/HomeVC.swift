@@ -180,34 +180,34 @@ class HomeVC: UIViewController {
     
     func handleSendRequestButton(){
         let sendRequestVC : SendRequestVC = SendRequestVC()
-        presentVC(viewContronller: sendRequestVC)
+        presentVC(viewController: sendRequestVC)
     }
     func handleRecruitmentButton(){
         let recruitmentVC : RecruitmentVC = RecruitmentVC()
-        presentVC(viewContronller: recruitmentVC)
+        presentVC(viewController: recruitmentVC)
     }
     func handleIntroduceButton(){
         let introduceVC : IntroduceVC = IntroduceVC()
-        presentVC(viewContronller: introduceVC)
+        presentVC(viewController: introduceVC)
     }
     func handlePlacesNearbyButton(){
         let placesNearbyVC : PlacesNearbyVC = PlacesNearbyVC()
-        presentVC(viewContronller: placesNearbyVC)
+        presentVC(viewController: placesNearbyVC)
         
     }
     func handleExploreAllDestinationButton(){
         let exploreAllDestinationVC : ExploreAllDestinationVC = ExploreAllDestinationVC()
-        presentVC(viewContronller: exploreAllDestinationVC)
+        presentVC(viewController: exploreAllDestinationVC)
         
     }
     func handleSpecialOffersButton(){
         let specialOffersVC : SpecialOffersVC = SpecialOffersVC()
-        presentVC(viewContronller: specialOffersVC)
+        presentVC(viewController: specialOffersVC)
         
     }
     func handleListOfResortsButton(){
         let listOfResortsVC : ListOfResortsVC = ListOfResortsVC()
-        presentVC(viewContronller: listOfResortsVC)
+        presentVC(viewController: listOfResortsVC)
         
     }
     
@@ -222,11 +222,11 @@ class HomeVC: UIViewController {
             user.token = userToken as! String?
             let userProfileVC = UserProfileVC()
             userProfileVC.user = user
-            presentVC(viewContronller: userProfileVC)
+            presentVC(viewController: userProfileVC)
             
         }else{
             let singInVC : SignInVC = SignInVC()
-            presentVC(viewContronller: singInVC)
+            presentVC(viewController: singInVC)
         }
         
         
@@ -234,14 +234,14 @@ class HomeVC: UIViewController {
     
     func navSettingsClick(){
         let settingVC : SettingsVC = SettingsVC()
-        presentVC(viewContronller: settingVC)
+        presentVC(viewController: settingVC)
 
     
     }
     
-    func presentVC(viewContronller : BaseViewController) {
-        viewContronller.presented = true
-        let navVC : UINavigationController = UINavigationController(rootViewController: viewContronller)
+    func presentVC(viewController : BaseViewController) {
+        viewController.presented = true
+        let navVC : UINavigationController = UINavigationController(rootViewController: viewController)
         self.present(navVC, animated: true) { 
             //do something late
         }

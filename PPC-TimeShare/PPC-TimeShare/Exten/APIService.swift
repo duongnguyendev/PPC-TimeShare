@@ -526,6 +526,25 @@ class APIService: NSObject {
         
     }
     
+    func requestAddShareCode(id : NSNumber, code : String, completion:@escaping ((String?)->())){
+        let urlString = "\(self.getCurrentDomain())share-code"
+        let param = ["share_code":code,
+                     "id":id] as Dictionary <String, Any>
+        postRequestWith(urlString: urlString, params: param) { (response, error, errorMes) in
+            if error == nil && errorMes == nil{
+                completion(nil)
+            }
+            else{
+                if error != nil{
+                    completion(error?.localizedDescription)
+                }
+                else {
+                    completion(errorMes)
+                }
+            }
+        }
+    }
+    
     // get with url
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
         

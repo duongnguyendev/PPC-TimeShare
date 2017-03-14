@@ -119,7 +119,9 @@ InvalidDateTime="Invalid date time";
 PleaseChooseTheQuantityOfRoom="Please choose the quantity of room";
 PleaseChooseTheQuantityOfGuest="Please choose the quantity of guest";
 LocationServices="Location services";
-
+EnterASpecialOfferCode = "enter a special offer code";
+TheCodeHasBeenSentSuccessfully="the code has been sent successfully";
+PromotionalCodeIsNotCorrect="Promotional code is not correct";
 
 
 

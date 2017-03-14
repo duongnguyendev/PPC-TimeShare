@@ -205,8 +205,8 @@ class HomeButtonCustom : BaseButton {
         
         addConstraint(NSLayoutConstraint(item: iconView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: (1 / 2) , constant: 0))
         
-        titleLabelView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
-        titleLabelView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        titleLabelView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 3).isActive = true
+        titleLabelView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -3).isActive = true
         titleLabelView.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         titleLabelView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         

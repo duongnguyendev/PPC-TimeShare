@@ -163,7 +163,16 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     func handleNextButton(){
         dismissKeyboard()
         if let validateMes = validate(){
-            print(validateMes)
+            let alert = UIAlertController(title: "",
+                                         message: validateMes, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                
+            }))
+            
+            self.present(alert, animated: true, completion: { 
+                //do something
+            })
         }else{
             self.user.address = self.inputAddressView.textField.text
             self.user.userName = self.inputNameView.textField.text
@@ -274,7 +283,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
         return nil
     }
     func validateMobile() ->String? {
-        let mobileFormat = "^\\d{10,11}$"
+        let mobileFormat = "^(\\+\\d{1,3}[- ]?)?\\d{10}$"
         
         let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobileFormat)
         let mobileTestResult = mobileTest.evaluate(with: inputMobileView.textField.text)
