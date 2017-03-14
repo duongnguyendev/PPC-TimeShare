@@ -30,7 +30,6 @@ class InfoCell: BaseCell {
     }()
     let imageView : CustomImageView = {
         let imV = CustomImageView(image: UIImage(named: "resort"))
-        //        imV.contentMode = .scaleAspectFit
         return imV
     }()
     
@@ -65,21 +64,18 @@ class ResortCell: InfoCell {
     let adressLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Light", size: 13)
-        label.text = "Los Angerles, USA"
         label.textColor = UIColor.red
         return label
     }()
     let nameLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Medium", size: 15)
-        label.text = "Name Resort"
         return label
     }()
     let priceLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Light", size: 13)
         label.textColor = UIColor.red
-        label.text = "2.000 USD"
         return label
     }()
     
@@ -87,7 +83,6 @@ class ResortCell: InfoCell {
     let textViewIntro : UITextView = {
         let textView = UITextView()
         textView.isScrollEnabled = false
-        textView.text = "There was a time when the great Australian dream was a family home on a quarter acre book. Now it seems the aussie dream..."
         textView.isEditable = false
         textView.font = UIFont(name: "Roboto-Light", size: 13)
         textView.textAlignment = .justified

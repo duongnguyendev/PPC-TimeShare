@@ -25,7 +25,6 @@ class SpecialOffersCell: InfoCell {
     }
     let iconAddress : UIImageView = {
         let imV = UIImageView(image: UIImage(named: "resort"))
-        //        imV.contentMode = .scaleAspectFit
         return imV
         
     }()

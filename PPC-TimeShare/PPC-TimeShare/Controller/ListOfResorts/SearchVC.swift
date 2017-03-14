@@ -48,15 +48,12 @@ class SearchVC: BaseViewController, UISearchControllerDelegate, UISearchResultsU
         
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
-        
         APIService.sharedInstance.requestSearch(keyword: searchText) { (resorts, ErrorMes) in
             if ErrorMes == nil{
                 self.resorts = resorts
                 self.colletionSearchResult.reloadData()
             }
         }
-        
     }
     
     // collection

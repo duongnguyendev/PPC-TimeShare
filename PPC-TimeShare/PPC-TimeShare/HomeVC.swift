@@ -104,9 +104,7 @@ class HomeVC: UIViewController {
         button.type = HomeButtonType.normal
         button.addTarget(self, action: #selector(handleExploreAllDestinationButton), for: .touchUpInside)
         button.backGroundImage = "button_2"
-
         button.iconName = "explore_icon"
-        button.title = "Explore All Destination"
 
         return button
     }()
@@ -116,14 +114,12 @@ class HomeVC: UIViewController {
         button.addTarget(self, action: #selector(handleSpecialOffersButton), for: .touchUpInside)
         button.backGroundImage = "button_1"
         button.iconName = "Special_offers_icon"
-        button.title = "Special Offers"
 
         return button
     }()
     let listOfResortsButton : HomeButtonCustom = {
         let button = HomeButtonCustom()
         button.type = HomeButtonType.listResort
-        button.title = "RESORTS DIRECTORY"
         button.addTarget(self, action: #selector(handleListOfResortsButton), for: .touchUpInside)
         return button
     }()

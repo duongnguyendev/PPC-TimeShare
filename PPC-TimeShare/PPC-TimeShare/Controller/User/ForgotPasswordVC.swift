@@ -59,7 +59,7 @@ class ForgotPasswordVC: BaseViewController {
                 self.activity.stopAnimating()
                 if success{
                     let alert = UIAlertController(title: self.languageManager.localizedString(string: "SendRequestSuccessfully"),
-                                                  message: "Vui lòng kiểm tra email của bạn", preferredStyle: .alert)
+                                                  message: self.languageManager.localizedString(string: "PleaseCheckYourEmail"), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in                    }))
                     self.present(alert, animated: true, completion: {
                         self.goHome()

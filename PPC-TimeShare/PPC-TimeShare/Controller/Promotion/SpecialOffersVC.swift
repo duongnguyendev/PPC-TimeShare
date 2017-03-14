@@ -13,7 +13,9 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
     var offers : [Offer]?
     
     func fetchOffers(){
+        self.activity.startAnimating()
         APIService.sharedInstance.requestGetOffers { (offers, errorMes) in
+            self.activity.stopAnimating()
             if errorMes != nil{
                 //show mes
             }else{
@@ -32,6 +34,7 @@ class SpecialOffersVC: BaseViewController , UICollectionViewDelegate, UICollecti
 
     }
     override func setupView() {
+        super.setupView()
         setupBackGround()
         setupCollectionView()
         

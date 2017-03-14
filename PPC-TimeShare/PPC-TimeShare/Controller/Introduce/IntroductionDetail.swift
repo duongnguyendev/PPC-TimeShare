@@ -28,7 +28,7 @@ class IntroductionDetail: BaseViewController {
                     handleWhatIsTimeshare()
                     break
                 case EnumIntroduceName.FAQs:
-                    labelTitle.text = "FAQs"
+                    labelTitle.text = LanguageManager.sharedInstance.localizedString(string: "FAQs")
                     break
                 case EnumIntroduceName.PPCTimesharebusiness:
                     labelTitle.text = LanguageManager.sharedInstance.localizedString(string: "PPCTimeshareBusiness")
@@ -91,7 +91,7 @@ class IntroductionDetail: BaseViewController {
                 let content1 = data?["content_about_1"] as! String
                 let content2 = data?["content_about_2"] as! String
                 
-                let htmlString = "<strong>\(title1)</strong>\r\n\(content1)<strong>\(title2)</` strong>\r\n\(content2)"
+                let htmlString = "<strong>\(title1)</strong>\r\n\(content1)<strong>\(title2)</strong>\r\n\(content2)"
                 self.webViewIntroduction.loadHTMLString(htmlString, baseURL: nil)
             }
         }

@@ -17,7 +17,8 @@ class ResortDetailVC: BaseViewController, SignInDelegate {
             labelName.text = resort?.name
             labelPrice.text = resort?.price
             labelAddress.text = resort?.address
-            webViewContent.loadHTMLString((resort?.introduceFull)!, baseURL: nil)
+            let introHTMLString = "\((resort?.introduceFull)!)\((resort?.service)!)\((resort?.equipment)!)"
+            webViewContent.loadHTMLString(introHTMLString, baseURL: nil)
             
         }
     }
@@ -28,6 +29,7 @@ class ResortDetailVC: BaseViewController, SignInDelegate {
     }
     let imageCollection : CollectionImage = {
         let collection = CollectionImage()
+        collection.backgroundColor = UIColor.clear
         return collection
     }()
     
@@ -60,11 +62,7 @@ class ResortDetailVC: BaseViewController, SignInDelegate {
         button.backgroundColor = UIColor.yellow
         return button
     }()
-    
-    let infoView : ResortInfoView = {
-        let view = ResortInfoView()
-        return view
-    }()
+
     // info view
     let labelName : UILabel = {
         let label = UILabel()

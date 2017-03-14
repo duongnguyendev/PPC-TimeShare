@@ -95,6 +95,7 @@ EmailAlreadyExists="Email already exists";
 LogedInFailed="Loged in failed";
 LogInSuccessfully="Log in successfully";
 PleaseInputTheTitle="Please input the title";
+PleaseInputTheName="Please input the name";
 PleaseInputAtLeast50letters="Please input at least 50 letters";
 SendRequestSuccessfully="Send request successfully";
 SendRequestFailed="Send request failed";
@@ -114,10 +115,10 @@ SignedUpSuccessfully="Signed up successfully";
 SignedUpFailed="Signed up failed";
 PleaseCheckYourEmail="Please check your email";
 AnErrorOccurredUpdatingData="an error occurred updating data";
-
-
-
-
+InvalidDateTime="Invalid date time";
+PleaseChooseTheQuantityOfRoom="Please choose the quantity of room";
+PleaseChooseTheQuantityOfGuest="Please choose the quantity of guest";
+LocationServices="Location services";
 
 
 

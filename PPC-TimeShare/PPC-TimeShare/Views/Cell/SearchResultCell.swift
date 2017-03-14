@@ -32,7 +32,6 @@ class SearchResultCell: BaseCell {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Bold", size: 16)
         label.numberOfLines = 2
-        label.text = "Resort name Resort name Resort name"
         return label
     }()
     
@@ -45,7 +44,6 @@ class SearchResultCell: BaseCell {
     let labelAddress : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Light", size: 14)
-        label.text = "244 cống quỳnh, phường phạm ngũ lão, quận 1, tphcm, việt nam"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -58,8 +58,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     let labelName : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Roboto-Bold", size: 13)
-        label.text = "Name Resort"
+        label.font = UIFont(name: "Roboto-Bold", size: 14)
         return label
     }()
     
@@ -77,16 +76,14 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     let labelAddress : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 11)
-        label.text = "123 Holywood, Los Angerles, USA"
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.red
         return label
     }()
     let labelPrice : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 11)
-        label.text = "2000 USD"
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.red
         return label
     }()
@@ -252,18 +249,24 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
         bookInfo.note = self.textViewNote.text
         
         if validate() != nil {
-            let alert = UIAlertController(title: "Notification", message: validate()!, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            let alert = UIAlertController(title: self.languageManager.localizedString(string: "Notifications"),
+                                          message: validate()!,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK",
+                                          style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         else{
             APIService.sharedInstance.requestBook(user: self.user!, info: bookInfo, voucherId: self.voucherId, completion: { (status, errorMes) in
                 if errorMes != nil{
-                    let alert = UIAlertController(title: "Notification", message: "Fail", preferredStyle: .alert)
+                    let alert = UIAlertController(title: self.languageManager.localizedString(string: "Notifications"),
+                                                  message: errorMes, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }else{
-                    let alert = UIAlertController(title: "Notification", message: "Success", preferredStyle: .alert)
+                    let alert = UIAlertController(title: self.languageManager.localizedString(string: "Notifications"),
+                                                  message: self.languageManager.localizedString(string: "SendRequestSuccessfully"),
+                                                  preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -284,14 +287,14 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
         let compareCheckInToCheckOut = NSCalendar.current.compare(checkInView.dateValue!, to: checkOutView.dateValue!, toGranularity: .day)
         
         if  compareCheckInToNow == .orderedAscending || compareCheckInToCheckOut == .orderedDescending  {
-            return "wrong date"
+            return languageManager.localizedString(string: "InvalidDateTime")
         }
         
         return validateRoom()
     }
     func validateRoom() -> String? {
         if self.numberRooms <= 0  {
-            return "select number of Room"
+            return languageManager.localizedString(string: "PleaseChooseTheQuantityOfRoom")
         }
         
         return validateTravelers()
@@ -299,7 +302,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     func validateTravelers() -> String? {
         
         if (numberChilds + numberAdults) <= 0 {
-            return "select number of Travelers"
+            return languageManager.localizedString(string: "PleaseChooseTheQuantityOfGuest")
         }
         return nil
     }

@@ -83,6 +83,11 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
+    let imageViewAvatarBackground : UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "icon_avatar"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
     let userTypeLabel : UILabel = {
         let label = UILabel()
 //        label.text = "Membership: Sliver"
@@ -188,6 +193,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         
         
         mainContentView.addSubview(imageBackgroup)
+        mainContentView.addSubview(imageViewAvatarBackground)
         mainContentView.addSubview(imageViewAvatar)
         mainContentView.addSubview(userTypeLabel)
         mainContentView.addSubview(inputNameView)
@@ -204,6 +210,15 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         imageBackgroup.rightAnchor.constraint(equalTo: mainContentView.rightAnchor, constant: 0).isActive = true
         imageBackgroup.bottomAnchor.constraint(equalTo: imageViewAvatar.topAnchor, constant: avatarSize / 2).isActive = true
         
+        //imageViewAvatarBackground
+        imageViewAvatarBackground.layer.cornerRadius = avatarSize / 2
+        imageViewAvatarBackground.layer.masksToBounds = true
+        
+        imageViewAvatarBackground.topAnchor.constraint(equalTo: mainContentView.topAnchor, constant: 64).isActive = true
+        mainContentView.addConstraint(NSLayoutConstraint(item: imageViewAvatarBackground, attribute: .centerX, relatedBy: .equal, toItem: mainContentView, attribute: .centerX, multiplier: 1, constant: 0))
+        imageViewAvatarBackground.heightAnchor.constraint(equalToConstant: avatarSize).isActive = true
+        imageViewAvatarBackground.widthAnchor.constraint(equalToConstant: avatarSize).isActive = true
+        
         //imageViewAvatar
         
         imageViewAvatar.layer.cornerRadius = avatarSize / 2
@@ -213,6 +228,20 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         mainContentView.addConstraint(NSLayoutConstraint(item: imageViewAvatar, attribute: .centerX, relatedBy: .equal, toItem: mainContentView, attribute: .centerX, multiplier: 1, constant: 0))
         imageViewAvatar.heightAnchor.constraint(equalToConstant: avatarSize).isActive = true
         imageViewAvatar.widthAnchor.constraint(equalToConstant: avatarSize).isActive = true
+        
+        //image avatar default
+        
+//        let imageAvatarDefault = UIImageView(image: UIImage(named: "icon_avatar"))
+//        imageAvatarDefault.translatesAutoresizingMaskIntoConstraints = false
+//        mainContentView.addSubview(imageAvatarDefault)
+//        mainContentView.centerXAnchor.constraint(equalTo: self.imageViewAvatar.centerXAnchor, constant: 0).isActive = true
+//        mainContentView.centerYAnchor.constraint(equalTo: self.imageViewAvatar.centerYAnchor, constant: 0).isActive = true
+//        mainContentView.topAnchor.constraint(equalTo: self.imageViewAvatar.topAnchor, constant: 0).isActive = true
+//        mainContentView.leftAnchor.constraint(equalTo: self.imageViewAvatar.leftAnchor, constant: 0).isActive = true
+//        
+//        imageViewAvatar.layer.zPosition = 1
+        
+        
         
         // input view
         mainContentView.addConstraintWithFormat(format: "H:|[v0]|", views: userTypeLabel)
@@ -344,7 +373,7 @@ class UserProfileVC: BaseViewController, UITextFieldDelegate, InputViewDelegate,
         imagePicker.delegate = self
         let actionSheet = UIAlertController(title: self.languageManager.localizedString(string: "SelectImage"),
                                             message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel",
+        actionSheet.addAction(UIAlertAction(title: self.languageManager.localizedString(string: "Cancel"),
                                             style: .cancel, handler: { (action) in
             
         }))

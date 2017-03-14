@@ -70,7 +70,6 @@ class IntroduceCell : BaseCell {
     }()
     let titleIntroduce : UILabel = {
         let label = UILabel()
-        label.text = "Introduce"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()

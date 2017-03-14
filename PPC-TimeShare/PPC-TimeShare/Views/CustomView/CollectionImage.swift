@@ -66,6 +66,7 @@ class ImageCell: BaseCell {
         }
     }
     override func setupView() {
+        self.backgroundColor = UIColor.white
         addSubview(imageView)
         addConstraintWithFormat(format: "V:|[v0]|", views: imageView)
         addConstraintWithFormat(format: "H:|[v0]|", views: imageView)

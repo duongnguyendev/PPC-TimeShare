@@ -25,7 +25,8 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes, nil)
+                    
+                    completion(nil, error?.localizedDescription, nil)
                 }
                 else {
                     completion(nil, errorMes, nil)
@@ -47,7 +48,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -72,7 +73,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -93,7 +94,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -116,7 +117,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -145,7 +146,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -166,7 +167,7 @@ class APIService: NSObject {
                 completion(user, nil)
             }else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }else{
                     completion(nil, errorMes)
                 }
@@ -184,7 +185,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -210,7 +211,7 @@ class APIService: NSObject {
                 completion(user, nil)
             }else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else{
                     completion(nil, errorMes)
@@ -229,7 +230,7 @@ class APIService: NSObject {
                 completion(nil)
             }else{
                 if error != nil{
-                    completion(self.serverErrorMes)
+                    completion(error?.localizedDescription)
                 }
                 else{
                     completion(errorMes)
@@ -248,7 +249,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -276,7 +277,7 @@ class APIService: NSObject {
                 completion("Success", nil)
             }else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else{
                     completion(nil, errorMes)
@@ -295,7 +296,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -316,7 +317,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -336,7 +337,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -356,7 +357,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errorMes)
@@ -382,7 +383,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes, nil)
+                    completion(nil, error?.localizedDescription, nil)
                 }
                 else {
                     completion(nil, errorMes, nil)
@@ -406,7 +407,7 @@ class APIService: NSObject {
                 }
                 else{
                     if error != nil{
-                        completion(nil, self.serverErrorMes)
+                        completion(nil, error?.localizedDescription)
                     }
                     else {
                         completion(nil, errorMes)
@@ -457,7 +458,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errMes)
@@ -477,7 +478,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errMes)
@@ -496,7 +497,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errMes)
@@ -515,7 +516,7 @@ class APIService: NSObject {
             }
             else{
                 if error != nil{
-                    completion(nil, self.serverErrorMes)
+                    completion(nil, error?.localizedDescription)
                 }
                 else {
                     completion(nil, errMes)

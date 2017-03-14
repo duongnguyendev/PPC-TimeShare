@@ -47,7 +47,6 @@ class InfoButton: BaseButton {
     
     let labelTitle : UILabel = {
         let label = UILabel()
-        label.text = "Check in"
         label.font = UIFont(name: "Roboto-Bold", size: 15)
         
         return label
@@ -55,7 +54,6 @@ class InfoButton: BaseButton {
     
     let labelValue : UILabel = {
         let label = UILabel()
-        label.text = "20/02/2017"
         label.font = UIFont(name: "Roboto-Light", size: 15)
         label.textAlignment = .right
         return label

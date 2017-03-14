@@ -45,6 +45,19 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         setupFilterButton()
     }
     
+    func setupFilterButton(){
+        let filterButton = barButton(iconName: "filter_icon")
+        filterButton.addTarget(self, action: #selector(handleFilter), for: .touchUpInside)
+        let barButtonFilterItem = UIBarButtonItem(customView: filterButton)
+        //        self.navigationItem.rightBarButtonItem = barButtonFilterItem
+        
+        let searchButton = barButton(iconName: "find_resort_icon")
+        searchButton.addTarget(self, action: #selector(handleSearch), for: .touchUpInside)
+        let barSearchButtonItem = UIBarButtonItem(customView: searchButton)
+        self.navigationItem.rightBarButtonItems = [barButtonFilterItem, barSearchButtonItem]
+        
+    }
+    
     func setupBackGround(){
         let redView : UIView = UIView()
         redView.translatesAutoresizingMaskIntoConstraints = false
@@ -176,12 +189,14 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         //        selectNew = false
     }
     
-    override func handleFilter() {
-        
+    func handleFilter() {
         self.filterLauncher.showFilter()
     }
-    
-    
+    //search
+    func handleSearch() {
+        let searchVC = SearchVC()
+        self.pushVC(viewController: searchVC)
+    }
     // collection view dalegate
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -280,15 +295,6 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         }
         
     }
-    
-    //search
-    override func handleSearch() {
-        let searchVC = SearchVC()
-        
-        self.pushVC(viewController: searchVC)
-    }
-    
-    
     func handleItemResorstSelected(resort : Resort){
         let resortDetailVC : ResortDetailVC = ResortDetailVC()
         resortDetailVC.resort = resort

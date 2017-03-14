@@ -46,6 +46,7 @@ class YourVoucherVC: BaseViewController, UICollectionViewDelegate, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = languageManager.localizedString(string: "Vouchers")
         collectionVoucher.register(VoucherCell.self, forCellWithReuseIdentifier: cellId)
     }
     override func setupView() {

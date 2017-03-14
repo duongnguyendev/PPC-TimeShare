@@ -60,7 +60,7 @@ class ShareAppVC: BaseViewController {
     
     func handleShare(){
         
-        let text = "This is some text that I want to share.\n\(user?.shareCode)"
+        let text = "This is some text that I want to share.\n\((user?.shareCode)!)"
         
         // set up activity view controller
         let textToShare = [ text ]

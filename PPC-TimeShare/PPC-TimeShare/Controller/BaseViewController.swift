@@ -82,18 +82,6 @@ class BaseViewController: UIViewController {
             setupGoHomeButton()
         }
     }
-    func setupFilterButton(){
-        let filterButton = barButton(iconName: "filter_icon")
-        filterButton.addTarget(self, action: #selector(handleFilter), for: .touchUpInside)
-        let barButtonFilterItem = UIBarButtonItem(customView: filterButton)
-//        self.navigationItem.rightBarButtonItem = barButtonFilterItem
-        
-        let searchButton = barButton(iconName: "find_resort_icon")
-        searchButton.addTarget(self, action: #selector(handleSearch), for: .touchUpInside)
-        let barSearchButtonItem = UIBarButtonItem(customView: searchButton)
-        self.navigationItem.rightBarButtonItems = [barButtonFilterItem, barSearchButtonItem]
-
-    }
     func setupGoHomeButton(){
         let homeButton = barButton(iconName: "home_icon")
         homeButton.addTarget(self, action: #selector(goHome), for: .touchUpInside)
@@ -109,14 +97,6 @@ class BaseViewController: UIViewController {
         activity.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
         
         self.activity.hidesWhenStopped = true
-    }
-    
-    func handleSearch(){
-        // filter us for sub view controller
-    }
-    
-    func handleFilter(){
-        // filter us for sub view controller
     }
     
     func dismissKeyboard(){

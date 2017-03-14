@@ -21,7 +21,6 @@ class HistoryCell: BaseCell {
     let labelName : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Medium", size: 15)
-        label.text = "Name Resort"
         return label
     }()
     let iconAddress : UIImageView = {
@@ -37,7 +36,6 @@ class HistoryCell: BaseCell {
     let labelAddress : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Light", size: 13)
-        label.text = "Name Resort"
         label.textColor = UIColor.red
         return label
     }()
@@ -45,7 +43,6 @@ class HistoryCell: BaseCell {
     let labelPrice : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Roboto-Light", size: 13)
-        label.text = "Name Resort"
         label.textColor = UIColor.red
         return label
     }()

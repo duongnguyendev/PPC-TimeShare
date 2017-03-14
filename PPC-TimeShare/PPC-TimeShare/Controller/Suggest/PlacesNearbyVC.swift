@@ -30,7 +30,7 @@ class PlacesNearbyVC: BaseViewController , UICollectionViewDelegate, UICollectio
         
         self.title = languageManager.localizedString(string: "PlacesNearby")
         collectionPlacesNearby.register(PlacesNearbyCell.self, forCellWithReuseIdentifier: cellId)
-
+        
         
         self.locationManager.requestWhenInUseAuthorization()
         
@@ -40,25 +40,28 @@ class PlacesNearbyVC: BaseViewController , UICollectionViewDelegate, UICollectio
                 locationManager.startUpdatingLocation()
             }
             else{
-                let alertController = UIAlertController (title: "Setting Location", message: "Go to Settings?", preferredStyle: .alert)
+                let alertController = UIAlertController (title: "",
+                                                         message: self.languageManager.localizedString(string: "LocationServices"), preferredStyle: .alert)
                 
-                let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
-                        return
-                    }
-                    
-                    if UIApplication.shared.canOpenURL(settingsUrl) {
-                        UIApplication.shared.openURL(settingsUrl)
-                    }
-                    self.goHome()
+                let settingsAction = UIAlertAction(title: self.languageManager.localizedString(string: "Settings"),
+                                                   style: .default) { (_) -> Void in
+                                                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                                                        return
+                                                    }
+                                                    
+                                                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                                                        UIApplication.shared.openURL(settingsUrl)
+                                                    }
+                                                    self.goHome()
                 }
                 alertController.addAction(settingsAction)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: self.languageManager.localizedString(string: "Cancel"),
+                                                 style: .cancel, handler: nil)
                 alertController.addAction(cancelAction)
                 
                 present(alertController, animated: true, completion: nil)
             }
-        }        
+        }
     }
     override func setupView() {
         setupCollectionView()

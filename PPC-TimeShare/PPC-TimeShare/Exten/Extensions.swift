@@ -93,18 +93,21 @@ class CustomImageView : UIImageView{
                 if error != nil{
                     print(error!)
                 }
-                DispatchQueue.main.async {
-                    let imageToCache = UIImage(data: data!)
-                    if self.imageUrlString == urlString{
-                        self.image = imageToCache
-                    }
-                    if imageToCache != nil{
-                        imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
-                    }
-                    else{
-                        self.image = UIImage(named: "no_image_icon")
+                else{
+                    DispatchQueue.main.async {
+                        let imageToCache = UIImage(data: data!)
+                        if self.imageUrlString == urlString{
+                            self.image = imageToCache
+                        }
+                        if imageToCache != nil{
+                            imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                        }
+                        else{
+                            self.image = UIImage(named: "no_image_icon")
+                        }
                     }
                 }
+                
     
             }).resume()
         }else{

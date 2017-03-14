@@ -24,6 +24,7 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
     func fetchResort(){
         self.activity.startAnimating()
         APIService.sharedInstance.fetchResortNew { (resorts : [Resort]?, errorMessage) in
+            self.activity.stopAnimating()
             if errorMessage == nil{
                 self.resorts = self.resorts + resorts!
                 self.collectionView.reloadData()

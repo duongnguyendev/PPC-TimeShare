@@ -40,6 +40,7 @@ class FAQsVC: BaseViewController, UICollectionViewDataSource, UICollectionViewDe
 
     }
     override func setupView() {
+        super.setupView()
         fetchFAQs()
         view.addSubview(collectionFAQs)
         view.addConstraintWithFormat(format: "V:|-20-[v0]|", views: collectionFAQs)

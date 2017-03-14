@@ -12,7 +12,6 @@ class BookOnlineVC: BookInAdvanceVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "Book online"
     }
 

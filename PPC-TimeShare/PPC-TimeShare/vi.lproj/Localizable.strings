@@ -95,6 +95,7 @@ EmailAlreadyExists="Email đã tồn tại";
 LogedInFailed="Đăng nhập không thành công";
 LogInSuccessfully="Đăng nhập thành công";
 PleaseInputTheTitle="Vui lòng nhập tiêu đề";
+PleaseInputTheName="Vui lòng nhập tên";
 PleaseInputAtLeast50letters="Vui lòng nhập nội dung tối thiểu 50 ký tự";
 SendRequestSuccessfully="Gửi yêu cầu thành công";
 SendRequestFailed="Gửi yêu cầu không thành công";
@@ -114,10 +115,10 @@ SignedUpSuccessfully="Đăng ký thành công";
 SignedUpFailed="Đăng ký không thành công";
 PleaseCheckYourEmail="Vui lòng kiểm tra email của bạn";
 AnErrorOccurredUpdatingData="lỗi khi cập nhật dữ liệu";
-
-
-
-
+InvalidDateTime="Chọn sai ngày";
+PleaseChooseTheQuantityOfRoom="Vui lòng chọn số lượng phòng";
+PleaseChooseTheQuantityOfGuest="Vui lòng chọn số lượng du khách";
+LocationServices="Cài đặt định vị";
 
 
 

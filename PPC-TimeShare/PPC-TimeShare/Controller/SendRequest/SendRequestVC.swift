@@ -152,14 +152,14 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
                 }
                 else{
                     alter.title = self.languageManager.localizedString(string: "SendRequestFailed")
-                    alter.message = "Thử lại!"
+                    alter.message = self.languageManager.localizedString(string: "PleaseTryAgain")
                 }
                 self.present(alter, animated: true, completion: {})
             })
             
         }else{
             //show mes
-            alter.title = "Thông tin nhập chưa đủ"
+            alter.title = ""
             alter.message = validateMes
             self.present(alter, animated: true, completion: {})
         }
@@ -186,7 +186,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
         if emailTest.evaluate(with: inputEmailView.textField.text){
             return validatePhone()
         }
-        return "Sai định dạng email"
+        return languageManager.localizedString(string: "WrongEmailAddress")
     }
     func validatePhone()-> String?{
         let mobileFormat = "^\\d{10,11}$"
@@ -196,13 +196,13 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
             inputMobileView.becomeFirstResponder()
             return validateTitle()
         }
-        return "Số điện thoại chưa đúng"
+        return languageManager.localizedString(string: "IncorrectPhoneNumber")
     }
     func validateTitle()->String?{
         
         if (inputTitleView.textField.text?.trimmingCharacters(in: CharacterSet.whitespaces).characters.count)! < 1 {
             inputTitleView.textField.becomeFirstResponder()
-            return "Vui lòng nhập tiêu đề"
+            return languageManager.localizedString(string: "PleaseInputTheTitle")
         }
         
         return validateContent()
@@ -210,7 +210,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
     func validateContent() -> String? {
         if (contentTextView.text?.trimmingCharacters(in: CharacterSet.whitespaces).characters.count)! < 50 {
             contentTextView.becomeFirstResponder()
-            return "Vui lòng nhập nội dung tối thiểu 50 ký tự"
+            return languageManager.localizedString(string: "PleaseInputAtLeast50letters")
         }
         
         return nil

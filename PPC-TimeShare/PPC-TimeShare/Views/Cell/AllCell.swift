@@ -46,9 +46,14 @@ class AllCell: NewCell {
     }
     
     func filter(option: FilterOption) {
+        self.activity.startAnimating()
         APIService.sharedInstance.requestFilterResort(option: option) { (resorts, errorMes, nextPage) in
+            self.activity.stopAnimating()
             if errorMes == nil {
+                self.mapView?.clear()
                 self.resorts = resorts!
+                self.addMarkToMap(resorts: resorts!)
+                
                 self.collectionView.reloadData()
                 self.nextPageUrl = nextPage
                 if resorts?.count != 0{

@@ -37,14 +37,12 @@ class RecruitmentCell: BaseCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "Recruit Sale"
         label.textColor = UIColor.red
         return label
     }()
     let labelAddress : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "123 Holywood, Los Angerles, USA"
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
