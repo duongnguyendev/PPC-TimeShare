@@ -63,7 +63,10 @@ class SettingsVC: BaseViewController, DropDownDelegate {
         
         UserDefaults.standard.removeObject(forKey: "currentUser")
         UserDefaults.standard.removeObject(forKey: "token")
-        goHome()
+        let alert = UIAlertController(title: "", message: languageManager.localizedString(string: "LogedOut"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+            self.goHome()
+        }))
     }
     
     func handleLanguageButton(){

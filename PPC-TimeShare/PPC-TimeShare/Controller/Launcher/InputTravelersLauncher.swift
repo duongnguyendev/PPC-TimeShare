@@ -34,7 +34,7 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
         tF.textAlignment = .right
         tF.translatesAutoresizingMaskIntoConstraints = false
         tF.delegate = self
-        tF.text = "0"
+        tF.placeholder = "0"
         tF.borderStyle = .roundedRect
         return tF
     }()
@@ -44,7 +44,7 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
         tF.textAlignment = .right
         tF.translatesAutoresizingMaskIntoConstraints = false
         tF.borderStyle = .roundedRect
-        tF.text = "0"
+        tF.placeholder = "0"
         tF.delegate = self
         return tF
     }()
@@ -86,6 +86,7 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
                 self.delegate?.getNumberTravelers!(adults: numberAdults, childs: numberChilds)
                 self.hide()
             }else{
+                self.delegate?.getNumberTravelers!(adults: self.currentAdult!, childs: self.currentChild!)
                 self.hide()
             }
         }
@@ -98,11 +99,18 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (Int(string) != nil){
+        if string == ""{
             return true
         }
+        else{
+            if (Int(string) != nil) && (textField.text?.characters.count)! < 4{
+                return true
+            }
+        }
+        
         return false
     }
+    
     override func show() {
         super.show()
         self.textFieldNumberAdults.becomeFirstResponder()
@@ -130,7 +138,7 @@ class InputRoomLauncher: BaseLauncher, UITextFieldDelegate {
         tF.textAlignment = .right
         tF.translatesAutoresizingMaskIntoConstraints = false
         tF.delegate = self
-        tF.text = "0"
+        tF.placeholder = "0"
         tF.borderStyle = .roundedRect
         return tF
     }()
@@ -156,6 +164,8 @@ class InputRoomLauncher: BaseLauncher, UITextFieldDelegate {
     override func handleOKButton() {
         if self.delegate != nil , textFieldNumbersRoom.text != ""{
             self.delegate?.getNumberRooms!(rooms: Int(textFieldNumbersRoom.text!)!)
+        }else{
+            self.delegate?.getNumberRooms!(rooms: self.currentRome!)
         }
         self.hide()
     }
@@ -167,8 +177,13 @@ class InputRoomLauncher: BaseLauncher, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (Int(string) != nil) || string == ""{
+        if string == ""{
             return true
+        }
+        else{
+            if (Int(string) != nil) && (textField.text?.characters.count)! < 4{
+                return true
+            }
         }
         return false
     }

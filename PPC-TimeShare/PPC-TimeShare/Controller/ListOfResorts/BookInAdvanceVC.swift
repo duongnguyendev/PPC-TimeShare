@@ -267,7 +267,10 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
                     let alert = UIAlertController(title: self.languageManager.localizedString(string: "Notifications"),
                                                   message: self.languageManager.localizedString(string: "SendRequestSuccessfully"),
                                                   preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                       self.goBack()
+                    }))
+                    
                     self.present(alert, animated: true, completion: nil)
                 }
             })

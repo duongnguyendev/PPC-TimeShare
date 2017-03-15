@@ -109,7 +109,7 @@ class NewCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, U
         let size = CGSize(width: frame.width - margin - margin - 10, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let text = resorts[indexPath.item].introduce
-        let estimatedRect = NSString(string: text!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.init(name: "Roboto-Medium", size: 13) as Any], context: nil)
+        let estimatedRect = NSString(string: text!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.init(name: "Roboto-Medium", size: 14) as Any], context: nil)
         
         return CGSize(width: frame.size.width, height: height + estimatedRect.height)
     }

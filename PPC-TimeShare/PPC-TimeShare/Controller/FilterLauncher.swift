@@ -17,6 +17,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     var currentCountries : Country? = Country(){
         didSet{
             if currentCountries?.countryId != 0{
+                currentProvince = Province()
                 dropDownCity.country = currentCountries
             }
             
@@ -216,8 +217,12 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
     
     func selected(country : Country){
         
-        countryButton.value = country.countryName
-        currentCountries = country
+        if currentCountries != country{
+            countryButton.value = country.countryName
+            currentCountries = country
+            cityButton.value = LanguageManager.sharedInstance.localizedString(string: "City")
+        }
+        
         
     }
     func selected(province : Province){

@@ -122,6 +122,7 @@ LocationServices="Location services";
 EnterASpecialOfferCode = "enter a special offer code";
 TheCodeHasBeenSentSuccessfully="the code has been sent successfully";
 PromotionalCodeIsNotCorrect="Promotional code is not correct";
+LogedOut="Loged out";
 
 
 

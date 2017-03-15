@@ -48,7 +48,7 @@ class DropDownView: BaseView, UICollectionViewDelegate, UICollectionViewDataSour
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = UIColor.clear
+        cv.backgroundColor = UIColor.white
         cv.dataSource = self
         cv.delegate = self
         return cv

@@ -93,11 +93,16 @@ class ListVoucherLauncher: BaseLauncher, UICollectionViewDelegate, UICollectionV
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         self.contentView.addSubview(imageView)
+//        
+//        imageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 0).isActive = true
+//        imageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: 0).isActive = true
+//        imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//        imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
-        imageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 0).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: 0).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 0).isActive = true
+        imageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 0).isActive = true
+        imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
     }
     

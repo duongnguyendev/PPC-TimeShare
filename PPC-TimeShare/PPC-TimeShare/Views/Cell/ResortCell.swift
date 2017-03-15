@@ -53,7 +53,8 @@ class ResortCell: InfoCell {
                 self.imageView.loadImageUsingUrlString(urlString: (resort?.images?[0])!)
             }
             priceLabel.text = resort?.price
-            textViewIntro.text = resort?.introduce
+//            textViewIntro.text = resort?.introduce
+            webView.loadHTMLString((resort?.introduce)!, baseURL: nil)
         }
     }
     
@@ -80,15 +81,24 @@ class ResortCell: InfoCell {
     }()
     
     
-    let textViewIntro : UITextView = {
-        let textView = UITextView()
-        textView.isScrollEnabled = false
-        textView.isEditable = false
-        textView.font = UIFont(name: "Roboto-Light", size: 13)
-        textView.textAlignment = .justified
-        textView.backgroundColor = UIColor.clear
-        return textView
+//    let textViewIntro : UITextView = {
+//        let textView = UITextView()
+//        textView.isScrollEnabled = false
+//        textView.isEditable = false
+//        textView.font = UIFont(name: "Roboto-Light", size: 13)
+//        textView.textAlignment = .justified
+//        textView.backgroundColor = UIColor.clear
+//        return textView
+//    }()
+    let webView : UIWebView = {
+        let webView = UIWebView()
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.backgroundColor = UIColor.clear
+        webView.isOpaque = false
+        webView.scrollView.isScrollEnabled = false
+        return webView
     }()
+    
     
     let iconAdress : UIImageView = {
         let imv = UIImageView(image: UIImage(named: "adress_icon"))
@@ -104,10 +114,11 @@ class ResortCell: InfoCell {
         
         contentV.addSubview(adressLabel)
         contentV.addSubview(nameLabel)
-        contentV.addSubview(textViewIntro)
+//        contentV.addSubview(textViewIntro)
         contentV.addSubview(priceLabel)
         contentV.addSubview(iconAdress)
         contentV.addSubview(iconPrice)
+        contentV.addSubview(webView)
         
         nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5).isActive = true
         contentV.addConstraintWithFormat(format: "H:|-\(self.pedding)-[v0]|", views: nameLabel)
@@ -129,11 +140,14 @@ class ResortCell: InfoCell {
         contentV.addConstraintWithFormat(format: "H:|-\(self.pedding - 2)-[v0(20)][v1]-\(self.pedding)-|", views:iconPrice, priceLabel)
         priceLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        textViewIntro.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: -5).isActive = true
-        contentV.addConstraintWithFormat(format: "H:|-5-[v0]-5-|", views: textViewIntro)
-        textViewIntro.bottomAnchor.constraint(equalTo: contentV.bottomAnchor, constant: 0).isActive = true
+//        textViewIntro.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: -5).isActive = true
+//        contentV.addConstraintWithFormat(format: "H:|-5-[v0]-5-|", views: textViewIntro)
+//        textViewIntro.bottomAnchor.constraint(equalTo: contentV.bottomAnchor, constant: 0).isActive = true
+//        textViewIntro.isHidden = true
         
-        
+        webView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: -5).isActive = true
+        contentV.addConstraintWithFormat(format: "H:|-5-[v0]-5-|", views: webView)
+        webView.bottomAnchor.constraint(equalTo: contentV.bottomAnchor, constant: 0).isActive = true
         
     }
 

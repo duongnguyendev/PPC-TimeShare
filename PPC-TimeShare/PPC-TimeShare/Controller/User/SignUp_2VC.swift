@@ -300,7 +300,7 @@ class SignUp_2VC: BaseViewController, UITextFieldDelegate, DropDownDelegate, UII
     }
     func validateAddress() ->String?{
         if (inputAddressView.textField.text?.isEmpty)! {
-            return languageManager.localizedString(string: "PleaseInputYourAddress")
+            return languageManager.localizedString(string: "PleaseInpurYourAddress")
         }
         return nil
     }

@@ -19,7 +19,7 @@ SignIn= "Đăng nhập";
 Password= "Mật khẩu";
 ForgotPassowrd= "Quên mật khẩu";
 PPCTimeshare= "PPC Timeshare";
-ResortDirectory= "Danh mục khu nghỉ dưỡng";
+ResortDirectory= "DANH MỤC KHU NGHỈ DƯỠNG";
 SpecialOffers= "Ưu đãi";
 ExploreAllDestinations=  "Khám phá";
 PlacesNearby= "Địa điểm gần đây";
@@ -103,7 +103,7 @@ UpdatedSuccessfully="Cập nhật thành công";
 UpdatedFailed="Cập nhật không thành công";
 PleaseTryAgain="Vui lòng thử lại";
 YourInformationIsUpdated="Thông tin của bạn đã được cập nhật";
-PleaseInpurYourAddress="Vui lòng nhập địa chỉ";
+PleaseInputYourAddress="Vui lòng nhập địa chỉ";
 PleaseSelectYourGender="Vui lòng chọn giới tính";
 UsernameIsNotCorrect="Tên đăng nhập không đúng";
 Gallery="Thư viện ảnh";
@@ -122,6 +122,7 @@ LocationServices="Cài đặt định vị";
 EnterASpecialOfferCode = "Nhập mã khuyễn mãi";
 TheCodeHasBeenSentSuccessfully="Gửi mã thành công";
 PromotionalCodeIsNotCorrect="Mã khuyến mãi không đúng";
+LogedOut="Đã đăng xuất";
 
 
 

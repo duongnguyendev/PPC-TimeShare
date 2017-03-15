@@ -137,7 +137,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
     
     func handleButtonSend(){
         let alter = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        alter.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
         let validateMes = validate()
         if validateMes == nil{
             let name = self.inputNameView.textField.text
@@ -149,12 +149,21 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
                 if success{
                     alter.message = self.languageManager.localizedString(string: "SendRequestSuccessfully")
                     self.view.endEditing(true)
+                    alter.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                        self.goBack()
+                    }))
+                    self.present(alter, animated: true, completion: {
+                        
+                    })
+
                 }
                 else{
                     alter.title = self.languageManager.localizedString(string: "SendRequestFailed")
                     alter.message = self.languageManager.localizedString(string: "PleaseTryAgain")
+                    alter.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alter, animated: true, completion: {})
                 }
-                self.present(alter, animated: true, completion: {})
+                
             })
             
         }else{
@@ -189,7 +198,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
         return languageManager.localizedString(string: "WrongEmailAddress")
     }
     func validatePhone()-> String?{
-        let mobileFormat = "^\\d{10,11}$"
+        let mobileFormat = "^(\\+\\d{1,3}[- ]?)?\\d{10}$"
         
         let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobileFormat)
         if mobileTest.evaluate(with: inputMobileView.textField.text){
