@@ -123,8 +123,7 @@ EnterASpecialOfferCode = "Nhập mã khuyễn mãi";
 TheCodeHasBeenSentSuccessfully="Gửi mã thành công";
 PromotionalCodeIsNotCorrect="Mã khuyến mãi không đúng";
 LogedOut="Đã đăng xuất";
-
-
+Send= "Gửi";
 
 
 

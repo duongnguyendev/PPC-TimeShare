@@ -82,12 +82,28 @@ class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {
     }
     override func handleOKButton() {
         if self.delegate != nil {
-            if let numberAdults = Int(textFieldNumberAdults.text!), let numberChilds = Int(textFieldNumberChilds.text!){
-                self.delegate?.getNumberTravelers!(adults: numberAdults, childs: numberChilds)
-                self.hide()
+            if let numberAdults = Int(textFieldNumberAdults.text!){
+                // numberAdults not nil
+                if let numberChilds = Int(textFieldNumberChilds.text!){
+                    // numberChilds not nil
+                    self.delegate?.getNumberTravelers!(adults: numberAdults, childs: numberChilds)
+                    self.hide()
+                }else{
+                    // number childs nil
+                    self.delegate?.getNumberTravelers!(adults: numberAdults, childs: 0)
+                    self.hide()
+                }
+                
             }else{
-                self.delegate?.getNumberTravelers!(adults: self.currentAdult!, childs: self.currentChild!)
-                self.hide()
+                if let numberChilds = Int(textFieldNumberChilds.text!){
+                    // numberChilds not nil
+                    self.delegate?.getNumberTravelers!(adults: 0, childs: numberChilds)
+                    self.hide()
+                }else{
+                    // number childs nil
+                    self.delegate?.getNumberTravelers!(adults: 0, childs: 0)
+                    self.hide()
+                }
             }
         }
     }

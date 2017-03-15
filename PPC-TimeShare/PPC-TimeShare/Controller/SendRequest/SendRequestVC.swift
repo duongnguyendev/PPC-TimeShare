@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SendRequestVC: BaseViewController, UITextFieldDelegate {
+class SendRequestVC: BaseViewController, UITextFieldDelegate, UITextViewDelegate {
 
     let itemHeight : CGFloat = 50
     let spaceLine : CGFloat = 1
@@ -81,11 +81,12 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
         button.backgroundColor = UIColor.button1Collor()
         return button
     }()
-    let contentTextView : UITextView = {
+    lazy var contentTextView : UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Roboto-Light", size: 14)
         textView.text = LanguageManager.sharedInstance.localizedString(string: "ComposeRequest")
+        textView.delegate = self
         return textView
     }()
     
@@ -170,6 +171,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
             //show mes
             alter.title = ""
             alter.message = validateMes
+            alter.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alter, animated: true, completion: {})
         }
     }
@@ -181,7 +183,7 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
     func validateUserName()->String?{
         if (inputNameView.textField.text?.trimmingCharacters(in: CharacterSet.whitespaces).characters.count)! < 1 {
             inputNameView.textField.becomeFirstResponder()
-            return "Vui lòng nhập tên"
+            return languageManager.localizedString(string: "PleaseInputTheName")
         }
         
         return validateEmail()
@@ -225,6 +227,12 @@ class SendRequestVC: BaseViewController, UITextFieldDelegate {
         return nil
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text! == languageManager.localizedString(string: "ComposeRequest"){
+            textView.text = ""
+        }
+        
+    }
     
     override func keyboardWillHide(notification: NSNotification) {
         let contentInsets = UIEdgeInsets.zero

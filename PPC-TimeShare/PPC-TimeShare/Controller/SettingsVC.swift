@@ -67,6 +67,9 @@ class SettingsVC: BaseViewController, DropDownDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
             self.goHome()
         }))
+        present(alert, animated: true) { 
+            // do some thing
+        }
     }
     
     func handleLanguageButton(){

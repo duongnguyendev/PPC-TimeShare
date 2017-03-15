@@ -120,12 +120,12 @@ class ExploreAllDestinationVC: BaseViewController , UICollectionViewDelegate, UI
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let height = view.frame.width / 16 * 9 + 45 + 45
+        let height = view.frame.width / 16 * 9 + 110
         
         let size = CGSize(width: view.frame.width - margin - margin - 10, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         
-        let estimatedRect = NSString(string: (resorts?[indexPath.item].introduce)!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 11)], context: nil)
+        let estimatedRect = NSString(string: (resorts?[indexPath.item].introduce)!).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 14)], context: nil)
         
         return CGSize(width: view.frame.size.width, height: height + estimatedRect.height)
         

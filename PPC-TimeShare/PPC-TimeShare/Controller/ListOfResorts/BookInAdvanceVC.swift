@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
+class BookInAdvanceVC: BaseViewController, InputLauncherDelegate, UITextViewDelegate {
     
     let margin : CGFloat = 20
     let spaceLine : CGFloat = 1
@@ -140,11 +140,12 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     let inputNumberRoomsLauncher = InputRoomLauncher()
     let listVoucherLauncher = ListVoucherLauncher()
     
-    let textViewNote : UITextView = {
+    lazy var textViewNote : UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Roboto-Light", size: 14)
         textView.text = LanguageManager.sharedInstance.localizedString(string: "Note")
+        textView.delegate = self
         return textView
     }()
     
@@ -313,9 +314,11 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
     
     
     func handleCheckInButton(){
+        self.view.endEditing(true)
         datePicker.getDateFor(item: checkInView)
     }
     func handleCheckOutButton(){
+        self.view.endEditing(true)
         datePicker.getDateFor(item: checkOutView)
     }
     func handleRoomButton(){
@@ -362,4 +365,11 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate {
         
     }
     
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text! == languageManager.localizedString(string: "Note"){
+            textView.text = ""
+        }
+        
+    }
 }
