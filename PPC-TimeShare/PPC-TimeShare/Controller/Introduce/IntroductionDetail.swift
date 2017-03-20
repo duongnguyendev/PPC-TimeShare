@@ -50,7 +50,7 @@ class IntroductionDetail: BaseViewController {
     let labelTitle : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Roboto-Bold", size: 14)
+        label.font = UIFont(name: "Roboto-Bold", size: 17)
         return label
     }()
     let webViewIntroduction : UIWebView = {
@@ -109,7 +109,8 @@ class IntroductionDetail: BaseViewController {
         }
     }
     func handlePPCTimesharebusiness(){
-        //hardcode
+        let htmlTimesharebusiness = "\((languageManager.localizedString(string: "PPCTimeshareBusinessContents")!))"
+        self.webViewIntroduction.loadHTMLString(htmlTimesharebusiness, baseURL: nil)
     }
     func handleExchangeProgram(){
         //hardcode

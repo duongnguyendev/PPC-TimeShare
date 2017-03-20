@@ -48,7 +48,7 @@ class DropDownView: BaseView, UICollectionViewDelegate, UICollectionViewDataSour
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = UIColor.white
+        cv.backgroundColor = UIColor.clear
         cv.dataSource = self
         cv.delegate = self
         return cv
@@ -113,7 +113,10 @@ class TypeDropDown: DropDownView {
     override func fetchItems() {
         APIService.sharedInstance.requestGetTypesResort { (types, errorMes) in
             if errorMes == nil{
-                self.listType = types!
+                let typeAll = TypeResort()
+                typeAll.typeName = LanguageManager.sharedInstance.localizedString(string: "All")
+                self.listType.append(typeAll)
+                self.listType = self.listType + types!
                 self.collectionView.reloadData()
             }
         }

@@ -21,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Thread.sleep(forTimeInterval: 3)
         
         // Override point for customization after application launch.
-        
-        GMSServices.provideAPIKey("AIzaSyBL6nVVUklF3nKW4a9o3AwjCYs_g5zKrks")
+        GMSServices.provideAPIKey("AIzaSyDiG0f3EhmYY4ylA_cmgOayR1KT9LYbl5E")
         
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()

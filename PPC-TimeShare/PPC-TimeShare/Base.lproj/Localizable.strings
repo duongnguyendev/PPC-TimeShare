@@ -19,7 +19,7 @@ SignIn= "Sign in";
 Password= "Password";
 ForgotPassowrd= "Forgot Passowrd";
 PPCTimeshare= "PC Timeshare";
-ResortDirectory= "Resort Directory";
+ResortDirectory= "RESORT DIRECTORY";
 SpecialOffers= "Special offers";
 ExploreAllDestinations=  "Explore all destinations";
 PlacesNearby= "Places nearby";
@@ -124,6 +124,19 @@ TheCodeHasBeenSentSuccessfully="the code has been sent successfully";
 PromotionalCodeIsNotCorrect="Promotional code is not correct";
 LogedOut="Loged out";
 Send= "Send";
+PPCTimeshareBusinessContents="Investors and Timeshare development services will sale rights of sharing properties in that vacation about one week or a whole package holiday in places that you can enjoy the best facilities. In addition, members will have opportunities to develop their own Timeshare business in the future and only pay extra fee after the first purchase.";
+DEPOSITINGFORPPC="DEPOSITING FOR PPC";
+HELPINGYOURVACATIONEXCHANGE="HELPING YOUR VACATION EXCHANGE";
+VACATIONEXCHANGECONFIRMATION="VACATION EXCHANGE CONFIRMATION";
+
+DEPOSITINGFORPPCContent="You only need to deposit in PPC Timeshare, your opportunity to exchange holiday will be promoted, moreover, money exchange is free. You do not need to concern time as well as locations that you want to travel when depositing. You can plan your holiday exchange on someday. You can deposit fee for that week on the website or giving us a phone call. ";
+HELPINGYOURVACATIONEXCHANGEContent="You frequently surf the internet to send your request about holiday exchange. However, if your request is not available, please find us and we will continue to seek for you all the time. You can give us a phone call and we will exchange about options of your holidays. More importantly, depositing money for your  PPC week as possible as and it should be deposit before 2 years to maximize your exchange ability.";
+VACATIONEXCHANGECONFIRMATIONContent="When you complete your holiday request, you will receive the confirmation through an email or post office. Don’t forget to bring that confirmation code in anywhere during your holidays.";
+
+
+
+
+
 
 
 

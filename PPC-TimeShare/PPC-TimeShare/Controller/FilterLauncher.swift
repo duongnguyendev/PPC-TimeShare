@@ -146,7 +146,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         dropDownType.leftAnchor.constraint(equalTo: typeButton.leftAnchor, constant: 0).isActive = true
         dropDownType.rightAnchor.constraint(equalTo: typeButton.rightAnchor, constant: -50).isActive = true
         dropDownType.topAnchor.constraint(equalTo: typeButton.bottomAnchor, constant: 1).isActive = true
-        dropDownType.heightAnchor.constraint(equalToConstant: 82).isActive = true
+        dropDownType.heightAnchor.constraint(equalToConstant: 124).isActive = true
     }
     func setupDownSearchBy(){
         contentView.addSubview(dropDownSearchBy)
@@ -154,7 +154,7 @@ class FilterLauncher: BaseLauncher, DropDownDelegate {
         dropDownSearchBy.leftAnchor.constraint(equalTo: searchByButton.leftAnchor, constant: 0).isActive = true
         dropDownSearchBy.rightAnchor.constraint(equalTo: searchByButton.rightAnchor, constant: -50).isActive = true
         dropDownSearchBy.topAnchor.constraint(equalTo: searchByButton.bottomAnchor, constant: 1).isActive = true
-        dropDownSearchBy.heightAnchor.constraint(equalToConstant: 122).isActive = true
+        dropDownSearchBy.heightAnchor.constraint(equalToConstant: 124).isActive = true
     }
     
     func handleCountryButton(){

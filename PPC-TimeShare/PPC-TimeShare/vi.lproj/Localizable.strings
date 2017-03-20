@@ -124,10 +124,13 @@ TheCodeHasBeenSentSuccessfully="Gửi mã thành công";
 PromotionalCodeIsNotCorrect="Mã khuyến mãi không đúng";
 LogedOut="Đã đăng xuất";
 Send= "Gửi";
-
-
-
-
+PPCTimeshareBusinessContents="Các nhà đầu tư và phát triển dịch vụ Timeshare sẽ bán quyền lợi chia sẻ tài sản của mình trong kỳ nghỉ đó, điển hình có thể trong khoảng thời gian một tuần hoặc trọn gói tại các địa điểm mà bạn có thể tận hưởng những tiện nghi tốt nhất. Bên cạnh đó, các thành viên sẽ có cơ hội phát triển hoạt động Timeshare của chính mình trong tương lai và chỉ trả thêm phí duy trì sau lần đầu mua mà thôi.";
+DEPOSITINGFORPPC="ĐẶT CỌC CHO PPC";
+HELPINGYOURVACATIONEXCHANGE="GIÚP BẠN TRAO ĐỔI KỲ NGHỈ";
+VACATIONEXCHANGECONFIRMATION="XÁC NHẬN TRAO ĐỔI KỲ NGHỈ";
+DEPOSITINGFORPPCContent="Chỉ cần đặt cọc tại PPC Timeshare, cơ hội trao đổi các kỳ nghỉ của bạn sẽ được thúc đẩy và quan trọng là gửi tiền là hoàn toàn miễn phí. Bạn không cần phải quan tâm thời gian cũng như địa điểm mà bạn có ý định đi du lịch khi bạn đặt cọc. Bạn có thể lên kế hoạch Trao Đổi Kỳ Nghỉ của bạn vào một ngày nào đó sớm nhất. Bạn cũng có thể đặt cọc chi phí tuần lễ trên website hoặc gọi cho chúng tôi.";
+HELPINGYOURVACATIONEXCHANGEContent="Có thể bình thường đơn giản chỉ cần lên mạng để gửi những yêu cầu trao đổi kỳ nghỉ. Tuy nhiên nếu vào những ngày nghỉ bạn muốn trao đổi lại không có, đừng ngần ngại tìm chúng tôi và chúng tôi sẽ tiếp tục tìm kiếm cho bạn 24/7. Hoặc gọi cho chúng tôi và chúng ta sẽ cũng nhau trao đổi về các lựa chọn kỳ nghỉ của bạn. Điều quan trọng là đặt cọc tiền PPC Tuần Lễ của bạn càng sớm càng tốt, 2 năm trước ngày bắt đầu, để tối đa hóa khả năng giao dịch của bạn.";
+VACATIONEXCHANGECONFIRMATIONContent="Khi bạn đã hoàn thành yêu cầu kỳ nghỉ của bạn, bạn sẽ nhận được xác nhận qua email hoặc bưu điện. Đừng quên mang theo mã xác nhận này theo tại bất kỳ đâu trong suốt kỳ nghỉ của bạn.";
 
 
 

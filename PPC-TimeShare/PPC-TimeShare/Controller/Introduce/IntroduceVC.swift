@@ -83,19 +83,29 @@ class IntroduceVC: BaseViewController , UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !((indexPath.section == 0) && (indexPath.row == 2))  {
-            var intro : EnumIntroduceName?
-            if indexPath.section == 1 {
-                intro = introductions[indexPath.row + 3]
-            }else{
+        
+        var intro : EnumIntroduceName?
+        if indexPath.section == 0{
+            if indexPath.item == 2 {
+                let faqsVC = FAQsVC()
+                pushVC(viewController: faqsVC)
+            }
+            else{
                 intro = introductions[indexPath.row]
             }
-            let detailVC = IntroductionDetail()
-            detailVC.introduce = intro
-            pushVC(viewController: detailVC)
         }else{
-            let faqsVC = FAQsVC()
-            pushVC(viewController: faqsVC)
+            if indexPath.item == 2 {
+                let exchangeProgramVC = ExchangeProgramVC()
+                self.pushVC(viewController: exchangeProgramVC)
+                
+            }else{
+                intro = introductions[indexPath.row + 3]
+            }
+        }
+        if intro != nil {
+            let introDetailVC = IntroductionDetail()
+            introDetailVC.introduce = intro
+            self.pushVC(viewController: introDetailVC)
         }
     }
     
