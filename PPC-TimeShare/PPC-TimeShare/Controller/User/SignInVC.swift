@@ -137,6 +137,9 @@ class SignInVC: BaseViewController {
         let signUpVC : SignUp_1VC = SignUp_1VC()
         pushVC(viewController: signUpVC)
         
+//        let signUpVC : SignUp_3VC = SignUp_3VC()
+//        pushVC(viewController: signUpVC)
+        
     }
     func handleForgotPasswordButton(){
         let forgotPasswordVC = ForgotPasswordVC()
