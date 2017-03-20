@@ -28,8 +28,8 @@ class ShareAppVC: BaseViewController {
         tv.isEditable = false
         tv.textAlignment = .justified
         tv.backgroundColor = UIColor.clear
-        tv.font = UIFont(name: "Roboto-Light", size: 14)
-        tv.text = "Terms and Conditions are a set of rules and guidelines that a user must agree to in order to use your website or mobile app. It acts as a legal contract between you (the company) who has the website or mobile app and the user who access your website and mobile app.\n\nIt’s up to you to set the rules and guidelines that the user must agree to. You can think of your Terms and Conditions agreement as the legal agreement where you maintain your rights to exclude users from your app in the event that they abuse your app, and where you maintain your legal rights against potential app abusers, and so on."
+        tv.font = UIFont(name: "Roboto-Light", size: 16)
+        tv.text = LanguageManager.sharedInstance.localizedString(string: "ShareAppContent")
         return tv
     }()
     let buttonShare : MyButton = {
@@ -59,8 +59,10 @@ class ShareAppVC: BaseViewController {
     }
     
     func handleShare(){
+        let shareAppContent = languageManager.localizedString(string: "ShareAppContent")
+        let PromotionalCode = languageManager.localizedString(string: "PromotionalCode")
         
-        let text = "This is some text that I want to share.\n\((user?.shareCode)!)"
+        let text = "\(shareAppContent!)\n\(PromotionalCode!)\((user?.shareCode)!)"
         
         // set up activity view controller
         let textToShare = [ text ]
