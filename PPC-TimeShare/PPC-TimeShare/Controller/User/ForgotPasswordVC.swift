@@ -53,6 +53,7 @@ class ForgotPasswordVC: BaseViewController {
 
     }
     func handleConfirmButton(){
+        self.view.endEditing(true)
         self.activity.startAnimating()
         if (self.inputEmailView.textField.text?.characters.count)! > 0 {
             APIService.sharedInstance.requestForgotPass(email: self.inputEmailView.textField.text!, completion: { (success) in
@@ -60,9 +61,11 @@ class ForgotPasswordVC: BaseViewController {
                 if success{
                     let alert = UIAlertController(title: self.languageManager.localizedString(string: "SendRequestSuccessfully"),
                                                   message: self.languageManager.localizedString(string: "PleaseCheckYourEmail"), preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in                    }))
-                    self.present(alert, animated: true, completion: {
+                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (nil) in
                         self.goHome()
+                    }))
+                    self.present(alert, animated: true, completion: {
+                        
                     })
                 }else{
                     let alert = UIAlertController(title: self.languageManager.localizedString(string: "SendRequestFailed"),

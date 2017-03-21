@@ -61,9 +61,9 @@ class APIService: NSObject {
     
     func fetchResortRandom(userId: NSNumber?, lat: String?, lng :String?, completion : @escaping ([Resort]?, _ errorMessage : String?)->()){
         
-        let useridString = "\(userId)"
+//        let useridString = "\(userId!)"
         
-        let urlString = "\(self.getCurrentDomain())resort/random?lat=\(lat!)&lng=\(lng!)&user_id=\(useridString)"
+        let urlString = "\(self.getCurrentDomain())resort/random?lat=\(lat!)&lng=\(lng!)&user_id=0"
         self.getRequestWith(urlString: urlString) { (response, error, errorMes) in
             
             if error == nil && errorMes == nil {

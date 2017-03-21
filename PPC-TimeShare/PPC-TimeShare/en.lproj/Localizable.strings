@@ -8,7 +8,7 @@
 
 // host
 
-domain = "http://ppctimeshare.hbbsolution.com/api/";
+domain = "http://api.ppc-timeshare.com/api/";
 
 // title base view controller
 
