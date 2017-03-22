@@ -39,8 +39,6 @@ class LanguageManager: NSObject {
         }else{
             language = Language(languageCode: "vi", language: "Tiếng Việt")
         }
-//        var language = Language()
-        
         return language!
     }
 }
