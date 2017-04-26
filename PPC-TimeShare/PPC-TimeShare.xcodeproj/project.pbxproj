@@ -64,6 +64,7 @@
 		4E400CA01E56D22200E6E91D /* DateTimeLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400C9F1E56D22200E6E91D /* DateTimeLauncher.swift */; };
 		4E400CA21E56EBE500E6E91D /* NewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400CA11E56EBE500E6E91D /* NewCell.swift */; };
 		4E400CA41E56FFDC00E6E91D /* AllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E400CA31E56FFDC00E6E91D /* AllCell.swift */; };
+		4E4DD6B51EB076A7001B4936 /* YearLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6B41EB076A7001B4936 /* YearLauncher.swift */; };
 		4E5063DB1E4DA89000210411 /* HomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5063DA1E4DA89000210411 /* HomeNavBar.swift */; };
 		4E5063DD1E4DCD0200210411 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5063DC1E4DCD0200210411 /* BaseViewController.swift */; };
 		4E51A14D1E5C209E005FC363 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51A14C1E5C209E005FC363 /* UserProfileVC.swift */; };
@@ -71,6 +72,8 @@
 		4E5B13821E52ABFF00FD37E6 /* RecruitmentDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B13811E52ABFF00FD37E6 /* RecruitmentDetailVC.swift */; };
 		4E5B13841E52C24C00FD37E6 /* PlacesNearbyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B13831E52C24C00FD37E6 /* PlacesNearbyCell.swift */; };
 		4E5B13861E52C35900FD37E6 /* SpecialOffersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B13851E52C35900FD37E6 /* SpecialOffersCell.swift */; };
+		4E6E21641EADF9D4006A5488 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6E21631EADF9D4006A5488 /* CalendarVC.swift */; };
+		4E70E1261EAF220100740418 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E70E1251EAF220100740418 /* CalendarCell.swift */; };
 		4E7F530C1E540BD200EBCF04 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F530B1E540BD200EBCF04 /* InputView.swift */; };
 		4E7F530E1E54291900EBCF04 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F530D1E54291900EBCF04 /* SignInVC.swift */; };
 		4E7F53101E542F3300EBCF04 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F530F1E542F3300EBCF04 /* ForgotPasswordVC.swift */; };
@@ -163,6 +166,7 @@
 		4E400C9F1E56D22200E6E91D /* DateTimeLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimeLauncher.swift; path = ../ListOfResorts/DateTimeLauncher.swift; sourceTree = "<group>"; };
 		4E400CA11E56EBE500E6E91D /* NewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCell.swift; sourceTree = "<group>"; };
 		4E400CA31E56FFDC00E6E91D /* AllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCell.swift; sourceTree = "<group>"; };
+		4E4DD6B41EB076A7001B4936 /* YearLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearLauncher.swift; sourceTree = "<group>"; };
 		4E5063DA1E4DA89000210411 /* HomeNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeNavBar.swift; path = ../HomeNavBar.swift; sourceTree = "<group>"; };
 		4E5063DC1E4DCD0200210411 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4E51A14C1E5C209E005FC363 /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		4E5B13831E52C24C00FD37E6 /* PlacesNearbyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesNearbyCell.swift; sourceTree = "<group>"; };
 		4E5B13851E52C35900FD37E6 /* SpecialOffersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialOffersCell.swift; sourceTree = "<group>"; };
 		4E6967F41E63DA68004293A4 /* vi */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = vi; path = vi.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4E6E21631EADF9D4006A5488 /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		4E70E1251EAF220100740418 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		4E7F530B1E540BD200EBCF04 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		4E7F530D1E54291900EBCF04 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		4E7F530F1E542F3300EBCF04 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
@@ -359,6 +365,7 @@
 				4E158F191E6D47490062ED5D /* HistoryCell.swift */,
 				4E1CEEDF1E70F73800AA0C07 /* SearchResultCell.swift */,
 				4E32F77C1E73CF9D0027DA85 /* FAQsCell.swift */,
+				4E70E1251EAF220100740418 /* CalendarCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -390,6 +397,7 @@
 		4E5063D91E4DA86400210411 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4E6E21621EADF9AC006A5488 /* Calendar */,
 				4EBA78CD1E66B55B0039AF3B /* Launcher */,
 				4E119EA21E51BF0700F85AD4 /* User */,
 				4E119E761E51A00500F85AD4 /* Settings */,
@@ -418,6 +426,15 @@
 				4EFAFDB71E5B1654001261E1 /* CollectionImage.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		4E6E21621EADF9AC006A5488 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				4E6E21631EADF9D4006A5488 /* CalendarVC.swift */,
+			);
+			name = Calendar;
+			path = Calender;
 			sourceTree = "<group>";
 		};
 		4E97752C1E4C089500227A33 = {
@@ -464,6 +481,7 @@
 				4E2402B71E67BB71002D8FF9 /* InputTravelersLauncher.swift */,
 				4ED93F5C1E69254100C881A1 /* ListVoucherLauncher.swift */,
 				4E158F1B1E6D54D80062ED5D /* HistoryLauncher.swift */,
+				4E4DD6B41EB076A7001B4936 /* YearLauncher.swift */,
 			);
 			path = Launcher;
 			sourceTree = "<group>";
@@ -640,6 +658,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E4DD6B51EB076A7001B4936 /* YearLauncher.swift in Sources */,
 				4ED93F5F1E694C0100C881A1 /* Voucher.swift in Sources */,
 				4E158F181E6D408B0062ED5D /* HistoryVC.swift in Sources */,
 				4E31E12F1E5E9F2000B05F66 /* User.swift in Sources */,
@@ -651,6 +670,7 @@
 				4E7F53141E54403100EBCF04 /* BookInAdvanceVC.swift in Sources */,
 				4E7F530E1E54291900EBCF04 /* SignInVC.swift in Sources */,
 				4EF11A241E5587BB008473A7 /* SpecialOffersDetailVC.swift in Sources */,
+				4E70E1261EAF220100740418 /* CalendarCell.swift in Sources */,
 				4E7F53121E543ACB00EBCF04 /* ButtonCustoms.swift in Sources */,
 				4E400C9E1E56B99600E6E91D /* FilterButton.swift in Sources */,
 				4E158F201E6D65D40062ED5D /* YourVoucherVC.swift in Sources */,
@@ -700,6 +720,7 @@
 				4ECB4EEA1E5A8D4700F3F03C /* SignUp_2VC.swift in Sources */,
 				4E5B13801E52A3C800FD37E6 /* RecruitmentCell.swift in Sources */,
 				4E1B776A1E4EC1B10024E457 /* IntroductionDetail.swift in Sources */,
+				4E6E21641EADF9D4006A5488 /* CalendarVC.swift in Sources */,
 				4ED1E1B11E4CBA18006A562F /* Extensions.swift in Sources */,
 				4E7F53161E54407E00EBCF04 /* BookOnlineVC.swift in Sources */,
 				4E400CA01E56D22200E6E91D /* DateTimeLauncher.swift in Sources */,

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EPCalendarPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PPC-TimeShare.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -11,6 +16,17 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>64654BA572B99130DE3F3C7F3D8CE904</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B8188D1F0E79107A3ED8A7CA1EED6C95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

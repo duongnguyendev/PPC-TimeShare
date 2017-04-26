@@ -55,6 +55,88 @@ extension Date{
         let dateString = dateFormatter.string(from: self)
         return dateString
     }
+    func dayMonthToString() -> String{
+        
+        switch self.month {
+        case 1:
+            return "\(day) Jan"
+        case 2:
+            return "\(day) Feb"
+        case 3:
+            return "\(day) Mar"
+        case 4:
+            return "\(day) Apr"
+        case 5:
+            return "\(day) May"
+        case 6:
+            return "\(day) Jun"
+        case 7:
+            return "\(day) Jul"
+        case 8:
+            return "\(day) Aug"
+        case 9:
+            return "\(day) Sep"
+        case 10:
+            return "\(day) Oct"
+        case 11:
+            return "\(day) Nov"
+        case 12:
+            return "\(day) Dec"
+        default:
+            return ""
+        }
+    }
+    
+    init(string : String, format: String) {
+        let formatter  = DateFormatter()
+        formatter.dateFormat = format
+        let date = formatter.date(from: string)
+        self = date!
+    }
+    func isEndDayOf(year : Int) -> Bool {
+        let nextDate = self.getNextDate()
+        if self.year < nextDate.year{
+            return true
+        }
+        return false
+    }
+    func getWeeks() ->[Date]{
+        var weeks = [Date]()
+        for i in 0...7{
+            weeks.append(Date(timeInterval: TimeInterval(60 * 60 * 24 * i), since: self))
+        }
+        
+        return weeks
+    }
+    func isIn(year: Int) ->Bool{
+        return self.year == year
+    }
+    func  getNextDate() -> Date {
+        let nextDate = Date(timeInterval: 60 * 60 * 24, since: self)
+        return nextDate
+    }
+    var day : Int {
+        let myCalendar = Calendar(identifier: .gregorian)
+        let day = myCalendar.component(.day, from: self)
+        return day
+    }
+    var year : Int{
+        let myCalendar = Calendar(identifier: .gregorian)
+        let year = myCalendar.component(.year, from: self)
+        return year
+    }
+    var month: Int{
+        let myCalendar = Calendar(identifier: .gregorian)
+        let month = myCalendar.component(.month, from: self)
+        return month
+    }
+    var dayOfWeek: Int{
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: self)
+        return weekDay
+    }
+    
+    
 }
 
 extension UIImage{
@@ -115,5 +197,7 @@ class CustomImageView : UIImageView{
         }
     }
 }
+
+
 
 

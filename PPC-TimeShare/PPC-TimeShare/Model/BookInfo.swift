@@ -40,7 +40,7 @@ class BookInfo: NSObject {
         numberAdults = Int(data["adults"] as! NSNumber)
         numberChilds = Int(data["childs"] as! NSNumber)
         createAt = data["created_at"] as! String?
-        room = data["room"] as! NSNumber? as Int?
+        room = data["room"] as! NSNumber? as! Int?
         status = data["status"] as! String?
         totalPrice = data["total_price"] as! String?
         discount = data["discount"] as! String?

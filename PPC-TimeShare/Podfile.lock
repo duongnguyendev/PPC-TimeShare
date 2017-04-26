@@ -1,4 +1,5 @@
 PODS:
+  - EPCalendarPicker (1.0.8)
   - GoogleMaps (2.1.1):
     - GoogleMaps/Maps (= 2.1.1)
   - GoogleMaps/Base (2.1.1)
@@ -8,13 +9,15 @@ PODS:
     - GoogleMaps/Base (= 2.1.1)
 
 DEPENDENCIES:
+  - EPCalendarPicker
   - GoogleMaps
   - GooglePlaces
 
 SPEC CHECKSUMS:
+  EPCalendarPicker: 0348fe754a7650582665ecc5ac98f4c0a0db0e91
   GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
   GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
 
-PODFILE CHECKSUM: 3f5d61414a4879cb8c5ccc659a645392bc9d145b
+PODFILE CHECKSUM: 801d1f2e25f32c4706add063682cfcad16139f9d
 
 COCOAPODS: 1.1.1

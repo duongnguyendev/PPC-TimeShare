@@ -30,9 +30,9 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate, UITextViewDele
         itemHeight = (view.frame.size.height - 80 - 35 - 40 - 64) / 8
         super.viewDidLoad()
         checkOutView.dateValue = Date()
-        checkOutView.value = Date().dateToString()
+//        checkOutView.value = Date().dateToString()
         checkInView.dateValue = Date()
-        checkInView.value = Date().dateToString()
+//        checkInView.value = Date().dateToString()
         title = languageManager.localizedString(string: "BookNow")
     }
     
@@ -88,7 +88,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate, UITextViewDele
         return label
     }()
     
-    let checkInView : InfoButton = {
+    lazy var checkInView : InfoButton = {
         let v = InfoButton()
         v.addTarget(self, action: #selector(handleCheckInButton), for: .touchUpInside)
         v.title = "CheckIn"
@@ -100,6 +100,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate, UITextViewDele
         v.addTarget(self, action: #selector(handleCheckOutButton), for: .touchUpInside)
         v.title = "CheckOut"
         v.iconName = "check_out_icon"
+        v.isUserInteractionEnabled = false
         return v
     }()
     let roomView : InfoButton = {
@@ -315,6 +316,7 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate, UITextViewDele
     
     func handleCheckInButton(){
         self.view.endEditing(true)
+        datePicker.delegate = self
         datePicker.getDateFor(item: checkInView)
     }
     func handleCheckOutButton(){
@@ -364,12 +366,14 @@ class BookInAdvanceVC: BaseViewController, InputLauncherDelegate, UITextViewDele
         self.voucherView.value = voucher.name
         
     }
-    
+    func getDate(date: Date) {
+        let checkOutDate = NSDate(timeInterval: 60 * 60 * 24 * 7, since: date)
+        self.checkOutView.dateValue = checkOutDate as Date
+    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text! == languageManager.localizedString(string: "Note"){
             textView.text = ""
         }
-        
     }
 }

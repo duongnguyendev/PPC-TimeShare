@@ -108,6 +108,7 @@ class BaseLauncher: NSObject {
 }
 
 class DateTimeLauncher: BaseLauncher {
+    var delegate : InputLauncherDelegate?
     let itemSize : CGFloat = 50.0
     override init() {
         super.init()
@@ -143,6 +144,7 @@ class DateTimeLauncher: BaseLauncher {
     }
     override func handleOKButton(){
         self.item?.dateValue = datePicker.date
+        self.delegate?.getDate!(date: (self.item?.dateValue)!)
         hide()
     }
     

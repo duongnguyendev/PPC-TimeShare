@@ -13,6 +13,8 @@ import UIKit
     @objc optional func getNumberTravelers(adults : Int, childs : Int)
     @objc optional func getNumberRooms(rooms : Int)
     @objc optional func getVoucher(voucher : Voucher)
+    @objc optional func getDate(date: Date)
+    @objc optional func selected(year : Int)
 }
 
 class InputTravelersLauncher: BaseLauncher, UITextFieldDelegate {

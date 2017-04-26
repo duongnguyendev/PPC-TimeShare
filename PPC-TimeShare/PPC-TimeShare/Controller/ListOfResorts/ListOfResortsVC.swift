@@ -189,6 +189,7 @@ class ListOfResortsVC: BaseViewController, UICollectionViewDelegate, UICollectio
         //        selectNew = false
     }
     
+    
     func handleFilter() {
         self.filterLauncher.showFilter()
     }

@@ -7,55 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B0621F63C6F3C258EDD73207F4A6BA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		5C5385273A372C1A2A8E4538C7976136 /* Pods-PPC-TimeShare-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FDA6A50FF1F09D223E54C3DF35AD43C0 /* Pods-PPC-TimeShare-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B64B5941DA7AF106E33DCB04C49F310 /* Pods-PPC-TimeShare-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7C3494AE48FC10B3A85A7B396A3B76 /* Pods-PPC-TimeShare-dummy.m */; };
+		2CE94436F721D57CCDE919A11494CD96 /* Pods-PPC-TimeShare-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7C3494AE48FC10B3A85A7B396A3B76 /* Pods-PPC-TimeShare-dummy.m */; };
+		3D4BB71BCC5E6B3A1F72DDE6A561ADE8 /* EPCalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D7C4F7479BB1CEF8E2DE27723FC229 /* EPCalendarHeaderView.xib */; };
+		4E4DD6B11EB04AF4001B4936 /* EPExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6B01EB04AF4001B4936 /* EPExtensions.swift */; };
+		4E4DD6B31EB04BBA001B4936 /* EPCalendarPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6B21EB04BBA001B4936 /* EPCalendarPicker.swift */; };
+		4ECDFACFE74E38EBDCC74DC5E641929B /* EPCalendarConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D56DF1288C9E629268988D9C81FD418 /* EPCalendarConstants.swift */; };
+		7554A062CFF2EFDD8F323D9896DC6D07 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
+		7F03F9D99EE10F56C4B320CCA4D82EA0 /* EPCalendarPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E53B749024B8B03AAF98FA8A2030D3D8 /* EPCalendarPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90DFDE828464408E2D0B7DDC07E46F4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		956A4FB0FE59E2CC23B2D5AE4A7F4E5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		9732F17D34D9E62449B636055C5D1DE4 /* EPCalendarCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B38F71E8852CCB05687B2DAC633C74FF /* EPCalendarCell1.xib */; };
+		B022458E4CFFBAAFE2D6571AA0355F9E /* EPCalendarPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EFDFE6F51DB6707926B0D3BEFAD26 /* EPCalendarPicker-dummy.m */; };
+		B693B6D35600DDC682976C82B0FA279E /* EPCalendarCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543047B43EE110614AC2C08D10E4E81B /* EPCalendarCell1.swift */; };
+		FBA82E797176205595A8A590BD40DE3B /* EPCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5CF7B58CE8203993F9B2E93F151CE /* EPCalendarHeaderView.swift */; };
+		FD73AFE505B144CCA4272F89BAEE40EF /* Pods-PPC-TimeShare-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FDA6A50FF1F09D223E54C3DF35AD43C0 /* Pods-PPC-TimeShare-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1D820E9574D6DFCF25BF2E6E8E50B411 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64654BA572B99130DE3F3C7F3D8CE904;
+			remoteInfo = EPCalendarPicker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
-		155AEEBE6D0248B3B024EFF254A5F72A /* Pods_PPC_TimeShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PPC_TimeShare.framework; path = "Pods-PPC-TimeShare.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		34E50ADA859AAEE69E3A288F86544B03 /* Pods-PPC-TimeShare.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PPC-TimeShare.modulemap"; sourceTree = "<group>"; };
+		1AB5CF7B58CE8203993F9B2E93F151CE /* EPCalendarHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EPCalendarHeaderView.swift; path = EPCalendar/EPCalendarPicker/EPCalendarHeaderView.swift; sourceTree = "<group>"; };
+		34E50ADA859AAEE69E3A288F86544B03 /* Pods-PPC-TimeShare.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PPC-TimeShare.modulemap"; sourceTree = "<group>"; };
 		351A75C74962CAED8BB23F16419ADCA9 /* Pods-PPC-TimeShare-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PPC-TimeShare-acknowledgements.plist"; sourceTree = "<group>"; };
+		3DBC7DE65A1B4CB15E3772E92A021D0C /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		4B2EFDFE6F51DB6707926B0D3BEFAD26 /* EPCalendarPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EPCalendarPicker-dummy.m"; sourceTree = "<group>"; };
+		4B316C47BD60857B82DACA4A22784C90 /* EPCalendarPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EPCalendarPicker-prefix.pch"; sourceTree = "<group>"; };
+		4E4DD6B01EB04AF4001B4936 /* EPExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPExtensions.swift; sourceTree = "<group>"; };
+		4E4DD6B21EB04BBA001B4936 /* EPCalendarPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPCalendarPicker.swift; sourceTree = "<group>"; };
+		4FC5E9B4EAA39474A08B0CE032306993 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		52D1E10467FCAACD822ED57710E26D53 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
 		5375C6A4FC83D3F0A24749C206864FB5 /* Pods-PPC-TimeShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PPC-TimeShare.debug.xcconfig"; sourceTree = "<group>"; };
-		70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		543047B43EE110614AC2C08D10E4E81B /* EPCalendarCell1.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EPCalendarCell1.swift; path = EPCalendar/EPCalendarPicker/EPCalendarCell1.swift; sourceTree = "<group>"; };
+		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		620C9E10CC0EF818BFB3C6892ACC5451 /* Pods_PPC_TimeShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PPC_TimeShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D56DF1288C9E629268988D9C81FD418 /* EPCalendarConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EPCalendarConstants.swift; path = EPCalendar/EPCalendarPicker/EPCalendarConstants.swift; sourceTree = "<group>"; };
 		7AD49344561643E44FDFFDF7899ED5BE /* Pods-PPC-TimeShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PPC-TimeShare.release.xcconfig"; sourceTree = "<group>"; };
+		7AE9D060E45C6CB70EA3D462F6C50540 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		7F7C3494AE48FC10B3A85A7B396A3B76 /* Pods-PPC-TimeShare-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PPC-TimeShare-dummy.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		855897FF543703580619B29E425F1E53 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		97EF529D62E1151BB85ED85DBE328662 /* Pods-PPC-TimeShare-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PPC-TimeShare-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
-		AFD4D1E144CCB4285706E577C2602A44 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9FF2D5E4419E89AEEF106B9DEF7AAFE7 /* EPCalendarPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EPCalendarPicker.xcconfig; sourceTree = "<group>"; };
+		A5F8F1C9799AEFB51D825AE206105C66 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		B38F71E8852CCB05687B2DAC633C74FF /* EPCalendarCell1.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = EPCalendarCell1.xib; path = EPCalendar/EPCalendarPicker/EPCalendarCell1.xib; sourceTree = "<group>"; };
+		BC139EC46FE2732483D06830E4D2CB15 /* EPCalendarPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EPCalendarPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB7E9F735DC457106A47FE627B8E239 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D585D320F3484B331384DF08DDE2F33D /* Pods-PPC-TimeShare-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PPC-TimeShare-resources.sh"; sourceTree = "<group>"; };
 		E2750BD4C40FF23D0BB19D84FBEEBCE0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F88E2A6AB865C2A1EB845B27A14348FA /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		E53B749024B8B03AAF98FA8A2030D3D8 /* EPCalendarPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EPCalendarPicker-umbrella.h"; sourceTree = "<group>"; };
+		EECD913269B5369B73AA7FCF18C5C056 /* EPCalendarPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = EPCalendarPicker.modulemap; sourceTree = "<group>"; };
+		F3D7C4F7479BB1CEF8E2DE27723FC229 /* EPCalendarHeaderView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = EPCalendarHeaderView.xib; path = EPCalendar/EPCalendarPicker/EPCalendarHeaderView.xib; sourceTree = "<group>"; };
 		FBCDAAA7BCB15AC74F14E6C15CBA7661 /* Pods-PPC-TimeShare-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PPC-TimeShare-frameworks.sh"; sourceTree = "<group>"; };
 		FDA6A50FF1F09D223E54C3DF35AD43C0 /* Pods-PPC-TimeShare-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PPC-TimeShare-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		888BC8AFE9F4E7B1E28FFC5D7A1692C6 /* Frameworks */ = {
+		0FEDDB856887E937D5F0F8DD60B5F82F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B0621F63C6F3C258EDD73207F4A6BA8 /* Foundation.framework in Frameworks */,
+				956A4FB0FE59E2CC23B2D5AE4A7F4E5E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D2A34101F8323DBC13C61D461F3058C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90DFDE828464408E2D0B7DDC07E46F4E /* Foundation.framework in Frameworks */,
+				7554A062CFF2EFDD8F323D9896DC6D07 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */ = {
-			isa = PBXGroup;
-			children = (
-				475420FA59EFC8377CF994A338979247 /* Frameworks */,
-				4F6C8AC648A5703DF2BEC96A882D19E9 /* Resources */,
-			);
-			name = GooglePlaces;
-			path = GooglePlaces;
-			sourceTree = "<group>";
-		};
 		0AC6B5B2036E4D656C9E58515E8D6FA7 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,82 +99,110 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */ = {
+		0FB570D569B0D2CB2F9509BB8756D6E9 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				B2F22323EA3B1ADB4F96376E3F709A68 /* Base */,
-				488E301C4ACDDA928635C4886F5F6158 /* Maps */,
-			);
-			name = GoogleMaps;
-			path = GoogleMaps;
-			sourceTree = "<group>";
-		};
-		385FA015FFB9210F372AB1078B856AAB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */,
-				00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		475420FA59EFC8377CF994A338979247 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		488E301C4ACDDA928635C4886F5F6158 /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */,
-				FAC5D957D919553947FEE0A96B739CC4 /* Resources */,
+				633BDE9E42D5495510DC8F7130BE7E92 /* Frameworks */,
+				467082AE5F0AFCCC9A789C6ABEB9B8D2 /* Resources */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
 		};
-		4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */ = {
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */,
+				E6EE98446B568159EE277B68FD442AF0 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4F6C8AC648A5703DF2BEC96A882D19E9 /* Resources */ = {
+		467082AE5F0AFCCC9A789C6ABEB9B8D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F88E2A6AB865C2A1EB845B27A14348FA /* GooglePlaces.bundle */,
+				A5F8F1C9799AEFB51D825AE206105C66 /* GoogleMaps.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+		633BDE9E42D5495510DC8F7130BE7E92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+				855897FF543703580619B29E425F1E53 /* GoogleMaps.framework */,
+				52D1E10467FCAACD822ED57710E26D53 /* GoogleMapsCore.framework */,
 			);
-			name = iOS;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7C5FD97FB54938EDDCE25B2AA7A2E932 /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				DF9CDE0079F428790CEE7E3EB0A326CD /* Frameworks */,
+				F0ED5FFA3D4EEAA1F86EFE7A85F11443 /* Resources */,
+			);
+			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				385FA015FFB9210F372AB1078B856AAB /* Pods */,
-				DFD46321DF52E534FB5B081E30828BFF /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				FA404E9449C62DC82FDED7F06A4EA545 /* Pods */,
+				9978AE597694B2265C2989B635CD9DFD /* Products */,
 				0AC6B5B2036E4D656C9E58515E8D6FA7 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */ = {
+		92C133249AD6DFDB20B802C97C7CAC40 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */,
-				A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */,
+				EFEBDDE000A934749C435FAAE8F29460 /* Base */,
+				0FB570D569B0D2CB2F9509BB8756D6E9 /* Maps */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		9813A538187E0E15F423AE2A10E4D01C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EECD913269B5369B73AA7FCF18C5C056 /* EPCalendarPicker.modulemap */,
+				9FF2D5E4419E89AEEF106B9DEF7AAFE7 /* EPCalendarPicker.xcconfig */,
+				4B2EFDFE6F51DB6707926B0D3BEFAD26 /* EPCalendarPicker-dummy.m */,
+				4B316C47BD60857B82DACA4A22784C90 /* EPCalendarPicker-prefix.pch */,
+				E53B749024B8B03AAF98FA8A2030D3D8 /* EPCalendarPicker-umbrella.h */,
+				CAB7E9F735DC457106A47FE627B8E239 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/EPCalendarPicker";
+			sourceTree = "<group>";
+		};
+		9978AE597694B2265C2989B635CD9DFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC139EC46FE2732483D06830E4D2CB15 /* EPCalendarPicker.framework */,
+				620C9E10CC0EF818BFB3C6892ACC5451 /* Pods_PPC_TimeShare.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9BA332142874B3077FCC18102DE1DE2B /* EPCalendarPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4E4DD6B21EB04BBA001B4936 /* EPCalendarPicker.swift */,
+				4E4DD6B01EB04AF4001B4936 /* EPExtensions.swift */,
+				543047B43EE110614AC2C08D10E4E81B /* EPCalendarCell1.swift */,
+				6D56DF1288C9E629268988D9C81FD418 /* EPCalendarConstants.swift */,
+				1AB5CF7B58CE8203993F9B2E93F151CE /* EPCalendarHeaderView.swift */,
+				EA08DDBCCBA5618AECFDB7E748E532B3 /* Resources */,
+				9813A538187E0E15F423AE2A10E4D01C /* Support Files */,
+			);
+			path = EPCalendarPicker;
+			sourceTree = "<group>";
+		};
+		9C16E539283A9EEF96BAD9B9F956571E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FC5E9B4EAA39474A08B0CE032306993 /* GoogleMapsBase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,67 +225,114 @@
 			path = "Target Support Files/Pods-PPC-TimeShare";
 			sourceTree = "<group>";
 		};
-		B2F22323EA3B1ADB4F96376E3F709A68 /* Base */ = {
+		DF9CDE0079F428790CEE7E3EB0A326CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */,
-			);
-			name = Base;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+				3DBC7DE65A1B4CB15E3772E92A021D0C /* GooglePlaces.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DFD46321DF52E534FB5B081E30828BFF /* Products */ = {
+		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				155AEEBE6D0248B3B024EFF254A5F72A /* Pods_PPC_TimeShare.framework */,
+				616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */,
+				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
 			);
-			name = Products;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		FAC5D957D919553947FEE0A96B739CC4 /* Resources */ = {
+		EA08DDBCCBA5618AECFDB7E748E532B3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AFD4D1E144CCB4285706E577C2602A44 /* GoogleMaps.bundle */,
+				B38F71E8852CCB05687B2DAC633C74FF /* EPCalendarCell1.xib */,
+				F3D7C4F7479BB1CEF8E2DE27723FC229 /* EPCalendarHeaderView.xib */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		EFEBDDE000A934749C435FAAE8F29460 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9C16E539283A9EEF96BAD9B9F956571E /* Frameworks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		F0ED5FFA3D4EEAA1F86EFE7A85F11443 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7AE9D060E45C6CB70EA3D462F6C50540 /* GooglePlaces.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FA404E9449C62DC82FDED7F06A4EA545 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9BA332142874B3077FCC18102DE1DE2B /* EPCalendarPicker */,
+				92C133249AD6DFDB20B802C97C7CAC40 /* GoogleMaps */,
+				7C5FD97FB54938EDDCE25B2AA7A2E932 /* GooglePlaces */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		EF6D28AB7BA5358F88F9434F2EE022F7 /* Headers */ = {
+		58F01796F0DD8F4CAC395C36AF4888FD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C5385273A372C1A2A8E4538C7976136 /* Pods-PPC-TimeShare-umbrella.h in Headers */,
+				7F03F9D99EE10F56C4B320CCA4D82EA0 /* EPCalendarPicker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7EAF3F1FB4601EB2B513CB53475F93C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD73AFE505B144CCA4272F89BAEE40EF /* Pods-PPC-TimeShare-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8FE1F90C778B0E019DD8569AE95AFB8C /* Pods-PPC-TimeShare */ = {
+		64654BA572B99130DE3F3C7F3D8CE904 /* EPCalendarPicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 11E8AFD42FDFAE2CF35407722EF883CF /* Build configuration list for PBXNativeTarget "Pods-PPC-TimeShare" */;
+			buildConfigurationList = E72AA02E485A8939733F829CE0CC8CBF /* Build configuration list for PBXNativeTarget "EPCalendarPicker" */;
 			buildPhases = (
-				21571B8A7D8EC4A48D9C1CE3D39E9FDE /* Sources */,
-				888BC8AFE9F4E7B1E28FFC5D7A1692C6 /* Frameworks */,
-				EF6D28AB7BA5358F88F9434F2EE022F7 /* Headers */,
+				8E42B205699B3AB98E040283D29CCFAC /* Sources */,
+				6D2A34101F8323DBC13C61D461F3058C /* Frameworks */,
+				E59189B918FE513F0C3668E38E40733E /* Resources */,
+				58F01796F0DD8F4CAC395C36AF4888FD /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = EPCalendarPicker;
+			productName = EPCalendarPicker;
+			productReference = BC139EC46FE2732483D06830E4D2CB15 /* EPCalendarPicker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B8188D1F0E79107A3ED8A7CA1EED6C95 /* Pods-PPC-TimeShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2D46302C7800658A8FDF13C229044F7 /* Build configuration list for PBXNativeTarget "Pods-PPC-TimeShare" */;
+			buildPhases = (
+				1FB52C88712C3C8D8CBE1E5D73739F77 /* Sources */,
+				0FEDDB856887E937D5F0F8DD60B5F82F /* Frameworks */,
+				C7EAF3F1FB4601EB2B513CB53475F93C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A943B4B09E8518E591C91E8478C8405 /* PBXTargetDependency */,
+			);
 			name = "Pods-PPC-TimeShare";
 			productName = "Pods-PPC-TimeShare";
-			productReference = 155AEEBE6D0248B3B024EFF254A5F72A /* Pods_PPC_TimeShare.framework */;
+			productReference = 620C9E10CC0EF818BFB3C6892ACC5451 /* Pods_PPC_TimeShare.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -242,25 +352,60 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = DFD46321DF52E534FB5B081E30828BFF /* Products */;
+			productRefGroup = 9978AE597694B2265C2989B635CD9DFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8FE1F90C778B0E019DD8569AE95AFB8C /* Pods-PPC-TimeShare */,
+				64654BA572B99130DE3F3C7F3D8CE904 /* EPCalendarPicker */,
+				B8188D1F0E79107A3ED8A7CA1EED6C95 /* Pods-PPC-TimeShare */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		E59189B918FE513F0C3668E38E40733E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9732F17D34D9E62449B636055C5D1DE4 /* EPCalendarCell1.xib in Resources */,
+				3D4BB71BCC5E6B3A1F72DDE6A561ADE8 /* EPCalendarHeaderView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		21571B8A7D8EC4A48D9C1CE3D39E9FDE /* Sources */ = {
+		1FB52C88712C3C8D8CBE1E5D73739F77 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B64B5941DA7AF106E33DCB04C49F310 /* Pods-PPC-TimeShare-dummy.m in Sources */,
+				2CE94436F721D57CCDE919A11494CD96 /* Pods-PPC-TimeShare-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E42B205699B3AB98E040283D29CCFAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B693B6D35600DDC682976C82B0FA279E /* EPCalendarCell1.swift in Sources */,
+				4ECDFACFE74E38EBDCC74DC5E641929B /* EPCalendarConstants.swift in Sources */,
+				4E4DD6B31EB04BBA001B4936 /* EPCalendarPicker.swift in Sources */,
+				FBA82E797176205595A8A590BD40DE3B /* EPCalendarHeaderView.swift in Sources */,
+				B022458E4CFFBAAFE2D6571AA0355F9E /* EPCalendarPicker-dummy.m in Sources */,
+				4E4DD6B11EB04AF4001B4936 /* EPExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A943B4B09E8518E591C91E8478C8405 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EPCalendarPicker;
+			target = 64654BA572B99130DE3F3C7F3D8CE904 /* EPCalendarPicker */;
+			targetProxy = 1D820E9574D6DFCF25BF2E6E8E50B411 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
@@ -307,9 +452,9 @@
 			};
 			name = Debug;
 		};
-		ABEDF55D9A538719F637EF5DB2DE0C68 /* Release */ = {
+		76334C7FC429E29C7C1438AABA5A5F53 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AD49344561643E44FDFFDF7899ED5BE /* Pods-PPC-TimeShare.release.xcconfig */;
+			baseConfigurationReference = 9FF2D5E4419E89AEEF106B9DEF7AAFE7 /* EPCalendarPicker.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -322,13 +467,45 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/EPCalendarPicker/EPCalendarPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EPCalendarPicker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/EPCalendarPicker/EPCalendarPicker.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = EPCalendarPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AD3C1486509AE2514D11F7FAE54E6300 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5375C6A4FC83D3F0A24749C206864FB5 /* Pods-PPC-TimeShare.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-PPC-TimeShare/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-PPC-TimeShare/Pods-PPC-TimeShare.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -336,11 +513,12 @@
 				PRODUCT_NAME = Pods_PPC_TimeShare;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -382,15 +560,15 @@
 			};
 			name = Release;
 		};
-		F58AF9E6E7D6C85E31516267AA22CF2A /* Debug */ = {
+		B88FA1C74DDD4682F272694217F9D160 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5375C6A4FC83D3F0A24749C206864FB5 /* Pods-PPC-TimeShare.debug.xcconfig */;
+			baseConfigurationReference = 7AD49344561643E44FDFFDF7899ED5BE /* Pods-PPC-TimeShare.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -403,7 +581,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-PPC-TimeShare/Pods-PPC-TimeShare.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -415,25 +593,67 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
+			name = Release;
+		};
+		D83AD0D7009E5B944DF89DE2D748D187 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FF2D5E4419E89AEEF106B9DEF7AAFE7 /* EPCalendarPicker.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/EPCalendarPicker/EPCalendarPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EPCalendarPicker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/EPCalendarPicker/EPCalendarPicker.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = EPCalendarPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		11E8AFD42FDFAE2CF35407722EF883CF /* Build configuration list for PBXNativeTarget "Pods-PPC-TimeShare" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F58AF9E6E7D6C85E31516267AA22CF2A /* Debug */,
-				ABEDF55D9A538719F637EF5DB2DE0C68 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
 				B7324857C38B065FEB1EEE3105C2367A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2D46302C7800658A8FDF13C229044F7 /* Build configuration list for PBXNativeTarget "Pods-PPC-TimeShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD3C1486509AE2514D11F7FAE54E6300 /* Debug */,
+				B88FA1C74DDD4682F272694217F9D160 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E72AA02E485A8939733F829CE0CC8CBF /* Build configuration list for PBXNativeTarget "EPCalendarPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D83AD0D7009E5B944DF89DE2D748D187 /* Debug */,
+				76334C7FC429E29C7C1438AABA5A5F53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

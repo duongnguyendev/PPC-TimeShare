@@ -150,7 +150,7 @@ class HomeButtonCustom : BaseButton {
     }
     var title : String?{
         didSet{
-            titleLabelView.text = title
+            titleLabelView.text = LanguageManager.sharedInstance.localizedString(string: title!)
         }
     }
     

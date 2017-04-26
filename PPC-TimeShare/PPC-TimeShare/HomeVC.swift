@@ -123,15 +123,24 @@ class HomeVC: UIViewController {
         button.addTarget(self, action: #selector(handleListOfResortsButton), for: .touchUpInside)
         return button
     }()
+    let calendarButton : HomeButtonCustom = {
+        let button = HomeButtonCustom()
+        button.type = HomeButtonType.recruitment
+        button.addTarget(self, action: #selector(handleCalendarButton), for: .touchUpInside)
+        button.iconName = "icon_calendar_white"
+        
+        return button
+    }()
         
     func addContent(){
         view.addSubview(sendRequestButton)
-        view.addSubview(recruitmentButton)
+//        view.addSubview(recruitmentButton)
         view.addSubview(introduceButton)
         view.addSubview(placesNearbyButton)
         view.addSubview(exploreAllDestinationButton)
         view.addSubview(specialOffersButton)
         view.addSubview(listOfResortsButton)
+        view.addSubview(calendarButton)
         
         //sendRequestButton contraint
         
@@ -142,10 +151,10 @@ class HomeVC: UIViewController {
         sendRequestButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         
         //recruitmentButton contraint
-        recruitmentButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 30).isActive = true
-        recruitmentButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true;
-        recruitmentButton.bottomAnchor.constraint(equalTo: sendRequestButton.topAnchor, constant: 0).isActive = true
-        recruitmentButton.widthAnchor.constraint(equalToConstant: minumumItemSize! * 2).isActive = true
+        calendarButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 30).isActive = true
+        calendarButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true;
+        calendarButton.bottomAnchor.constraint(equalTo: sendRequestButton.topAnchor, constant: 0).isActive = true
+        calendarButton.widthAnchor.constraint(equalToConstant: minumumItemSize! * 2).isActive = true
         
         //introduceButton contraint
         introduceButton.heightAnchor.constraint(equalToConstant: minumumItemSize! - 30).isActive = true
@@ -157,17 +166,17 @@ class HomeVC: UIViewController {
         placesNearbyButton.heightAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
         placesNearbyButton.widthAnchor.constraint(equalToConstant: minumumItemSize!-1).isActive = true
         placesNearbyButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true;
-        placesNearbyButton.bottomAnchor.constraint(equalTo: recruitmentButton.topAnchor, constant: 0).isActive = true
+        placesNearbyButton.bottomAnchor.constraint(equalTo: calendarButton.topAnchor, constant: 0).isActive = true
         //exploreAllDestinationButton contraint
         exploreAllDestinationButton.heightAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
         exploreAllDestinationButton.widthAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
         exploreAllDestinationButton.rightAnchor.constraint(equalTo: placesNearbyButton.leftAnchor, constant: -1).isActive = true;
-        exploreAllDestinationButton.bottomAnchor.constraint(equalTo: recruitmentButton.topAnchor, constant: 0).isActive = true
+        exploreAllDestinationButton.bottomAnchor.constraint(equalTo: calendarButton.topAnchor, constant: 0).isActive = true
         //specialOffersButton contraint
         specialOffersButton.heightAnchor.constraint(equalToConstant: minumumItemSize!).isActive = true
         specialOffersButton.widthAnchor.constraint(equalToConstant: minumumItemSize! - 1).isActive = true
         specialOffersButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
-        specialOffersButton.bottomAnchor.constraint(equalTo: recruitmentButton.topAnchor, constant: 0).isActive = true
+        specialOffersButton.bottomAnchor.constraint(equalTo: calendarButton.topAnchor, constant: 0).isActive = true
 
         //listOfResortsButton contraint
         listOfResortsButton.heightAnchor.constraint(equalToConstant: view.bounds.size.height - 20 - navHeight - view.bounds.size.width + 40).isActive = true
@@ -210,6 +219,10 @@ class HomeVC: UIViewController {
         presentVC(viewController: listOfResortsVC)
         
     }
+    func handleCalendarButton(){
+        let calendarVC = CalendarVC()
+        presentVC(viewController: calendarVC)
+    }
     
     // nav event
     func navUserClick(){
@@ -248,13 +261,23 @@ class HomeVC: UIViewController {
     }
     
     func localize() {
-        listOfResortsButton.title = LanguageManager.sharedInstance.localizedString(string: "ResortDirectory")
-        specialOffersButton.title = LanguageManager.sharedInstance.localizedString(string: "SpecialOffers")
-        placesNearbyButton.title = LanguageManager.sharedInstance.localizedString(string: "PlacesNearby")
-        exploreAllDestinationButton.title = LanguageManager.sharedInstance.localizedString(string: "ExploreAllDestinations")
-        introduceButton.title = LanguageManager.sharedInstance.localizedString(string: "Introduction")
-        recruitmentButton.title = LanguageManager.sharedInstance.localizedString(string: "Recruitment")
-        sendRequestButton.title = LanguageManager.sharedInstance.localizedString(string: "SendRequest")
+//        listOfResortsButton.title = LanguageManager.sharedInstance.localizedString(string: "ResortDirectory")
+//        specialOffersButton.title = LanguageManager.sharedInstance.localizedString(string: "SpecialOffers")
+//        placesNearbyButton.title = LanguageManager.sharedInstance.localizedString(string: "PlacesNearby")
+//        exploreAllDestinationButton.title = LanguageManager.sharedInstance.localizedString(string: "ExploreAllDestinations")
+//        introduceButton.title = LanguageManager.sharedInstance.localizedString(string: "Introduction")
+//        recruitmentButton.title = LanguageManager.sharedInstance.localizedString(string: "Recruitment")
+//        sendRequestButton.title = LanguageManager.sharedInstance.localizedString(string: "SendRequest")
+//        calendarButton.title = LanguageManager.sharedInstance.localizedString(string: "Calendar")
+        
+        listOfResortsButton.title = "ResortDirectory"
+        specialOffersButton.title = "SpecialOffers"
+        placesNearbyButton.title = "PlacesNearby"
+        exploreAllDestinationButton.title = "ExploreAllDestinations"
+        introduceButton.title = "Introduction"
+        recruitmentButton.title = "Recruitment"
+        sendRequestButton.title = "SendRequest"
+        calendarButton.title = "Calendar"
         
     }
 }

@@ -549,7 +549,7 @@ class APIService: NSObject {
     func getRequestWith(urlString : String, completion : @escaping (Dictionary<String, Any>?, _ err : Error?, String?) -> ()){
         
         let url = NSURL(string: urlString)
-        var request = URLRequest(url: url as! URL)
+        var request = URLRequest(url: url! as URL)
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil{
@@ -584,7 +584,7 @@ class APIService: NSObject {
     func postRequestWith(urlString : String, params : Dictionary<String, Any>, completion: @escaping (Dictionary<String, Any>?, _ err : Error?, String? ) ->()){
         
         let url = NSURL(string: urlString)
-        var request = URLRequest(url: url as! URL)
+        var request = URLRequest(url: url! as URL)
         
         do{
             request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
