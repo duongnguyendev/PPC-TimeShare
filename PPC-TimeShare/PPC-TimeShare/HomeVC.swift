@@ -261,14 +261,6 @@ class HomeVC: UIViewController {
     }
     
     func localize() {
-//        listOfResortsButton.title = LanguageManager.sharedInstance.localizedString(string: "ResortDirectory")
-//        specialOffersButton.title = LanguageManager.sharedInstance.localizedString(string: "SpecialOffers")
-//        placesNearbyButton.title = LanguageManager.sharedInstance.localizedString(string: "PlacesNearby")
-//        exploreAllDestinationButton.title = LanguageManager.sharedInstance.localizedString(string: "ExploreAllDestinations")
-//        introduceButton.title = LanguageManager.sharedInstance.localizedString(string: "Introduction")
-//        recruitmentButton.title = LanguageManager.sharedInstance.localizedString(string: "Recruitment")
-//        sendRequestButton.title = LanguageManager.sharedInstance.localizedString(string: "SendRequest")
-//        calendarButton.title = LanguageManager.sharedInstance.localizedString(string: "Calendar")
         
         listOfResortsButton.title = "ResortDirectory"
         specialOffersButton.title = "SpecialOffers"
