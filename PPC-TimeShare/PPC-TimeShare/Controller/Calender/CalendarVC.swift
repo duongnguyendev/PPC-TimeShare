@@ -161,7 +161,7 @@ class CalendarVC: BaseViewController, UICollectionViewDelegate, UICollectionView
         calendarPicker.hightlightsToday = false
         calendarPicker.showsTodaysButton = false
         calendarPicker.hideDaysFromOtherMonth = true
-        calendarPicker.tintColor = UIColor.orange
+        calendarPicker.tintColor = UIColor.white
         
         calendarPicker.dayDisabledTintColor = UIColor.gray
         calendarPicker.title = languageManager.localizedString(string: "Calendar")

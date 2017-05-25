@@ -23,6 +23,15 @@ class SettingsVC: BaseViewController, DropDownDelegate {
         }
     }
     
+    let buttonRecruiment : InfoButton = {
+        let button = InfoButton()
+        button.value = ""
+        button.iconName = "recruit"
+        button.arrowImage.image = UIImage(named: "arrow_right_icon")
+        button.addTarget(self, action: #selector(handleRecruimentButton), for: .touchUpInside)
+        return button
+    }()
+    
     let buttonLogout : InfoButton = {
         let button = InfoButton()
         button.value = ""
@@ -44,11 +53,18 @@ class SettingsVC: BaseViewController, DropDownDelegate {
         return dropDown
     }()
     override func setupView() {
+        view.addSubview(buttonRecruiment)
         view.addSubview(buttonLanguage)
         view.addSubview(buttonLogout)
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: buttonRecruiment)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: buttonLanguage)
         view.addConstraintWithFormat(format: "H:|[v0]-(-40)-|", views: buttonLogout)
-        view.addConstraintWithFormat(format: "V:|-20-[v0(\(itemHeight))]-1-[v1(\(itemHeight))]", views: buttonLanguage, buttonLogout)
+        view.addConstraintWithFormat(format: "V:|[v0(\(itemHeight))]-1-[v1(\(itemHeight))]-1-[v2(\(itemHeight))]", views: buttonRecruiment, buttonLanguage, buttonLogout)
+        
+        setupLanguageDropDown()
+    }
+    
+    func setupLanguageDropDown(){
         
         view.addSubview(languageDropDown)
         
@@ -56,6 +72,10 @@ class SettingsVC: BaseViewController, DropDownDelegate {
         languageDropDown.rightAnchor.constraint(equalTo: buttonLanguage.rightAnchor, constant: -10).isActive = true
         languageDropDown.heightAnchor.constraint(equalToConstant: 83).isActive = true
         languageDropDown.widthAnchor.constraint(equalToConstant: 150).isActive = true
+    }
+    
+    func handleRecruimentButton(){
+        pushVC(viewController: RecruitmentVC())
     }
     
     func handleLogoutButton(){
@@ -88,7 +108,8 @@ class SettingsVC: BaseViewController, DropDownDelegate {
     }
     
     override func localizeString() {
-        title = LanguageManager.sharedInstance.localizedString(string: "Settings")
+        title = LanguageManager.sharedInstance.localizedString(string: "More")
+        buttonRecruiment.title = LanguageManager.sharedInstance.localizedString(string: "Recruiment")
         buttonLogout.title = LanguageManager.sharedInstance.localizedString(string: "LogOut")
         buttonLanguage.title = LanguageManager.sharedInstance.localizedString(string: "Languages")
     }

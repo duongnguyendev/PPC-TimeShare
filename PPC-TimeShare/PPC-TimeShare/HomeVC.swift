@@ -128,6 +128,7 @@ class HomeVC: UIViewController {
         button.type = HomeButtonType.recruitment
         button.addTarget(self, action: #selector(handleCalendarButton), for: .touchUpInside)
         button.iconName = "icon_calendar_white"
+        button.backgroundColor = UIColor(white: 0, alpha: 0.1)
         
         return button
     }()

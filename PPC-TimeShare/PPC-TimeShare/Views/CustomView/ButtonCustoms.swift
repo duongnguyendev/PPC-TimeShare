@@ -215,7 +215,9 @@ class HomeButtonCustom : BaseButton {
     func setupSystemView(){
         addConstraintWithFormat(format: "H:|[v0]|", views: titleLabelView)
         addConstraintWithFormat(format: "V:|[v0]|", views: titleLabelView)
+        
         iconView.isHidden = true
+        titleLabelView.font = UIFont(name: "Roboto-Medium", size: 17)
         
     }
     func setupListResortView(){
@@ -241,15 +243,16 @@ class HomeButtonCustom : BaseButton {
     }
     func setupRecruitmentView(){
         
-        iconView.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        iconView.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        iconView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        iconView.widthAnchor.constraint(equalToConstant: 20).isActive = true
         iconView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         
         titleLabelView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         titleLabelView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         
-        addConstraintWithFormat(format: "H:|-40-[v0]-5-[v1]|", views: iconView, titleLabelView)
+        addConstraintWithFormat(format: "H:|-20-[v0]-5-[v1]|", views: iconView, titleLabelView)
         titleLabelView.textAlignment = .left
+        titleLabelView.font = UIFont(name: "Roboto-Medium", size: 17)
         
     }
     func setupSendRequestView(){

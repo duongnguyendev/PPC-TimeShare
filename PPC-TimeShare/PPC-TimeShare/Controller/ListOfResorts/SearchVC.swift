@@ -11,7 +11,6 @@ import UIKit
 class SearchVC: BaseViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var resorts : [Resort]?
-    
     var searchViewController : UISearchController!
     lazy var colletionSearchResult: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

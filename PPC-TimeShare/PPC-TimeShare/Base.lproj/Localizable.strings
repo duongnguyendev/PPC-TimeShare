@@ -11,7 +11,7 @@
 domain = "http://api.ppc-timeshare.com/api/";
 
 // title base view controller
-
+More = "More";
 ForgotPassword= "Forgot Password";
 YourEmail= "Your email";
 Confirm= "Confirm";
@@ -26,7 +26,7 @@ PlacesNearby= "Places nearby";
 Introduction= "Introduction";
 Recruitment= "Recruitment";
 SendRequest= "Send Request";
-Calendar="Calendar";
+Calendar="Timeshare Calendar";
 AboutUs= "About us";
 WhatIsTimeshare= "What is timeshare";
 PPCTimeshareBusiness= "PPC Timeshare business";

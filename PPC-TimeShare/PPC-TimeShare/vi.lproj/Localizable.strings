@@ -11,7 +11,7 @@
 domain = "http://api.ppc-timeshare.com/api/vi/";
 
 // title base view controller
-
+More = "Thêm";
 ForgotPassword= "Quên mật khẩu";
 YourEmail= "Địa chỉ email của bạn";
 Confirm= "Xác nhận";
@@ -26,7 +26,7 @@ PlacesNearby= "Địa điểm gần đây";
 Introduction= "Giới thiệu";
 Recruitment= "Tuyển dụng";
 SendRequest= "Gửi yêu cầu";
-Calendar="Lịch";
+Calendar="Lịch biểu Timeshare";
 AboutUs= "Về chúng tôi";
 WhatIsTimeshare= "Timeshare là gì";
 PPCTimeshareBusiness= "Các hoạt động của PPC";
