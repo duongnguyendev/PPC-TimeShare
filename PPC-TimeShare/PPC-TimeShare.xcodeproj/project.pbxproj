@@ -869,15 +869,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Duong Duy Nguyen (NJZ58EQ28D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = FE5FXN233L;
 				INFOPLIST_FILE = "PPC-TimeShare/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ppc.ppctimeshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec00c06d-d885-4c60-89e7-60270eb3d86a";
-				PROVISIONING_PROFILE_SPECIFIER = "ios development";
+				PROVISIONING_PROFILE = "ddedfc69-edeb-4fb9-84a7-60a0e291cca6";
+				PROVISIONING_PROFILE_SPECIFIER = "ppctimeshare distribution";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
